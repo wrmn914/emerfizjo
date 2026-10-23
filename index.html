@@ -1,0 +1,1724 @@
+<!DOCTYPE html>
+<html lang="pl" class="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biologia Medyczna - Akademicki Quiz i Repetytorium | © M. Religa</title>
+    <style>
+        /* Modern Design System - Palette & Variables */
+        :root {
+            --bg-primary: #f8fafc;
+            --bg-secondary: #ffffff;
+            --bg-tertiary: #f1f5f9;
+            --border-color: #e2e8f0;
+            --text-primary: #0f172a;
+            --text-secondary: #475569;
+            --text-muted: #94a3b8;
+            --accent-teal: #0d9488;
+            --accent-teal-hover: #0f766e;
+            --accent-teal-soft: rgba(13, 148, 136, 0.1);
+            --accent-navy: #1e293b;
+            --accent-blue: #2563eb;
+            --success-bg: #dcfce7;
+            --success-text: #15803d;
+            --success-border: #86efac;
+            --error-bg: #fee2e2;
+            --error-text: #b91c1c;
+            --error-border: #fca5a5;
+            --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+            --radius-lg: 16px;
+            --radius-md: 10px;
+            --radius-sm: 6px;
+            --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+        }
+
+        html.dark {
+            --bg-primary: #090d16;
+            --bg-secondary: #111827;
+            --bg-tertiary: #1f2937;
+            --border-color: #374151;
+            --text-primary: #f9fafb;
+            --text-secondary: #9ca3af;
+            --text-muted: #6b7280;
+            --accent-teal: #14b8a6;
+            --accent-teal-hover: #2dd4bf;
+            --accent-teal-soft: rgba(20, 184, 166, 0.15);
+            --accent-navy: #f3f4f6;
+            --accent-blue: #60a5fa;
+            --success-bg: rgba(22, 101, 52, 0.3);
+            --success-text: #4ade80;
+            --success-border: #15803d;
+            --error-bg: rgba(153, 27, 27, 0.3);
+            --error-text: #f87171;
+            --error-border: #991b1b;
+            --card-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.5);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: var(--font-sans);
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            line-height: 1.5;
+            transition: background-color 0.2s ease, color 0.2s ease;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1080px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        /* Header Navigation */
+        header {
+            background-color: var(--bg-secondary);
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 40;
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05);
+        }
+
+        .header-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 64px;
+        }
+
+        .logo-group {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+        }
+
+        .logo-icon {
+            width: 38px;
+            height: 38px;
+            background: linear-gradient(135deg, var(--accent-teal), #1e293b);
+            color: white;
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 1.1rem;
+            box-shadow: 0 2px 4px rgba(13, 148, 136, 0.2);
+        }
+
+        .logo-title {
+            font-size: 1.05rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .badge-sub {
+            font-size: 0.68rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 2px 8px;
+            background-color: var(--accent-teal-soft);
+            color: var(--accent-teal);
+            border-radius: 20px;
+            border: 1px solid var(--accent-teal);
+        }
+
+        .author-tag {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            font-weight: 600;
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .nav-btn {
+            background: transparent;
+            border: none;
+            padding: 8px 12px;
+            border-radius: var(--radius-md);
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: all 0.15s ease;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .nav-btn:hover {
+            background-color: var(--bg-tertiary);
+            color: var(--text-primary);
+        }
+
+        .nav-btn.active {
+            background-color: var(--accent-teal-soft);
+            color: var(--accent-teal);
+        }
+
+        .theme-toggle {
+            width: 36px;
+            height: 36px;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border-color);
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+        }
+
+        .copyright-banner {
+            background: linear-gradient(90deg, #0f172a, #1e293b);
+            color: #f8fafc;
+            padding: 8px 0;
+            font-size: 0.75rem;
+            text-align: center;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .copyright-banner strong {
+            color: #2dd4bf;
+        }
+
+        main {
+            flex: 1;
+            padding: 2rem 0;
+        }
+
+        .card {
+            background-color: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 1.75rem;
+            box-shadow: var(--card-shadow);
+            margin-bottom: 1.5rem;
+        }
+
+        .card-header {
+            margin-bottom: 1.25rem;
+        }
+
+        .card-title {
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .card-subtitle {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-top: 4px;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 12px;
+        }
+
+        .option-radio-card {
+            border: 2px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 12px 16px;
+            cursor: pointer;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            transition: all 0.15s ease;
+            background-color: var(--bg-secondary);
+        }
+
+        .option-radio-card:hover, .option-radio-card.selected {
+            border-color: var(--accent-teal);
+            background-color: var(--accent-teal-soft);
+        }
+
+        .option-radio-card input {
+            margin-top: 3px;
+            accent-color: var(--accent-teal);
+        }
+
+        .radio-title {
+            font-size: 0.88rem;
+            font-weight: 700;
+            display: block;
+            color: var(--text-primary);
+        }
+
+        .radio-desc {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 12px 24px;
+            border-radius: var(--radius-md);
+            font-size: 0.9rem;
+            font-weight: 700;
+            cursor: pointer;
+            border: none;
+            transition: all 0.15s ease;
+            text-decoration: none;
+        }
+
+        .btn-primary {
+            background-color: var(--accent-teal);
+            color: white;
+            box-shadow: 0 2px 4px rgba(13, 148, 136, 0.3);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--accent-teal-hover);
+        }
+
+        .btn-secondary {
+            background-color: var(--bg-tertiary);
+            color: var(--text-primary);
+            border: 1px solid var(--border-color);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--border-color);
+        }
+
+        .btn-full {
+            width: 100%;
+        }
+
+        .quiz-status-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+        }
+
+        .progress-track {
+            width: 100%;
+            height: 8px;
+            background-color: var(--border-color);
+            border-radius: 20px;
+            overflow: hidden;
+            margin-bottom: 1.5rem;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent-teal), #2563eb);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        .question-text {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            line-height: 1.45;
+            margin-bottom: 1.25rem;
+        }
+
+        .options-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 1.5rem;
+        }
+
+        .option-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 14px 16px;
+            border-radius: var(--radius-md);
+            border: 1.5px solid var(--border-color);
+            background-color: var(--bg-secondary);
+            cursor: pointer;
+            transition: all 0.15s ease;
+            text-align: left;
+            width: 100%;
+            font-size: 0.92rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .option-item:hover:not(:disabled) {
+            border-color: var(--accent-teal);
+            background-color: var(--accent-teal-soft);
+        }
+
+        .option-letter {
+            width: 26px;
+            height: 26px;
+            border-radius: var(--radius-sm);
+            background-color: var(--bg-tertiary);
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 0.78rem;
+            flex-shrink: 0;
+        }
+
+        .option-item.correct {
+            border-color: var(--success-border) !important;
+            background-color: var(--success-bg) !important;
+            color: var(--success-text) !important;
+        }
+
+        .option-item.correct .option-letter {
+            background-color: #16a34a;
+            color: white;
+        }
+
+        .option-item.wrong {
+            border-color: var(--error-border) !important;
+            background-color: var(--error-bg) !important;
+            color: var(--error-text) !important;
+        }
+
+        .option-item.wrong .option-letter {
+            background-color: #dc2626;
+            color: white;
+        }
+
+        .explanation-box {
+            background-color: var(--accent-teal-soft);
+            border: 1px solid var(--accent-teal);
+            border-radius: var(--radius-md);
+            padding: 1rem;
+            font-size: 0.85rem;
+            color: var(--text-primary);
+            line-height: 1.5;
+            margin-bottom: 1.5rem;
+            display: none;
+        }
+
+        .explanation-title {
+            font-weight: 800;
+            color: var(--accent-teal);
+            text-transform: uppercase;
+            font-size: 0.72rem;
+            letter-spacing: 0.05em;
+            margin-bottom: 4px;
+        }
+
+        .results-summary {
+            text-align: center;
+            padding: 2rem 1rem;
+        }
+
+        .score-circle {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            margin: 0 auto 1.25rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border: 6px solid var(--accent-teal);
+            background-color: var(--accent-teal-soft);
+        }
+
+        .score-num {
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: var(--accent-teal);
+            line-height: 1;
+        }
+
+        .score-label {
+            font-size: 0.68rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: var(--text-secondary);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+            gap: 12px;
+            margin: 1.5rem 0;
+        }
+
+        .stat-box {
+            background-color: var(--bg-tertiary);
+            border-radius: var(--radius-md);
+            padding: 12px;
+            text-align: center;
+        }
+
+        .stat-val {
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: var(--text-primary);
+        }
+
+        .stat-lbl {
+            font-size: 0.72rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+
+        .search-bar {
+            width: 100%;
+            padding: 10px 14px;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border-color);
+            background-color: var(--bg-secondary);
+            color: var(--text-primary);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Flashcard Components */
+        .flashcard-box {
+            perspective: 1000px;
+            min-height: 220px;
+            margin-bottom: 1rem;
+            cursor: pointer;
+        }
+
+        .flashcard-inner {
+            position: relative;
+            width: 100%;
+            min-height: 220px;
+            text-align: center;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+            border-radius: var(--radius-lg);
+            border: 2px solid var(--accent-teal);
+            background-color: var(--bg-secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .flashcard-box.flipped .flashcard-inner {
+            transform: rotateY(180deg);
+        }
+
+        .flashcard-front, .flashcard-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+            box-sizing: border-box;
+        }
+
+        .flashcard-back {
+            transform: rotateY(180deg);
+            background-color: var(--accent-teal-soft);
+            color: var(--text-primary);
+            border-radius: var(--radius-lg);
+        }
+
+        footer {
+            background-color: var(--bg-secondary);
+            border-top: 1px solid var(--border-color);
+            padding: 1.5rem 0;
+            margin-top: auto;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            text-align: center;
+        }
+
+        footer strong {
+            color: var(--accent-teal);
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        @media (max-width: 640px) {
+            .header-inner { height: 56px; }
+            .logo-title { font-size: 0.92rem; }
+            .author-tag { display: none; }
+            .card { padding: 1.25rem; }
+            .nav-btn span { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="copyright-banner">
+        Opracowanie dydaktyczne &amp; Prawa autorskie: <strong>© M. Religa</strong> | Biologia Medyczna - Fizjologia i Biologia Komórki
+    </div>
+
+    <header>
+        <div class="container">
+            <div class="header-inner">
+                <div class="logo-group" onclick="showSection('dash')">
+                    <div class="logo-icon">BM</div>
+                    <div>
+                        <div class="logo-title">
+                            Biologia Medyczna
+                            <span class="badge-sub">Fizjoterapia I</span>
+                        </div>
+                        <div class="author-tag">Promotor naukowy: © M. Religa</div>
+                    </div>
+                </div>
+
+                <div class="nav-actions">
+                    <button id="navDashBtn" class="nav-btn active" onclick="showSection('dash')">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path></svg>
+                        <span>Quiz</span>
+                    </button>
+                    <button id="navFlashBtn" class="nav-btn" onclick="showSection('flash')">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="M12 4v16"></path></svg>
+                        <span>Fiszki</span>
+                    </button>
+                    <button id="navBankBtn" class="nav-btn" onclick="showSection('bank')">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+                        <span id="navBankSpan">Baza Pytań (75)</span>
+                    </button>
+                    <button class="theme-toggle" onclick="toggleTheme()" title="Przełącz motyw">🌙</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+
+        <!-- DASHBOARD & CONFIGURATION -->
+        <div id="sectionDash">
+            <div class="card" style="background: linear-gradient(135deg, var(--bg-secondary), var(--accent-teal-soft)); border-left: 5px solid var(--accent-teal);">
+                <div class="card-header">
+                    <h2 class="card-title">Portal Naukowy - Biologia Medyczna</h2>
+                    <p class="card-subtitle">
+                        Kompleksowy test przygotowawczy na podstawie skryptu z pierwszego roku studiów fizjoterapii. Materiał opracowany dydaktycznie przez <strong>© M. Religa</strong>.
+                    </p>
+                </div>
+                <div style="font-size: 0.82rem; color: var(--text-secondary); display: flex; gap: 15px; flex-wrap: wrap;">
+                    <span>✓ <strong id="dashTotalBadge">75 Zweryfikowanych Pytań</strong> (włączając pełną bazę autorską)</span>
+                    <span>✓ Dedykowany tryb Fiszek / Kompendium</span>
+                    <span>✓ Zgodność ze skryptem akademickim</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Konfiguracja Treningu i Egzaminu</h3>
+                    <p class="card-subtitle">Wybierz interesujący Cię zakres oraz tryb nauki:</p>
+                </div>
+
+                <div style="margin-bottom: 1.25rem;">
+                    <label style="font-size: 0.78rem; font-weight: 800; text-transform: uppercase; color: var(--text-muted); display: block; margin-bottom: 8px;">1. Zakres Tematyczny:</label>
+                    <div class="grid-2" id="categoryGrid"></div>
+                </div>
+
+                <div style="margin-bottom: 1.5rem;">
+                    <label style="font-size: 0.78rem; font-weight: 800; text-transform: uppercase; color: var(--text-muted); display: block; margin-bottom: 8px;">2. Tryb Nauki:</label>
+                    <div class="grid-2">
+                        <label class="option-radio-card selected" id="modeCardPractice" onclick="selectMode('practice')">
+                            <input type="radio" name="mode" value="practice" checked>
+                            <div>
+                                <span class="radio-title">Tryb Ćwiczeniowy (Trening)</span>
+                                <span class="radio-desc">Natychmiastowe sprawdzanie, brak limitu czasu, widoczne dokładne wyjaśnienia i cytaty.</span>
+                            </div>
+                        </label>
+                        <label class="option-radio-card" id="modeCardExam" onclick="selectMode('exam')">
+                            <input type="radio" name="mode" value="exam">
+                            <div>
+                                <span class="radio-title">Tryb Egzaminacyjny</span>
+                                <span class="radio-desc">Symulacja kolokwium. Wynik % i raport z wyjaśnieniami dopiero po zakończeniu testu.</span>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <div style="display: flex; gap: 20px; flex-wrap: wrap; padding-top: 1rem; border-top: 1px solid var(--border-color); margin-bottom: 1.5rem;">
+                    <label style="display: flex; align-items: center; gap: 8px; font-size: 0.88rem; font-weight: 600; cursor: pointer;">
+                        <input type="checkbox" id="chkShuffle" checked style="accent-color: var(--accent-teal);">
+                        Losuj kolejność pytań i odpowiedzi
+                    </label>
+                    <label style="display: flex; align-items: center; gap: 8px; font-size: 0.88rem; font-weight: 600; cursor: pointer;">
+                        <input type="checkbox" id="chkTimer" style="accent-color: var(--accent-teal);">
+                        Włącz czasomierz sesji
+                    </label>
+                </div>
+
+                <button class="btn btn-primary btn-full" onclick="startQuizSession()">Rozpocznij Test Naukowy</button>
+            </div>
+        </div>
+
+        <!-- ACTIVE QUIZ SCREEN -->
+        <div id="sectionQuiz" class="hidden">
+            <div class="quiz-status-bar">
+                <span id="quizCatBadge" style="background: var(--accent-teal-soft); color: var(--accent-teal); padding: 3px 10px; border-radius: 12px; font-weight: 700; font-size: 0.78rem;">Kategoria</span>
+                <span id="timerBox" class="hidden" style="font-family: var(--font-mono); font-weight: 700; color: #d97706;">⏱️ 00:00</span>
+                <span>Pytanie <strong id="qCurrentNum">1</strong> / <span id="qTotalNum">--</span></span>
+            </div>
+
+            <div class="progress-track">
+                <div id="quizProgressBar" class="progress-fill"></div>
+            </div>
+
+            <div class="card">
+                <div class="question-text" id="qText">Ładowanie treści pytania...</div>
+                
+                <div class="options-stack" id="qOptionsStack"></div>
+
+                <div class="explanation-box" id="qExplanationBox">
+                    <div class="explanation-title">Cytat ze skryptu © M. Religa:</div>
+                    <div id="qExplanationText"></div>
+                </div>
+
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--border-color);">
+                    <button class="btn btn-secondary" onclick="confirmExit()">Przerwij</button>
+                    <button class="btn btn-primary" id="btnNext" onclick="nextQuestion()" disabled>Następne Pytanie →</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- RESULTS SCREEN -->
+        <div id="sectionResults" class="hidden">
+            <div class="card results-summary">
+                <div class="score-circle" id="scoreCircle">
+                    <span class="score-num" id="resPercent">0%</span>
+                    <span class="score-label">Wynik</span>
+                </div>
+
+                <h2 id="resTitle" style="font-size: 1.4rem; font-weight: 800; margin-bottom: 6px;">Podsumowanie Egzaminu</h2>
+                <p id="resSub" style="font-size: 0.88rem; color: var(--text-secondary); max-width: 500px; margin: 0 auto 1rem;"></p>
+
+                <div class="stats-grid">
+                    <div class="stat-box">
+                        <div class="stat-val" id="stScore">0 / 0</div>
+                        <div class="stat-lbl">Punkty</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-val" style="color: #16a34a;" id="stCorrect">0</div>
+                        <div class="stat-lbl">Poprawne</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-val" style="color: #dc2626;" id="stWrong">0</div>
+                        <div class="stat-lbl">Błędne</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-val" id="stTime">00:00</div>
+                        <div class="stat-lbl">Czas</div>
+                    </div>
+                </div>
+
+                <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
+                    <button class="btn btn-primary" onclick="showSection('dash')">Nowa Sesja</button>
+                    <button class="btn btn-secondary" onclick="toggleReport()">Pokaż Raport Odpowiedzi</button>
+                </div>
+            </div>
+
+            <div id="reportBox" class="hidden">
+                <h3 style="font-size: 1.1rem; font-weight: 800; margin-bottom: 1rem;">Raport Szczegółowy</h3>
+                <div id="reportContainer" style="display: flex; flex-direction: column; gap: 12px;"></div>
+            </div>
+        </div>
+
+        <!-- FLASHCARDS SECTION -->
+        <div id="sectionFlash" class="hidden">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Fiszki &amp; Szybka Powtórka</h3>
+                    <p class="card-subtitle">Kliknij kartę, aby odwrócić i poznać prawidłową odpowiedź oraz cytat z notatek © M. Religa.</p>
+                </div>
+
+                <div class="flashcard-box" id="flashCardBox" onclick="flipFlashCard()">
+                    <div class="flashcard-inner">
+                        <div class="flashcard-front">
+                            <span id="fcCategory" style="font-size:0.75rem; font-weight:800; color:var(--accent-teal); text-transform:uppercase; margin-bottom:8px;">Kategoria</span>
+                            <div id="fcQuestion" style="font-size:1.1rem; font-weight:700; color:var(--text-primary);">Pytanie...</div>
+                            <span style="font-size:0.72rem; color:var(--text-muted); margin-top:1rem;">(Kliknij, aby zobaczyć odpowiedź)</span>
+                        </div>
+                        <div class="flashcard-back">
+                            <div id="fcAnswer" style="font-size:1rem; font-weight:800; color:var(--success-text); margin-bottom:8px;">Poprawna odpowiedź</div>
+                            <div id="fcExp" style="font-size:0.85rem; color:var(--text-primary);">Wyjaśnienie...</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <button class="btn btn-secondary" onclick="prevFlashCard()">← Poprzednia</button>
+                    <span style="font-size: 0.85rem; font-weight: 700; color: var(--text-secondary);">
+                        Fiszka <span id="fcCurrent">1</span> z <span id="fcTotal">--</span>
+                    </span>
+                    <button class="btn btn-primary" onclick="nextFlashCard()">Następna →</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- QUESTION DATABASE -->
+        <div id="sectionBank" class="hidden">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title" id="bankTitleCount">Pełna Baza Pytań (75 Pytań)</h3>
+                    <p class="card-subtitle">Przeglądaj wszystkie pytania egzaminacyjne z odpowiedzią i cytatami © M. Religa.</p>
+                </div>
+
+                <input type="text" id="bankSearchInput" class="search-bar" placeholder="🔍 Szukaj frazy w pytaniach, opcjach lub wyjaśnieniach..." oninput="filterBank()">
+
+                <div id="bankListContainer" style="display: flex; flex-direction: column; gap: 12px;"></div>
+            </div>
+        </div>
+
+    </main>
+
+    <footer>
+        <div class="container">
+            Opracowanie dydaktyczne i prawa autorskie: <strong>© M. Religa</strong> | Biologia Medyczna - Fizjologia i Biologia Komórki | Rok I Fizjoterapia
+        </div>
+    </footer>
+
+    <script>
+        // EXPANDED 75 QUESTION BANK INCLUDING ALL USER-SUBMITTED QUESTIONS
+        const rawQuestionBank = [
+            {
+                cat: "Zakażenia i Pasożyty",
+                q: "Lamblia jelitowa jest pasożytem, którym człowiek zarazi się przez:",
+                opts: ["Zarażoną pasożytami krew", "Zanieczyszczoną kałem żywność i wodę", "Zarażone mięso wieprzowe", "Zarażone mięso wołowe"],
+                corr: 1,
+                exp: "Lamblia jelitowa (Giardia lamblia) jest pasożytem jelitowym szerzącym się drogą pokarmową przez zanieczyszczoną kałem żywność i wodę z cystami."
+            },
+            {
+                cat: "Inne Typy Śmierci Komórki",
+                q: "Podaj, która cecha NIE charakteryzuje nekrozy:",
+                opts: ["uszkodzenie komórki przez czynniki fizyczne lub mechaniczne", "brak stanu zapalnego", "obecny stan zapalny", "rozpad komórek przy udziale enzymów lizosomalnych"],
+                corr: 1,
+                exp: "Nekroza (martwica) jest pro-zapalną formą umierania komórki. Powoduje powstanie stanu zapalnego. Cecha 'brak stanu zapalnego' dotyczy apoptozy."
+            },
+            {
+                cat: "Mikrobiologia",
+                q: "Bakteriofag to:",
+                opts: ["Wirus bakteryjny składający się z kwasu nukleinowego i białkowej otoczki", "Mobilna cząsteczka DNA", "Osłona śluzowa bakterii", "Aparat ruchu wirusa"],
+                corr: 0,
+                exp: "Bakteriofagi - wirusy bakteryjne składające się z kwasu nukleinowego i białkowej otoczki, infekujące komórki bakteryjne."
+            },
+            {
+                cat: "Ściana Komórkowa i Fizjologia",
+                q: "Bakterie GRAM DODATNIE po barwieniu metodą Grama będą miały kolor:",
+                opts: ["Czerwono-różowy", "Niebiesko-granatowy (fioletowy)", "Żółty", "Zielony"],
+                corr: 1,
+                exp: "Bakterie Gram-dodatnie barwią się na kolor fioletowy / niebiesko-granatowy ze względu na grubą warstwę mureiny."
+            },
+            {
+                cat: "Mikrobiologia",
+                q: "Struktura tworzona na podłożu sztucznym lub tkance, stanowiąca ochronną warstwę, pod którą bakterie się namnażają, to:",
+                opts: ["Fimbria", "Biofilm", "Kapsyd", "Przetrwalnik"],
+                corr: 1,
+                exp: "Biofilm to wielokomórkowa struktura osłonięta substancjami macierzy, umożliwiająca bezpieczne namnażanie się bakterii na powierzchniach."
+            },
+            {
+                cat: "Zakażenia i Pasożyty",
+                q: "Równoczesne zakażenie organizmu kilkoma czynnikami patogennymi to:",
+                opts: ["Reinfekcja", "Nadkażenie", "Superinfekcja", "Koinfekcja"],
+                corr: 3,
+                exp: "Koinfekcja (współzakażenie) - równoczesne zakażenie kilkoma czynnikami patogennymi jednocześnie."
+            },
+            {
+                cat: "Mikrobiologia",
+                q: "Skrót jtk (ang. CFU) oznacza:",
+                opts: ["Liczbę jednostek tworzących kolonię np. w jednym gramie kału lub preparatu", "Liczbę jednostek bakterii probiotycznych hamujących namnażanie bakterii patogennych", "Liczbę jednostek tworzących kolonię np. wyłącznie w jednym kubeczku kefiru", "Liczbę jednostek tworzących kolonie tylko na skórze"],
+                corr: 0,
+                exp: "jtk (jednostka tworząca kolonię) to miara liczby żywych komórek bakteryjnych/grzybiczych w próbce zdolnych do namnożenia."
+            },
+            {
+                cat: "Wirusologia",
+                q: "W przypadku wirusów przenikających przez błony śluzowe nie jest konieczny uszczerbek (uraz) tkanek. Czy to stwierdzenie jest prawdziwe?",
+                opts: ["Prawda", "Fałsz"],
+                corr: 0,
+                exp: "Prawda: Wirusy mogą wnikać przez nieuszkodzone błony śluzowe narządów oddechowych, pokarmowych lub płciowych bez konieczności urazu mechanicznego."
+            },
+            {
+                cat: "Zakażenia i Pasożyty",
+                q: "Nużeniec ludzki (Demodex folliculorum) - roztocz pasożytniczy bytuje u człowieka:",
+                opts: ["W żołądku", "W jelitach", "W mieszkach włosowych i gruczołach łojowych", "W erytrocytach"],
+                corr: 2,
+                exp: "Nużeniec ludzki to mikroskopijny pajęczak (roztocz) pasożytujący w mieszkach włosowych i gruczołach łojowych skóry człowieka."
+            },
+            {
+                cat: "Rozmnażanie i Genetyka Bakterii",
+                q: "Wymiana DNA między bakteriami ma znaczenie ewolucyjne oraz olbrzymie znaczenie medyczne, prowadzi bowiem do nabywania przez szczepy oporności na antybiotyki. Czy to stwierdzenie jest prawdziwe?",
+                opts: ["Prawda", "Fałsz"],
+                corr: 0,
+                exp: "Prawda: Horyzontalny transfer genów (koniugacja, transformacja, transdukcja) umożliwia szybkie rozprzestrzenianie oporności na antybiotyki."
+            },
+            {
+                cat: "Organella Komórkowe",
+                q: "Która organella komórkowa jest opisywana jako 'mózg' komórki otoczony podwójną błoną z porami?",
+                opts: ["Mitochondrium", "Jądro komórkowe", "Aparat Golgiego", "Lizosom"],
+                corr: 1,
+                exp: "Jądro komórkowe: 'Mózg' komórki otoczony podwójną błoną (otoczką jądrową) z porami. Przechowuje DNA i steruje procesami życiowymi."
+            },
+            {
+                cat: "Organella Komórkowe",
+                q: "Które ze struktur komórkowych NIE SĄ otoczone żadną błoną biologiczną?",
+                opts: ["Lizosomy", "Wakuole", "Rybosomy", "Chloroplasty"],
+                corr: 2,
+                exp: "Rybosomy: Drobne struktury nie otoczone żadną błoną, biorące bezpośredni udział w syntezie białek."
+            },
+            {
+                cat: "Organella Komórkowe",
+                q: "Jaka jest główna funkcja siateczki śródplazmatycznej gładkiej (bez rybosomów)?",
+                opts: ["Produkcja i transport białek", "Produkcja lipidów (tłuszczów) i neutralizacja toksyn", "Przeprowadzanie fotosyntezy", "Modyfikacja i pakowanie białek w pęcherzyki"],
+                corr: 1,
+                exp: "Siateczka gładka (bez rybosomów): Produkuje lipidy (tłuszcze) i neutralizuje toksyny (szczególnie w wątrobie)."
+            },
+            {
+                cat: "Organella Komórkowe",
+                q: "W których komórkach organizmu człowieka siateczka śródplazmatyczna gładka jest szczególnie silnie rozbudowana?",
+                opts: ["W kardiomiocytach", "W komórkach wątroby", "W keratynocytach", "W neuronach"],
+                corr: 1,
+                exp: "Siateczka gładka neutralizuje toksyny i produkuje lipidy – jest szczególnie rozbudowana w komórkach wątroby."
+            },
+            {
+                cat: "Organella Komórkowe",
+                q: "Organellum określane w skrypicie jako 'sortownia i poczta' komórki to:",
+                opts: ["Aparat Golgiego", "Siateczka szorstka", "Lizosom", "Mitochondrium"],
+                corr: 0,
+                exp: "Aparat Golgiego: 'Sortownia i poczta' – modyfikuje białka i lipidy z siateczki, pakuje je w pęcherzyki i rozsyła do miejsca przeznaczenia."
+            },
+            {
+                cat: "Organella Komórkowe",
+                q: "Co tworzy silnie pofałdowana błona wewnętrzna mitochondrium?",
+                opts: ["Tylakoidy", "Grzebienie mitochondrialne", "Cysterny", "Mezosomy"],
+                corr: 1,
+                exp: "Mitochondrium posiada dwie błony – zewnętrzną gładką i wewnętrzną pofałdowaną (grzebienie mitochondrialne)."
+            },
+            {
+                cat: "Organella Komórkowe",
+                q: "Jaka jest główna funkcja lizosomów w komórce zwierzęcej?",
+                opts: ["Magazynowanie turgoru", "Stanowią układ trawienny komórki i rozkładają zużyte organelle oraz bakterie", "Produkcja cząsteczek ATP", "Synteza kwasów tejchojowych"],
+                corr: 1,
+                exp: "Lizosomy: Małe pęcherzyki wypełnione enzymami trawiennymi. Rozkładają zużyte organelle, bakterie i szkodliwe substancje."
+            },
+            {
+                cat: "Organella Komórkowe",
+                q: "Jakie struktury zawierają wewnątrz chloroplasty i jak nazywa się zawarty w nich zielony barwnik?",
+                opts: ["Cysterny i karoten", "Grzebienie i bilirubina", "Tylakoidy i chlorofil", "Wakuole i antyocyjan"],
+                corr: 2,
+                exp: "Chloroplasty zawierają wewnątrz stosy 'monet' (tylakoidy) z zielonym barwnikiem – chlorofilem i przeprowadzają fotosyntezę."
+            },
+            {
+                cat: "Organella Komórkowe",
+                q: "Jaki procent objętości komórki roślinnej może zajmować wodniczka centralna (wakuola) i jaką pełni rolę techniczną?",
+                opts: ["Do 50%; wywołuje apoptozę", "Do 90%; utrzymuje odpowiednie ciśnienie (turgor)", "Do 20%; syntetyzuje białka", "Do 75%; tworzy ciałka apoptotyczne"],
+                corr: 1,
+                exp: "Wakuola centralna w komórce roślinnej zajmuje do 90% jej objętości. Utrzymuje turgor, dzięki czemu liście i łodygi nie więdną."
+            },
+            {
+                cat: "Proliferacja i Potencjał",
+                q: "Czym charakteryzują się kardiomiocyty pod względem zdolności do proliferacji?",
+                opts: ["Są komórkami macierzystymi", "Należą do komórek niedzielących się", "Przebywają stale w fazie G0 i dzielą się po skaleczeniu", "Są komórkami totipotencjalnymi"],
+                corr: 1,
+                exp: "Zdolność proliferacji: 1. Komórki niedzielące się - kardiomiocyty."
+            },
+            {
+                cat: "Proliferacja i Potencjał",
+                q: "Które z wymienionych komórek przebywają w fazie G0 i uczestniczą w naprawie uszkodzeń po skaleczeniu?",
+                opts: ["Zygota i kardiomiocyty", "Fibroblasty skóry, komórki mięśniowe gładkie i komórki śródbłonka", "Keratynocyty i komórki krwi", "Monocyty i priony"],
+                corr: 1,
+                exp: "Komórki w fazie G0: Fibroblasty skóry, Komórki mięśniowe gładkie, komórki śródbłonka, komórki nabłonkowe narządów (wątroba, trzustka, nerki, płuca)."
+            },
+            {
+                cat: "Proliferacja i Potencjał",
+                q: "Przykładem komórek stale dzielących się (komórek macierzystych) opisanych w dokumencie są:",
+                opts: ["Kardiomiocyty i komórki płuc", "Komórki krwi, keratynocyty, komórki nabłonkowe wyściełające przewód pokarmowy", "Komórki trzustki i wątroby", "Aneuploidalne fibroblasty"],
+                corr: 1,
+                exp: "Komórki macierzyste - komórki krwi, keratynocyty, komórki nabłonkowe wyściełającej przewód pokarmowy."
+            },
+            {
+                cat: "Proliferacja i Potencjał",
+                q: "Jaki typ potencjału rozwojowego wykazuje wyłącznie zygota?",
+                opts: ["Multipotencjalny", "Pluripotencjalny", "Totipotencjalny", "Unipotencjalny"],
+                corr: 2,
+                exp: "Totipotencjalne (toti/total/wszystko) - zygota."
+            },
+            {
+                cat: "Proliferacja i Potencjał",
+                q: "Komórki pluripotencjalne to komórki zdolne do różnicowania się w:",
+                opts: ["Każdy typ komórki z wyjątkiem zygoty", "Wyłącznie jeden rodzaj komórek tkankowych", "Cały organizm wraz z błonami płodowymi i zygotą", "Tylko w komórki krwi i keratynocyty"],
+                corr: 0,
+                exp: "Pluripotencjalne - do każdej komórki (bez zygoty)."
+            },
+            {
+                cat: "Proliferacja i Potencjał",
+                q: "Jak zdefiniowane są komórki multipotencjalne?",
+                opts: ["Mogą przekształcić się w zygotę", "Mogą dać początek każdemu narządowi", "Są ograniczone do miejsca i jednego rodzaju komórek", "Są to komórki całkowicie niedzielące się"],
+                corr: 2,
+                exp: "Multipotencjalne - ograniczone do miejsca i jednego rodzaju."
+            },
+            {
+                cat: "Apoptoza",
+                q: "Czy apoptoza jest procesem biernym czy aktywnym i czy narusza integralność komórki?",
+                opts: ["Jest procesem biernym z wyciekiem treści komórkowej", "Jest procesem aktywnym, przebiegającym bez naruszenia integralności błony", "Jest procesem wywołującym powszechny stan zapalny", "Jest procesem biernym dotykającym całe narządy"],
+                corr: 1,
+                exp: "Apoptoza to proces aktywny, fizjologiczny, zachodzący bez naruszenia integralności komórki."
+            },
+            {
+                cat: "Apoptoza",
+                q: "Co z poniższych MOŻE zainicjować proces apoptozy według skryptu?",
+                opts: ["Brak hormonów wzrostu, starość komórki, zakażenie, naruszenie homeostazy", "Obecność kwasu tejchojowego w cytoplazmie", "Fagocytoza bakterii Gram-dodatnich", "Pęcznienie pomp sodowo-potasowych"],
+                corr: 0,
+                exp: "Apoptozę może zainicjować: zakażenie, naruszenie homeostazy, starość komórki, brak hormonu wzrostu."
+            },
+            {
+                cat: "Apoptoza",
+                q: "Jaki jest PIERWSZY etap zmian w komórce rozpoczynający apoptozę?",
+                opts: ["Rozpad jądra i cięcie DNA", "Utrata wody (odwadnianie się) i zmiana kształtu", "Pęcznienie organelli", "Utworzenie ściany mureinowej"],
+                corr: 1,
+                exp: "APOPTOZA rozpoczyna się od tego że: komórka zaczyna tracić wodę (odwadnia się) i zmieni kształt."
+            },
+            {
+                cat: "Apoptoza",
+                q: "Czym jest fagocytoza przez makrofagi?",
+                opts: ["Procesem odporności nabytej polegającym na syntezie przeciwciał", "Jednym z najważniejszych procesów odporności nieswoistej (wrodzonej) polegającym na pochłanianiu, unicestwianiu i trawieniu cząstek stałych", "Formą pączkowania komórek nowotworowych", "Procesem tworzenia fimbrii płciowych"],
+                corr: 1,
+                exp: "Fagocytoza przez makrofagi to proces odporności nieswoistej (wrodzonej) polegający na pochłanianiu, unicestwianiu i trawieniu cząstek stałych."
+            },
+            {
+                cat: "Apoptoza",
+                q: "Skąd dokładnie pochodzą makrofagi i przez jaką formę krążącą we krwi powstają?",
+                opts: ["Z limfocytów T w grasicy", "Z komórek macierzystych szpiku kostnego, przekształcając się w krążące monocyty", "Z kardiomiocytów w sercu", "Z mezosomów bakteryjnych"],
+                corr: 1,
+                exp: "Makrofagi powstają z komórek macierzystych szpiku kostnego, które przekształcają się w krążące we krwi monocyty."
+            },
+            {
+                cat: "Apoptoza",
+                q: "Przykłady znaczenia apoptozy podane w skrypcie to m.in.:",
+                opts: ["Rozwój embrionalny (powstawanie palców rąk i nóg) oraz eliminacja komórek nowotworowych i niewłaściwych limfocytów", "Wytwarzanie zarodników Clostridium", "Podtrzymanie głodu w nowotworze", "Replikacja bakteriofagów w szpiku"],
+                corr: 0,
+                exp: "Apoptoza znaczenie: Rozwój embrionalny (powstawanie palców rąk i nóg), eliminacja komórek nowotworowych, selekcja limfocytów."
+            },
+            {
+                cat: "Inne Typy Śmierci Komórki",
+                q: "Jakie czynniki wywołujące nekrozę wymieniono w dokumencie?",
+                opts: ["Fizyczne (temperatura, promieniowanie), Mechaniczne (urazy, odleżyny), Chemiczne (jady, trucizny)", "Tylko brak hormonów wzrostu", "Tylko zakażenia rotawirusowe", "Wyłącznie kwas tejchojowy i LPS"],
+                corr: 0,
+                exp: "Nekroza - czynniki wywołujące: Fizyczne (temperatura, promieniowanie), Mechaniczne (urazy, odleżyny), Chemiczne (jady, trucizny)."
+            },
+            {
+                cat: "Inne Typy Śmierci Komórki",
+                q: "Czym jest AUTOFAGIA i jakie są jej główne przyczyny?",
+                opts: ["Typ programowanej śmierci komórki wywołany niedoborem czynników odżywczych lub uszkodzeniem elementów komórki", "Nekrotyczny obrzęk wywołany przez jady", "Szybki podział mitotyczny", "Bierny proces wchłaniania glukozy"],
+                corr: 0,
+                exp: "AUTOFAGIA - Typ programowanej śmierci komórki. Przyczyny: niedobór czynników odżywczych, uszkodzenia elementów komórki."
+            },
+            {
+                cat: "Inne Typy Śmierci Komórki",
+                q: "Jaka jest podwójna rola autofagii w procesie nowotworzenia opisana w notatkach?",
+                opts: ["Wyłącznie niszczy guzy", "Odgrywa podwójną rolę – zarówno w promowaniu przeżywalności komórek, jak i ich śmierci", "Zawsze wywołuje bakteryjną pyroptozę", "Nie odgrywa żadnej roli"],
+                corr: 1,
+                exp: "W procesie nowotworzenia autofagia odgrywa podwójną rolę – promuje przeżywalność komórek oraz ich śmierć."
+            },
+            {
+                cat: "Inne Typy Śmierci Komórki",
+                q: "Co to jest KATASTROFA MITOTYCZNA?",
+                opts: ["Zakażenie bakteriami Salmonella", "Śmierć komórki wynikająca z nieprawidłowości zachodzących podczas procesu mitozy", "Synteza mureiny w obecności tlenu", "Formowanie otoczki jądrowej"],
+                corr: 1,
+                exp: "KATASTROFA MITOTYCZNA to śmierć komórki wynikająca z nieprawidłowości zachodzących podczas procesu mitozy (punkty kontrolne cyklu)."
+            },
+            {
+                cat: "Inne Typy Śmierci Komórki",
+                q: "Czym różnią się komórki ANEUPLOIDALNE od MULTIPLOIDALNYCH (poliploidalnych)?",
+                opts: ["Aneuploidalne mają nieprawidłową liczbę pojedynczych chromosomów; Multiploidalne mają pełne, zwielokrotnione zestawy (np. 3n, 4n)", "Aneuploidalne mają 100 chromosomów; Multiploidalne nie mają jądra", "Nie różnią się niczym", "Aneuploidalne to komórki wątroby, a multiploidalne to zygota"],
+                corr: 0,
+                exp: "Aneuploidalne: nieprawidłowa liczba pojedynczych chromosomów (np. trisomia 21). Multiploidalne: pełne, zwielokrotnione zestawy chromosomów."
+            },
+            {
+                cat: "Inne Typy Śmierci Komórki",
+                q: "Czym charakteryzuje się ONKOZA (Oknoza) i co może ją wywoływać?",
+                opts: ["Odwodnieniem i skurczem", "Opuchnięciem, pęcznieniem organelli, spadkiem poziomu energetycznego; wywoływana np. przez rotawirusy", "Tworzeniem pili płciowych", "Podziałem pączkującym"],
+                corr: 1,
+                exp: "ONKOZA: Opuchnięcie, pęcznienie organelli, spadek energii. Rotawirusy i niektóre bakterie mogą do niej przyczyniać."
+            },
+            {
+                cat: "Inne Typy Śmierci Komórki",
+                q: "Czym jest PYROPTOZA i jakie komórki jej ulegają?",
+                opts: ["Śmiercią komórki (pyro = ogień, gorączka) wywołaną zakażeniem Salmonella i Shigella; ulegają jej makrofagi", "Zwyczajnym pączkowaniem drożdży", "Apoptozą w grasicy", "Procesem odwadniania kardiomiocytów"],
+                corr: 0,
+                exp: "PYROPTOZA (pyro - ogień, gorączka): Śmierć komórki wywołana zakażeniem Salmonella i Shigella. Umierają makrofagi."
+            },
+            {
+                cat: "Mikrobiologia",
+                q: "Jakie organizmy żywe zaliczamy do Prokariota, a jakie do Eukariota według skryptu?",
+                opts: ["Prokariota - grzyby; Eukariota - bakterie", "Prokariota - bakterie; Eukariota - grzyby, glony i pasożyty", "Prokariota - wirusy; Eukariota - priony", "Prokariota - bakterie; Eukariota - tylko wirusy"],
+                corr: 1,
+                exp: "Organizmy żywe: Prokariota - bakterie. Eukariota - grzyby, glony i pasożyty."
+            },
+            {
+                cat: "Mikrobiologia",
+                q: "Co zaliczamy do cząstek nieożywionych w mikrobiologii?",
+                opts: ["Grzyby i pasożyty", "Wirusy oraz Priony (proteinowe cząsteczki infekcyjne)", "Bakterie Gram-ujemne", "Endospory i wtręty"],
+                corr: 1,
+                exp: "Cząstki nieożywione: Wirusy oraz Priony (proteinowe cząsteczki infekcyjne)."
+            },
+            {
+                cat: "Mikrobiologia",
+                q: "Z jakiego białka zbudowane są fimbrie (pili) bakterii i jakie są ich dwa główne rodzaje?",
+                opts: ["Flagelina; rzęskowe i jądrowe", "Pilina; adhezyjne (przylepanie) oraz płciowe", "Mureina; komórkowe i wakuolarne", "Keratyna; przetrwalnikowe i oddechowe"],
+                corr: 1,
+                exp: "Fimbrie (pili) - adhezyjne i płciowe, zbudowane są z białka piliny."
+            },
+            {
+                cat: "Mikrobiologia",
+                q: "Gdzie u bakterii TLENOWYCH zlokalizowane są mezosomy i za jaki proces odpowiadają?",
+                opts: ["W otoczce; za fotosyntezę", "W cytoplazmie; odpowiadają za proces oddychania", "W jądrze; za replikację", "W pili płciowych; za koniugację"],
+                corr: 1,
+                exp: "Mezosomy (tylko bakterie tlenowe) - odpowiadają za proces oddychania."
+            },
+            {
+                cat: "Mikrobiologia",
+                q: "Ile genów koduje zazwyczaj chromosom bakteryjny (nukleoid) i jaka jest jego cecha strukturalna?",
+                opts: ["Do 4000 genów; kształt kolisty, brak oddzielenia od cytoplazmy (haploidalny)", "40-50 genów; kształt liniowy w otoczce jądrowej", "100 genów; jest diploidalny", "Nie posiada DNA"],
+                corr: 0,
+                exp: "Chromosom bakteryjny (nukleoid): koduje do 4000 genów, jest haploidalny, kolisty, nieoddzielony od cytoplazmy."
+            },
+            {
+                cat: "Rozmnażanie i Genetyka Bakterii",
+                q: "Na czym polega KONIUGACJA bakterii?",
+                opts: ["Pobieraniu wolnego DNA z otoczenia", "Bezpośrednim, jednokierunkowym przeniesieniu DNA przez fimbrie płciowe na drodze ścisłego kontaktu", "Przekazywaniu genów przez bakteriofagi", "Podziale mitotycznym jądra"],
+                corr: 1,
+                exp: "Koniugacja - bezpośrednie przeniesienie DNA z jednej komórki do drugiej, proces jednokierunkowy, za pomocą fimbrii płciowych."
+            },
+            {
+                cat: "Rozmnażanie i Genetyka Bakterii",
+                q: "Czym jest TRANSFORMACJA bakteryjna?",
+                opts: ["Pobieraniem przez bakterię wolnego DNA z umierających bakterii", "Atakiem bakteriofaga na makrofag", "Syntezą kwasów tejchojowych", "Zmianą kształtu pod wpływem temperatury"],
+                corr: 0,
+                exp: "Transformacja - pobieranie przez bakterie wolnego DNA z umierających bakterii."
+            },
+            {
+                cat: "Rozmnażanie i Genetyka Bakterii",
+                q: "Przekazanie DNA z jednej komórki bakteryjnej do drugiej za pośrednictwem wirusów bakteryjnych to:",
+                opts: ["Koniugacja", "Transdukcja", "Transformacja", "Pączkowanie"],
+                corr: 1,
+                exp: "Transdukcja - przekazanie DNA z jednej komórki do drugiej odbywa się przez wirusy bakteryjne (bakteriofagi)."
+            },
+            {
+                cat: "Rozmnażanie i Genetyka Bakterii",
+                q: "Czym są transpozony w komórce bakteryjnej?",
+                opts: ["Płaskimi cysternami", "Mobilnymi cząstkami DNA, które mogą przemieszczać się pomiędzy plazmidami a chromosomem", "Elementami szpiku", "Rzęskami ruchu"],
+                corr: 1,
+                exp: "Transpozony - mobilne cząstki DNA, które mogą przemieszczać się pomiędzy plazmidami a chromosomem bakteryjnym."
+            },
+            {
+                cat: "Rozmnażanie i Genetyka Bakterii",
+                q: "Jakie dwa rodzaje bakterii chorobotwórczych tworzą nieaktywne struktury przetrwalnikowe (spory/endospory)?",
+                opts: ["Helicobacter i Salmonella", "CLOSTRIDIUM (kwas kiełbasiany) oraz BACILLUS (wąglik)", "Shigella i Staphylococcus", "Escherichia i Vibrio"],
+                corr: 1,
+                exp: "CLOSTRIDIUM (Kwas kiełbasiany) i BACILLUS (wąglik) potrafią wytwarzać endospory."
+            },
+            {
+                cat: "Ściana Komórkowa i Fizjologia",
+                q: "Z czego składa się struktura ściany komórkowej bakterii GRAM-DODATNICH?",
+                opts: ["Z wielu warstw mureiny i kwasów tejchojowych", "Z błony zewnętrznej z LPS", "Z samej przestrzeni periplazmatycznej", "Z tłuszczów i wakuoli"],
+                corr: 0,
+                exp: "Bakterie Gram-dodatnie: gruba, prosta struktura złożona z wielu warstw mureiny (peptydoglikanu) z kwasami tejchojowymi."
+            },
+            {
+                cat: "Ściana Komórkowa i Fizjologia",
+                q: "Gdzie w strukturze bakterii Gram-ujemnych znajdują się białka związane z odpornością na antybiotyki?",
+                opts: ["W kwasie tejchojowym", "W przestrzeni periplazmatycznej", "W mezozomie", "W tylakoidach"],
+                corr: 1,
+                exp: "Przestrzeń periplazmatyczna u bakterii Gram-ujemnych zawiera białka związane z odpornością na antybiotyki."
+            },
+            {
+                cat: "Ściana Komórkowa i Fizjologia",
+                q: "Jak zdefiniowane są bakterie MIKROAEROFILNE?",
+                opts: ["Wymagają tlenu, ale najlepiej rosną w niższych stężeniach niż stężenie atmosferyczne", "Robią fermentację bez tlenu", "Tolerują tlen, ale go nie używają", "Są to priony"],
+                corr: 0,
+                exp: "Mikroaerofilne - wymagają tlenu, ale najlepiej rosną w niższych stężeniach niż stężenie tlenu w atmosferze."
+            },
+            {
+                cat: "Ściana Komórkowa i Fizjologia",
+                q: "Czym charakteryzują się bakterie bezwzględnie beztlenowe?",
+                opts: ["Rośną najlepiej przy stężeniu tlenu 21%", "Giną w obecności tlenu", "Mogą przeprowadzać oddychanie tlenowe i fermentację", "Są wyłącznie glonami"],
+                corr: 1,
+                exp: "Bezwzględne beztlenowce - giną w obecności tlenu."
+            },
+            {
+                cat: "Zakażenia i Pasożyty",
+                q: "Czym różni się zakażenie EGZOGENNE od ENDOGENNEGO?",
+                opts: ["Egzogenne wywołują wirusy, endogenne grzyby", "W egzogennym patogen pochodzi spoza organizmu; w endogennym z własnej flory w wyniku spadku odporności", "Egzogenne dotyczy płodu, endogenne dorosłego", "Nie ma różnicy"],
+                corr: 1,
+                exp: "Egzogenne - patogen spoza organizmu. Endogenne - z własnej flory fizjologicznej żywiciela w wyniku obniżenia odporności."
+            },
+            {
+                cat: "Zakażenia i Pasożyty",
+                q: "Jak nazywa się zakażenie nowym patogenem organizmu, który był już wcześniej zakażony innym czynnikiem?",
+                opts: ["Koinfekcja", "Nadkażenie (superinfekcja)", "Reinfekcja", "Zakażenie endogenne"],
+                corr: 1,
+                exp: "Nadkażenie (superinfekcja) - zakażenie nowym patogenem organizmu już zakażonego innym czynnikiem."
+            },
+            {
+                cat: "Zakażenia i Pasożyty",
+                q: "Ponowne zakażenie tym samym patogenem to:",
+                opts: ["Koinfekcja", "Reinfekcja", "Superinfekcja", "Pączkowanie"],
+                corr: 1,
+                exp: "Reinfekcja - ponowne zakażenie tym samym patogenem."
+            },
+            {
+                cat: "Zakażenia i Pasożyty",
+                q: "Jaka jest główna różnica pojęciowa między MIKROBIOTĄ a MIKROBIOMEM?",
+                opts: ["Mikrobiota to wszystkie drobnoustroje; Mikrobiom to pojęcie szersze – drobnoustroje + ich środowisko, genom i metabolity", "Mikrobiom to same bakterie, mikrobiota to wirusy", "Mikrobiota to patogeny, mikrobiom to flora zdrowa", "Są to synonimy bez różnic"],
+                corr: 0,
+                exp: "Mikrobiota: Wszystkie drobnoustroje (społeczność). Mikrobiom: Mikrobiota + ich środowisko, genom (metagenom) i metabolity."
+            },
+            {
+                cat: "Zakażenia i Pasożyty",
+                q: "Które z wymienionych miejsc w organizmie należy do BOGATO skolonizowanych przez florę fizjologiczną?",
+                opts: ["Żołądek i krtań", "Skóra, jama ustna, jelito grube, pochwa", "Tchawica i zatoki boczne nosa", "Ucho środkowe i spojówka"],
+                corr: 1,
+                exp: "Miejsca bogato skolonizowane: Skóra, błony śluzowe górnych dróg oddechowych, jama ustna, jelito grube, pochwa, ucho zewnętrzne."
+            },
+            {
+                cat: "Zakażenia i Pasożyty",
+                q: "Miejsca SKĄPO skolonizowane przez mikroflorę fizjologiczną w ciele człowieka to m.in.:",
+                opts: ["Jelito grube i skóra", "Krtań, tchawica, żołądek, zatoki nosa, ucho środkowe", "Pochwa i ucho zewnętrzne", "Górny odcinek przewodu pokarmowego"],
+                corr: 1,
+                exp: "Skąpo skolonizowane: krtań, tchawica, oskrzela, zatoki nosa, przełyk, żołądek, początek jelita cienkiego, ucho środkowe, spojówka."
+            },
+            {
+                cat: "Zakażenia i Pasożyty",
+                q: "Do czego może doprowadzić obecność Helicobacter pylori w żołądku i dwunastnicy?",
+                opts: ["Do pyroptozy płuc", "Do rozwoju choroby wrzodowej i raka żołądka", "Do martwicy kardiomiocytów", "Do transformacji genetycznej fagów"],
+                corr: 1,
+                exp: "Helicobacter pylori może doprowadzić do rozwoju choroby wrzodowej i raka żołądka."
+            },
+            {
+                cat: "Wirusologia",
+                q: "Co wchodzi w skład budowy wirusa i co tworzy tzw. nukleokapsyd?",
+                opts: ["Mureina i kwasy tejchojowe", "Kwas nukleinowy (DNA/RNA) + Kapsyd (płaszcz białkowy z kapsomerów)", "Plazmid i flagelina", "Ściana komórkowa z LPS"],
+                corr: 1,
+                exp: "Wirusy: Kwas nukleinowy (DNA/RNA) + Kapsyd. Kapsyd wraz z kwasem nukleinowym określa się mianem NUKLEOKAPSYDU."
+            },
+            {
+                cat: "Wirusologia",
+                q: "Jaka jest prawidłowa chronologiczna kolejność etapów uogólnionego zakażenia wirusowego wymieniona w skrypcie?",
+                opts: ["Wrota zakażenia (namnożenie) -> Najbliższe węzły chłonne -> Pierwotna wiremia -> Wątroba/śledziona/szpik -> Wiremia wtórna", "Wiremia wtórna -> wrota -> węzły", "Najbliższe węzły -> wiremia wtórna -> wrota zakażenia", "Wiremia pierwotna -> wrota zakażenia -> pyroptoza"],
+                corr: 0,
+                exp: "Model szerzenia wirusów: Wrota zakażenia -> Najbliższe węzły chłonne -> Pierwotna wiremia -> Wątroba/śledziona/szpik -> Wiremia wtórna."
+            },
+            {
+                cat: "Organella Komórkowe",
+                q: "Jaka jest główna funkcja siateczki śródplazmatycznej szorstkiej (RER)?",
+                opts: ["Synteza i transport białek", "Produkcja lipidów", "Trawienie wewnątrzkomórkowe", "Gromadzenie turgoru"],
+                corr: 0,
+                exp: "Siateczka śródplazmatyczna szorstka (z rybosomami) odpowiada za produkcję i transport białek."
+            },
+            {
+                cat: "Organella Komórkowe",
+                q: "W jakiej formie uwalniana jest energia podczas tlenowego oddychania komórkowego w mitochondriach?",
+                opts: ["W postaci cząsteczek ATP", "W postaci kwasów tejchojowych", "Jako cząsteczki LPS", "W formie pęcherzyków endosporalnych"],
+                corr: 0,
+                exp: "Mitochondria przeprowadzają oddychanie komórkowe tlenowe i uwalniają energię niezbędną do życia w postaci cząsteczek ATP."
+            },
+            {
+                cat: "Apoptoza",
+                q: "Jakie limfocyty biorące udział w odpowiedzi odpornościowej powstają w szpiku kostnym i przechodzą selekcję w grasicy?",
+                opts: ["Limfocyty T", "Monocyty", "Kardiomiocyty", "Keratynocyty"],
+                corr: 0,
+                exp: "Limfocyty T (i B) powstają w szpiku kostnym, a limfocyty T w grasicy są uczone odpowiedzi na konkretne bodźce; te reagujące zbyt słabo lub zbyt mocno ulegają apoptozie."
+            },
+            {
+                cat: "Ściana Komórkowa i Fizjologia",
+                q: "Jaką barwę w barwieniu metodą Grama przyjmują bakterie Gram-ujemne?",
+                opts: ["Kolor czerwony (różowy)", "Kolor fioletowy", "Kolor czarny", "Kolor zielony"],
+                corr: 0,
+                exp: "Bakterie Gram-ujemne barwią się na kolor czerwony, natomiast Gram-dodatnie na kolor fioletowy."
+            },
+            {
+                cat: "Ściana Komórkowa i Fizjologia",
+                q: "Co wchodzi w skład warstwy zewnętrznej ściany komórkowej bakterii Gram-ujemnych?",
+                opts: ["Lipidy, białka oraz lipopolisacharyd (LPS)", "Gruba warstwa mureiny z kwasami tejchojowymi", "Tylko wakuola centralna", "Białka piliny i aparaty ruchowe"],
+                corr: 0,
+                exp: "Warstwa zewnętrzna bakterii Gram-ujemnych to błona zewnętrzna zawierająca lipidy, białka oraz lipopolisacharyd (LPS) wykazujący działanie toksyczne."
+            },
+            {
+                cat: "Ściana Komórkowa i Fizjologia",
+                q: "Czy w ścianie komórkowej bakterii Gram-ujemnych występuje kwas tejchojowy?",
+                opts: ["Nie, występuje brak kwasu tejchojowego", "Tak, w grubej warstwie mureiny", "Tak, w przestrzeni periplazmatycznej", "Tak, w rybosomach"],
+                corr: 0,
+                exp: "Bakterie Gram-ujemne posiadają cieńszą mureinę w warstwie środkowej oraz brak kwasów tejchojowych."
+            },
+            {
+                cat: "Ściana Komórkowa i Fizjologia",
+                q: "Bakterie względnie beztlenowe wykorzystują jako źródło energii:",
+                opts: ["Zarówno oddychanie tlenowe, jak i fermentację", "Wyłącznie oddychanie tlenowe", "Wyłącznie fotosyntezę", "Priony i bakteriofagi"],
+                corr: 0,
+                exp: "Względne beztlenowce wykorzystują jako źródło energii zarówno oddychanie tlenowe, jak i fermentację."
+            },
+            {
+                cat: "Ściana Komórkowa i Fizjologia",
+                q: "Bakterie aerotolerancyjne (względnie tlenowe) to:",
+                opts: ["Bakterie beztlenowe, które potrafią przeżyć w obecności tlenu", "Bakterie ginące natychmiast w obecności tlenu", "Bakterie bez ściany komórkowej", "Wirusy rośne"],
+                corr: 0,
+                exp: "Aerotolerancyjne (względnie tlenowe) to bakterie beztlenowe, które potrafią przeżyć w obecności tlenu."
+            },
+            {
+                cat: "Rozmnażanie i Genetyka Bakterii",
+                q: "Plazmidy u bakterii kodują zazwyczaj 40-50 genów i są cząsteczkami:",
+                opts: ["Pozachromosomalnymi (nie są niezbędne do przeżycia komórki)", "Obowiązkowymi cząsteczkami jądrowymi", "Białkami kapsydu", "Wirusami bakteryjnymi"],
+                corr: 0,
+                exp: "Plazmidy to pozachromosomalne cząsteczki DNA kodujące 40-50 genów. Mogą występować w komórce, ale nie są dla niej niezbędne."
+            },
+            {
+                cat: "Rozmnażanie i Genetyka Bakterii",
+                q: "Proces, w którym bakteriofag włącza swój materiał genetyczny do chromosomu bakteryjnego bez natychmiastowej lizy, nosi nazwę:",
+                opts: ["Lizogenii", "Apoptozy", "Onkozy", "Autofagii"],
+                corr: 0,
+                exp: "Bakteriofag może spowodować lizę (rozpad) komórki bakteryjnej lub włączyć się do materiału genetycznego bakterii w procesie zwanym lizogenią."
+            },
+            {
+                cat: "Zakażenia i Pasożyty",
+                q: "Przeniesienie czynnika zakaźnego z matki na dziecko w trakcie ciąży lub porodu określane jest jako droga:",
+                opts: ["Wertykalna", "Horyzontalna", "Egzogenna bezpośrednia", "Wektorowa nieożywiona"],
+                corr: 0,
+                exp: "Drogi zakażeń wyróżniają m.in. drogę wertykalną: matka -> dziecko."
+            },
+            {
+                cat: "Zakażenia i Pasożyty",
+                q: "Przykłady wektorów ożywionych i nieożywionych w przenoszeniu zakażeń podane w skrypicie to np.:",
+                opts: ["Komar (ożywiony) oraz woda (nieożywiony)", "Rybosom (ożywiony) oraz wakuola (nieożywiony)", "Monocyt i makrofag", "Transpozon i plazmid"],
+                corr: 0,
+                exp: "Drogi zakażeń przez wektory (ożywione i nieożywione) np. komar, woda."
+            },
+            {
+                cat: "Wirusologia",
+                q: "Jednostki białkowe tworzące płaszcz białkowy (kapsyd) wirusa noszą nazwę:",
+                opts: ["Kapsomery", "Blastomery", "Endospory", "Mezosomy"],
+                corr: 0,
+                exp: "Łańcuchy białkowe tworzące kapsyd określa się mianem kapsomerów."
+            },
+            {
+                cat: "Zakażenia i Pasożyty",
+                q: "Zakażenia wywoływane przez mikroorganizmy fizjologiczne u osób z obniżoną odpornością, które normalnie nie szkodzą zdrowym, to infekcje:",
+                opts: ["Oportunistyczne", "Bezwzględne", "Egzogenne", "Katastrofalne"],
+                corr: 0,
+                exp: "Zakażenie oportunistyczne to infekcja wywoływana przez mikroorganizmy, które normalnie nie szkodzą dla zdrowych osób."
+            }
+        ];
+
+        // STATE MANAGERS
+        let activeQuestions = [];
+        let currentIdx = 0;
+        let selectedAnswers = [];
+        let quizMode = 'practice';
+        let timerInt = null;
+        let elapsedSeconds = 0;
+        let flashIdx = 0;
+
+        window.onload = function() {
+            initCategoryGrid();
+            initBankList();
+            initFlashCards();
+            
+            // Sync dynamic database counters across all UI elements
+            const totalCount = rawQuestionBank.length;
+            if(document.getElementById('navBankSpan')) document.getElementById('navBankSpan').innerText = `Baza Pytań (${totalCount})`;
+            if(document.getElementById('bankTitleCount')) document.getElementById('bankTitleCount').innerText = `Pełna Baza Pytań (${totalCount} Pytań)`;
+            if(document.getElementById('dashTotalBadge')) document.getElementById('dashTotalBadge').innerText = `${totalCount} Zweryfikowanych Pytań`;
+
+            if (localStorage.getItem('bm_theme') === 'dark') {
+                document.documentElement.classList.add('dark');
+            }
+        };
+
+        function toggleTheme() {
+            document.documentElement.classList.toggle('dark');
+            const isDark = document.documentElement.classList.contains('dark');
+            localStorage.setItem('bm_theme', isDark ? 'dark' : 'light');
+        }
+
+        function showSection(secId) {
+            document.getElementById('sectionDash').classList.add('hidden');
+            document.getElementById('sectionQuiz').classList.add('hidden');
+            document.getElementById('sectionResults').classList.add('hidden');
+            document.getElementById('sectionFlash').classList.add('hidden');
+            document.getElementById('sectionBank').classList.add('hidden');
+
+            document.getElementById('navDashBtn').classList.remove('active');
+            document.getElementById('navFlashBtn').classList.remove('active');
+            document.getElementById('navBankBtn').classList.remove('active');
+
+            if (secId === 'dash') {
+                document.getElementById('sectionDash').classList.remove('hidden');
+                document.getElementById('navDashBtn').classList.add('active');
+            } else if (secId === 'flash') {
+                document.getElementById('sectionFlash').classList.remove('hidden');
+                document.getElementById('navFlashBtn').classList.add('active');
+            } else if (secId === 'bank') {
+                document.getElementById('sectionBank').classList.remove('hidden');
+                document.getElementById('navBankBtn').classList.add('active');
+            } else if (secId === 'quiz') {
+                document.getElementById('sectionQuiz').classList.remove('hidden');
+            } else if (secId === 'results') {
+                document.getElementById('sectionResults').classList.remove('hidden');
+            }
+        }
+
+        function initCategoryGrid() {
+            const categories = ['Wszystkie Działy', ...new Set(rawQuestionBank.map(q => q.cat))];
+            const grid = document.getElementById('categoryGrid');
+
+            grid.innerHTML = categories.map((cat, idx) => {
+                const count = idx === 0 ? rawQuestionBank.length : rawQuestionBank.filter(q => q.cat === cat).length;
+                return `
+                    <label class="option-radio-card ${idx === 0 ? 'selected' : ''}" onclick="highlightCategory(this)">
+                        <input type="radio" name="cat" value="${cat}" ${idx === 0 ? 'checked' : ''}>
+                        <div>
+                            <span class="radio-title">${cat}</span>
+                            <span class="radio-desc">${count} pytań w bazie</span>
+                        </div>
+                    </label>
+                `;
+            }).join('');
+        }
+
+        function highlightCategory(el) {
+            document.querySelectorAll('#categoryGrid .option-radio-card').forEach(c => c.classList.remove('selected'));
+            el.classList.add('selected');
+        }
+
+        function selectMode(m) {
+            quizMode = m;
+            document.getElementById('modeCardPractice').classList.remove('selected');
+            document.getElementById('modeCardExam').classList.remove('selected');
+            if (m === 'practice') {
+                document.getElementById('modeCardPractice').classList.add('selected');
+            } else {
+                document.getElementById('modeCardExam').classList.add('selected');
+            }
+        }
+
+        function startQuizSession() {
+            const catRadios = document.getElementsByName('cat');
+            let chosenCat = 'Wszystkie Działy';
+            for (let r of catRadios) {
+                if (r.checked) chosenCat = r.value;
+            }
+
+            if (chosenCat === 'Wszystkie Działy') {
+                activeQuestions = JSON.parse(JSON.stringify(rawQuestionBank));
+            } else {
+                activeQuestions = JSON.parse(JSON.stringify(rawQuestionBank.filter(q => q.cat === chosenCat)));
+            }
+
+            if (document.getElementById('chkShuffle').checked) {
+                activeQuestions.sort(() => Math.random() - 0.5);
+                activeQuestions.forEach(q => {
+                    const corrText = q.opts[q.corr];
+                    q.opts.sort(() => Math.random() - 0.5);
+                    q.corr = q.opts.indexOf(corrText);
+                });
+            }
+
+            currentIdx = 0;
+            selectedAnswers = new Array(activeQuestions.length).fill(null);
+            elapsedSeconds = 0;
+
+            showSection('quiz');
+            document.getElementById('qTotalNum').innerText = activeQuestions.length;
+
+            const useTimer = document.getElementById('chkTimer').checked;
+            const timerBox = document.getElementById('timerBox');
+            if (useTimer) {
+                timerBox.classList.remove('hidden');
+                clearInterval(timerInt);
+                timerInt = setInterval(() => {
+                    elapsedSeconds++;
+                    const m = String(Math.floor(elapsedSeconds / 60)).padStart(2, '0');
+                    const s = String(elapsedSeconds % 60).padStart(2, '0');
+                    timerBox.innerText = `⏱️ ${m}:${s}`;
+                }, 1000);
+            } else {
+                timerBox.classList.add('hidden');
+            }
+
+            renderQuestion();
+        }
+
+        function renderQuestion() {
+            const q = activeQuestions[currentIdx];
+
+            document.getElementById('quizCatBadge').innerText = q.cat;
+            document.getElementById('qCurrentNum').innerText = currentIdx + 1;
+            
+            const pct = ((currentIdx + 1) / activeQuestions.length) * 100;
+            document.getElementById('quizProgressBar').style.width = `${pct}%`;
+
+            document.getElementById('qText').innerText = q.q;
+
+            const stack = document.getElementById('qOptionsStack');
+            stack.innerHTML = '';
+
+            const expBox = document.getElementById('qExplanationBox');
+            expBox.style.display = 'none';
+
+            q.opts.forEach((opt, idx) => {
+                const letter = String.fromCharCode(65 + idx);
+                const btn = document.createElement('button');
+                btn.className = 'option-item';
+                btn.onclick = () => selectOption(idx);
+
+                btn.innerHTML = `
+                    <div class="option-letter">${letter}</div>
+                    <div>${opt}</div>
+                `;
+                stack.appendChild(btn);
+            });
+
+            const btnNext = document.getElementById('btnNext');
+            btnNext.disabled = true;
+
+            if (selectedAnswers[currentIdx] !== null) {
+                applyOptionStyles(selectedAnswers[currentIdx]);
+            }
+        }
+
+        function selectOption(optIdx) {
+            if (selectedAnswers[currentIdx] !== null) return;
+
+            selectedAnswers[currentIdx] = optIdx;
+            applyOptionStyles(optIdx);
+
+            document.getElementById('btnNext').disabled = false;
+        }
+
+        function applyOptionStyles(selectedIdx) {
+            const q = activeQuestions[currentIdx];
+            const buttons = document.querySelectorAll('#qOptionsStack .option-item');
+
+            buttons.forEach((btn, idx) => {
+                btn.disabled = true;
+
+                if (quizMode === 'practice') {
+                    if (idx === q.corr) {
+                        btn.classList.add('correct');
+                    } else if (idx === selectedIdx && idx !== q.corr) {
+                        btn.classList.add('wrong');
+                    } else {
+                        btn.style.opacity = '0.4';
+                    }
+
+                    document.getElementById('qExplanationText').innerText = q.exp;
+                    document.getElementById('qExplanationBox').style.display = 'block';
+                } else {
+                    if (idx === selectedIdx) {
+                        btn.style.borderColor = 'var(--accent-teal)';
+                        btn.style.backgroundColor = 'var(--accent-teal-soft)';
+                    } else {
+                        btn.style.opacity = '0.5';
+                    }
+                }
+            });
+
+            document.getElementById('btnNext').disabled = false;
+        }
+
+        function nextQuestion() {
+            if (currentIdx < activeQuestions.length - 1) {
+                currentIdx++;
+                renderQuestion();
+            } else {
+                finishQuiz();
+            }
+        }
+
+        function confirmExit() {
+            if (confirm("Czy na pewno chcesz opuścić test?")) {
+                clearInterval(timerInt);
+                showSection('dash');
+            }
+        }
+
+        function finishQuiz() {
+            clearInterval(timerInt);
+
+            let correctCount = 0;
+            activeQuestions.forEach((q, idx) => {
+                if (selectedAnswers[idx] === q.corr) correctCount++;
+            });
+
+            const total = activeQuestions.length;
+            const percentage = Math.round((correctCount / total) * 100);
+
+            document.getElementById('resPercent').innerText = `${percentage}%`;
+            document.getElementById('stScore').innerText = `${correctCount} / ${total}`;
+            document.getElementById('stCorrect').innerText = correctCount;
+            document.getElementById('stWrong').innerText = total - correctCount;
+
+            const m = String(Math.floor(elapsedSeconds / 60)).padStart(2, '0');
+            const s = String(elapsedSeconds % 60).padStart(2, '0');
+            document.getElementById('stTime').innerText = `${m}:${s}`;
+
+            const resTitle = document.getElementById('resTitle');
+            const resSub = document.getElementById('resSub');
+
+            if (percentage >= 70) {
+                resTitle.innerText = "Zaliczone! Gratulacje!";
+                resSub.innerText = "Twój wynik spełnia wymogi zaliczeniowe skryptu Biologii Medycznej.";
+            } else {
+                resTitle.innerText = "Wymagana Dalsza Nauka";
+                resSub.innerText = "Wynik znajduje się poniżej progu 70%. Przeanalizuj błędne pytania w raporcie.";
+            }
+
+            renderReport();
+            showSection('results');
+        }
+
+        function renderReport() {
+            const container = document.getElementById('reportContainer');
+            container.innerHTML = '';
+
+            activeQuestions.forEach((q, idx) => {
+                const userAns = selectedAnswers[idx];
+                const isCorrect = userAns === q.corr;
+
+                const item = document.createElement('div');
+                item.style.padding = '1rem';
+                item.style.borderRadius = 'var(--radius-md)';
+                item.style.border = `1px solid ${isCorrect ? 'var(--success-border)' : 'var(--error-border)'}`;
+                item.style.backgroundColor = isCorrect ? 'var(--success-bg)' : 'var(--error-bg)';
+
+                item.innerHTML = `
+                    <div style="font-size: 0.75rem; font-weight: 800; color: var(--text-muted); margin-bottom: 4px;">Pytanie ${idx + 1} • ${q.cat}</div>
+                    <div style="font-weight: 700; font-size: 0.95rem; margin-bottom: 8px; color: var(--text-primary);">${q.q}</div>
+                    <div style="font-size: 0.82rem; margin-bottom: 6px;">
+                        <strong style="color: ${isCorrect ? 'var(--success-text)' : 'var(--error-text)'};">Twoja odpowiedź:</strong> ${userAns !== null ? q.opts[userAns] : 'Brak'}
+                    </div>
+                    ${!isCorrect ? `<div style="font-size: 0.82rem; color: var(--success-text); margin-bottom: 6px;"><strong>Prawidłowa odpowiedź:</strong> ${q.opts[q.corr]}</div>` : ''}
+                    <div style="font-size: 0.8rem; background: var(--bg-secondary); padding: 8px; border-radius: var(--radius-sm); margin-top: 6px; color: var(--text-secondary);">
+                        <strong>Cytat © M. Religa:</strong> ${q.exp}
+                    </div>
+                `;
+                container.appendChild(item);
+            });
+        }
+
+        function toggleReport() {
+            document.getElementById('reportBox').classList.toggle('hidden');
+        }
+
+        // FLASHCARDS
+        function initFlashCards() {
+            flashIdx = 0;
+            renderFlashCard();
+        }
+
+        function renderFlashCard() {
+            const q = rawQuestionBank[flashIdx];
+            document.getElementById('flashCardBox').classList.remove('flipped');
+            document.getElementById('fcCategory').innerText = q.cat;
+            document.getElementById('fcQuestion').innerText = q.q;
+            document.getElementById('fcAnswer').innerText = `Odp: ${q.opts[q.corr]}`;
+            document.getElementById('fcExp').innerText = q.exp;
+
+            document.getElementById('fcCurrent').innerText = flashIdx + 1;
+            document.getElementById('fcTotal').innerText = rawQuestionBank.length;
+        }
+
+        function flipFlashCard() {
+            document.getElementById('flashCardBox').classList.toggle('flipped');
+        }
+
+        function nextFlashCard() {
+            if (flashIdx < rawQuestionBank.length - 1) {
+                flashIdx++;
+            } else {
+                flashIdx = 0;
+            }
+            renderFlashCard();
+        }
+
+        function prevFlashCard() {
+            if (flashIdx > 0) {
+                flashIdx--;
+            } else {
+                flashIdx = rawQuestionBank.length - 1;
+            }
+            renderFlashCard();
+        }
+
+        // DATABASE SEARCH
+        function initBankList() {
+            filterBank();
+        }
+
+        function filterBank() {
+            const query = document.getElementById('bankSearchInput').value.toLowerCase();
+            const container = document.getElementById('bankListContainer');
+            container.innerHTML = '';
+
+            const filtered = rawQuestionBank.filter(q => 
+                q.q.toLowerCase().includes(query) ||
+                q.exp.toLowerCase().includes(query) ||
+                q.opts.some(o => o.toLowerCase().includes(query))
+            );
+
+            filtered.forEach((q, idx) => {
+                const card = document.createElement('div');
+                card.style.padding = '1rem';
+                card.style.borderRadius = 'var(--radius-md)';
+                card.style.border = '1px solid var(--border-color)';
+                card.style.backgroundColor = 'var(--bg-secondary)';
+
+                card.innerHTML = `
+                    <div style="font-size: 0.72rem; font-weight: 800; color: var(--accent-teal); margin-bottom: 4px;">Pytanie ${idx + 1} • ${q.cat}</div>
+                    <div style="font-weight: 700; font-size: 0.98rem; margin-bottom: 10px; color: var(--text-primary);">${q.q}</div>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 6px; margin-bottom: 10px;">
+                        ${q.opts.map((o, i) => `
+                            <div style="font-size: 0.82rem; padding: 6px 10px; border-radius: var(--radius-sm); border: 1px solid var(--border-color); ${i === q.corr ? 'background: var(--success-bg); border-color: var(--success-border); font-weight: 700; color: var(--success-text);' : 'color: var(--text-secondary);'}">
+                                ${String.fromCharCode(65 + i)}. ${o} ${i === q.corr ? '✓' : ''}
+                            </div>
+                        `).join('')}
+                    </div>
+                    <div style="font-size: 0.8rem; background: var(--bg-tertiary); padding: 8px 12px; border-radius: var(--radius-sm); color: var(--text-secondary);">
+                        <strong style="color: var(--accent-teal);">Cytat dydaktyczny © M. Religa:</strong> ${q.exp}
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+    </script>
+</body>
+</html>
