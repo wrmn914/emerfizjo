@@ -696,7 +696,7 @@
                     </button>
                     <button id="navBankBtn" class="nav-btn" onclick="showSection('bank')">
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
-                        <span id="navBankSpan">Baza Pytań (115)</span>
+                        <span id="navBankSpan">Baza Pytań (150)</span>
                     </button>
                     <button class="theme-toggle" onclick="toggleTheme()" title="Przełącz motyw">🌙</button>
                 </div>
@@ -726,7 +726,7 @@
                     <div class="subject-icon">🌱</div>
                     <div class="subject-title">Biologiczny Rozwój Człowieka</div>
                     <div class="subject-desc">Ontogeneza, procesy wzrastania i dojrzewania, trendy sekularne, apgar, odruchy, sarkopenia i geriatria.</div>
-                    <span class="subject-badge badge-brc">40 Pytań • dr hab. M. Krzykała</span>
+                    <span class="subject-badge badge-brc">75 Pytań • dr hab. M. Krzykała</span>
                 </div>
             </div>
 
@@ -857,7 +857,7 @@
 
                 <div style="margin-bottom: 1rem; display: flex; gap: 10px;">
                     <button class="btn btn-secondary" id="flashSubjBM" onclick="setFlashSubject('bm')">Biologia Medyczna (75)</button>
-                    <button class="btn btn-secondary" id="flashSubjBRC" onclick="setFlashSubject('brc')">Biol. Rozwój Człowieka (40)</button>
+                    <button class="btn btn-secondary" id="flashSubjBRC" onclick="setFlashSubject('brc')">Biol. Rozwój Człowieka (75)</button>
                 </div>
 
                 <div class="flashcard-box" id="flashCardBox" onclick="flipFlashCard()">
@@ -893,9 +893,9 @@
                 </div>
 
                 <div style="margin-bottom: 1rem; display: flex; gap: 10px; flex-wrap: wrap;">
-                    <button class="btn btn-secondary" id="bankSubjAll" onclick="setBankFilter('all')">Wszystkie Przedmioty (115)</button>
+                    <button class="btn btn-secondary" id="bankSubjAll" onclick="setBankFilter('all')">Wszystkie Przedmioty (150)</button>
                     <button class="btn btn-secondary" id="bankSubjBM" onclick="setBankFilter('bm')">Biologia Medyczna (75)</button>
-                    <button class="btn btn-secondary" id="bankSubjBRC" onclick="setBankFilter('brc')">Biol. Rozwój Człowieka (40)</button>
+                    <button class="btn btn-secondary" id="bankSubjBRC" onclick="setBankFilter('brc')">Biol. Rozwój Człowieka (75)</button>
                 </div>
 
                 <input type="text" id="bankSearchInput" class="search-bar" placeholder="🔍 Szukaj frazy w pytaniach, opcjach lub wyjaśnieniach..." oninput="filterBank()">
@@ -1845,7 +1845,287 @@
                 corr: 1,
                 exp: "Prędkość chodu < 0,8 m/s (powyżej 5 s na 4 m) to biomarker zespołu słabości (frailty) oraz sarkopenii w geriatrii."
             }
-        ];
+        ,
+            {
+                subject: "brc",
+                cat: "Procesy Ontogenezy",
+                q: "Jak wg Woynarowskiej i wsp. (2021) zdefiniowany jest proces rozwoju ontogenetycznego?",
+                opts: ["Wyłącznie jako przyrost masy i wysokości ciała w okresie dzieciństwa", "Jako zmiana w czasie lub proces zmian składający się z następujących po sobie etapów", "Jako nieodwracalny spadek sprawności motorycznej po 20. roku życia", "Jako proces zachodzący wyłącznie w fazie życia wewnątrzmacicznego"],
+                corr: 1,
+                exp: "Woynarowska i wsp. (2021) definiują rozwój jako zmianę w czasie lub proces zmian składający się z następujących po sobie etapów przemian."
+            },
+            {
+                subject: "brc",
+                cat: "Sfery Rozwoju i Interakcje",
+                q: "W kontekście 'systemu naczyń połączonych', spadek samooceny i izolacja społeczna wywołane otyłością biologiczną to przykład interakcji między sferami:",
+                opts: ["Biologiczną, psychiczną i społeczną", "Wyłącznie genetyczną i środowiskową", "Seksualną i embrionalną", "Autonomiczną i motoryczną"],
+                corr: 0,
+                exp: "Otyłość (sfera biologiczna) prowadząca do spadku samooceny (sfera psychiczna) i unikania grupy rówieśniczej (sfera społeczna) to klasyczny przykład kaskady zmian w systemie naczyń połączonych."
+            },
+            {
+                subject: "brc",
+                cat: "Procesy Ontogenezy",
+                q: "Który z poniższych procesów ontogenetycznych odpowiada za stopniowe wykształcanie specyficznych funkcji i budowy komórek oraz tkanek?",
+                opts: ["Rozrost", "Różnicowanie (doskonalenie)", "Rozplem", "Leptosomizacja"],
+                corr: 1,
+                exp: "Różnicowanie (doskonalenie) to proces jakościowy polegający na wykształcaniu specyficznych cech budowy i funkcji komórek, tkanek i narządów."
+            },
+            {
+                subject: "brc",
+                cat: "Procesy Ontogenezy",
+                q: "Wzrastanie organizmu jest procesem ilościowym. Jaka jest różnica między rozrostem a rozplemem?",
+                opts: ["Rozrost to zwiększanie liczby komórek, a rozplem to zwiększanie ich masy", "Rozrost to zwiększanie masy i wymiarów komórek/tkanek, a rozplem to zwiększanie liczby komórek", "Rozrost dotyczy tkanki kostnej, a rozplem dotyczy tkanki tłuszczowej", "Oba pojęcia oznaczają wyłącznie zarastanie chrząstek wzrostowych"],
+                corr: 1,
+                exp: "Rozrost = zwiększanie wymiarów i masy pojedynczych komórek/tkanek. Rozplem = zwiększanie ogólnej liczby komórek (hiperplazja)."
+            },
+            {
+                subject: "brc",
+                cat: "Genetyka i Środowisko",
+                q: "Czym różni się 'Norma Reakcji' (reaktywności) od 'Normy Adaptacyjnej'?",
+                opts: ["Norma reakcji to potencjał genetyczny (ramy), a norma adaptacyjna to zakres zmienności fenotypowej pod wpływem środowiska", "Norma reakcji dotyczy osób starszych, a norma adaptacyjna noworodków", "Norma reakcji uwarunkowana jest monogenowo, a norma adaptacyjna nie zależy od genów", "Są to pojęcia tożsame używane zamiennie bez różnic"],
+                corr: 0,
+                exp: "Norma reakcji (reaktywności) określa granice potencjału wyznaczone przez genotyp. Norma adaptacyjna reprezentuje aktualny zakres dostosowania fenotypowego wytworzonego w danym środowisku."
+            },
+            {
+                subject: "brc",
+                cat: "Genetyka i Środowisko",
+                q: "Cechy jakościowe człowieka (w przeciwieństwie do ilościowych) charakteryzują się tym, że:",
+                opts: ["Są uwarunkowane poligenicznie i zależą silnie od dietetyki", "Zmieniają się płynnie z wiekiem osobnika", "Zależą od niewielkiej liczby genów (często monogenowo) i nie ulegają modyfikacji środowiskowej (np. grupy krwi)", "Opisują wyłącznie masę i wysokość ciała"],
+                corr: 2,
+                exp: "Cechy jakościowe (np. grupy krwi w układzie ABO, Rh) są zdeterminiwane genetycznie (monogenowo) i stabilne przez całe życie, niezależnie od środowiska."
+            },
+            {
+                subject: "brc",
+                cat: "Adaptacja i Adiustacja",
+                q: "Jaka jest kluczowa cecha fizjologiczna odróżniająca 'adiustację' od 'adaptacji ewolucyjnej'?",
+                opts: ["Adiustacja dotyczy zmian w kodzie DNA przekazywanych potomstwu", "Adiustacja jest nieodwracalna i trwa przez pokolenia", "Adiustacja to osobnicza, fenotypowa reakcja dostosowawcza (odwracalna), niewpływająca na genotyp", "Adaptacja zachodzi w ciągu kilku sekund u jednego osobnika"],
+                corr: 2,
+                exp: "Adiustacja to szybka lub długotrwała reakcja fenotypowa osobnika na czynniki środowiska bez zmian w kodzie genetycznym (odwracalna). Adaptacja ewolucyjna jest utrwalona genetycznie w populacji."
+            },
+            {
+                subject: "brc",
+                cat: "Adaptacja i Adiustacja",
+                q: "Zwiększenie liczby erytrocytów (erytropoeza) podczas kilkutygodniowego pobytu na dużej wysokości n.p.m. to przykład:",
+                opts: ["Adiustacji krótkotrwałej", "Adiustacji długotrwałej", "Adaptacji genetycznej", "Trendu sekularnego"],
+                corr: 1,
+                exp: "Aklimatyzacja do wysokości (przyrost liczby krwinek czerwonych pod wpływem hipoksji w ciągu tygodni) to klasyczna adiustacja długotrwała."
+            },
+            {
+                subject: "brc",
+                cat: "Trendy Sekularne",
+                q: "Wskaźnikiem akceleracji rozwoju w ramach trendu sekularnego u dziewcząt jest obniżanie się wieku menarche. O ile lat schodził średni wiek menarche w Europie na przestrzeni ostatniego stulecia?",
+                opts: ["Z około 17 lat do około 12–13 lat", "Z 12 lat do 9 lat", "Z 20 lat do 18 lat", "Wiek menarche pozostał bez zmian"],
+                corr: 0,
+                exp: "W ciągu ponad 100 lat średni wiek dojrzewania dziewcząt (menarche) przesunął się z ok. 16–17 lat pod koniec XIX w. do ok. 12–13 lat współcześnie."
+            },
+            {
+                subject: "brc",
+                cat: "Trendy Sekularne",
+                q: "Co jest główną przyczyną występowania dodatnich trendów sekularnych (akceleracji rozwoju) w populacjach ludzkich?",
+                opts: ["Spontaniczne mutacje genetyczne w chromosomach płciowych", "Poprawa warunków bytowych, lepsze odżywianie (białko, witaminy), rozwój medycyny i eradykacja chorób zakaźnych", "Zmniejszenie aktywności fizycznej dzieci", "Podwyższenie średniej temperatury rocznej"],
+                corr: 1,
+                exp: "Trendy sekularne są wynikiem poprawy czynników biogeograficznych i społeczno-ekonomicznych (żywienie, higiena, opieka zdrowotna, warunki mieszkaniowe)."
+            },
+            {
+                subject: "brc",
+                cat: "Wyzwania Biomechaniczne i Kliniczne",
+                q: "Dlaczego zjawisko leptosomizacji u współczesnej młodzieży stwarza istotny problem fizjoterapeutyczny?",
+                opts: ["Wydłużenie dźwigni kostnych przy braku odpowiedniej masy i siły mięśniowej zwiększa ryzyko wad postawy (skoliozy, plecy okrągłe)", "Powoduje nadmierny przyrost tkanki tłuszczowej wokół narządów wewnętrznych", "Utrudnia zarastanie ciemiączek u dzieci", "Prowadzi do całkowitej utraty odruchów głębokich"],
+                corr: 0,
+                exp: "Szybszy wzrost kości długich niż rozrost gorsetu mięśniowego (leptosomizacja) obniża stabilizację kręgosłupa i sprzyja powstawaniu wad postawy."
+            },
+            {
+                subject: "brc",
+                cat: "Wyzwania Biomechaniczne i Kliniczne",
+                q: "Głównym wnioskiem z raportu 'WF z AWF 2026' dotyczącego hipokinezji u dzieci jest to, że:",
+                opts: ["Większość dzieci wykazuje wybitną sprawność motoryczną", "Ponad 85-90% dzieci w wieku wczesnoszkolnym ma zaległości w podstawowych umiejętnościach ruchowych z powodu braku aktywności", "Aktywność fizyczna nie ma wpływu na rozwój układu kostnego", "Dzieci spędzają średnio 5 godzin dziennie na uprawianiu sportu"],
+                corr: 1,
+                exp: "Raport 'WF z AWF 2026' alarmuje o dramatycznym spadku sprawności motorycznej (hipokinezji) i braku opanowania podstawowych wzorców ruchowych u blisko 90% najmłodszych uczniów."
+            },
+            {
+                subject: "brc",
+                cat: "Periodyzacja Ontogenezy",
+                q: "Faza rozwoju postnatalnego zwana METAPLASIS to okres:",
+                opts: ["Wzrastania i dojrzewania (do ok. 20-25 r.ż.)", "Stabilizacji biologicznej i dojrzałości (ok. 25–45/50 r.ż.)", "Inwolucji i starzenia się (po 60. r.ż.)", "Życia wewnątrzmacicznego"],
+                corr: 1,
+                exp: "Metaplasis to faza pełnej dojrzałości i stabilizacji funkcji organizmu, przypadająca między fazą rozwoju progresywnego (Anaplasis) a regresywnego (Kataplasis)."
+            },
+            {
+                subject: "brc",
+                cat: "Periodyzacja Ontogenezy",
+                q: "Faza KATAPLASIS w ontogenezie człowieka charakteryzuje się:",
+                opts: ["Gwałtownym skokiem pokwitaniowym", "Przewagą procesów inwolucyjnych (regresywnych) i spadkiem rezerw adaptacyjnych organizmu", "Formowaniem cewy nerwowej", "Maksymalną wydolnością tlenową VO2max"],
+                corr: 1,
+                exp: "Kataplasis to okres starzenia się organizmu, w którym procesy kataboliczne i inwolucyjne przeważają nad anabolicznymi."
+            },
+            {
+                subject: "brc",
+                cat: "Okres Prenatalny i Noworodek",
+                q: "Okres zarodkowy (embrionalny) w rozwoju prenatalnym człowieka trwa od momentu zapłodnienia do:",
+                opts: ["2. tygodnia ciąży", "8. tygodnia ciąży", "16. tygodnia ciąży", "28. tygodnia ciąży"],
+                corr: 1,
+                exp: "Rozwój prenatalny dzieli się na: okres jajowy (1.-2. tydz.), okres embrionalny/zarodkowy (3.-8. tydz. - organogeneza) oraz okres płodowy (od 9. tyg. do porodu)."
+            },
+            {
+                subject: "brc",
+                cat: "Okres Prenatalny i Noworodek",
+                q: "Dlaczego okres embrionalny (3.–8. tydzień ciąży) jest nazywany okresem krytycznym w teratogenezie?",
+                opts: ["Zachodzi wtedy intensywna organogeneza, a czynniki szkodliwe (teratogeny) mogą wywołać ciężkie wady rozwojowe narządów", "Płód osiąga wtedy ostateczną masę ciała", "Płuca zaczynają produkować surfaktant", "Dziecko zaczyna wykonywać samodzielne kroki"],
+                corr: 0,
+                exp: "W okresie embrionalnym powstają zawiązki wszystkich głównych narządów (organogeneza). Działanie leków, alkoholu czy wirusów w tym czasie powoduje najcięższe wady strukturalne."
+            },
+            {
+                subject: "brc",
+                cat: "Okres Prenatalny i Noworodek",
+                q: "Jaki jest cel prowadzenia kontaktu 'skóra do skóry' (STS) bezpośrednio po porodzie?",
+                opts: ["Stabilizacja temperatury, glikemii, mikrobioty noworodka oraz stymulacja laktacji i więzi", "Wywołanie patologicznego odruchu Babińskiego", "Sprawdzenie zarastania szwów czaszkowych", "Szybsze wygaśnięcie odruchu ssania"],
+                corr: 0,
+                exp: "Kontakt STS (minimum 2 godziny po porodzie) zapewnia kolonizację przyjazną mikrobiotą matki, reguluje oddech i ciepłotę ciała oraz wspiera wydzielanie oksytocyny."
+            },
+            {
+                subject: "brc",
+                cat: "Okres Prenatalny i Noworodek",
+                q: "W skali Apgar ocenia się 5 parametrów noworodka. Który zestaw przedstawia wszystkie oceniane cechy?",
+                opts: ["Masa ciała, wzrost, obwód głowy, liczba zębów, odruch Moro", "Akcja serca, oddech, napięcie mięśniowe, reakcja na cewnik (odruchy), zabarwienie skóry", "Glicemia, bilirubina, tętno, ciśnienie tętnicze, odruch Galanta", "Wielkość ciemiączka, długość kości udowej, wynik testu filipińskiego, płacz, wzrok"],
+                corr: 1,
+                exp: "Skala Apgar ocenia: 1. Zabarwienie skóry (Appearance), 2. Tętno (Pulse), 3. Reakcję na bodźce (Grimace), 4. Napięcie mięśni (Activity), 5. Oddychanie (Respiration)."
+            },
+            {
+                subject: "brc",
+                cat: "Odruchy Pierwotne",
+                q: "Jak reaguje noworodek podczas badania Odruchu Galanta?",
+                opts: ["Zgina rączkę po stronie obróconej twarzy", "Wykonuje skłon tułowia w stronę drażnionego odcinka lędźwiowego kręgosłupa", "Zaciska dłoń na palcu badającego", "Prostuje obie kończyny dolne i głośno krzyczy"],
+                corr: 1,
+                exp: "Odruch Galanta polega na wygięciu tułowia w łuk w stronę drażnionej skóry wzdłuż kręgosłupa w odcinku lędźwiowym."
+            },
+            {
+                subject: "brc",
+                cat: "Odruchy Pierwotne",
+                q: "Przetrwanie jakiego odruchu pierwotnego u starszego dziecka może prowadzić do nieprawidłowego wzorca chodu na palcach i trudności z zejściem po schodach?",
+                opts: ["Symetrycznego Tonicznego Odruchu Szyjnego (STOS / STNR) lub Odruchu Chwytnego Stopy", "Odruchu szukania", "Odruchu ssania", "Odruchu oczno-głowowego"],
+                corr: 0,
+                exp: "Przetrwanie tonicznych odruchów (STOS/ATOS) oraz przetrwałego chwytu podeszwowego utrudnia prawidłowe obciążanie pięty i prowadzi do chodu na palcach."
+            },
+            {
+                subject: "brc",
+                cat: "Odruchy Pierwotne",
+                q: "Czym charakteryzuje się Symetryczny Toniczny Odruch Szyjny (STOS)?",
+                opts: ["Zgięcie głowy powoduje zgięcie rąk i wyprost nóg, a wyprost głowy powoduje wyprost rąk i zgięcie nóg", "Obrót głowy w prawo powoduje wyprost prawej ręki i prawej nogi", "Dotknięcie policzka wywołuje zwrócenie głowy w stronę bodźca", "Nacisk na podeszwę powoduje zgięcie palców stopy"],
+                corr: 0,
+                exp: "STOS jest odruchem pozycji czworaczej: zgięcie szyi powoduje zgięcie rąk i prostowanie nóg; wyprost szyi działa odwrotnie."
+            },
+            {
+                subject: "brc",
+                cat: "Rozwój Motoryczny i Kamienie Milowe",
+                q: "Zgodnie z prawami rozwoju motorycznego (cefalo-caudalnym i proksymo-dystalnym), kontrola ruchowa rozwija się w kolejności:",
+                opts: ["Od stóp do głowy oraz od palców do tułowia", "Od głowy do stóp (od góry do dołu) oraz od osi tułowia do obwodu (części proksymalne przed dystalnymi)", "Losowo w zależności od masy urodzeniowej", "Najpierw w małych stawach dłoni, a na końcu w mięśniach szyi"],
+                corr: 1,
+                exp: "Prawo cefalocaudalne = rozwój od głowy w dół. Prawo proksymodystalne = rozwój od centrum ciała (tułów, barki) do obwodu (dłonie, palce)."
+            },
+            {
+                subject: "brc",
+                cat: "Rozwój Motoryczny i Kamienie Milowe",
+                q: "Prawidłowy rozwój chwytu u niemowlęcia przebiega wg następującej sekwencji ontogenetycznej:",
+                opts: ["Chwyt pęsetkowy -> chwyt dłoniowy -> chwyt małpi", "Chwyt dłoniowo-przyśrodkowy -> chwyt dłoniowy prosty -> chwyt nożycowy -> chwyt pęsetkowy (dystalny)", "Chwyt szczypcowy od urodzenia", "Brak jakichkolwiek zmian w formie chwytu przed 2. rokiem życia"],
+                corr: 1,
+                exp: "Dziecko najpierw chwyta całą dłonią od strony łokciowej, potom dłoniowo, następnie używa kciuka i wskaziciela (chwyt nożycowy), aż do precyzyjnego chwytu pęsetkowego (~10.-12. m.ż.)."
+            },
+            {
+                subject: "brc",
+                cat: "Rozwój Motoryczny i Kamienie Milowe",
+                q: "W którym miesiącu życia u niemowlęcia pojawia się fizjologiczny odruch obronny zwany 'spadochronowym' (reakcja spadochronowa)?",
+                opts: ["1.–2. miesiąc", "3.–4. miesiąc", "7.–9. miesiąc", "18. miesiąc"],
+                corr: 2,
+                exp: "Reakcja spadochronowa (wyciąganie rąk w celu obrony przed upadkiem przy przechyleniu tułowia w dół) pojawia się ok. 7.-9. m.ż. i pozostaje na całe życie."
+            },
+            {
+                subject: "brc",
+                cat: "Okres Przedszkolny i Szkolny",
+                q: "Czym charakteryzuje się tzw. 'II APOGEUM MOTORYCZNE' (Złoty Okres Motoryczności)?",
+                opts: ["Występuje u dzieci w wieku 10–12 lat (przed skokiem pokwitaniowym) i cechuje się łatwością przyswajania złożonych nawyków ruchowych", "Przypada na okres niemowlęcy przy raczkowaniu", "Dotyczy wyłącznie osób w wieku senioralnym po 65. roku życia", "Charakteryzuje się znacznym spadkiem koordynacji i wzrastaniem kości długich"],
+                corr: 0,
+                exp: "II Apogeum Motoryczności (wiek starszy szkolny, ok. 10–12 lat) to optymalny wiek na nauczanie techniki w dyscyplinach sportowych dzięki wysokiej plastyczności OUN."
+            },
+            {
+                subject: "brc",
+                cat: "Okres Przedszkolny i Szkolny",
+                q: "Lateralizacja skrzyżowana (jednorodna nieustalona) polega na tym, że:",
+                opts: ["Osoba ma zdominowaną całą prawą stronę ciała (prawe oko, ucho, ręka, noga)", "Dominujące organy ruchu i zmysłu znajdują się po przeciwnych stronach (np. praworęczność przy lewooczności)", "Osoba nie posługuje się w ogóle rękami", "Dotyczy to wyłącznie osób leworęcznych"],
+                corr: 1,
+                exp: "Lateralizacja skrzyżowana to przewaga narządów po różnych stronach ciała (np. prawa ręka + lewe oko), co może stwarzać wyzwania w koordynacji wzrokowo-ruchowej i czytaniu."
+            },
+            {
+                subject: "brc",
+                cat: "Okres Przedszkolny i Szkolny",
+                q: "W jakim okresie życia występuje tzw. 'skok pokwitaniowy' (dyskordancja wzrostowa)?",
+                opts: ["Średnio 10–12 lat u dziewcząt oraz 12–14 lat u chłopców", "W wieku 3 lat u obu płci", "Po 20. roku życia", "W okresie noworodkowym"],
+                corr: 0,
+                exp: "Skok pokwitaniowy rozpoczyna się wcześniej u dziewcząt (ok. 10-12 lat) niż u chłopców (ok. 12-14 lat), co wywołuje czasową przewagę wzrostową dziewcząt w tym wieku."
+            },
+            {
+                subject: "brc",
+                cat: "Dorosłość i Starzenie się",
+                q: "Czym różni się starzenie się pierwotne (fizjologiczne) od starzenia wtórnego (patologicznego)?",
+                opts: ["Starzenie pierwotne uwarunkowane jest genetycznie i uniwersalne; starzenie wtórne wynika ze skutków chorób, urazów i niezdrowego stylu życia", "Starzenie pierwotne dotyczy tylko skóry, a wtórne kości", "Starzenie wtórne występuje u każdego noworodka", "Brak różnic pojęciowych w gerontologii"],
+                corr: 0,
+                exp: "Starzenie pierwotne = naturalny, nieuchronny proces biologiczny. Starzenie wtórne = przyspieszenie regresu spowodowane chorobami układu krążenia, cukrzycą, brakiem ruchu czy paleniem."
+            },
+            {
+                subject: "brc",
+                cat: "Geriatria i Sarkopenia",
+                q: "Według wytycznych EWGSOP2, diagnozę PRAWOPODOBNEJ SARKOPENII stawia się na podstawie wykazania:",
+                opts: ["Niskiej siły mięśniowej (np. niski wynik w teście chwytu dynamometrem lub teście wstawania z krzesła)", "Wyłącznie niskiego poziomu hemoglobiny we krwi", "Utraty zębów stałych", "Obniżenia wzrostu ciała o 1 cm"],
+                corr: 0,
+                exp: "Według EWGSOP2 kluczowym kryterium wykrycia prawdopodobnej sarkopenii jest stwierdzenie obniżonej siły mięśniowej (muscle strength)."
+            },
+            {
+                subject: "brc",
+                cat: "Geriatria i Sarkopenia",
+                q: "Jakie jest kryterium potwierdzenia sarkopenii (potwierdzona sarkopenia) w badaniach diagnostycznych?",
+                opts: ["Niska siła mięśniowa + niska ilość lub jakość tkanki mięśniowej (oceniana np. BIA, DXA)", "Brak apetytu przez 2 dni", "Wynik w skali Apgar poniżej 5 pkt", "Tylko obecność odruchu Babińskiego"],
+                corr: 0,
+                exp: "Potwierdzenie sarkopenii wymaga udokumentowania zarówno zmniejszonej siły mięśniowej, jak i ilościowo obniżonej masy mięśni szkieletowych (DXA/BIA)."
+            },
+            {
+                subject: "brc",
+                cat: "Geriatria i Sarkopenia",
+                q: "Czym różni się Sarkopenia od Zespołu Słabości (Frailty Syndrome)?",
+                opts: ["Sarkopenia dotyczy układu mięśniowego, a Zespół Słabości to wielonarządowy stan wyczerpania rezerw biologicznych i odpornościowych na stresory", "Sarkopenia występuje tylko u niemowląt", "Zespół słabości to wyłącznie wada postawy u dzieci", "Są to pojęcia całkowicie tożsame"],
+                corr: 0,
+                exp: "Sarkopenia jest zaburzeniem mięśniowym. Zespół słabości (Frailty) to wieloukładowy zespół geriatryczny charakteryzujący się podatnością na niekorzystne zdarzenia zdrowotne i upadki."
+            },
+            {
+                subject: "brc",
+                cat: "Geriatria i Sarkopenia",
+                q: "Jaki wynik w Teście 5 Wstań z Krzesła (FTSST) wskazuje na osłabienie siły mięśni kończyn dolnych i ryzyko sarkopenii?",
+                opts: ["Czas wykonania 5 powtórzeń przekraczający 15 sekund", "Czas wykonania poniżej 5 sekund", "Wykonanie 50 powtórzeń w minutę", "Test ten wykonuje się w pozycji leżącej"],
+                corr: 0,
+                exp: "Czas wykonania 5 wstawań z krzesła bez pomocy rąk > 15 sekund świadczy o obniżonej sile mięśniowej kończyn dolnych."
+            },
+            {
+                subject: "brc",
+                cat: "Geriatria i Sarkopenia",
+                q: "Zjawisko otyłości sarkopenicznej (sarcopenic obesity) polega na:",
+                opts: ["Równoczesnym występowaniu otyłości (nadmiaru tkanki tłuszczowej) oraz sarkopenii (utraty masy i siły mięśniowej)", "Szybkim przyroście masy mięśniowej u osób otyłych", "Rozwoju tkanki tłuszczowej wyłącznie w kościach długich", "Spadku masy ciała poniżej 40 kg u młodzieży"],
+                corr: 0,
+                exp: "Otyłość sarkopeniczna to niebezpieczne połączenie nadmiaru tkanki tłuszczowej ze zredukowaną masą i funkcją mięśni, często maskujące ubytek mięśni pod warstwą tłuszczu."
+            },
+            {
+                subject: "brc",
+                cat: "Geriatria i Sarkopenia",
+                q: "Jaka jest zalecana dawka spożycia białka u osób starszych w profilaktyce sarkopenii według eksperckich zaleceń (PROT-AGE)?",
+                opts: ["0,4 g / kg masy ciała / dobę", "1,0 – 1,2 g / kg masy ciała / dobę (a przy ćwiczeniach lub chorobach 1,2–1,5 g/kg m.c.)", "3,0 g / kg masy ciała / dobę", "Białko należy całkowicie wyeliminować z diety seniora"],
+                corr: 1,
+                exp: "Ze względu na oporność anaboliczną seniorów, rekomendowane spożycie białka wzrasta do 1.0-1.2 g/kg m.c./dobę (oraz wyżej przy aktywności lub rekonwalescencji)."
+            },
+            {
+                subject: "brc",
+                cat: "Wyzwania Biomechaniczne i Kliniczne",
+                q: "Jakie formy aktywności fizycznej są najbardziej rekomendowane w prewencji i terapii sarkopenii u osób w wieku podeszłym?",
+                opts: ["Wyłącznie długotrwałe leżenie w łóżku", "Trening oporowy (siłowy) połączony z ćwiczeniami równoważnymi i oporowym obciążeniem kości", "Unikanie jakiegokolwiek obciążenia stawów", "Wyłącznie rozciąganie palców dłoni"],
+                corr: 1,
+                exp: "Trening siłowy/oporowy stanowi najskuteczniejszy bodziec osteo- i miogenny stymulujący syntezę białek mięśniowych u seniorów."
+            }];
 
         // STATE MANAGERS
         let currentSubject = 'bm'; // 'bm' or 'brc'
@@ -2202,7 +2482,463 @@
             const pool = rawQuestionBank.filter(q => q.subject === currentFlashSubj);
             if (pool.length === 0) return;
 
-            const q = pool[flashIdx];
+            const q = pool[flashIdx,
+{
+            "subject": "brc",
+            "cat": "Procesy Ontogenezy",
+            "q": "Jak wg Woynarowskiej i wsp. (2021) zdefiniowany jest proces rozwoju ontogenetycznego?",
+            "opts": [
+                        "Wyłącznie jako przyrost masy i wysokości ciała w okresie dzieciństwa",
+                        "Jako zmiana w czasie lub proces zmian składający się z następujących po sobie etapów",
+                        "Jako nieodwracalny spadek sprawności motorycznej po 20. roku życia",
+                        "Jako proces zachodzący wyłącznie w fazie życia wewnątrzmacicznego"
+            ],
+            "corr": 1,
+            "exp": "Woynarowska i wsp. (2021) definiują rozwój jako zmianę w czasie lub proces zmian składający się z następujących po sobie etapów przemian."
+},
+{
+            "subject": "brc",
+            "cat": "Sfery Rozwoju i Interakcje",
+            "q": "W kontekście 'systemu naczyń połączonych', spadek samooceny i izolacja społeczna wywołane otyłością biologiczną to przykład interakcji między sferami:",
+            "opts": [
+                        "Biologiczną, psychiczną i społeczną",
+                        "Wyłącznie genetyczną i środowiskową",
+                        "Seksualną i embrionalną",
+                        "Autonomiczną i motoryczną"
+            ],
+            "corr": 0,
+            "exp": "Otyłość (sfera biologiczna) prowadząca do spadku samooceny (sfera psychiczna) i unikania grupy rówieśniczej (sfera społeczna) to klasyczny przykład kaskady zmian w systemie naczyń połączonych."
+},
+{
+            "subject": "brc",
+            "cat": "Procesy Ontogenezy",
+            "q": "Który z poniższych procesów ontogenetycznych odpowiada za stopniowe wykształcanie specyficznych funkcji i budowy komórek oraz tkanek?",
+            "opts": [
+                        "Rozrost",
+                        "Różnicowanie (doskonalenie)",
+                        "Rozplem",
+                        "Leptosomizacja"
+            ],
+            "corr": 1,
+            "exp": "Różnicowanie (doskonalenie) to proces jakościowy polegający na wykształcaniu specyficznych cech budowy i funkcji komórek, tkanek i narządów."
+},
+{
+            "subject": "brc",
+            "cat": "Procesy Ontogenezy",
+            "q": "Wzrastanie organizmu jest procesem ilościowym. Jaka jest różnica między rozrostem a rozplemem?",
+            "opts": [
+                        "Rozrost to zwiększanie liczby komórek, a rozplem to zwiększanie ich masy",
+                        "Rozrost to zwiększanie masy i wymiarów komórek/tkanek, a rozplem to zwiększanie liczby komórek",
+                        "Rozrost dotyczy tkanki kostnej, a rozplem dotyczy tkanki tłuszczowej",
+                        "Oba pojęcia oznaczają wyłącznie zarastanie chrząstek wzrostowych"
+            ],
+            "corr": 1,
+            "exp": "Rozrost = zwiększanie wymiarów i masy pojedynczych komórek/tkanek. Rozplem = zwiększanie ogólnej liczby komórek (hiperplazja)."
+},
+{
+            "subject": "brc",
+            "cat": "Genetyka i Środowisko",
+            "q": "Czym różni się 'Norma Reakcji' (reaktywności) od 'Normy Adaptacyjnej'?",
+            "opts": [
+                        "Norma reakcji to potencjał genetyczny (ramy), a norma adaptacyjna to zakres zmienności fenotypowej pod wpływem środowiska",
+                        "Norma reakcji dotyczy osób starszych, a norma adaptacyjna noworodków",
+                        "Norma reakcji uwarunkowana jest monogenowo, a norma adaptacyjna nie zależy od genów",
+                        "Są to pojęcia tożsame używane zamiennie bez różnic"
+            ],
+            "corr": 0,
+            "exp": "Norma reakcji (reaktywności) określa granice potencjału wyznaczone przez genotyp. Norma adaptacyjna reprezentuje aktualny zakres dostosowania fenotypowego wytworzonego w danym środowisku."
+},
+{
+            "subject": "brc",
+            "cat": "Genetyka i Środowisko",
+            "q": "Cechy jakościowe człowieka (w przeciwieństwie do ilościowych) charakteryzują się tym, że:",
+            "opts": [
+                        "Są uwarunkowane poligenicznie i zależą silnie od dietetyki",
+                        "Zmieniają się płynnie z wiekiem osobnika",
+                        "Zależą od niewielkiej liczby genów (często monogenowo) i nie ulegają modyfikacji środowiskowej (np. grupy krwi)",
+                        "Opisują wyłącznie masę i wysokość ciała"
+            ],
+            "corr": 2,
+            "exp": "Cechy jakościowe (np. grupy krwi w układzie ABO, Rh) są zdeterminiwane genetycznie (monogenowo) i stabilne przez całe życie, niezależnie od środowiska."
+},
+{
+            "subject": "brc",
+            "cat": "Adaptacja i Adiustacja",
+            "q": "Jaka jest kluczowa cecha fizjologiczna odróżniająca 'adiustację' od 'adaptacji ewolucyjnej'?",
+            "opts": [
+                        "Adiustacja dotyczy zmian w kodzie DNA przekazywanych potomstwu",
+                        "Adiustacja jest nieodwracalna i trwa przez pokolenia",
+                        "Adiustacja to osobnicza, fenotypowa reakcja dostosowawcza (odwracalna), niewpływająca na genotyp",
+                        "Adaptacja zachodzi w ciągu kilku sekund u jednego osobnika"
+            ],
+            "corr": 2,
+            "exp": "Adiustacja to szybka lub długotrwała reakcja fenotypowa osobnika na czynniki środowiska bez zmian w kodzie genetycznym (odwracalna). Adaptacja ewolucyjna jest utrwalona genetycznie w populacji."
+},
+{
+            "subject": "brc",
+            "cat": "Adaptacja i Adiustacja",
+            "q": "Zwiększenie liczby erytrocytów (erytropoeza) podczas kilkutygodniowego pobytu na dużej wysokości n.p.m. to przykład:",
+            "opts": [
+                        "Adiustacji krótkotrwałej",
+                        "Adiustacji długotrwałej",
+                        "Adaptacji genetycznej",
+                        "Trendu sekularnego"
+            ],
+            "corr": 1,
+            "exp": "Aklimatyzacja do wysokości (przyrost liczby krwinek czerwonych pod wpływem hipoksji w ciągu tygodni) to klasyczna adiustacja długotrwała."
+},
+{
+            "subject": "brc",
+            "cat": "Trendy Sekularne",
+            "q": "Wskaźnikiem akceleracji rozwoju w ramach trendu sekularnego u dziewcząt jest obniżanie się wieku menarche. O ile lat schodził średni wiek menarche w Europie na przestrzeni ostatniego stulecia?",
+            "opts": [
+                        "Z około 17 lat do około 12–13 lat",
+                        "Z 12 lat do 9 lat",
+                        "Z 20 lat do 18 lat",
+                        "Wiek menarche pozostał bez zmian"
+            ],
+            "corr": 0,
+            "exp": "W ciągu ponad 100 lat średni wiek dojrzewania dziewcząt (menarche) przesunął się z ok. 16–17 lat pod koniec XIX w. do ok. 12–13 lat współcześnie."
+},
+{
+            "subject": "brc",
+            "cat": "Trendy Sekularne",
+            "q": "Co jest główną przyczyną występowania dodatnich trendów sekularnych (akceleracji rozwoju) w populacjach ludzkich?",
+            "opts": [
+                        "Spontaniczne mutacje genetyczne w chromosomach płciowych",
+                        "Poprawa warunków bytowych, lepsze odżywianie (białko, witaminy), rozwój medycyny i eradykacja chorób zakaźnych",
+                        "Zmniejszenie aktywności fizycznej dzieci",
+                        "Podwyższenie średniej temperatury rocznej"
+            ],
+            "corr": 1,
+            "exp": "Trendy sekularne są wynikiem poprawy czynników biogeograficznych i społeczno-ekonomicznych (żywienie, higiena, opieka zdrowotna, warunki mieszkaniowe)."
+},
+{
+            "subject": "brc",
+            "cat": "Wyzwania Biomechaniczne i Kliniczne",
+            "q": "Dlaczego zjawisko leptosomizacji u współczesnej młodzieży stwarza istotny problem fizjoterapeutyczny?",
+            "opts": [
+                        "Wydłużenie dźwigni kostnych przy braku odpowiedniej masy i siły mięśniowej zwiększa ryzyko wad postawy (skoliozy, plecy okrągłe)",
+                        "Powoduje nadmierny przyrost tkanki tłuszczowej wokół narządów wewnętrznych",
+                        "Utrudnia zarastanie ciemiączek u dzieci",
+                        "Prowadzi do całkowitej utraty odruchów głębokich"
+            ],
+            "corr": 0,
+            "exp": "Szybszy wzrost kości długich niż rozrost gorsetu mięśniowego (leptosomizacja) obniża stabilizację kręgosłupa i sprzyja powstawaniu wad postawy."
+},
+{
+            "subject": "brc",
+            "cat": "Wyzwania Biomechaniczne i Kliniczne",
+            "q": "Głównym wnioskiem z raportu 'WF z AWF 2026' dotyczącego hipokinezji u dzieci jest to, że:",
+            "opts": [
+                        "Większość dzieci wykazuje wybitną sprawność motoryczną",
+                        "Ponad 85-90% dzieci w wieku wczesnoszkolnym ma zaległości w podstawowych umiejętnościach ruchowych z powodu braku aktywności",
+                        "Aktywność fizyczna nie ma wpływu na rozwój układu kostnego",
+                        "Dzieci spędzają średnio 5 godzin dziennie na uprawianiu sportu"
+            ],
+            "corr": 1,
+            "exp": "Raport 'WF z AWF 2026' alarmuje o dramatycznym spadku sprawności motorycznej (hipokinezji) i braku opanowania podstawowych wzorców ruchowych u blisko 90% najmłodszych uczniów."
+},
+{
+            "subject": "brc",
+            "cat": "Periodyzacja Ontogenezy",
+            "q": "Faza rozwoju postnatalnego zwana METAPLASIS to okres:",
+            "opts": [
+                        "Wzrastania i dojrzewania (do ok. 20-25 r.ż.)",
+                        "Stabilizacji biologicznej i dojrzałości (ok. 25–45/50 r.ż.)",
+                        "Inwolucji i starzenia się (po 60. r.ż.)",
+                        "Życia wewnątrzmacicznego"
+            ],
+            "corr": 1,
+            "exp": "Metaplasis to faza pełnej dojrzałości i stabilizacji funkcji organizmu, przypadająca między fazą rozwoju progresywnego (Anaplasis) a regresywnego (Kataplasis)."
+},
+{
+            "subject": "brc",
+            "cat": "Periodyzacja Ontogenezy",
+            "q": "Faza KATAPLASIS w ontogenezie człowieka charakteryzuje się:",
+            "opts": [
+                        "Gwałtownym skokiem pokwitaniowym",
+                        "Przewagą procesów inwolucyjnych (regresywnych) i spadkiem rezerw adaptacyjnych organizmu",
+                        "Formowaniem cewy nerwowej",
+                        "Maksymalną wydolnością tlenową VO2max"
+            ],
+            "corr": 1,
+            "exp": "Kataplasis to okres starzenia się organizmu, w którym procesy kataboliczne i inwolucyjne przeważają nad anabolicznymi."
+},
+{
+            "subject": "brc",
+            "cat": "Okres Prenatalny i Noworodek",
+            "q": "Okres zarodkowy (embrionalny) w rozwoju prenatalnym człowieka trwa od momentu zapłodnienia do:",
+            "opts": [
+                        "2. tygodnia ciąży",
+                        "8. tygodnia ciąży",
+                        "16. tygodnia ciąży",
+                        "28. tygodnia ciąży"
+            ],
+            "corr": 1,
+            "exp": "Rozwój prenatalny dzieli się na: okres jajowy (1.-2. tydz.), okres embrionalny/zarodkowy (3.-8. tydz. - organogeneza) oraz okres płodowy (od 9. tyg. do porodu)."
+},
+{
+            "subject": "brc",
+            "cat": "Okres Prenatalny i Noworodek",
+            "q": "Dlaczego okres embrionalny (3.–8. tydzień ciąży) jest nazywany okresem krytycznym w teratogenezie?",
+            "opts": [
+                        "Zachodzi wtedy intensywna organogeneza, a czynniki szkodliwe (teratogeny) mogą wywołać ciężkie wady rozwojowe narządów",
+                        "Płód osiąga wtedy ostateczną masę ciała",
+                        "Płuca zaczynają produkować surfaktant",
+                        "Dziecko zaczyna wykonywać samodzielne kroki"
+            ],
+            "corr": 0,
+            "exp": "W okresie embrionalnym powstają zawiązki wszystkich głównych narządów (organogeneza). Działanie leków, alkoholu czy wirusów w tym czasie powoduje najcięższe wady strukturalne."
+},
+{
+            "subject": "brc",
+            "cat": "Okres Prenatalny i Noworodek",
+            "q": "Jaki jest cel prowadzenia kontaktu 'skóra do skóry' (STS) bezpośrednio po porodzie?",
+            "opts": [
+                        "Stabilizacja temperatury, glikemii, mikrobioty noworodka oraz stymulacja laktacji i więzi",
+                        "Wywołanie patologicznego odruchu Babińskiego",
+                        "Sprawdzenie zarastania szwów czaszkowych",
+                        "Szybsze wygaśnięcie odruchu ssania"
+            ],
+            "corr": 0,
+            "exp": "Kontakt STS (minimum 2 godziny po porodzie) zapewnia kolonizację przyjazną mikrobiotą matki, reguluje oddech i ciepłotę ciała oraz wspiera wydzielanie oksytocyny."
+},
+{
+            "subject": "brc",
+            "cat": "Okres Prenatalny i Noworodek",
+            "q": "W skali Apgar ocenia się 5 parametrów noworodka. Który zestaw przedstawia wszystkie oceniane cechy?",
+            "opts": [
+                        "Masa ciała, wzrost, obwód głowy, liczba zębów, odruch Moro",
+                        "Akcja serca, oddech, napięcie mięśniowe, reakcja na cewnik (odruchy), zabarwienie skóry",
+                        "Glicemia, bilirubina, tętno, ciśnienie tętnicze, odruch Galanta",
+                        "Wielkość ciemiączka, długość kości udowej, wynik testu filipińskiego, płacz, wzrok"
+            ],
+            "corr": 1,
+            "exp": "Skala Apgar ocenia: 1. Zabarwienie skóry (Appearance), 2. Tętno (Pulse), 3. Reakcję na bodźce (Grimace), 4. Napięcie mięśni (Activity), 5. Oddychanie (Respiration)."
+},
+{
+            "subject": "brc",
+            "cat": "Odruchy Pierwotne",
+            "q": "Jak reaguje noworodek podczas badania Odruchu Galanta?",
+            "opts": [
+                        "Zgina rączkę po stronie obróconej twarzy",
+                        "Wykonuje skłon tułowia w stronę drażnionego odcinka lędźwiowego kręgosłupa",
+                        "Zaciska dłoń na palcu badającego",
+                        "Prostuje obie kończyny dolne i głośno krzyczy"
+            ],
+            "corr": 1,
+            "exp": "Odruch Galanta polega na wygięciu tułowia w łuk w stronę drażnionej skóry wzdłuż kręgosłupa w odcinku lędźwiowym."
+},
+{
+            "subject": "brc",
+            "cat": "Odruchy Pierwotne",
+            "q": "Przetrwanie jakiego odruchu pierwotnego u starszego dziecka może prowadzić do nieprawidłowego wzorca chodu na palcach i trudności z zejściem po schodach?",
+            "opts": [
+                        "Symetrycznego Tonicznego Odruchu Szyjnego (STOS / STNR) lub Odruchu Chwytnego Stopy",
+                        "Odruchu szukania",
+                        "Odruchu ssania",
+                        "Odruchu oczno-głowowego"
+            ],
+            "corr": 0,
+            "exp": "Przetrwanie tonicznych odruchów (STOS/ATOS) oraz przetrwałego chwytu podeszwowego utrudnia prawidłowe obciążanie pięty i prowadzi do chodu na palcach."
+},
+{
+            "subject": "brc",
+            "cat": "Odruchy Pierwotne",
+            "q": "Czym charakteryzuje się Symetryczny Toniczny Odruch Szyjny (STOS)?",
+            "opts": [
+                        "Zgięcie głowy powoduje zgięcie rąk i wyprost nóg, a wyprost głowy powoduje wyprost rąk i zgięcie nóg",
+                        "Obrót głowy w prawo powoduje wyprost prawej ręki i prawej nogi",
+                        "Dotknięcie policzka wywołuje zwrócenie głowy w stronę bodźca",
+                        "Nacisk na podeszwę powoduje zgięcie palców stopy"
+            ],
+            "corr": 0,
+            "exp": "STOS jest odruchem pozycji czworaczej: zgięcie szyi powoduje zgięcie rąk i prostowanie nóg; wyprost szyi działa odwrotnie."
+},
+{
+            "subject": "brc",
+            "cat": "Rozwój Motoryczny i Kamienie Milowe",
+            "q": "Zgodnie z prawami rozwoju motorycznego (cefalo-caudalnym i proksymo-dystalnym), kontrola ruchowa rozwija się w kolejności:",
+            "opts": [
+                        "Od stóp do głowy oraz od palców do tułowia",
+                        "Od głowy do stóp (od góry do dołu) oraz od osi tułowia do obwodu (części proksymalne przed dystalnymi)",
+                        "Losowo w zależności od masy urodzeniowej",
+                        "Najpierw w małych stawach dłoni, a na końcu w mięśniach szyi"
+            ],
+            "corr": 1,
+            "exp": "Prawo cefalocaudalne = rozwój od głowy w dół. Prawo proksymodystalne = rozwój od centrum ciała (tułów, barki) do obwodu (dłonie, palce)."
+},
+{
+            "subject": "brc",
+            "cat": "Rozwój Motoryczny i Kamienie Milowe",
+            "q": "Prawidłowy rozwój chwytu u niemowlęcia przebiega wg następującej sekwencji ontogenetycznej:",
+            "opts": [
+                        "Chwyt pęsetkowy -> chwyt dłoniowy -> chwyt małpi",
+                        "Chwyt dłoniowo-przyśrodkowy -> chwyt dłoniowy prosty -> chwyt nożycowy -> chwyt pęsetkowy (dystalny)",
+                        "Chwyt szczypcowy od urodzenia",
+                        "Brak jakichkolwiek zmian w formie chwytu przed 2. rokiem życia"
+            ],
+            "corr": 1,
+            "exp": "Dziecko najpierw chwyta całą dłonią od strony łokciowej, potom dłoniowo, następnie używa kciuka i wskaziciela (chwyt nożycowy), aż do precyzyjnego chwytu pęsetkowego (~10.-12. m.ż.)."
+},
+{
+            "subject": "brc",
+            "cat": "Rozwój Motoryczny i Kamienie Milowe",
+            "q": "W którym miesiącu życia u niemowlęcia pojawia się fizjologiczny odruch obronny zwany 'spadochronowym' (reakcja spadochronowa)?",
+            "opts": [
+                        "1.–2. miesiąc",
+                        "3.–4. miesiąc",
+                        "7.–9. miesiąc",
+                        "18. miesiąc"
+            ],
+            "corr": 2,
+            "exp": "Reakcja spadochronowa (wyciąganie rąk w celu obrony przed upadkiem przy przechyleniu tułowia w dół) pojawia się ok. 7.-9. m.ż. i pozostaje na całe życie."
+},
+{
+            "subject": "brc",
+            "cat": "Okres Przedszkolny i Szkolny",
+            "q": "Czym charakteryzuje się tzw. 'II APOGEUM MOTORYCZNE' (Złoty Okres Motoryczności)?",
+            "opts": [
+                        "Występuje u dzieci w wieku 10–12 lat (przed skokiem pokwitaniowym) i cechuje się łatwością przyswajania złożonych nawyków ruchowych",
+                        "Przypada na okres niemowlęcy przy raczkowaniu",
+                        "Dotyczy wyłącznie osób w wieku senioralnym po 65. roku życia",
+                        "Charakteryzuje się znacznym spadkiem koordynacji i wzrastaniem kości długich"
+            ],
+            "corr": 0,
+            "exp": "II Apogeum Motoryczności (wiek starszy szkolny, ok. 10–12 lat) to optymalny wiek na nauczanie techniki w dyscyplinach sportowych dzięki wysokiej plastyczności OUN."
+},
+{
+            "subject": "brc",
+            "cat": "Okres Przedszkolny i Szkolny",
+            "q": "Lateralizacja skrzyżowana (jednorodna nieustalona) polega na tym, że:",
+            "opts": [
+                        "Osoba ma zdominowaną całą prawą stronę ciała (prawe oko, ucho, ręka, noga)",
+                        "Dominujące organy ruchu i zmysłu znajdują się po przeciwnych stronach (np. praworęczność przy lewooczności)",
+                        "Osoba nie posługuje się w ogóle rękami",
+                        "Dotyczy to wyłącznie osób leworęcznych"
+            ],
+            "corr": 1,
+            "exp": "Lateralizacja skrzyżowana to przewaga narządów po różnych stronach ciała (np. prawa ręka + lewe oko), co może stwarzać wyzwania w koordynacji wzrokowo-ruchowej i czytaniu."
+},
+{
+            "subject": "brc",
+            "cat": "Okres Przedszkolny i Szkolny",
+            "q": "W jakim okresie życia występuje tzw. 'skok pokwitaniowy' (dyskordancja wzrostowa)?",
+            "opts": [
+                        "Średnio 10–12 lat u dziewcząt oraz 12–14 lat u chłopców",
+                        "W wieku 3 lat u obu płci",
+                        "Po 20. roku życia",
+                        "W okresie noworodkowym"
+            ],
+            "corr": 0,
+            "exp": "Skok pokwitaniowy rozpoczyna się wcześniej u dziewcząt (ok. 10-12 lat) niż u chłopców (ok. 12-14 lat), co wywołuje czasową przewagę wzrostową dziewcząt w tym wieku."
+},
+{
+            "subject": "brc",
+            "cat": "Dorosłość i Starzenie się",
+            "q": "Czym różni się starzenie się pierwotne (fizjologiczne) od starzenia wtórnego (patologicznego)?",
+            "opts": [
+                        "Starzenie pierwotne uwarunkowane jest genetycznie i uniwersalne; starzenie wtórne wynika ze skutków chorób, urazów i niezdrowego stylu życia",
+                        "Starzenie pierwotne dotyczy tylko skóry, a wtórne kości",
+                        "Starzenie wtórne występuje u każdego noworodka",
+                        "Brak różnic pojęciowych w gerontologii"
+            ],
+            "corr": 0,
+            "exp": "Starzenie pierwotne = naturalny, nieuchronny proces biologiczny. Starzenie wtórne = przyspieszenie regresu spowodowane chorobami układu krążenia, cukrzycą, brakiem ruchu czy paleniem."
+},
+{
+            "subject": "brc",
+            "cat": "Geriatria i Sarkopenia",
+            "q": "Według wytycznych EWGSOP2, diagnozę PRAWOPODOBNEJ SARKOPENII stawia się na podstawie wykazania:",
+            "opts": [
+                        "Niskiej siły mięśniowej (np. niski wynik w teście chwytu dynamometrem lub teście wstawania z krzesła)",
+                        "Wyłącznie niskiego poziomu hemoglobiny we krwi",
+                        "Utraty zębów stałych",
+                        "Obniżenia wzrostu ciała o 1 cm"
+            ],
+            "corr": 0,
+            "exp": "Według EWGSOP2 kluczowym kryterium wykrycia prawdopodobnej sarkopenii jest stwierdzenie obniżonej siły mięśniowej (muscle strength)."
+},
+{
+            "subject": "brc",
+            "cat": "Geriatria i Sarkopenia",
+            "q": "Jakie jest kryterium potwierdzenia sarkopenii (potwierdzona sarkopenia) w badaniach diagnostycznych?",
+            "opts": [
+                        "Niska siła mięśniowa + niska ilość lub jakość tkanki mięśniowej (oceniana np. BIA, DXA)",
+                        "Brak apetytu przez 2 dni",
+                        "Wynik w skali Apgar poniżej 5 pkt",
+                        "Tylko obecność odruchu Babińskiego"
+            ],
+            "corr": 0,
+            "exp": "Potwierdzenie sarkopenii wymaga udokumentowania zarówno zmniejszonej siły mięśniowej, jak i ilościowo obniżonej masy mięśni szkieletowych (DXA/BIA)."
+},
+{
+            "subject": "brc",
+            "cat": "Geriatria i Sarkopenia",
+            "q": "Czym różni się Sarkopenia od Zespołu Słabości (Frailty Syndrome)?",
+            "opts": [
+                        "Sarkopenia dotyczy układu mięśniowego, a Zespół Słabości to wielonarządowy stan wyczerpania rezerw biologicznych i odpornościowych na stresory",
+                        "Sarkopenia występuje tylko u niemowląt",
+                        "Zespół słabości to wyłącznie wada postawy u dzieci",
+                        "Są to pojęcia całkowicie tożsame"
+            ],
+            "corr": 0,
+            "exp": "Sarkopenia jest zaburzeniem mięśniowym. Zespół słabości (Frailty) to wieloukładowy zespół geriatryczny charakteryzujący się podatnością na niekorzystne zdarzenia zdrowotne i upadki."
+},
+{
+            "subject": "brc",
+            "cat": "Geriatria i Sarkopenia",
+            "q": "Jaki wynik w Teście 5 Wstań z Krzesła (FTSST) wskazuje na osłabienie siły mięśni kończyn dolnych i ryzyko sarkopenii?",
+            "opts": [
+                        "Czas wykonania 5 powtórzeń przekraczający 15 sekund",
+                        "Czas wykonania poniżej 5 sekund",
+                        "Wykonanie 50 powtórzeń w minutę",
+                        "Test ten wykonuje się w pozycji leżącej"
+            ],
+            "corr": 0,
+            "exp": "Czas wykonania 5 wstawań z krzesła bez pomocy rąk > 15 sekund świadczy o obniżonej sile mięśniowej kończyn dolnych."
+},
+{
+            "subject": "brc",
+            "cat": "Geriatria i Sarkopenia",
+            "q": "Zjawisko otyłości sarkopenicznej (sarcopenic obesity) polega na:",
+            "opts": [
+                        "Równoczesnym występowaniu otyłości (nadmiaru tkanki tłuszczowej) oraz sarkopenii (utraty masy i siły mięśniowej)",
+                        "Szybkim przyroście masy mięśniowej u osób otyłych",
+                        "Rozwoju tkanki tłuszczowej wyłącznie w kościach długich",
+                        "Spadku masy ciała poniżej 40 kg u młodzieży"
+            ],
+            "corr": 0,
+            "exp": "Otyłość sarkopeniczna to niebezpieczne połączenie nadmiaru tkanki tłuszczowej ze zredukowaną masą i funkcją mięśni, często maskujące ubytek mięśni pod warstwą tłuszczu."
+},
+{
+            "subject": "brc",
+            "cat": "Geriatria i Sarkopenia",
+            "q": "Jaka jest zalecana dawka spożycia białka u osób starszych w profilaktyce sarkopenii według eksperckich zaleceń (PROT-AGE)?",
+            "opts": [
+                        "0,4 g / kg masy ciała / dobę",
+                        "1,0 – 1,2 g / kg masy ciała / dobę (a przy ćwiczeniach lub chorobach 1,2–1,5 g/kg m.c.)",
+                        "3,0 g / kg masy ciała / dobę",
+                        "Białko należy całkowicie wyeliminować z diety seniora"
+            ],
+            "corr": 1,
+            "exp": "Ze względu na oporność anaboliczną seniorów, rekomendowane spożycie białka wzrasta do 1.0-1.2 g/kg m.c./dobę (oraz wyżej przy aktywności lub rekonwalescencji)."
+},
+{
+            "subject": "brc",
+            "cat": "Wyzwania Biomechaniczne i Kliniczne",
+            "q": "Jakie formy aktywności fizycznej są najbardziej rekomendowane w prewencji i terapii sarkopenii u osób w wieku podeszłym?",
+            "opts": [
+                        "Wyłącznie długotrwałe leżenie w łóżku",
+                        "Trening oporowy (siłowy) połączony z ćwiczeniami równoważnymi i oporowym obciążeniem kości",
+                        "Unikanie jakiegokolwiek obciążenia stawów",
+                        "Wyłącznie rozciąganie palców dłoni"
+            ],
+            "corr": 1,
+            "exp": "Trening siłowy/oporowy stanowi najskuteczniejszy bodziec osteo- i miogenny stymulujący syntezę białek mięśniowych u seniorów."
+}
+        ];
             document.getElementById('flashCardBox').classList.remove('flipped');
 
             const subjName = q.subject === 'bm' ? 'Biologia Medyczna' : 'Biol. Rozwój Człowieka';
