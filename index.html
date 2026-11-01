@@ -1,97 +1,2985 @@
 <!DOCTYPE html>
-<html lang="pl">
+<html lang="pl" class="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz - Pytanie 10: Fizjologia</title>
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Font Awesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Portal Naukowy - Quizy Fizjoterapia | © M. Religa &amp; dr hab. M. Krzykała</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        /* Emerfizjo - Dark Green & Gold Premium Design System */
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+        :root {
+            --bg-primary: #061910;
+            --bg-secondary: #0d2b1d;
+            --bg-tertiary: #133827;
+            --border-color: #1b4731;
+            --border-gold: #c7a861;
+            --text-primary: #f4f6f5;
+            --text-secondary: #a8c2b5;
+            --text-muted: #6f9482;
+            --accent-gold: #c7a861;
+            --accent-gold-hover: #d8b972;
+            --accent-gold-soft: rgba(199, 168, 97, 0.12);
+            --accent-gold-border: rgba(199, 168, 97, 0.35);
+            --accent-teal: #c7a861;
+            --accent-teal-hover: #d8b972;
+            --accent-teal-soft: rgba(199, 168, 97, 0.12);
+            --accent-blue: #3b82f6;
+            --accent-blue-soft: rgba(59, 130, 246, 0.15);
+            --accent-navy: #061910;
+            --success-bg: rgba(22, 101, 52, 0.35);
+            --success-text: #4ade80;
+            --success-border: #15803d;
+            --error-bg: rgba(153, 27, 27, 0.35);
+            --error-text: #f87171;
+            --error-border: #991b1b;
+            --card-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.5), 0 0 15px rgba(199, 168, 97, 0.05);
+            --radius-lg: 16px;
+            --radius-md: 10px;
+            --radius-sm: 6px;
+            --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            --font-serif: 'Cinzel', Georgia, serif;
+            --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+        }
+
+        html.dark {
+            --bg-primary: #030e09;
+            --bg-secondary: #081d13;
+            --bg-tertiary: #0e291b;
+            --border-color: #153b28;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: var(--font-sans);
+            -webkit-tap-highlight-color: transparent;
+        }
+
         body {
-            font-family: 'Inter', sans-serif;
-            background-color: #061910; /* Dark green background based on UI screenshot */
-            color: #e2e8f0;
+            background-color: var(--bg-primary);
+            background-image: 
+                radial-gradient(circle at 15% 20%, rgba(199, 168, 97, 0.05) 0%, transparent 40%),
+                radial-gradient(circle at 85% 80%, rgba(199, 168, 97, 0.04) 0%, transparent 40%);
+            color: var(--text-primary);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            line-height: 1.5;
+            transition: background-color 0.2s ease, color 0.2s ease;
         }
-        .bg-quiz-card {
-            background-color: #03130b;
+
+        .container {
+            width: 100%;
+            max-width: 1080px;
+            margin: 0 auto;
+            padding: 0 1rem;
         }
-        .border-quiz {
-            border-color: #113824;
+
+        /* Top Announcement / Copyright Banner */
+        .copyright-banner {
+            background: #030f0a;
+            color: var(--text-secondary);
+            padding: 9px 0;
+            font-size: 0.78rem;
+            text-align: center;
+            border-bottom: 1px solid var(--border-color);
+            letter-spacing: 0.02em;
         }
-        .btn-correct {
-            background-color: rgba(16, 185, 129, 0.15);
-            border-color: #10b981;
-            color: #34d399;
+
+        .copyright-banner strong {
+            color: var(--accent-gold);
         }
-        .btn-option {
-            background-color: rgba(15, 45, 30, 0.4);
-            border-color: #113824;
-            color: #9ae6b4;
+
+        /* Header Navigation */
+        header {
+            background-color: var(--bg-primary);
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 40;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(10px);
         }
-        .btn-option:hover {
-            background-color: rgba(22, 65, 43, 0.6);
+
+        .header-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 70px;
         }
+
+        .logo-group {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .badge-sub {
+            font-size: 0.65rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 3px 8px;
+            background-color: var(--accent-gold-soft);
+            color: var(--accent-gold);
+            border-radius: 20px;
+            border: 1px solid var(--accent-gold-border);
+            letter-spacing: 0.05em;
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-btn {
+            background: transparent;
+            border: 1px solid transparent;
+            padding: 8px 14px;
+            border-radius: var(--radius-md);
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .nav-btn:hover {
+            background-color: var(--bg-tertiary);
+            color: var(--accent-gold);
+            border-color: var(--accent-gold-border);
+        }
+
+        .nav-btn.active {
+            background-color: var(--accent-gold-soft);
+            color: var(--accent-gold);
+            border-color: var(--accent-gold);
+        }
+
+        .theme-toggle {
+            width: 38px;
+            height: 38px;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border-color);
+            background: var(--bg-secondary);
+            color: var(--accent-gold);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            transition: all 0.2s ease;
+        }
+
+        .theme-toggle:hover {
+            border-color: var(--accent-gold);
+            background: var(--bg-tertiary);
+        }
+
+        main {
+            flex: 1;
+            padding: 2rem 0;
+        }
+
+        .card {
+            background-color: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 1.75rem;
+            box-shadow: var(--card-shadow);
+            margin-bottom: 1.5rem;
+        }
+
+        .card-header {
+            margin-bottom: 1.25rem;
+        }
+
+        .card-title {
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            font-family: var(--font-sans);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .card-subtitle {
+            font-size: 0.88rem;
+            color: var(--text-secondary);
+            margin-top: 4px;
+        }
+
+        /* Subject Selection Cards */
+        .subject-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 16px;
+            margin-bottom: 1.5rem;
+        }
+
+        .subject-card {
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 1.5rem;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            background-color: var(--bg-secondary);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .subject-card:hover {
+            transform: translateY(-3px);
+            border-color: var(--accent-gold);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4), 0 0 15px rgba(199, 168, 97, 0.15);
+        }
+
+        .subject-card.selected-bm, .subject-card.selected-brc, .subject-card.selected-fizjo {
+            border: 1.5px solid var(--accent-gold);
+            background: linear-gradient(135deg, var(--bg-secondary), var(--bg-tertiary));
+            box-shadow: 0 0 20px rgba(199, 168, 97, 0.15);
+        }
+
+        .subject-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .subject-title {
+            font-size: 1.18rem;
+            font-weight: 800;
+            margin-bottom: 0.3rem;
+            color: var(--accent-gold);
+        }
+
+        .subject-desc {
+            font-size: 0.84rem;
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+            line-height: 1.45;
+        }
+
+        .subject-badge {
+            display: inline-block;
+            font-size: 0.72rem;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            background-color: var(--accent-gold-soft);
+            color: var(--accent-gold);
+            border: 1px solid var(--accent-gold-border);
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 12px;
+        }
+
+        .option-radio-card {
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 12px 16px;
+            cursor: pointer;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            transition: all 0.15s ease;
+            background-color: var(--bg-secondary);
+        }
+
+        .option-radio-card:hover, .option-radio-card.selected {
+            border-color: var(--accent-gold);
+            background-color: var(--accent-gold-soft);
+        }
+
+        .option-radio-card input {
+            margin-top: 3px;
+            accent-color: var(--accent-gold);
+        }
+
+        .radio-title {
+            font-size: 0.88rem;
+            font-weight: 700;
+            display: block;
+            color: var(--text-primary);
+        }
+
+        .radio-desc {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 12px 24px;
+            border-radius: var(--radius-md);
+            font-size: 0.92rem;
+            font-weight: 700;
+            cursor: pointer;
+            border: none;
+            transition: all 0.2s ease;
+            text-decoration: none;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #c7a861, #d8b972);
+            color: #061910;
+            box-shadow: 0 4px 12px rgba(199, 168, 97, 0.25);
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #d8b972, #e5ca85);
+            transform: translateY(-1px);
+            box-shadow: 0 6px 16px rgba(199, 168, 97, 0.35);
+        }
+
+        .btn-secondary {
+            background-color: var(--bg-tertiary);
+            color: var(--text-primary);
+            border: 1px solid var(--border-color);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--border-color);
+            border-color: var(--accent-gold);
+            color: var(--accent-gold);
+        }
+
+        .btn-full {
+            width: 100%;
+        }
+
+        .quiz-status-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+        }
+
+        .progress-track {
+            width: 100%;
+            height: 8px;
+            background-color: var(--bg-tertiary);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            overflow: hidden;
+            margin-bottom: 1.5rem;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #c7a861, #e5ca85);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        .question-text {
+            font-size: 1.18rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            line-height: 1.45;
+            margin-bottom: 1.25rem;
+        }
+
+        .options-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 1.5rem;
+        }
+
+        .option-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 14px 16px;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border-color);
+            background-color: var(--bg-secondary);
+            cursor: pointer;
+            transition: all 0.15s ease;
+            text-align: left;
+            width: 100%;
+            font-size: 0.92rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .option-item:hover:not(:disabled) {
+            border-color: var(--accent-gold);
+            background-color: var(--accent-gold-soft);
+        }
+
+        .option-letter {
+            width: 28px;
+            height: 28px;
+            border-radius: var(--radius-sm);
+            background-color: var(--bg-tertiary);
+            color: var(--accent-gold);
+            border: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 0.8rem;
+            flex-shrink: 0;
+        }
+
+        .option-item.correct {
+            border-color: var(--success-border) !important;
+            background-color: var(--success-bg) !important;
+            color: var(--success-text) !important;
+        }
+
+        .option-item.correct .option-letter {
+            background-color: #16a34a;
+            color: white;
+            border-color: #16a34a;
+        }
+
+        .option-item.wrong {
+            border-color: var(--error-border) !important;
+            background-color: var(--error-bg) !important;
+            color: var(--error-text) !important;
+        }
+
+        .option-item.wrong .option-letter {
+            background-color: #dc2626;
+            color: white;
+            border-color: #dc2626;
+        }
+
         .explanation-box {
-            background-color: rgba(11, 38, 25, 0.8);
-            border: 1px solid #113824;
+            background-color: var(--accent-gold-soft);
+            border: 1px solid var(--accent-gold);
+            border-radius: var(--radius-md);
+            padding: 1rem;
+            font-size: 0.88rem;
+            color: var(--text-primary);
+            line-height: 1.5;
+            margin-bottom: 1.5rem;
+            display: none;
+        }
+
+        .explanation-title {
+            font-weight: 800;
+            color: var(--accent-gold);
+            text-transform: uppercase;
+            font-size: 0.72rem;
+            letter-spacing: 0.05em;
+            margin-bottom: 4px;
+        }
+
+        .results-summary {
+            text-align: center;
+            padding: 2rem 1rem;
+        }
+
+        .score-circle {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            margin: 0 auto 1.25rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border: 4px solid var(--accent-gold);
+            background-color: var(--accent-gold-soft);
+            box-shadow: 0 0 20px rgba(199, 168, 97, 0.2);
+        }
+
+        .score-num {
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: var(--accent-gold);
+            line-height: 1;
+        }
+
+        .score-label {
+            font-size: 0.68rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: var(--text-secondary);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+            gap: 12px;
+            margin: 1.5rem 0;
+        }
+
+        .stat-box {
+            background-color: var(--bg-tertiary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 12px;
+            text-align: center;
+        }
+
+        .stat-val {
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: var(--text-primary);
+        }
+
+        .stat-lbl {
+            font-size: 0.72rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+
+        .search-bar {
+            width: 100%;
+            padding: 12px 16px;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border-color);
+            background-color: var(--bg-tertiary);
+            color: var(--text-primary);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            transition: all 0.2s ease;
+        }
+
+        .search-bar:focus {
+            outline: none;
+            border-color: var(--accent-gold);
+            box-shadow: 0 0 10px rgba(199, 168, 97, 0.2);
+        }
+
+        /* Flashcard Components */
+        .flashcard-box {
+            perspective: 1000px;
+            min-height: 220px;
+            margin-bottom: 1rem;
+            cursor: pointer;
+        }
+
+        .flashcard-inner {
+            position: relative;
+            width: 100%;
+            min-height: 220px;
+            text-align: center;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+            border-radius: var(--radius-lg);
+            border: 1.5px solid var(--accent-gold);
+            background-color: var(--bg-secondary);
+            box-shadow: 0 0 20px rgba(199, 168, 97, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .flashcard-box.flipped .flashcard-inner {
+            transform: rotateY(180deg);
+        }
+
+        .flashcard-front, .flashcard-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+            box-sizing: border-box;
+        }
+
+        .flashcard-back {
+            transform: rotateY(180deg);
+            background-color: var(--bg-tertiary);
+            color: var(--text-primary);
+            border-radius: var(--radius-lg);
+        }
+
+        footer {
+            background-color: #030e09;
+            border-top: 1px solid var(--border-color);
+            padding: 1.75rem 0;
+            margin-top: auto;
+            font-size: 0.82rem;
+            color: var(--text-secondary);
+            text-align: center;
+        }
+
+        footer strong {
+            color: var(--accent-gold);
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        @media (max-width: 640px) {
+            .header-inner { height: 60px; }
+            .card { padding: 1.25rem; }
+            .nav-btn span { display: none; }
         }
     </style>
 </head>
-<body class="min-h-screen flex items-center justify-center p-4 md:p-8">
+<body>
 
-    <div class="w-full max-w-4xl space-y-6">
-        <!-- Quiz Card -->
-        <div class="bg-quiz-card border border-quiz rounded-xl p-6 md:p-8 shadow-2xl">
-            
-            <!-- Category Header -->
-            <div class="flex items-center space-x-2 text-xs md:text-sm font-medium text-amber-500 mb-4">
-                <span>Pytanie 10</span>
-                <span>•</span>
-                <span>Fizjologia</span>
-                <span>•</span>
-                <span>Homeostaza i Układy Regulacji</span>
-            </div>
-
-            <!-- Question Title -->
-            <h1 class="text-lg md:text-xl font-bold text-white mb-6 leading-relaxed">
-                Jaki stan patologiczny został wymieniony w notatkach jako przykład zaburzenia sprzężenia zwrotnego ujemnego?
-            </h1>
-
-            <!-- Options Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-                <!-- Option A (Correct Answer) -->
-                <button class="btn-correct border-2 rounded-lg p-4 text-left font-medium flex items-center justify-between transition-all duration-200">
-                    <span>A. Niedoczynność tarczycy.</span>
-                    <i class="fa-solid fa-check text-emerald-400 text-lg ml-2"></i>
-                </button>
-
-                <!-- Option B -->
-                <button class="btn-option border rounded-lg p-4 text-left font-medium flex items-center justify-between transition-all duration-200 cursor-pointer">
-                    <span>B. Apoptoza kardiomiocytów.</span>
-                </button>
-
-                <!-- Option C -->
-                <button class="btn-option border rounded-lg p-4 text-left font-medium flex items-center justify-between transition-all duration-200 cursor-pointer">
-                    <span>C. Złamana kość udowa.</span>
-                </button>
-
-                <!-- Option D -->
-                <button class="btn-option border rounded-lg p-4 text-left font-medium flex items-center justify-between transition-all duration-200 cursor-pointer">
-                    <span>D. Nużeniec ludzki.</span>
-                </button>
-            </div>
-
-            <!-- Explanation Box -->
-            <div class="explanation-box rounded-lg p-4 text-sm md:text-base">
-                <p class="text-amber-500 font-semibold inline">Wyjaśnienie: </p>
-                <span class="text-emerald-200">W notatkach jako przykład zaburzenia sprzężenia zwrotnego ujemnego podano niedoczynność tarczycy.</span>
-            </div>
-
-        </div>
+    <div class="copyright-banner">
+        Portal Akademicki Fizjoterapii | <strong>Fizjologia I Rok</strong> &amp; <strong>Biologia Medyczna (© M. Religa)</strong> &amp; <strong>Biol. Rozwój Człowieka (dr hab. M. Krzykała)</strong>
     </div>
 
+    <header>
+        <div class="container">
+            <div class="header-inner">
+                <div class="logo-group" onclick="showSection('dash')">
+                    <svg width="220" height="42" viewBox="0 0 320 60" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:block; max-height:40px; width:auto;">
+                        <g fill="#c7a861">
+                            <path d="M 42 5 L 12 30 L 42 55 L 28 55 L 0 30 L 28 5 Z" />
+                            <path d="M 52 5 L 24 30 L 52 55 L 40 55 L 14 30 L 40 5 Z" />
+                            <path d="M 50 5 L 62 5 L 62 55 L 50 55 Z" />
+                        </g>
+                        <text x="75" y="41" fill="#c7a861" font-family="'Cinzel', 'Playfair Display', Georgia, serif" font-weight="700" font-size="34" letter-spacing="2">EMERFIZJO</text>
+                    </svg>
+                    <div style="display:flex; flex-direction:column; justify-content:center;">
+                        <span class="badge-sub">Fizjoterapia Akademicka</span>
+                    </div>
+                </div>
+
+                <div class="nav-actions">
+                    <button id="navDashBtn" class="nav-btn active" onclick="showSection('dash')">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path></svg>
+                        <span>Quizy</span>
+                    </button>
+                    <button id="navFlashBtn" class="nav-btn" onclick="showSection('flash')">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="M12 4v16"></path></svg>
+                        <span>Fiszki</span>
+                    </button>
+                    <button id="navBankBtn" class="nav-btn" onclick="showSection('bank')">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+                        <span id="navBankSpan">Baza Pytań (200)</span>
+                    </button>
+                    <button class="theme-toggle" onclick="toggleTheme()" title="Przełącz motyw">🌙</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+
+        <!-- DASHBOARD & SUBJECT SELECTION -->
+        <div id="sectionDash">
+            
+            <div class="card-header" style="margin-top: 1rem; margin-bottom: 1.5rem;">
+                <h2 style="font-size: 1.5rem; font-weight: 800;">Wybierz Przedmiot Akademicki:</h2>
+                <p style="font-size: 0.9rem; color: var(--text-secondary);">Wybierz przedmiot, z którego chcesz przeprowadzić sprawdzian wiedzy lub powtórkę na fiszkach:</p>
+            </div>
+
+            <div class="subject-grid">
+                <div class="subject-card selected-fizjo" id="subjCardFizjo" onclick="selectSubject('fizjo')">
+                    <div class="subject-icon">🫀</div>
+                    <div class="subject-title">Fizjologia Ogólna</div>
+                    <div class="subject-desc">Homeostaza, układy regulacyjne, tarczyca, glukoza, tlen, definicje zdrowia oraz patofizjologia i zespoły bólowe.</div>
+                    <span class="subject-badge">50 Pytań • I Rok Fizjoterapii</span>
+                </div>
+
+                <div class="subject-card" id="subjCardBM" onclick="selectSubject('bm')">
+                    <div class="subject-icon">🔬</div>
+                    <div class="subject-title">Biologia Medyczna</div>
+                    <div class="subject-desc">Fizjologia i Biologia Komórki, mikrobiologia, genetyka bakterii, apoptoza, nekroza, organella.</div>
+                    <span class="subject-badge">75 Pytań • © M. Religa</span>
+                </div>
+
+                <div class="subject-card" id="subjCardBRC" onclick="selectSubject('brc')">
+                    <div class="subject-icon">🌱</div>
+                    <div class="subject-title">Biologiczny Rozwój Człowieka</div>
+                    <div class="subject-desc">Ontogeneza, procesy wzrastania, trendy sekularne, apgar, odruchy, sarkopenia i geriatria.</div>
+                    <span class="subject-badge">75 Pytań • dr hab. M. Krzykała</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Konfiguracja Treningu i Egzaminu</h3>
+                    <p class="card-subtitle" id="configSubTitle">Dostosuj szczegółowy zakres oraz tryb nauki dla wybranego przedmiotu:</p>
+                </div>
+
+                <div style="margin-bottom: 1.25rem;">
+                    <label style="font-size: 0.78rem; font-weight: 800; text-transform: uppercase; color: var(--text-muted); display: block; margin-bottom: 8px;">1. Zakres Tematyczny (Dział):</label>
+                    <div class="grid-2" id="categoryGrid"></div>
+                </div>
+
+                <div style="margin-bottom: 1.5rem;">
+                    <label style="font-size: 0.78rem; font-weight: 800; text-transform: uppercase; color: var(--text-muted); display: block; margin-bottom: 8px;">2. Tryb Nauki:</label>
+                    <div class="grid-2">
+                        <label class="option-radio-card selected" id="modeCardPractice" onclick="selectMode('practice')">
+                            <input type="radio" name="mode" value="practice" checked>
+                            <div>
+                                <span class="radio-title">Tryb Ćwiczeniowy (Trening)</span>
+                                <span class="radio-desc">Natychmiastowe sprawdzanie, brak limitu czasu, widoczne dokładne wyjaśnienia i cytaty.</span>
+                            </div>
+                        </label>
+                        <label class="option-radio-card" id="modeCardExam" onclick="selectMode('exam')">
+                            <input type="radio" name="mode" value="exam">
+                            <div>
+                                <span class="radio-title">Tryb Egzaminacyjny</span>
+                                <span class="radio-desc">Symulacja kolokwium. Wynik % i raport z wyjaśnieniami dopiero po zakończeniu testu.</span>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <div style="display: flex; gap: 20px; flex-wrap: wrap; padding-top: 1rem; border-top: 1px solid var(--border-color); margin-bottom: 1.5rem;">
+                    <label style="display: flex; align-items: center; gap: 8px; font-size: 0.88rem; font-weight: 600; cursor: pointer;">
+                        <input type="checkbox" id="chkShuffle" checked style="accent-color: var(--accent-teal);">
+                        Losuj kolejność pytań i odpowiedzi
+                    </label>
+                    <label style="display: flex; align-items: center; gap: 8px; font-size: 0.88rem; font-weight: 600; cursor: pointer;">
+                        <input type="checkbox" id="chkTimer" style="accent-color: var(--accent-teal);">
+                        Włącz czasomierz sesji
+                    </label>
+                </div>
+
+                <button class="btn btn-primary btn-full" onclick="startQuizSession()">Rozpocznij Test Naukowy</button>
+            </div>
+        </div>
+
+        <!-- ACTIVE QUIZ SCREEN -->
+        <div id="sectionQuiz" class="hidden">
+            <div class="quiz-status-bar">
+                <span id="quizCatBadge" style="background: var(--accent-teal-soft); color: var(--accent-teal); padding: 3px 10px; border-radius: 12px; font-weight: 700; font-size: 0.78rem;">Kategoria</span>
+                <span id="timerBox" class="hidden" style="font-family: var(--font-mono); font-weight: 700; color: #d97706;">⏱️ 00:00</span>
+                <span>Pytanie <strong id="qCurrentNum">1</strong> / <span id="qTotalNum">--</span></span>
+            </div>
+
+            <div class="progress-track">
+                <div id="quizProgressBar" class="progress-fill"></div>
+            </div>
+
+            <div class="card">
+                <div class="question-text" id="qText">Ładowanie treści pytania...</div>
+                
+                <div class="options-stack" id="qOptionsStack"></div>
+
+                <div class="explanation-box" id="qExplanationBox">
+                    <div class="explanation-title" id="expTitleHeader">Wyjaśnienie / Cytat Dydaktyczny:</div>
+                    <div id="qExplanationText"></div>
+                </div>
+
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--border-color);">
+                    <button class="btn btn-secondary" onclick="confirmExit()">Przerwij</button>
+                    <button class="btn btn-primary" id="btnNext" onclick="nextQuestion()" disabled>Następne Pytanie →</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- RESULTS SCREEN -->
+        <div id="sectionResults" class="hidden">
+            <div class="card results-summary">
+                <div class="score-circle" id="scoreCircle">
+                    <span class="score-num" id="resPercent">0%</span>
+                    <span class="score-label">Wynik</span>
+                </div>
+
+                <h2 id="resTitle" style="font-size: 1.4rem; font-weight: 800; margin-bottom: 6px;">Podsumowanie Egzaminu</h2>
+                <p id="resSub" style="font-size: 0.88rem; color: var(--text-secondary); max-width: 500px; margin: 0 auto 1rem;"></p>
+
+                <div class="stats-grid">
+                    <div class="stat-box">
+                        <div class="stat-val" id="stScore">0 / 0</div>
+                        <div class="stat-lbl">Punkty</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-val" style="color: #16a34a;" id="stCorrect">0</div>
+                        <div class="stat-lbl">Poprawne</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-val" style="color: #dc2626;" id="stWrong">0</div>
+                        <div class="stat-lbl">Błędne</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-val" id="stTime">00:00</div>
+                        <div class="stat-lbl">Czas</div>
+                    </div>
+                </div>
+
+                <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
+                    <button class="btn btn-primary" onclick="showSection('dash')">Nowa Sesja</button>
+                    <button class="btn btn-secondary" onclick="toggleReport()">Pokaż Raport Odpowiedzi</button>
+                </div>
+            </div>
+
+            <div id="reportBox" class="hidden">
+                <h3 style="font-size: 1.1rem; font-weight: 800; margin-bottom: 1rem;">Raport Szczegółowy</h3>
+                <div id="reportContainer" style="display: flex; flex-direction: column; gap: 12px;"></div>
+            </div>
+        </div>
+
+        <!-- FLASHCARDS SECTION -->
+        <div id="sectionFlash" class="hidden">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Fiszki &amp; Szybka Powtórka</h3>
+                    <p class="card-subtitle">Kliknij kartę, aby odwrócić i poznać prawidłową odpowiedź oraz cytat z notatek akademickich.</p>
+                </div>
+
+                <div style="margin-bottom: 1rem; display: flex; gap: 10px; flex-wrap: wrap;">
+                    <button class="btn btn-secondary" id="flashSubjFizjo" onclick="setFlashSubject('fizjo')">Fizjologia (50)</button>
+                    <button class="btn btn-secondary" id="flashSubjBM" onclick="setFlashSubject('bm')">Biologia Medyczna (75)</button>
+                    <button class="btn btn-secondary" id="flashSubjBRC" onclick="setFlashSubject('brc')">Biol. Rozwój Człowieka (75)</button>
+                </div>
+
+                <div class="flashcard-box" id="flashCardBox" onclick="flipFlashCard()">
+                    <div class="flashcard-inner">
+                        <div class="flashcard-front">
+                            <span id="fcCategory" style="font-size:0.75rem; font-weight:800; color:var(--accent-teal); text-transform:uppercase; margin-bottom:8px;">Kategoria</span>
+                            <div id="fcQuestion" style="font-size:1.1rem; font-weight:700; color:var(--text-primary);">Pytanie...</div>
+                            <span style="font-size:0.72rem; color:var(--text-muted); margin-top:1rem;">(Kliknij, aby zobaczyć odpowiedź)</span>
+                        </div>
+                        <div class="flashcard-back">
+                            <div id="fcAnswer" style="font-size:1rem; font-weight:800; color:var(--success-text); margin-bottom:8px;">Poprawna odpowiedź</div>
+                            <div id="fcExp" style="font-size:0.85rem; color:var(--text-primary);">Wyjaśnienie...</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <button class="btn btn-secondary" onclick="prevFlashCard()">← Poprzednia</button>
+                    <span style="font-size: 0.85rem; font-weight: 700; color: var(--text-secondary);">
+                        Fiszka <span id="fcCurrent">1</span> z <span id="fcTotal">--</span>
+                    </span>
+                    <button class="btn btn-primary" onclick="nextFlashCard()">Następna →</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- QUESTION DATABASE -->
+        <div id="sectionBank" class="hidden">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title" id="bankTitleCount">Pełna Baza Pytań</h3>
+                    <p class="card-subtitle">Przeglądaj wszystkie pytania egzaminacyjne z przedmiotów wraz z odpowiedziami i wyjaśnieniami.</p>
+                </div>
+
+                <div style="margin-bottom: 1rem; display: flex; gap: 10px; flex-wrap: wrap;">
+                    <button class="btn btn-secondary" id="bankSubjAll" onclick="setBankFilter('all')">Wszystkie Przedmioty (200)</button>
+                    <button class="btn btn-secondary" id="bankSubjFizjo" onclick="setBankFilter('fizjo')">Fizjologia (50)</button>
+                    <button class="btn btn-secondary" id="bankSubjBM" onclick="setBankFilter('bm')">Biologia Medyczna (75)</button>
+                    <button class="btn btn-secondary" id="bankSubjBRC" onclick="setBankFilter('brc')">Biol. Rozwój Człowieka (75)</button>
+                </div>
+
+                <input type="text" id="bankSearchInput" class="search-bar" placeholder="🔍 Szukaj frazy w pytaniach, opcjach lub wyjaśnieniami..." oninput="filterBank()">
+
+                <div id="bankListContainer" style="display: flex; flex-direction: column; gap: 12px;"></div>
+            </div>
+        </div>
+
+    </main>
+
+    <footer>
+        <div class="container">
+            Portal Edukacyjny Fizjoterapii | EmerFizjo.pl | Materiały przygotowawcze do egzaminów i kolokwiów
+        </div>
+    </footer>
+
+    <script>
+        const rawQuestionBank = [
+            // ==========================================
+            // PRZEDMIOT 0: FIZJOLOGIA OGÓLNA (50 PYTAŃ)
+            // ==========================================
+            {
+                subject: "fizjo",
+                cat: "Homeostaza i Układy Regulacji",
+                q: "Czym jest homeostaza w kontekście fizjologii człowieka?",
+                opts: ["Zdolnością do utrzymania stałych właściwości wewnętrznych mimo zmian w środowisku.", "Stanem całkowitej nieaktywności enzymatycznej organizmu.", "Procesem chorobowym prowadzącym do martwicy komórek.", "Zaburzeniem wydzielania hormonów tarczycy."],
+                corr: 0,
+                exp: "Homeostaza to zdolność organizmu do obrony przed czynnikami stresowymi w celu przywrócenia i utrzymania stałych właściwości wewnętrznych."
+            },
+            {
+                subject: "fizjo",
+                cat: "Homeostaza i Układy Regulacji",
+                q: "Jak definiuje się chorobę subkliniczną?",
+                opts: ["Niewyleczalne schorzenie o charakterze przewlekłym.", "Stan, w którym procesy chorobowe się rozpoczęły, lecz brak wyraźnych objawów.", "Ostre zapalenie z wysoką gorączką i ostrym bólem.", "Ból uwarunkowany czynnikami genetycznymi."],
+                corr: 1,
+                exp: "Choroba subkliniczna występuje wtedy, gdy w organizmie rozpoczęły się już procesy chorobowe, ale pacjent nie odczuwa jeszcze objawów."
+            },
+            {
+                subject: "fizjo",
+                cat: "Homeostaza i Układy Regulacji",
+                q: "Jaka jest główna rola receptorów w układach regulacyjnych?",
+                opts: ["Odbieranie bodźców i przetwarzanie ich na impulsy nerwowe.", "Wywoływanie natychmiastowego skurczu mięśnia bez udziału OUN.", "Produkcja hormonów takich jak TRH i TSH.", "Transport cząsteczek tlenu we krwi."],
+                corr: 0,
+                exp: "Receptory to wyspecjalizowane komórki lub zakończenia nerwowe odbierające bodźce i przetwarzające je na impulsy nerwowe."
+            },
+            {
+                subject: "fizjo",
+                cat: "Homeostaza i Układy Regulacji",
+                q: "Czym są efektory w pętli regulacyjnej?",
+                opts: ["Strukturami w mózgu porównującymi sygnały z normą.", "Narządami wykonawczymi wywołującymi konkretną reakcję organizmu.", "Wyspecjalizowanymi nerwami czuciowymi skóry.", "Enzymami trawiennymi układu pokarmowego."],
+                corr: 1,
+                exp: "Efektory to narządy wykonawcze (głównie mięśnie i gruczoły), które odbierają impulsy z OUN i wywołują reakcję (np. skurcz, wydzielanie)."
+            },
+            {
+                subject: "fizjo",
+                cat: "Homeostaza i Układy Regulacji",
+                q: "Jaka jest funkcja centrum regulacji w organizmie?",
+                opts: ["Odbieranie sygnałów, porównywanie ich z normą i wysyłanie poleceń.", "Wyłącznie przewodzenie bodźców bólowych z receptorów czuciowych.", "Synteza białek mureinowych i glukagonu.", "Rozkład sorbitolu w mikroangiopatii."],
+                corr: 0,
+                exp: "Centrum regulacji (np. w mózgu/rdzeniu) odbiera sygnały od receptorów, porównuje je z optymalną normą i decyduje o poleceniach dla efektorów."
+            },
+            {
+                subject: "fizjo",
+                cat: "Homeostaza i Układy Regulacji",
+                q: "Które układy współpracują ze sobą w ciągłym procesie regulacji homeostazy?",
+                opts: ["Ośrodkowy układ nerwowy, wewnątrzwydzielniczy i odpornościowy.", "Układ pokarmowy, szkieletowy i moczowy.", "Układ somatyczny, wzrokowy i rozrodczy.", "Tylko układ krążenia i układ oddechowy."],
+                corr: 0,
+                exp: "Mechanizmy regulacji są ze sobą sprzężone: Ośrodkowy Układ Nerwowy + Wewnątrzwydzielniczy + Odpornościowy."
+            },
+            {
+                subject: "fizjo",
+                cat: "Homeostaza i Układy Regulacji",
+                q: "Jaką cechą charakteryzuje się układ wegetatywny?",
+                opts: ["Zależy bezpośrednio od naszej woli.", "Działa w sposób niezależny od naszej woli.", "Kieruje wyłącznie ruchami mięśni szkieletowych.", "Odpowiada za pamięć krótkotrwałą i mowę."],
+                corr: 1,
+                exp: "Układ wegetatywny (autonomiczny) działa w sposób niezależny od woli człowieka."
+            },
+            {
+                subject: "fizjo",
+                cat: "Homeostaza i Układy Regulacji",
+                q: "Czym różni się układ somatyczny od układu wegetatywnego?",
+                opts: ["Układ somatyczny jest zależny od woli człowieka.", "Układ somatyczny kieruje pracą serca i tarczycy.", "Układ somatyczny odpowiada wyłącznie za produkcję hormonów.", "Układ somatyczny działa wyłącznie podczas snu."],
+                corr: 0,
+                exp: "Układ somatyczny w przeciwieństwie do wegetatywnego jest zależny od woli człowieka."
+            },
+            {
+                subject: "fizjo",
+                cat: "Homeostaza i Układy Regulacji",
+                q: "Które z poniższych zjawisk stanowi fizjologiczny przykład sprzężenia zwrotnego dodatniego?",
+                opts: ["Proces krzepnięcia krwi.", "Regulacja stężenia glukozy przez insulinę.", "Wydzielanie TSH w odpowiedzi na wysoki poziom T3.", "Ziewanie podczas hipoksji."],
+                corr: 0,
+                exp: "Przykładem fizjologicznego sprzężenia zwrotnego dodatniego w notatkach jest krzepnięcie krwi."
+            },
+            {
+                subject: "fizjo",
+                cat: "Homeostaza i Układy Regulacji",
+                q: "Jaki stan patologiczny został wymieniony w notatkach jako przykład zaburzenia sprzężenia zwrotnego ujemnego?",
+                opts: ["Niedoczynność tarczycy.", "Apoptoza kardiomiocytów.", "Złamana kość udowa.", "Nużeniec ludzki."],
+                corr: 0,
+                exp: "W notatkach jako przykład zaburzenia sprzężenia zwrotnego ujemnego podano niedoczynność tarczycy."
+            },
+            {
+                subject: "fizjo",
+                cat: "Homeostaza i Układy Regulacji",
+                q: "Zgodnie z informacjami zawartymi w notatkach, które struktury odpowiadają za produkcję hormonów osi tarczycowej (T3, T4, TRH, TSH)?",
+                opts: ["Tarczyca (T3, T4), Przysadka (TRH), Podwzgórze (TSH)", "Tarczyca (T3, T4), Przysadka (TSH), Podwzgórze (TRH)", "Podwzgórze (T3, T4), Tarczyca (TRH), Przysadka (TSH)", "Przysadka (T3, T4), Podwzgórze (TSH), Tarczyca (TRH)"],
+                corr: 1,
+                exp: "Wg notatek: Tarczyca produkuje T3 i T4, Przysadka produkuje TSH (tyreotropinę), Podwzgórze produkuje TRH (tyreoliberynę)."
+            },
+            {
+                subject: "fizjo",
+                cat: "Regulacja Glukozy i Tlenu",
+                q: "Jaka jest rola insuliny w regulacji poziomu glukozy we krwi?",
+                opts: ["Obniża poziom glukozy we krwi.", "Podwyższa poziom glukozy we krwi.", "Stymuluje produkcję erytropoetyny.", "Przekształca glukozę bezpośrednio w T3."],
+                corr: 0,
+                exp: "Insulina jest hormonem obniżającym poziom glukozy we krwi."
+            },
+            {
+                subject: "fizjo",
+                cat: "Regulacja Glukozy i Tlenu",
+                q: "Który hormon wykazuje działanie przeciwstawne do insuliny, podwyższając poziom cukru we krwi?",
+                opts: ["Glukagon.", "Erytropoetyna.", "Adrenalina.", "TRH."],
+                corr: 0,
+                exp: "Glukagon podwyższa poziom cukru we krwi, działając przeciwstawnie do insuliny."
+            },
+            {
+                subject: "fizjo",
+                cat: "Regulacja Glukozy i Tlenu",
+                q: "Które z wymienionych komórek NIE posiadają receptorów insulinowych?",
+                opts: ["Erytrocyty oraz komórki układu odpornościowego.", "Kardiomiocyty i fibroblasty.", "Komórki mięśniowe gładkie i hepatocyty.", "Komórki tkanki tłuszczowej i nefrony."],
+                corr: 0,
+                exp: "Erytrocyty oraz komórki układu odpornościowego nie posiadają receptorów insulinowych."
+            },
+            {
+                subject: "fizjo",
+                cat: "Regulacja Glukozy i Tlenu",
+                q: "Co oznacza pojęcie hipoglikemia?",
+                opts: ["Niski poziom cukru we krwi.", "Wysoki poziom cukru we krwi.", "Podwyższone ciśnienie tętnicze.", "Niedobór erytrocytów."],
+                corr: 0,
+                exp: "Hipoglikemia to niski poziom cukru (glukozy) we krwi."
+            },
+            {
+                subject: "fizjo",
+                cat: "Regulacja Glukozy i Tlenu",
+                q: "W jaki sposób organizm reguluje zaopatrzenie w tlen na poziomie oddechowym?",
+                opts: ["Poprzez ziewanie, pogłębione oddechy i hiperwentylację.", "Wyłącznie przez uwalnianie insuliny.", "Poprzez zmniejszenie produktywności nerek.", "Za pomocą syntezy sorbitolu."],
+                corr: 0,
+                exp: "Regulacja zaopatrzenia organizmu w tlen obejmuje ziewanie, pogłębione oddechy i hiperwentylację."
+            },
+            {
+                subject: "fizjo",
+                cat: "Regulacja Glukozy i Tlenu",
+                q: "Jaka jest główna funkcja erytropoetyny (EPO)?",
+                opts: ["Zwiększa produkcję erytrocytów, co podnosi poziom tlenu.", "Hamuje podziały komórkowe w szpiku.", "Obniża ciśnienie tętnicze krwi.", "Stymuluje trzustkę do wydzielania glukagonu."],
+                corr: 0,
+                exp: "Erytropoetyna zwiększa produkcję erytrocytów, przez co zwiększa się poziom tlenu w organizmie."
+            },
+            {
+                subject: "fizjo",
+                cat: "Zdrowie i Choroba",
+                q: "Jakie narządy i substancje zostały wskazane w notatkach jako wpływające na regulację ciśnienia krwi?",
+                opts: ["Nerki oraz adrenalina.", "Trzustka oraz insulina.", "Grasica oraz limfocyty T.", "Płuca oraz surfaktant."],
+                corr: 0,
+                exp: "Regulacja ciśnienia w notatkach związana jest z pracą nerek oraz adrenaline."
+            },
+            {
+                subject: "fizjo",
+                cat: "Zdrowie i Choroba",
+                q: "Jak na podstawie notatek zdefiniowana jest choroba?",
+                opts: ["Nieproporcjonalne do wieku uszkodzenie struktury o funkcji narządu spowodowane czynnikiem chorobotwórczym.", "Stan chwilowego zmęczenia wywołany brakiem snu.", "Każdy spadek ciśnienia krwi poniżej normy.", "Każdy proces prowadzący do apoptozy."],
+                corr: 0,
+                exp: "Choroba to każde zakłócenie równowagi spowodowane przez czynnik chorobotwórczy; nieproporcjonalne do wieku uszkodzenie struktury o funkcji narządu."
+            },
+            {
+                subject: "fizjo",
+                cat: "Zdrowie i Choroba",
+                q: "Ile wymiarów zdrowia zostało wymienionych w materiałach z wykładu?",
+                opts: ["6 wymiarów: fizyczne, psychiczne, emocjonalne, umysłowe, społeczne, duchowe.", "3 wymiary: biologiczny, psychiczny, społeczny.", "2 wymiary: fizyczny i psychiczny.", "4 wymiary: anatomiczny, metaboliczny, genetyczny, wiekowy."],
+                corr: 0,
+                exp: "Wyróżniono 6 wymiarów zdrowia: Fizyczne, Psychiczne, Emocjonalne, Umysłowe, Społeczne, Duchowe."
+            },
+            {
+                subject: "fizjo",
+                cat: "Fizjologia Bólu",
+                q: "Jaka jest podstawowa fizjologiczna rola bólu w organizmie?",
+                opts: ["Pełni funkcję ostrzegawczo-obronną chroniącą przed uszkodzeniem.", "Świadczy o bezwzględnej martwicy tkanki.", "Wywołuje natychmiastową syntezę glukagonu.", "Służy do stymulacji wzrostu kości długich."],
+                corr: 0,
+                exp: "Ból pełni rolę ostrzegawczo-obronną, jest sygnałem zagrożenia wyzwalającym odruchową reakcję obronną."
+            },
+            {
+                subject: "fizjo",
+                cat: "Fizjologia Bólu",
+                q: "Czym jest nocycepcja?",
+                opts: ["Procesem odczuwania bólu i uświadamiania doznań bólowych.", "Zaburzeniem wydzielania hormonów tarczycy.", "Tworzeniem flory fizjologicznej.", "Stanem całkowitej utraty czucia dotyku."],
+                corr: 0,
+                exp: "Nocycepcja to proces odczuwania bólu i uświadamiania doznań bólowych angażujący układ nerwowy i anatomię."
+            },
+            {
+                subject: "fizjo",
+                cat: "Fizjologia Bólu",
+                q: "Co wpływa na fakt, że każdy człowiek odczuwa ból w inny sposób?",
+                opts: ["Uwarunkowania genetyczne wpływające na układ nerwowy.", "Liczba spożytych posiłków w ciągu dnia.", "Poziom surfaktantu w płucach.", "Grupa krwi w układzie ABO."],
+                corr: 0,
+                exp: "O prawidłowości funkcjonowania dróg nocyceptywnych decyduje genetyka, stąd indywidualna wrażliwość i tolerancja na ból."
+            },
+            {
+                subject: "fizjo",
+                cat: "Fizjologia Bólu",
+                q: "Kiedy ból staje się samodzielną chorobą (bólem przewlekłym)?",
+                opts: ["Gdy trwa mimo wygojenia tkanek, zazwyczaj ponad 3-6 miesięcy.", "Po upływie dokładnie 24 godzin od urazu.", "Tylko wtedy, gdy towarzyszy mu wysoka gorączka.", "Gdy dotyczy wyłącznie lewej ręki."],
+                corr: 0,
+                exp: "Ból przewlekły traci rolę ostrzegawczą i staje się chorobą gdy trwa mimo wygojenia tkanek (najczęściej granica 3-6 miesięcy)."
+            },
+            {
+                subject: "fizjo",
+                cat: "Fizjologia Bólu",
+                q: "Jaka zmiana w badaniach obrazowych mózgu odróżnia ból przewlekły od bólu ostrego?",
+                opts: ["W bólu przewlekłym spada przepływ krwi we wzgórzu, a w ostrym rośnie.", "W bólu przewlekłym wzgórze ulega całkowitemu zanikowi.", "W bólu ostrym zatrzymuje się przepływ krwi w pniu mózgu.", "Nie ma żadnych zmian w obrazowaniu fMRI."],
+                corr: 0,
+                exp: "W badaniach obrazowych: w bólu przewlekłym następuje zmniejszenie przepływu krwi we wzgórzu, podczas gdy w bólu ostrym przepływ ten rośnie."
+            },
+            {
+                subject: "fizjo",
+                cat: "Fizjologia Bólu",
+                q: "Jaki stan emocjonalno-psychiczny dominuje u chorych z bólem przewlekłym zamiast pobudzenia układu nerwowego?",
+                opts: ["Zdenerwowanie, nadmierna drażliwość i depresyjny nastrój.", "Gwałtowna euforia i nadpobudliwość ruchowa.", "Śpiączka farmakologiczna.", "Pełna obojętność emocjonalna."],
+                corr: 0,
+                exp: "Zamiast fizjologicznego pobudzenia pojawia się zdenerwowanie, nadmierna drażliwość, wybuchy gniewu i depresyjny nastrój."
+            },
+            {
+                subject: "fizjo",
+                cat: "Zespoły Bólowe",
+                q: "Z czego wynika zjawisko bólu rzutowanego?",
+                opts: ["Z konwergencji (nakładania się) dróg nerwowych w rdzeniu kręgowym.", "Z braku receptorów insulinowych na skórzanych nocyceptorach.", "Z bezpośredniego zakażenia wirusem ospy wietrznej.", "Z niedoboru glukagonu."],
+                corr: 0,
+                exp: "Ból rzutowany wynika z konwergencji (nakładania się) dróg nerwowych z narządów wewnętrznych i skóry w rdzeniu kręgowym."
+            },
+            {
+                subject: "fizjo",
+                cat: "Zespoły Bólowe",
+                q: "Który z poniższych przykładów stanowi klasyczny przypadek bólu rzutowanego?",
+                opts: ["Ból lewej ręki podczas zawału serca.", "Ból ucha przy zapaleniu spojówek.", "Ból stóp po biegu maratońskim.", "Mrowienie palców w zespole cieśni."],
+                corr: 0,
+                exp: "Klasycznym przykładem jest ból lewej ręki podczas zawału serca."
+            },
+            {
+                subject: "fizjo",
+                cat: "Zespoły Bólowe",
+                q: "Jaka jest charakterystyczna cecha bólu rzutowanego w kontekście badania fizykalnego?",
+                opts: ["Brak reakcji na rehabilitację i brak korelacji z ruchem danej części ciała.", "Gwałtowny spadek bólu po ucisku miejscowym.", "Natychmiastowe ustąpienie po podaniu paracetamolu.", "Silny obrzęk lewej dłoni."],
+                corr: 0,
+                exp: "Ból rzutowany nie koreluje z poruszaniem daną częścią ciała i nie reaguje na miejscowe leki przeciwzapalne i rehabilitację."
+            },
+            {
+                subject: "fizjo",
+                cat: "Zespoły Bólowe",
+                q: "Czym jest neuralgia popółpaścowa?",
+                opts: ["Przewlekłym zespołem bólowym będącym powikłaniem po przechorowaniu półpaśca.", "Zakażeniem bakterią Helicobacter pylori.", "Urazem mechanicznym rdzenia kręgowego.", "Ostrą odmianą hipoglikemii."],
+                corr: 0,
+                exp: "Neuralgia popółpaścowa to przewlekły, jednostronny zespół bólowy stanowiący najczęstsze powikłanie po półpaścu."
+            },
+            {
+                subject: "fizjo",
+                cat: "Zespoły Bólowe",
+                q: "Jak rośnie zapadalność na neuralgię popółpaścową w zależności od wieku pacjenta?",
+                opts: ["Z 3-4% u młodszych do aż 34% u osób powyżej 80. roku życia.", "Z 50% u niemowląt do 1% u seniorów.", "Jest stała i wynosi 10% w każdym wieku.", "Występuje wyłącznie u dzieci przed okresem pokwitania."],
+                corr: 0,
+                exp: "Zapadalność rośnie z wiekiem: występuje u ok. 3-4% młodszych chorych, ale aż u 34% pacjentów powyżej 80. r.ż."
+            },
+            {
+                subject: "fizjo",
+                cat: "Zespoły Bólowe",
+                q: "Co oznacza pojęcie alodynia występujące m.in. w neuralgii popółpaścowej?",
+                opts: ["Wywoływanie bólu przez bodziec, który normalnie nie jest bolesny (np. dotyk odzieży).", "Całkowity brak odczuwania jakiegokolwiek bólu.", "Utratę zdolności poruszania kończynami.", "Spadek poziomu tlenu we krwi."],
+                corr: 0,
+                exp: "Alodynia to nasilenie bólu wywołane przez zwykły, niebolesny dotyk (np. dotknięcie skóry przez odzież)."
+            },
+            {
+                subject: "fizjo",
+                cat: "Zespoły Bólowe",
+                q: "Ilu pacjentów z cukrzycą dotyka neuropatia cukrzycowa, według materiałów źródłowych?",
+                opts: ["50-60% diabetyków.", "100% diabetyków.", "Mniej niż 5% diabetyków.", "Dokładnie 25% diabetyków."],
+                corr: 0,
+                exp: "Neuropatia cukrzycowa to późne powikłanie dotykające 50-60% diabetyków."
+            },
+            {
+                subject: "fizjo",
+                cat: "Zespoły Bólowe",
+                q: "Jakie czynniki patofizjologiczne leżą u podstaw neuropatii cukrzycowej?",
+                opts: ["Mikroangiopatia oraz akumulacja sorbitolu i produktów glikacji.", "Brak surfaktantu i niedobór tlenu.", "Zakażenie priona i wirusami.", "Niska masa urodzeniowa."],
+                corr: 0,
+                exp: "Zmiany wynikają z mikroangiopatii (uszkodzenia małych naczyń) oraz zmian metabolicznych (akumulacja sorbitolu i produktów glikacji)."
+            },
+            {
+                subject: "fizjo",
+                cat: "Zespoły Bólowe",
+                q: "Co charakteryzuje typowy układ objawów w neuropatii cukrzycowej?",
+                opts: ["Symetryczne pieczenie i mrowienie w układzie skarpetek i rękawiczek.", "Ból jednostronny promieniujący do prawego barku.", "Nawracające napady migreny z aurą.", "Ostre bóle brzucha występujące po posiłkach."],
+                corr: 0,
+                exp: "Typowe są symetryczne pieczenie i mrowienie rozwijające się w stopach i dłoniach (tzw. układ skarpetek i rękawiczek)."
+            },
+            {
+                subject: "fizjo",
+                cat: "Patofizjologia Bólu",
+                q: "Jak definiuje się ból neuropatyczny ogólnie?",
+                opts: ["Ból wynikający z bezpośredniego uszkodzenia lub choroby układu nerwowego.", "Ból powstający po złamaniu kości bez uszkodzenia nerwów.", "Każdy ból brzucha trwający krócej niż 3 dni.", "Ból towarzyszący fizjologicznemu skurczowi mięśnia."],
+                corr: 0,
+                exp: "Ból neuropatyczny to ból z bezpośredniego uszkodzenia lub choroby obwodowego bądź ośrodkowego układu nerwowego."
+            },
+            {
+                subject: "fizjo",
+                cat: "Patofizjologia Bólu",
+                q: "Jaki procent pacjentów cierpiących na jakikolwiek przewlekły ból stanowią pacjenci z bólem neuropatycznym?",
+                opts: ["Około 17%.", "Dokładnie 80%.", "Mniej niż 1%.", "Około 50%."],
+                corr: 0,
+                exp: "Ból neuropatyczny stanowi około 17% pacjentów cierpiących na jakikolwiek przewlekły ból."
+            },
+            {
+                subject: "fizjo",
+                cat: "Patofizjologia Bólu",
+                q: "Co oznacza paradoksalna kombinacja objawowa występująca w bólu neuropatycznym?",
+                opts: ["Współwystępowanie hipoestezji (braku czucia) z hiperalgezją lub alodynią.", "Podwyższona temperatura ciała przy zimnych stopach.", "Wysoki poziom glukozy przy braku insuliny.", "Zwiększenie siły mięśniowej mimo paraliżu."],
+                corr: 0,
+                exp: "Typowa jest paradoksalna kombinacja braku czucia (hipoestezja) z ogromną nadwrażliwością na bodźce (hiperalgezja, alodynia)."
+            },
+            {
+                subject: "fizjo",
+                cat: "Patofizjologia Bólu",
+                q: "Jak według definicji IASP z 1979 roku traktuje się ból w ujęciu współczesnym?",
+                opts: ["Jako wielowymiarowe doznanie sensoryczne i emocjonalne.", "Wyłącznie jako prosty sygnał elektryczny z uszkodzonej tkanki.", "Jako objaw wyimaginowany bez podstaw fizjologicznych.", "Jako reakcję wyłącznie psychologiczną."],
+                corr: 0,
+                exp: "Ból (IASP 1979) to doznanie sensoryczne i emocjonalne, które występuje nawet bez widocznych uszkodzeń tkanek."
+            },
+            {
+                subject: "fizjo",
+                cat: "Patofizjologia Bólu",
+                q: "Ile wymiarów bólu wyróżnia się we współczesnym podejściu opisanym w notatkach?",
+                opts: ["7 wymiarów (m.in. czuciowy, afektywny, wegetatywny, społeczny).", "2 wymiary (lekki i silny).", "12 wymiarów genetycznych.", "4 wymiary anatomiczne."],
+                corr: 0,
+                exp: "Ból posiada aż 7 wymiarów (m.in. czuciowy, afektywny powodujący cierpienie, wegetatywny, społeczny)."
+            },
+            {
+                subject: "fizjo",
+                cat: "Zespoły Bólowe",
+                q: "Czym charakteryzują się funkcjonalne zespoły bólowe (np. Fibromialgia)?",
+                opts: ["Uogólnionym bólem bez zmian organicznych, z zaburzeniami w CSN.", "Ostrymi zmianami zapalnymi stawów obwodowych.", "Zniszczeniem krążków międzykręgowych.", "Obecnością endospor w mięśniach."],
+                corr: 0,
+                exp: "W zaburzeniach tych diagnostyka nie wykazuje zmian organicznych, a głównym zaburzeniem są patologie układu neurobiologicznego (CSN)."
+            },
+            {
+                subject: "fizjo",
+                cat: "Zespoły Bólowe",
+                q: "Kto stanowi zdecydowaną większość pacjentów cierpiących na fibromialgię?",
+                opts: ["Kobiety w średnim wieku.", "Młodzi mężczyźni uprawiający sport.", "Dzieci do 6. roku życia.", "Mężczyźni w wieku geriatrycznym (80+)."],
+                corr: 0,
+                exp: "Zdecydowana większość pacjentów cierpiących na fibromialgię to kobiety w średnim wieku."
+            },
+            {
+                subject: "fizjo",
+                cat: "Zespoły Bólowe",
+                q: "Jakie zmiany na poziomie neuroprzekaźników obserwuje się w fibromialgii?",
+                opts: ["Spadek poziomu serotoniny i dopaminy oraz wzrost neurohormonów stresu.", "Wzrost poziomu insuliny i erytropoetyny.", "Spadek poziomu glukagonu i TSH.", "Brak jakichkolwiek zmian biochemicznych."],
+                corr: 0,
+                exp: "Występuje spadek serotoniny i dopaminy oraz wzrost neurohormonów związanych ze stresem."
+            },
+            {
+                subject: "fizjo",
+                cat: "Ból Nowotworowy",
+                q: "Dlaczego ból u chorych na nowotwór określa się mianem 'bólu totalnego'?",
+                opts: ["Łączy cierpienie fizyczne, czynniki socjalne, stan psychiczny i zagrożenie życia.", "Dotyczy jednocześnie wszystkich kości w ciele.", "Jest odporny na absolutnie wszystkie znane leki.", "Trwa bez przerwy przez ponad 10 lat."],
+                corr: 0,
+                exp: "Opisany jako ból totalny, ponieważ oprócz cierpienia fizycznego łączą się z nim czynniki socjalne, widmo choroby zagrażającej życiu i stan psychiczny."
+            },
+            {
+                subject: "fizjo",
+                cat: "Ból Nowotworowy",
+                q: "Czym są bóle przebijające u pacjentów onkologicznych?",
+                opts: ["Nagłymi, gwałtownymi napadami silnego bólu mimo stosowania leków bazowych.", "Bólami wywołanymi wyłącznie głodem.", "Stałym, łagodnym mrowieniem stóp.", "Zjawiskiem występującym tylko podczas snu."],
+                corr: 0,
+                exp: "Bóle przebijające to nagłe, gwałtownie narastające napady bardzo silnego bólu (trwające ok. 30 minut) przebijające się przez podstawowe leki."
+            },
+            {
+                subject: "fizjo",
+                cat: "Klasyfikacja Bólu",
+                q: "Somatyczny pochodzi ze skóry, mięśni i kości; trzewny z narządów wewnętrznych. Czym różnią się te dwa typy bólu?",
+                opts: ["Somatyczny pochodzi ze skóry, mięśni i kości; trzewny z narządów wewnętrznych.", "Somatyczny wywołują bakterie, a trzewny wirusy.", "Somatyczny występuje u kobiet, a trzewny u mężczyzn.", "Somatyczny trwa 5 minut, a trzewny 5 lat."],
+                corr: 0,
+                exp: "Ból dzieli się na somatyczny (skóra, mięśnie, kości) oraz trzewny (narządy wewnętrzne)."
+            },
+            {
+                subject: "fizjo",
+                cat: "Klasyfikacja Bólu",
+                q: "Czym jest zapalenie neurogenne w kontekście błędnego koła bólu mieszanego?",
+                opts: ["Zjawiskiem, w którym uszkodzony nerw sam wywołuje dalszy stan zapalny tkanki.", "Apoptozą neuronów w rdzeniu kręgowym.", "Zakażeniem układu nerwowego przez priony.", "Procesem gojenia rany oparzeniowej."],
+                corr: 0,
+                exp: "W błędnym kole stan zapalny uszkadza nerwy, a uszkodzony nerw wywołuje stan zapalny (tzw. zapalenie neurogenne)."
+            },
+            {
+                subject: "fizjo",
+                cat: "Studium Przypadku JK",
+                q: "W studium przypadku pacjenta JK (70-letniego filologa klasycznego), jakie schorzenia składały się na jego złożony zespół bólowy?",
+                opts: ["Migrena, mielopatia oraz zespół ponukleotomii.", "Neuropatia cukrzycowa i rumień.", "Zapalenie wyrostka i astma.", "Fibromialgia i spadek TSH."],
+                corr: 0,
+                exp: "Opisany przypadek obejmował migrenę, mielopatię (uszkodzenie rdzenia) oraz zespół ponukleotomii po operacji kręgosłupa."
+            },
+            {
+                subject: "fizjo",
+                cat: "Studium Przypadku JK",
+                q: "Jakie historyczne teorie psychodynamiczne przytoczono w studium JK w kontekście migreny?",
+                opts: ["Teorię nieświadomego konfliktu (Engel) oraz perfekcjonistycznej osobowości (Wolf).", "Teorię podwójnego ślepego próbowania.", "Teorię braku kwasu tejchojowego.", "Teorię ewolucyjnej akceleracji."],
+                corr: 0,
+                exp: "Historycznie próbowano tłumaczyć migrenę nieświadomym konfliktem/traumą (Engel 1959) lub perfekcjonistyczną osobowością (Wolf 1937)."
+            },
+            {
+                subject: "fizjo",
+                cat: "Studium Przypadku JK",
+                q: "Co okazało się najbardziej kluczowe w opanowaniu cierpienia i zredukowaniu bólu u pacjenta JK?",
+                opts: ["Wsparcie żony, praca intelektualna, techniki relaksacji i zmiana podejścia poznawczego.", "Wykonywanie skoków na skakance.", "Przejście na dietę bezbiałkową.", "Całkowita rezygnacja z pracy zawodowej."],
+                corr: 0,
+                exp: "Ogromne znaczenie miały czynniki społeczne i poznawcze: wsparcie żony, praktyki religijne oraz angażująca praca intelektualna z literaturą."
+            },
+
+            // ==========================================
+            // PRZEDMIOT 1: BIOLOGIA MEDYCZNA (75 PYTAŃ)
+            // ==========================================
+            {
+                subject: "bm",
+                cat: "Zakażenia i Pasożyty",
+                q: "Lamblia jelitowa jest pasożytem, którym człowiek zarazi się przez:",
+                opts: ["Zarażoną pasożytami krew", "Zanieczyszczoną kałem żywność i wodę", "Zarażone mięso wieprzowe", "Zarażone mięso wołowe"],
+                corr: 1,
+                exp: "Lamblia jelitowa (Giardia lamblia) jest pasożytem jelitowym szerzącym się drogą pokarmową przez zanieczyszczoną kałem żywność i wodę z cystami."
+            },
+            {
+                subject: "bm",
+                cat: "Inne Typy Śmierci Komórki",
+                q: "Podaj, która cecha NIE charakteryzuje nekrozy:",
+                opts: ["uszkodzenie komórki przez czynniki fizyczne lub mechaniczne", "brak stanu zapalnego", "obecny stan zapalny", "rozpad komórek przy udziale enzymów lizosomalnych"],
+                corr: 1,
+                exp: "Nekroza (martwica) jest pro-zapalną formą umierania komórki. Powoduje powstanie stanu zapalnego. Cecha 'brak stanu zapalnego' dotyczy apoptozy."
+            },
+            {
+                subject: "bm",
+                cat: "Mikrobiologia",
+                q: "Bakteriofag to:",
+                opts: ["Wirus bakteryjny składający się z kwasu nukleinowego i białkowej otoczki", "Mobilna cząsteczka DNA", "Osłona śluzowa bakterii", "Aparat ruchu wirusa"],
+                corr: 0,
+                exp: "Bakteriofagi - wirusy bakteryjne składające się z kwasu nukleinowego i białkowej otoczki, infekujące komórki bakteryjne."
+            },
+            {
+                subject: "bm",
+                cat: "Ściana Komórkowa i Fizjologia",
+                q: "Bakterie GRAM DODATNIE po barwieniu metodą Grama będą miały kolor:",
+                opts: ["Czerwono-różowy", "Niebiesko-granatowy (fioletowy)", "Żółty", "Zielony"],
+                corr: 1,
+                exp: "Bakterie Gram-dodatnie barwią się na kolor fioletowy / niebiesko-granatowy ze względu na grubą warstwę mureiny."
+            },
+            {
+                subject: "bm",
+                cat: "Mikrobiologia",
+                q: "Struktura tworzona na podłożu sztucznym lub tkance, stanowiąca ochronną warstwę, pod którą bakterie się namnażają, to:",
+                opts: ["Fimbria", "Biofilm", "Kapsyd", "Przetrwalnik"],
+                corr: 1,
+                exp: "Biofilm to wielokomórkowa struktura osłonięta substancjami macierzy, umożliwiająca bezpieczne namnażanie się bakterii na powierzchniach."
+            },
+            {
+                subject: "bm",
+                cat: "Zakażenia i Pasożyty",
+                q: "Równoczesne zakażenie organizmu kilkoma czynnikami patogennymi to:",
+                opts: ["Reinfekcja", "Nadkażenie", "Superinfekcja", "Koinfekcja"],
+                corr: 3,
+                exp: "Koinfekcja (współzakażenie) - równoczesne zakażenie kilkoma czynnikami patogennymi jednocześnie."
+            },
+            {
+                subject: "bm",
+                cat: "Mikrobiologia",
+                q: "Skrót jtk (ang. CFU) oznacza:",
+                opts: ["Liczbę jednostek tworzących kolonię np. w jednym gramie kału lub preparatu", "Liczbę jednostek bakterii probiotycznych hamujących namnażanie bakterii patogennych", "Liczbę jednostek tworzących kolonię np. wyłącznie w jednym kubeczku kefiru", "Liczbę jednostek tworzących kolonie tylko na skórze"],
+                corr: 0,
+                exp: "jtk (jednostka tworząca kolonię) to miara liczby żywych komórek bakteryjnych/grzybiczych w próbce zdolnych do namnożenia."
+            },
+            {
+                subject: "bm",
+                cat: "Wirusologia",
+                q: "W przypadku wirusów przenikających przez błony śluzowe nie jest konieczny uszczerbek (uraz) tkanek. Czy to stwierdzenie jest prawdziwe?",
+                opts: ["Prawda", "Fałsz"],
+                corr: 0,
+                exp: "Prawda: Wirusy mogą wnikać przez nieuszkodzone błony śluzowe narządów oddechowych, pokarmowych lub płciowych bez konieczności urazu mechanicznego."
+            },
+            {
+                subject: "bm",
+                cat: "Zakażenia i Pasożyty",
+                q: "Nużeniec ludzki (Demodex folliculorum) - roztocz pasożytniczy bytuje u człowieka:",
+                opts: ["W żołądku", "W jelitach", "W mieszkach włosowych i gruczołach łojowych", "W erytrocytach"],
+                corr: 2,
+                exp: "Nużeniec ludzki to mikroskopijny pajęczak (roztocz) pasożytujący w mieszkach włosowych i gruczołach łojowych skóry człowieka."
+            },
+            {
+                subject: "bm",
+                cat: "Rozmnażanie i Genetyka Bakterii",
+                q: "Wymiana DNA między bakteriami ma znaczenie ewolucyjne oraz olbrzymie znaczenie medyczne, prowadzi bowiem do nabywania przez szczepy oporności na antybiotyki. Czy to stwierdzenie jest prawdziwe?",
+                opts: ["Prawda", "Fałsz"],
+                corr: 0,
+                exp: "Prawda: Horyzontalny transfer genów (koniugacja, transformacja, transdukcja) umożliwia szybkie rozprzestrzenianie oporności na antybiotyki."
+            },
+            {
+                subject: "bm",
+                cat: "Organella Komórkowe",
+                q: "Która organella komórkowa jest opisywana jako 'mózg' komórki otoczony podwójną błoną z porami?",
+                opts: ["Mitochondrium", "Jądro komórkowe", "Aparat Golgiego", "Lizosom"],
+                corr: 1,
+                exp: "Jądro komórkowe: 'Mózg' komórki otoczony podwójną błoną (otoczką jądrową) z porami. Przechowuje DNA i steruje procesami życiowymi."
+            },
+            {
+                subject: "bm",
+                cat: "Organella Komórkowe",
+                q: "Które ze struktur komórkowych NIE SĄ otoczone żadną błoną biologiczną?",
+                opts: ["Lizosomy", "Wakuole", "Rybosomy", "Chloroplasty"],
+                corr: 2,
+                exp: "Rybosomy: Drobne struktury nie otoczone żadną błoną, biorące bezpośredni udział w syntezie białek."
+            },
+            {
+                subject: "bm",
+                cat: "Organella Komórkowe",
+                q: "Jaka jest główna funkcja siateczki śródplazmatycznej gładkiej (bez rybosomów)?",
+                opts: ["Produkcja i transport białek", "Produkcja lipidów (tłuszczów) i neutralizacja toksyn", "Przeprowadzanie fotosyntezy", "Modyfikacja i pakowanie białek w pęcherzyki"],
+                corr: 1,
+                exp: "Siateczka gładka (bez rybosomów): Produkuje lipidy (tłuszcze) i neutralizuje toksyny (szczególnie w wątrobie)."
+            },
+            {
+                subject: "bm",
+                cat: "Organella Komórkowe",
+                q: "W których komórkach organizmu człowieka siateczka śródplazmatyczna gładka jest szczególnie silnie rozbudowana?",
+                opts: ["W kardiomiocytach", "W komórkach wątroby", "W keratynocytach", "W neuronach"],
+                corr: 1,
+                exp: "Siateczka gładka neutralizuje toksyny i produkuje lipidy – jest szczególnie rozbudowana w komórkach wątroby."
+            },
+            {
+                subject: "bm",
+                cat: "Organella Komórkowe",
+                q: "Organellum określane w skrypicie jako 'sortownia i poczta' komórki to:",
+                opts: ["Aparat Golgiego", "Siateczka szorstka", "Lizosom", "Mitochondrium"],
+                corr: 0,
+                exp: "Aparat Golgiego: 'Sortownia i poczta' – modyfikuje białka i lipidy z siateczki, pakuje je w pęcherzyki i rozsyła do miejsca przeznaczenia."
+            },
+            {
+                subject: "bm",
+                cat: "Organella Komórkowe",
+                q: "Co tworzy silnie pofałdowana błona wewnętrzna mitochondrium?",
+                opts: ["Tylakoidy", "Grzebienie mitochondrialne", "Cysterny", "Mezosomy"],
+                corr: 1,
+                exp: "Mitochondrium posiada dwie błony – zewnętrzną gładką i wewnętrzną pofałdowaną (grzebienie mitochondrialne)."
+            },
+            {
+                subject: "bm",
+                cat: "Organella Komórkowe",
+                q: "Jaka jest główna funkcja lizosomów w komórce zwierzęcej?",
+                opts: ["Magazynowanie turgoru", "Stanowią układ trawienny komórki i rozkładają zużyte organelle oraz bakterie", "Produkcja cząsteczek ATP", "Synteza kwasów tejchojowych"],
+                corr: 1,
+                exp: "Lizosomy: Małe pęcherzyki wypełnione enzymami trawiennymi. Rozkładają zużyte organelle, bakterie i szkodliwe substancje."
+            },
+            {
+                subject: "bm",
+                cat: "Organella Komórkowe",
+                q: "Jakie struktury zawierają wewnątrz chloroplasty i jak nazywa się zawarty w nich zielony barwnik?",
+                opts: ["Cysterny i karoten", "Grzebienie i bilirubina", "Tylakoidy i chlorofil", "Wakuole i antyocyjan"],
+                corr: 2,
+                exp: "Chloroplasty zawierają wewnątrz stosy 'monet' (tylakoidy) z zielonym barwnikiem – chlorofilem i przeprowadzają fotosyntezę."
+            },
+            {
+                subject: "bm",
+                cat: "Organella Komórkowe",
+                q: "Jaki procent objętości komórki roślinnej może zajmować wodniczka centralna (wakuola) i jaką pełni rolę techniczną?",
+                opts: ["Do 50%; wywołuje apoptozę", "Do 90%; utrzymuje odpowiednie ciśnienie (turgor)", "Do 20%; syntetyzuje białka", "Do 75%; tworzy ciałka apoptotyczne"],
+                corr: 1,
+                exp: "Wakuola centralna w komórce roślinnej zajmuje do 90% jej objętości. Utrzymuje turgor, dzięki czemu liście i łodygi nie więdną."
+            },
+            {
+                subject: "bm",
+                cat: "Proliferacja i Potencjał",
+                q: "Czym charakteryzują się kardiomiocyty pod względem zdolności do proliferacji?",
+                opts: ["Są komórkami macierzystymi", "Należą do komórek niedzielących się", "Przebywają stale w fazie G0 i dzielą się po skaleczeniu", "Są komórkami totipotencjalnymi"],
+                corr: 1,
+                exp: "Zdolność proliferacji: 1. Komórki niedzielące się - kardiomiocyty."
+            },
+            {
+                subject: "bm",
+                cat: "Proliferacja i Potencjał",
+                q: "Które z wymienionych komórek przebywają w fazie G0 i uczestniczą w naprawie uszkodzeń po skaleczeniu?",
+                opts: ["Zygota i kardiomiocyty", "Fibroblasty skóry, komórki mięśniowe gładkie i komórki śródbłonka", "Keratynocyty i komórki krwi", "Monocyty i priony"],
+                corr: 1,
+                exp: "Komórki w fazie G0: Fibroblasty skóry, Komórki mięśniowe gładkie, komórki śródbłonka, komórki nabłonkowe narządów (wątroba, trzustka, nerki, płuca)."
+            },
+            {
+                subject: "bm",
+                cat: "Proliferacja i Potencjał",
+                q: "Przykładem komórek stale dzielących się (komórek macierzystych) opisanych w dokumencie są:",
+                opts: ["Kardiomiocyty i komórki płuc", "Komórki krwi, keratynocyty, komórki nabłonkowe wyściełające przewód pokarmowy", "Komórki trzustki i wątroby", "Aneuploidalne fibroblasty"],
+                corr: 1,
+                exp: "Komórki macierzyste - komórki krwi, keratynocyty, komórki nabłonkowe wyściełającej przewód pokarmowy."
+            },
+            {
+                subject: "bm",
+                cat: "Proliferacja i Potencjał",
+                q: "Jaki typ potencjału rozwojowego wykazuje wyłącznie zygota?",
+                opts: ["Multipotencjalny", "Pluripotencjalny", "Totipotencjalny", "Unipotencjalny"],
+                corr: 2,
+                exp: "Totipotencjalne (toti/total/wszystko) - zygota."
+            },
+            {
+                subject: "bm",
+                cat: "Proliferacja i Potencjał",
+                q: "Komórki pluripotencjalne to komórki zdolne do różnicowania się w:",
+                opts: ["Każdy typ komórki z wyjątkiem zygoty", "Wyłącznie jeden rodzaj komórek tkankowych", "Cały organizm wraz z błonami płodowymi i zygotą", "Tylko w komórki krwi i keratynocyty"],
+                corr: 0,
+                exp: "Pluripotencjalne - do każdej komórki (bez zygoty)."
+            },
+            {
+                subject: "bm",
+                cat: "Proliferacja i Potencjał",
+                q: "Jak zdefiniowane są komórki multipotencjalne?",
+                opts: ["Mogą przekształcić się w zygotę", "Mogą dać początek każdemu narządowi", "Są ograniczone do miejsca i jednego rodzaju komórek", "Są to komórki całkowicie niedzielące się"],
+                corr: 2,
+                exp: "Multipotencjalne - ograniczone do miejsca i jednego rodzaju."
+            },
+            {
+                subject: "bm",
+                cat: "Apoptoza",
+                q: "Czy apoptoza jest procesem biernym czy aktywnym i czy narusza integralność komórki?",
+                opts: ["Jest procesem biernym z wyciekiem treści komórkowej", "Jest procesem aktywnym, przebiegającym bez naruszenia integralności błony", "Jest procesem wywołującym powszechny stan zapalny", "Jest procesem biernym dotykającym całe narządy"],
+                corr: 1,
+                exp: "Apoptoza to proces aktywny, fizjologiczny, zachodzący bez naruszenia integralności komórki."
+            },
+            {
+                subject: "bm",
+                cat: "Apoptoza",
+                q: "Co z poniższych MOŻE zainicjować proces apoptozy według skryptu?",
+                opts: ["Brak hormonów wzrostu, starość komórki, zakażenie, naruszenie homeostazy", "Obecność kwasu tejchojowego w cytoplazmie", "Fagocytoza bakterii Gram-dodatnich", "Pęcznienie pomp sodowo-potasowych"],
+                corr: 0,
+                exp: "Apoptozę może zainicjować: zakażenie, naruszenie homeostazy, starość komórki, brak hormonu wzrostu."
+            },
+            {
+                subject: "bm",
+                cat: "Apoptoza",
+                q: "Jaki jest PIERWSZY etap zmian w komórce rozpoczynający apoptozę?",
+                opts: ["Rozpad jądra i cięcie DNA", "Utrata wody (odwadnianie się) i zmiana kształtu", "Pęcznienie organelli", "Utworzenie ściany mureinowej"],
+                corr: 1,
+                exp: "APOPTOZA rozpoczyna się od tego że: komórka zaczyna tracić wodę (odwadnia się) i zmieni kształt."
+            },
+            {
+                subject: "bm",
+                cat: "Apoptoza",
+                q: "Czym jest fagocytoza przez makrofagi?",
+                opts: ["Procesem odporności nabytej polegającym na syntezie przeciwciał", "Jednym z najważniejszych procesów odporności nieswoistej (wrodzonej) polegającym na pochłanianiu, unicestwianiu i trawieniu cząstek stałych", "Formą pączkowania komórek nowotworowych", "Procesem tworzenia fimbrii płciowych"],
+                corr: 1,
+                exp: "Fagocytoza przez makrofagi to proces odporności nieswoistej (wrodzonej) polegający na pochłanianiu, unicestwianiu i trawieniu cząstek stałych."
+            },
+            {
+                subject: "bm",
+                cat: "Apoptoza",
+                q: "Skąd dokładnie pochodzą makrofagi i przez jaką formę krążącą we krwi powstają?",
+                opts: ["Z limfocytów T w grasicy", "Z komórek macierzystych szpiku kostnego, przekształcając się w krążące monocyty", "Z kardiomiocytów w sercu", "Z mezosomów bakteryjnych"],
+                corr: 1,
+                exp: "Makrofagi powstają z komórek macierzystych szpiku kostnego, które przekształcają się w krążące we krwi monocyty."
+            },
+            {
+                subject: "bm",
+                cat: "Apoptoza",
+                q: "Przykłady znaczenia apoptozy podane w skrypcie to m.in.:",
+                opts: ["Rozwój embrionalny (powstawanie palców rąk i nóg) oraz eliminacja komórek nowotworowych i niewłaściwych limfocytów", "Wytwarzanie zarodników Clostridium", "Podtrzymanie głodu w nowotworze", "Replikacja bakteriofagów w szpiku"],
+                corr: 0,
+                exp: "Apoptoza znaczenie: Rozwój embrionalny (powstawanie palców rąk i nóg), eliminacja komórek nowotworowych, selekcja limfocytów."
+            },
+            {
+                subject: "bm",
+                cat: "Inne Typy Śmierci Komórki",
+                q: "Jakie czynniki wywołujące nekrozę wymieniono w dokumencie?",
+                opts: ["Fizyczne (temperatura, promieniowanie), Mechaniczne (urazy, odleżyny), Chemiczne (jady, trucizny)", "Tylko brak hormonów wzrostu", "Tylko zakażenia rotawirusowe", "Wyłącznie kwas tejchojowy i LPS"],
+                corr: 0,
+                exp: "Nekroza - czynniki wywołujące: Fizyczne (temperatura, promieniowanie), Mechaniczne (urazy, odleżyny), Chemiczne (jady, trucizny)."
+            },
+            {
+                subject: "bm",
+                cat: "Inne Typy Śmierci Komórki",
+                q: "Czym jest AUTOFAGIA i jakie są jej główne przyczyny?",
+                opts: ["Typ programowanej śmierci komórki wywołany niedoborem czynników odżywczych lub uszkodzeniem elementów komórki", "Nekrotyczny obrzęk wywołany przez jady", "Szybki podział mitotyczny", "Bierny proces wchłaniania glukozy"],
+                corr: 0,
+                exp: "AUTOFAGIA - Typ programowanej śmierci komórki. Przyczyny: niedobór czynników odżywczych, uszkodzenia elementów komórki."
+            },
+            {
+                subject: "bm",
+                cat: "Inne Typy Śmierci Komórki",
+                q: "Jaka jest podwójna rola autofagii w procesie nowotworzenia opisana w notatkach?",
+                opts: ["Wyłącznie niszczy guzy", "Odgrywa podwójną rolę – zarówno w promowaniu przeżywalności komórek, jak i ich śmierci", "Zawsze wywołuje bakteryjną pyroptozę", "Nie odgrywa żadnej roli"],
+                corr: 1,
+                exp: "W procesie nowotworzenia autofagia odgrywa podwójną rolę – promuje przeżywalność komórek oraz ich śmierć."
+            },
+            {
+                subject: "bm",
+                cat: "Inne Typy Śmierci Komórki",
+                q: "Co to jest KATASTROFA MITOTYCZNA?",
+                opts: ["Zakażenie bakteriami Salmonella", "Śmierć komórki wynikająca z nieprawidłowości zachodzących podczas procesu mitozy", "Synteza mureiny w obecności tlenu", "Formowanie otoczki jądrowej"],
+                corr: 1,
+                exp: "KATASTROFA MITOTYCZNA to śmierć komórki wynikająca z nieprawidłowości zachodzących podczas procesu mitozy (punkty kontrolne cyklu)."
+            },
+            {
+                subject: "bm",
+                cat: "Inne Typy Śmierci Komórki",
+                q: "Czym różnią się komórki ANEUPLOIDALNE od MULTIPLOIDALNYCH (poliploidalnych)?",
+                opts: ["Aneuploidalne mają nieprawidłową liczbę pojedynczych chromosomów; Multiploidalne mają pełne, zwielokrotnione zestawy (np. 3n, 4n)", "Aneuploidalne mają 100 chromosomów; Multiploidalne nie mają jądra", "Nie różnią się niczym", "Aneuploidalne to komórki wątroby, a multiploidalne to zygota"],
+                corr: 0,
+                exp: "Aneuploidalne: nieprawidłowa liczba pojedynczych chromosomów (np. trisomia 21). Multiploidalne: pełne, zwielokrotnione zestawy chromosomów."
+            },
+            {
+                subject: "bm",
+                cat: "Inne Typy Śmierci Komórki",
+                q: "Czym charakteryzuje się ONKOZA (Oknoza) i co może ją wywoływać?",
+                opts: ["Odwodnieniem i skurczem", "Opuchnięciem, pęcznieniem organelli, spadkiem poziomu energetycznego; wywoływana np. przez rotawirusy", "Tworzeniem pili płciowych", "Podziałem pączkującym"],
+                corr: 1,
+                exp: "ONKOZA: Opuchnięcie, pęcznienie organelli, spadek energii. Rotawirusy i niektóre bakterie mogą do niej przyczyniać."
+            },
+            {
+                subject: "bm",
+                cat: "Inne Typy Śmierci Komórki",
+                q: "Czym jest PYROPTOZA i jakie komórki jej ulegają?",
+                opts: ["Śmiercią komórki (pyro = ogień, gorączka) wywołaną zakażeniem Salmonella i Shigella; ulegają jej makrofagi", "Zwyczajnym pączkowaniem drożdży", "Apoptozą w grasicy", "Procesem odwadniania kardiomiocytów"],
+                corr: 0,
+                exp: "PYROPTOZA (pyro - ogień, gorączka): Śmierć komórki wywołana zakażeniem Salmonella i Shigella. Umierają makrofagi."
+            },
+            {
+                subject: "bm",
+                cat: "Mikrobiologia",
+                q: "Jakie organizmy żywe zaliczamy do Prokariota, a jakie do Eukariota według skryptu?",
+                opts: ["Prokariota - grzyby; Eukariota - bakterie", "Prokariota - bakterie; Eukariota - grzyby, glony i pasożyty", "Prokariota - wirusy; Eukariota - priony", "Prokariota - bakterie; Eukariota - tylko wirusy"],
+                corr: 1,
+                exp: "Organizmy żywe: Prokariota - bakterie. Eukariota - grzyby, glony i pasożyty."
+            },
+            {
+                subject: "bm",
+                cat: "Mikrobiologia",
+                q: "Co zaliczamy do cząstek nieożywionych w mikrobiologii?",
+                opts: ["Grzyby i pasożyty", "Wirusy oraz Priony (proteinowe cząsteczki infekcyjne)", "Bakterie Gram-ujemne", "Endospory i wtręty"],
+                corr: 1,
+                exp: "Cząstki nieożywione: Wirusy oraz Priony (proteinowe cząsteczki infekcyjne)."
+            },
+            {
+                subject: "bm",
+                cat: "Mikrobiologia",
+                q: "Z jakiego białka zbudowane są fimbrie (pili) bakterii i jakie są ich dwa główne rodzaje?",
+                opts: ["Flagelina; rzęskowe i jądrowe", "Pilina; adhezyjne (przylepanie) oraz płciowe", "Mureina; komórkowe i wakuolarne", "Keratyna; przetrwalnikowe i oddechowe"],
+                corr: 1,
+                exp: "Fimbrie (pili) - adhezyjne i płciowe, zbudowane są z białka piliny."
+            },
+            {
+                subject: "bm",
+                cat: "Mikrobiologia",
+                q: "Gdzie u bakterii TLENOWYCH zlokalizowane są mezosomy i za jaki proces odpowiadają?",
+                opts: ["W otoczce; za fotosyntezę", "W cytoplazmie; odpowiadają za proces oddychania", "W jądrze; za replikację", "W pili płciowych; za koniugację"],
+                corr: 1,
+                exp: "Mezosomy (tylko bakterie tlenowe) - odpowiadają za proces oddychania."
+            },
+            {
+                subject: "bm",
+                cat: "Mikrobiologia",
+                q: "Ile genów koduje zazwyczaj chromosom bakteryjny (nukleoid) i jaka jest jego cecha strukturalna?",
+                opts: ["Do 4000 genów; kształt kolisty, brak oddzielenia od cytoplazmy (haploidalny)", "40-50 genów; kształt liniowy w otoczce jądrowej", "100 genów; jest diploidalny", "Nie posiada DNA"],
+                corr: 0,
+                exp: "Chromosom bakteryjny (nukleoid): koduje do 4000 genów, jest haploidalny, kolisty, nieoddzielony od cytoplazmy."
+            },
+            {
+                subject: "bm",
+                cat: "Rozmnażanie i Genetyka Bakterii",
+                q: "Na czym polega KONIUGACJA bakterii?",
+                opts: ["Pobieraniu wolnego DNA z otoczenia", "Bezpośrednim, jednokierunkowym przeniesieniu DNA przez fimbrie płciowe na drodze ścisłego kontaktu", "Przekazywaniu genów przez bakteriofagi", "Podziale mitotycznym jądra"],
+                corr: 1,
+                exp: "Koniugacja - bezpośrednie przeniesienie DNA z jednej komórki do drugiej, proces jednokierunkowy, za pomocą fimbrii płciowych."
+            },
+            {
+                subject: "bm",
+                cat: "Rozmnażanie i Genetyka Bakterii",
+                q: "Czym jest TRANSFORMACJA bakteryjna?",
+                opts: ["Pobieraniem przez bakterię wolnego DNA z umierających bakterii", "Atakiem bakteriofaga na makrofag", "Syntezą kwasów tejchojowych", "Zmianą kształtu pod wpływem temperatury"],
+                corr: 0,
+                exp: "Transformacja - pobieranie przez bakterie wolnego DNA z umierających bakterii."
+            },
+            {
+                subject: "bm",
+                cat: "Rozmnażanie i Genetyka Bakterii",
+                q: "Przekazanie DNA z jednej komórki bakteryjnej do drugiej za pośrednictwem wirusów bakteryjnych to:",
+                opts: ["Koniugacja", "Transdukcja", "Transformacja", "Pączkowanie"],
+                corr: 1,
+                exp: "Transdukcja - przekazanie DNA z jednej komórki do drugiej odbywa się przez wirusy bakteryjne (bakteriofagi)."
+            },
+            {
+                subject: "bm",
+                cat: "Rozmnażanie i Genetyka Bakterii",
+                q: "Czym są transpozony w komórce bakteryjnej?",
+                opts: ["Płaskimi cysternami", "Mobilnymi cząstkami DNA, które mogą przemieszczać się pomiędzy plazmidami a chromosomem", "Elementami szpiku", "Rzęskami ruchu"],
+                corr: 1,
+                exp: "Transpozony - mobilne cząstki DNA, które mogą przemieszczać się pomiędzy plazmidami a chromosomem bakteryjnym."
+            },
+            {
+                subject: "bm",
+                cat: "Rozmnażanie i Genetyka Bakterii",
+                q: "Jakie dwa rodzaje bakterii chorobotwórczych tworzą nieaktywne struktury przetrwalnikowe (spory/endospory)?",
+                opts: ["Helicobacter i Salmonella", "CLOSTRIDIUM (kwas kiełbasiany) oraz BACILLUS (wąglik)", "Shigella i Staphylococcus", "Escherichia i Vibrio"],
+                corr: 1,
+                exp: "CLOSTRIDIUM (Kwas kiełbasiany) i BACILLUS (wąglik) potrafią wytwarzać endospory."
+            },
+            {
+                subject: "bm",
+                cat: "Ściana Komórkowa i Fizjologia",
+                q: "Z czego składa się struktura ściany komórkowej bakterii GRAM-DODATNICH?",
+                opts: ["Z wielu warstw mureiny i kwasów tejchojowych", "Z błony zewnętrznej z LPS", "Z samej przestrzeni periplazmatycznej", "Z tłuszczów i wakuoli"],
+                corr: 0,
+                exp: "Bakterie Gram-dodatnie: gruba, prosta struktura złożona z wielu warstw mureiny (peptydoglikanu) z kwasami tejchojowymi."
+            },
+            {
+                subject: "bm",
+                cat: "Ściana Komórkowa i Fizjologia",
+                q: "Gdzie w strukturze bakterii Gram-ujemnych znajdują się białka związane z odpornością na antybiotyki?",
+                opts: ["W kwasie tejchojowym", "W przestrzeni periplazmatycznej", "W mezozomie", "W tylakoidach"],
+                corr: 1,
+                exp: "Przestrzeń periplazmatyczna u bakterii Gram-ujemnych zawiera białka związane z odpornością na antybiotyki."
+            },
+            {
+                subject: "bm",
+                cat: "Ściana Komórkowa i Fizjologia",
+                q: "Jak zdefiniowane są bakterie MIKROAEROFILNE?",
+                opts: ["Wymagają tlenu, ale najlepiej rosną w niższych stężeniach niż stężenie atmosferyczne", "Robią fermentację bez tlenu", "Tolerują tlen, ale go nie używają", "Są to priony"],
+                corr: 0,
+                exp: "Mikroaerofilne - wymagają tlenu, ale najlepiej rosną w niższych stężeniach niż stężenie tlenu w atmosferze."
+            },
+            {
+                subject: "bm",
+                cat: "Ściana Komórkowa i Fizjologia",
+                q: "Czym charakteryzują się bakterie bezwzględnie beztlenowe?",
+                opts: ["Rośną najlepiej przy stężeniu tlenu 21%", "Giną w obecności tlenu", "Mogą przeprowadzać oddychanie tlenowe i fermentację", "Są wyłącznie glonami"],
+                corr: 1,
+                exp: "Bezwzględne beztlenowce - giną w obecności tlenu."
+            },
+            {
+                subject: "bm",
+                cat: "Zakażenia i Pasożyty",
+                q: "Czym różni się zakażenie EGZOGENNE od ENDOGENNEGO?",
+                opts: ["Egzogenne wywołują wirusy, endogenne grzyby", "W egzogennym patogen pochodzi spoza organizmu; w endogennym z własnej flory w wyniku spadku odporności", "Egzogenne dotyczy płodu, endogenne dorosłego", "Nie ma różnicy"],
+                corr: 1,
+                exp: "Egzogenne - patogen spoza organizmu. Endogenne - z własnej flory fizjologicznej żywiciela w wyniku obniżenia odporności."
+            },
+            {
+                subject: "bm",
+                cat: "Zakażenia i Pasożyty",
+                q: "Jak nazywa się zakażenie nowym patogenem organizmu, który był już wcześniej zakażony innym czynnikiem?",
+                opts: ["Koinfekcja", "Nadkażenie (superinfekcja)", "Reinfekcja", "Zakażenie endogenne"],
+                corr: 1,
+                exp: "Nadkażenie (superinfekcja) - zakażenie nowym patogenem organizmu już zakażonego innym czynnikiem."
+            },
+            {
+                subject: "bm",
+                cat: "Zakażenia i Pasożyty",
+                q: "Ponowne zakażenie tym samym patogenem to:",
+                opts: ["Koinfekcja", "Reinfekcja", "Superinfekcja", "Pączkowanie"],
+                corr: 1,
+                exp: "Reinfekcja - ponowne zakażenie tym samym patogenem."
+            },
+            {
+                subject: "bm",
+                cat: "Zakażenia i Pasożyty",
+                q: "Jaka jest główna różnica pojęciowa między MIKROBIOTĄ a MIKROBIOMEM?",
+                opts: ["Mikrobiota to wszystkie drobnoustroje; Mikrobiom to pojęcie szersze – drobnoustroje + ich środowisko, genom i metabolity", "Mikrobiom to same bakterie, mikrobiota to wirusy", "Mikrobiota to patogeny, mikrobiom to flora zdrowa", "Są to synonimy bez różnic"],
+                corr: 0,
+                exp: "Mikrobiota: Wszystkie drobnoustroje (społeczność). Mikrobiom: Mikrobiota + ich środowisko, genom (metagenom) i metabolity."
+            },
+            {
+                subject: "bm",
+                cat: "Zakażenia i Pasożyty",
+                q: "Które z wymienionych miejsc w organizmie należy do BOGATO skolonizowanych przez florę fizjologiczną?",
+                opts: ["Żołądek i krtań", "Skóra, jama ustna, jelito grube, pochwa", "Tchawica i zatoki boczne nosa", "Ucho środkowe i spojówka"],
+                corr: 1,
+                exp: "Miejsca bogato skolonizowane: Skóra, błony śluzowe górnych dróg oddechowych, jama ustna, jelito grube, pochwa, ucho zewnętrzne."
+            },
+            {
+                subject: "bm",
+                cat: "Zakażenia i Pasożyty",
+                q: "Miejsca SKĄPO skolonizowane przez mikroflorę fizjologiczną w ciele człowieka to m.in.:",
+                opts: ["Jelito grube i skóra", "Krtań, tchawica, żołądek, zatoki nosa, ucho środkowe", "Pochwa i ucho zewnętrzne", "Górny odcinek przewodu pokarmowego"],
+                corr: 1,
+                exp: "Skąpo skolonizowane: krtań, tchawica, oskrzela, zatoki nosa, przełyk, żołądek, początek jelita cienkiego, ucho środkowe, spojówka."
+            },
+            {
+                subject: "bm",
+                cat: "Zakażenia i Pasożyty",
+                q: "Do czego może doprowadzić obecność Helicobacter pylori w żołądku i dwunastnicy?",
+                opts: ["Do pyroptozy płuc", "Do rozwoju choroby wrzodowej i raka żołądka", "Do martwicy kardiomiocytów", "Do transformacji genetycznej fagów"],
+                corr: 1,
+                exp: "Helicobacter pylori może doprowadzić do rozwoju choroby wrzodowej i raka żołądka."
+            },
+            {
+                subject: "bm",
+                cat: "Wirusologia",
+                q: "Co wchodzi w skład budowy wirusa i co tworzy tzw. nukleokapsyd?",
+                opts: ["Mureina i kwasy tejchojowe", "Kwas nukleinowy (DNA/RNA) + Kapsyd (płaszcz białkowy z kapsomerów)", "Plazmid i flagelina", "Ściana komórkowa z LPS"],
+                corr: 1,
+                exp: "Wirusy: Kwas nukleinowy (DNA/RNA) + Kapsyd. Kapsyd wraz z kwasem nukleinowym określa się mianem NUKLEOKAPSYDU."
+            },
+            {
+                subject: "bm",
+                cat: "Wirusologia",
+                q: "Jaka jest prawidłowa chronologiczna kolejność etapów uogólnionego zakażenia wirusowego wymieniona w skrypcie?",
+                opts: ["Wrota zakażenia (namnożenie) -> Najbliższe węzły chłonne -> Pierwotna wiremia -> Wątroba/śledziona/szpik -> Wiremia wtórna", "Wiremia wtórna -> wrota -> węzły", "Najbliższe węzły -> wiremia wtórna -> wrota zakażenia", "Wiremia pierwotna -> wrota zakażenia -> pyroptoza"],
+                corr: 0,
+                exp: "Model szerzenia wirusów: Wrota zakażenia -> Najbliższe węzły chłonne -> Pierwotna wiremia -> Wątroba/śledziona/szpik -> Wiremia wtórna."
+            },
+            {
+                subject: "bm",
+                cat: "Organella Komórkowe",
+                q: "Jaka jest główna funkcja siateczki śródplazmatycznej szorstkiej (RER)?",
+                opts: ["Synteza i transport białek", "Produkcja lipidów", "Trawienie wewnątrzkomórkowe", "Gromadzenie turgoru"],
+                corr: 0,
+                exp: "Siateczka śródplazmatyczna szorstka (z rybosomami) odpowiada za produkcję i transport białek."
+            },
+            {
+                subject: "bm",
+                cat: "Organella Komórkowe",
+                q: "W jakiej formie uwalniana jest energia podczas tlenowego oddychania komórkowego w mitochondriach?",
+                opts: ["W postaci cząsteczek ATP", "W postaci kwasów tejchojowych", "Jako cząsteczki LPS", "W formie pęcherzyków endosporalnych"],
+                corr: 0,
+                exp: "Mitochondria przeprowadzają oddychanie komórkowe tlenowe i uwalniają energię niezbędną do życia w postaci cząsteczek ATP."
+            },
+            {
+                subject: "bm",
+                cat: "Apoptoza",
+                q: "Jakie limfocyty biorące udział w odpowiedzi odpornościowej powstają w szpiku kostnym i przechodzą selekcję w grasicy?",
+                opts: ["Limfocyty T", "Monocyty", "Kardiomiocyty", "Keratynocyty"],
+                corr: 0,
+                exp: "Limfocyty T (i B) powstają w szpiku kostnym, a limfocyty T w grasicy są uczone odpowiedzi na konkretne bodźce; te reagujące zbyt słabo lub zbyt mocno ulegają apoptozie."
+            },
+            {
+                subject: "bm",
+                cat: "Ściana Komórkowa i Fizjologia",
+                q: "Jaką barwę w barwieniu metodą Grama przyjmują bakterie Gram-ujemne?",
+                opts: ["Kolor czerwony (różowy)", "Kolor fioletowy", "Kolor czarny", "Kolor zielony"],
+                corr: 0,
+                exp: "Bakterie Gram-ujemne barwią się na kolor czerwony, natomiast Gram-dodatnie na kolor fioletowy."
+            },
+            {
+                subject: "bm",
+                cat: "Ściana Komórkowa i Fizjologia",
+                q: "Co wchodzi w skład warstwy zewnętrznej ściany komórkowej bakterii Gram-ujemnych?",
+                opts: ["Lipidy, białka oraz lipopolisacharyd (LPS)", "Gruba warstwa mureiny z kwasami tejchojowymi", "Tylko wakuola centralna", "Białka piliny i aparaty ruchowe"],
+                corr: 0,
+                exp: "Warstwa zewnętrzna bakterii Gram-ujemnych to błona zewnętrzna zawierająca lipidy, białka oraz lipopolisacharyd (LPS) wykazujący działanie toksyczne."
+            },
+            {
+                subject: "bm",
+                cat: "Ściana Komórkowa i Fizjologia",
+                q: "Czy w ścianie komórkowej bakterii Gram-ujemnych występuje kwas tejchojowy?",
+                opts: ["Nie, występuje brak kwasu tejchojowego", "Tak, w grubej warstwie mureiny", "Tak, w przestrzeni periplazmatycznej", "Tak, w rybosomach"],
+                corr: 0,
+                exp: "Bakterie Gram-ujemne posiadają cieńszą mureinę w warstwie środkowej oraz brak kwasów tejchojowych."
+            },
+            {
+                subject: "bm",
+                cat: "Ściana Komórkowa i Fizjologia",
+                q: "Bakterie względnie beztlenowe wykorzystują jako źródło energii:",
+                opts: ["Zarówno oddychanie tlenowe, jak i fermentację", "Wyłącznie oddychanie tlenowe", "Wyłącznie fotosyntezę", "Priony i bakteriofagi"],
+                corr: 0,
+                exp: "Względne beztlenowce wykorzystują jako źródło energii zarówno oddychanie tlenowe, jak i fermentację."
+            },
+            {
+                subject: "bm",
+                cat: "Ściana Komórkowa i Fizjologia",
+                q: "Bakterie aerotolerancyjne (względnie tlenowe) to:",
+                opts: ["Bakterie beztlenowe, które potrafią przeżyć w obecności tlenu", "Bakterie ginące natychmiast w obecności tlenu", "Bakterie bez ściany komórkowej", "Wirusy rośne"],
+                corr: 0,
+                exp: "Aerotolerancyjne (względnie tlenowe) to bakterie beztlenowe, które potrafią przeżyć w obecności tlenu."
+            },
+            {
+                subject: "bm",
+                cat: "Rozmnażanie i Genetyka Bakterii",
+                q: "Plazmidy u bakterii kodują zazwyczaj 40-50 genów i są cząsteczkami:",
+                opts: ["Pozachromosomalnymi (nie są niezbędne do przeżycia komórki)", "Obowiązkowymi cząsteczkami jądrowymi", "Białkami kapsydu", "Wirusami bakteryjnymi"],
+                corr: 0,
+                exp: "Plazmidy to pozachromosomalne cząsteczki DNA kodujące 40-50 genów. Mogą występować w komórce, ale nie są dla niej niezbędne."
+            },
+            {
+                subject: "bm",
+                cat: "Rozmnażanie i Genetyka Bakterii",
+                q: "Proces, w którym bakteriofag włącza swój materiał genetyczny do chromosomu bakteryjnego bez natychmiastowej lizy, nosi nazwę:",
+                opts: ["Lizogenii", "Apoptozy", "Onkozy", "Autofagii"],
+                corr: 0,
+                exp: "Bakteriofag może spowodować lizę (rozpad) komórki bakteryjnej lub włączyć się do materiału genetycznego bakterii w procesie zwanym lizogenią."
+            },
+            {
+                subject: "bm",
+                cat: "Zakażenia i Pasożyty",
+                q: "Przeniesienie czynnika zakaźnego z matki na dziecko w trakcie ciąży lub porodu określane jest jako droga:",
+                opts: ["Wertykalna", "Horyzontalna", "Egzogenna bezpośrednia", "Wektorowa nieożywiona"],
+                corr: 0,
+                exp: "Drogi zakażeń wyróżniają m.in. drogę wertykalną: matka -> dziecko."
+            },
+            {
+                subject: "bm",
+                cat: "Zakażenia i Pasożyty",
+                q: "Przykłady wektorów ożywionych i nieożywionych w przenoszeniu zakażeń podane w skrypicie to np.:",
+                opts: ["Komar (ożywiony) oraz woda (nieożywiony)", "Rybosom (ożywiony) oraz wakuola (nieożywiony)", "Monocyt i makrofag", "Transpozon i plazmid"],
+                corr: 0,
+                exp: "Drogi zakażeń przez wektory (ożywione i nieożywione) np. komar, woda."
+            },
+            {
+                subject: "bm",
+                cat: "Wirusologia",
+                q: "Jednostki białkowe tworzące płaszcz białkowy (kapsyd) wirusa noszą nazwę:",
+                opts: ["Kapsomery", "Blastomery", "Endospory", "Mezosomy"],
+                corr: 0,
+                exp: "Łańcuchy białkowe tworzące kapsyd określa się mianem kapsomerów."
+            },
+            {
+                subject: "bm",
+                cat: "Zakażenia i Pasożyty",
+                q: "Zakażenia wywoływane przez mikroorganizmy fizjologiczne u osób z obniżoną odpornością, które normalnie nie szkodzą zdrowym, to infekcje:",
+                opts: ["Oportunistyczne", "Bezwzględne", "Egzogenne", "Katastrofalne"],
+                corr: 0,
+                exp: "Zakażenie oportunistyczne to infekcja wywoływana przez mikroorganizmy, które normalnie nie szkodzą dla zdrowych osób."
+            },
+
+            // ========================================================
+            // PRZEDMIOT 2: BIOLOGICZNY ROZWÓJ CZŁOWIEKA (75 PYTAŃ)
+            // ========================================================
+            {
+                subject: "brc",
+                cat: "Podstawy Ontogenezy i Wymogi",
+                q: "Jaki jest próg zaliczenia kolokwium testowego z części wykładowej przedmiotu 'Biologiczny rozwój człowieka' u dr hab. M. Krzykały?",
+                opts: ["50% punktów", "55% punktów", "60% punktów", "70% punktów"],
+                corr: 2,
+                exp: "Notatki organizacyjne: Test wyboru obejmuje 20 pytań, a próg zaliczenia wynosi minimum 60% całkowitej liczby punktów."
+            },
+            {
+                subject: "brc",
+                cat: "Podstawy Ontogenezy i Wymogi",
+                q: "Zgodnie z definicją Cieślika i wsp. (1985), rozwój to proces ukierunkowanych zmian, w których wyróżnia się etapy zwane:",
+                opts: ["Mutacjami genetycznymi", "Fazami rozwojowymi", "Odruchami bezwarunkowymi", "Trendy sekularne"],
+                corr: 1,
+                exp: "Rozwój (Cieślik 1985): Proces ukierunkowanych zmian, w których można wyróżnić następujące po sobie etapy przemian (fazy rozwojowe)."
+            },
+            {
+                subject: "brc",
+                cat: "Podstawy Ontogenezy i Wymogi",
+                q: "Kierunek zmian w rozwoju określany jako 'inwolucja' oznacza:",
+                opts: ["Zmiany pozytywne (postęp)", "Zmiany negatywne (regres)", "Całkowitą stabilizację wymiarów ciała", "Gwałtowny skok pokwitaniowy"],
+                corr: 1,
+                exp: "Kierunki zmian rozwojowych: Progresywny (postęp - zmiany pozytywne), Regresywny (inwolucja - zmiany negatywne), Stabilizacja (zatrzymanie zmian)."
+            },
+            {
+                subject: "brc",
+                cat: "Sfery Rozwoju i Interakcje",
+                q: "Ile głównych sfer rozwoju wyróżnia się w koncepcji 'systemu naczyń połączonych' i jakie to sfery?",
+                opts: ["3 sfery: fizyczna, psychiczna, intelektualna", "4 sfery: biologiczna (fizyczna), psychiczna, społeczna, seksualna", "2 sfery: genetyczna i środowiskowa", "5 sfer: motoryczna, czuciowa, poznawcza, emocjonalna, społeczna"],
+                corr: 1,
+                exp: "Rozwój człowieka przebiega w 4 głównych sferach: biologicznej (fizycznej), psychicznej, społecznej i seksualnej, tworząc zintegrowany system."
+            },
+            {
+                subject: "brc",
+                cat: "Procesy Ontogenezy",
+                q: "Wzrastanie jest procesem ilościowym, na który składają się dwa zjawiska: rozrost oraz rozplem. Co oznacza 'rozplem'?",
+                opts: ["Zwiększanie masy i wymiarów pojedynczych tkanek", "Zwiększanie liczby komórek", "Proces różnicowania struktur narządów", "Wykształcanie dymorfizmu płciowego"],
+                corr: 1,
+                exp: "Wzrastanie składa się z: Rozrostu (zwiększanie wymiarów i masy tkanek) oraz Rozplemu (zwiększanie liczby komórek)."
+            },
+            {
+                subject: "brc",
+                cat: "Procesy Ontogenezy",
+                q: "Proces zmodyfikowania i zmiany proporcji ciała w czasie (np. faktu, że głowa noworodka stanowi znacznie większą część długości ciała niż u dorosłego) nosi nazwę:",
+                opts: ["Cytogenezy", "Organogenezy", "Typogenezy", "Histogenezy"],
+                corr: 2,
+                exp: "Typogeneza to zmiana proporcji ciała w czasie (proporcje płodu i noworodka różnią się drastically od dorosłego)."
+            },
+            {
+                subject: "brc",
+                cat: "Procesy Ontogenezy",
+                q: "Jak w miarę rozwoju i dojrzewania zmieniają się fizjologiczne parametry tętna (HR) i ciśnienia krwi (BP) od noworodka do dorosłego?",
+                opts: ["HR wzrasta, BP spada", "HR spada (ze 140 do 70/min), a BP wzrasta (z 80/45 do 120/75 mmHg)", "Zarówno HR jak i BP spadają o połowę", "Zarówno HR jak i BP wzrastają trzykrotnie"],
+                corr: 1,
+                exp: "Dojrzewanie funkcjonalne: Częstość skurczów serca (HR) u noworodka to ~140/min -> u dorosłego ~70/min. Ciśnienie (BP) u noworodka to 80/45 mmHg -> u dorosłego 120/75 mmHg."
+            },
+            {
+                subject: "brc",
+                cat: "Genetyka i Środowisko",
+                q: "Wzór 'Fenotyp = Genotyp + Środowisko' opisuje powstawanie cech osobnika. Czym jest 'Norma Reakcji'?",
+                opts: ["Zakresem zmienności fenotypowej występującym w populacji", "Potencjałem rozwojowym zdeterminowanym genetycznie (ramami, na które pozwalają geny)", "Średnim wiekiem menarche w danej populacji", "Szybkością przewodzenia impulsów nerwowych"],
+                corr: 1,
+                exp: "Norma reakcji (reaktywności) to potencjał rozwojowy zdeterminowany genetycznie (to, na co pozwalają geny). Norma adaptacyjna dotyczy zmienności fenotypowej pod wpływem środowiska."
+            },
+            {
+                subject: "brc",
+                cat: "Genetyka i Środowisko",
+                q: "Która z poniższych cech należy do cech ILOŚCIOWYCH człowieka?",
+                opts: ["Grupa krwi w układzie ABO", "Wysokość i masa ciała", "Struktura tęczówki oka", "Liczba kręgów w kręgosłupie"],
+                corr: 1,
+                exp: "Cechy ilościowe uwarunkowane są poligenicznie, zmieniają się z wiekiem i podlegają silnemu wpływowi środowiska (np. wysokość/masa ciała, BMI, siła). Grupy krwi to cecha jakościowa."
+            },
+            {
+                subject: "brc",
+                cat: "Adaptacja i Adiustacja",
+                q: "Hipertrofia mięśniowa wywołana wielomiesięcznym treningiem oporowym lub atrofia z bezruchu to przykłady:",
+                opts: ["Adiustacji krótkotrwałej", "Adiustacji długotrwałej", "Adaptacji dziedzicznej (ewolucyjnej)", "Adiustacji sezonowej"],
+                corr: 1,
+                exp: "Adiustacja długotrwała wymaga czasu (dni/miesiące/lata) i ma powolny przebieg odwracalności (np. hipertrofia mięśniowa, atrofia z bezruchu, przyrost tkanki tłuszczowej)."
+            },
+            {
+                subject: "brc",
+                cat: "Adaptacja i Adiustacja",
+                q: "Gwałtowne przyspieszenie akcji serca i oddechu pod wpływem nagłego stresu lub drżenie mięśni w niskiej temperaturze to przykłady:",
+                opts: ["Adiustacji krótkotrwałej", "Adiustacji długotrwałej", "Trendy sekularnego", "Retardacji inwolucyjnej"],
+                corr: 0,
+                exp: "Adiustacja krótkotrwała to szybka, natychmiastowa reakcja biochemiczna lub fizjologiczna (sekundy/godziny), często o charakterze obronnym."
+            },
+            {
+                subject: "brc",
+                cat: "Trendy Sekularne",
+                q: "Czym jest trend sekularny (tendencja przemian międzypokoleniowych)?",
+                opts: ["Sezonową zmianą masy ciała w ciągu roku", "Stuletnim ciągiem jednokierunkowych, fenotypowych zmian pokoleniowych wynikających z poprawy warunków środowiskowych", "Dobowym rytmem wydzielania hormonu wzrostu", "Spadkiem liczby neuronów w procesie starzenia"],
+                corr: 1,
+                exp: "Trend sekularny to stuletni ciąg jednokierunkowych, fenotypowych zmian pokoleniowych wynikających z poprawy żywienia, higieny i medycyny."
+            },
+            {
+                subject: "brc",
+                cat: "Trendy Sekularne",
+                q: "O ile lat biologicznie 'starsze' są współczesne dzieci w porównaniu do swoich rówieśników z końca XIX wieku w wyniku akceleracji rozwoju?",
+                opts: ["O około 1 rok", "O około 3 lata", "O około 5 lat", "Nie ma żadnej różnicy"],
+                corr: 1,
+                exp: "Akceleracja rozwoju: Współczesne dzieci są biologicznie o ok. 3 lata 'starsze' (szybciej dojrzewają i kończą kostnienie) niż dzieci z końca XIX wieku."
+            },
+            {
+                subject: "brc",
+                cat: "Trendy Sekularne",
+                q: "Jakie zjawisko dotykające wieku zakończenia procesu kostnienia szkieletu zaobserwowano w ramach akceleracji biologicznej?",
+                opts: ["Przesunięcie wieku zakończenia kostnienia z 18 lat na 25 lat", "Przesunięcie wieku zakończenia kostnienia z 21–25 lat na 18–19 lat", "Brak wpływu na układ kostny", "Zatrzymanie wzrostu kości w wieku 12 lat"],
+                corr: 1,
+                exp: "Zarastanie chrząstek wzrostowych i zakończenie kostnienia szkieletu uległo przyspieszeniu z 21-25 lat w XIX w. do 18-19 lat obecnie."
+            },
+            {
+                subject: "brc",
+                cat: "Wyzwania Biomechaniczne i Kliniczne",
+                q: "Zjawisko 'leptosomizacji' polega na:",
+                opts: ["Szybszym przyroście masy mięśniowej niż wysokości ciała", "Szybszym przyroście cech długościowych niż szerokościowych, prowadząc do wysmukłej, wiotkiej sylwetki", "Nienaturalnym poszerzeniu obwodu klatki piersiowej", "Przedwczesnym zarastaniu szwów czaszkowych"],
+                corr: 1,
+                exp: "Leptosomizacja: szybszy przyrost cech długościowych niż szerokościowych -> wysmukła, wiotka sylwetka podatna na wady postawy."
+            },
+            {
+                subject: "brc",
+                cat: "Wyzwania Biomechaniczne i Kliniczne",
+                q: "Co oznacza pojęcie 'rozwierających się nożyc sekularnych' w kontekście rozwoju dzieci?",
+                opts: ["Równomierny wzrost sprawności fizycznej i wysokości ciała", "Dynamiczny wzrost wysokości ciała (górne ramię) przy jednoczesnym drastycznym regresie sprawności motorycznej (dolne ramię)", "Szybszy rozwój psychiczny niż biologiczny", "Rozbieżność w masie urodzeniowej chłopców i dziewcząt"],
+                corr: 1,
+                exp: "Nożyce sekularne: Dzieci rosną szybciej i są wyższe (górne ramię), ale mają drastycznie osłabiony gorset mięśniowy i sprawność (dolne ramię) przez brak ruchu."
+            },
+            {
+                subject: "brc",
+                cat: "Wyzwania Biomechaniczne i Kliniczne",
+                q: "Według danych z raportu 'WF z AWF 2026', jaki procent uczniów klas I–III nie potrafi poprawnie wykonać podstawowych ćwiczeń (np. skoku na skakance)?",
+                opts: ["20-30%", "50%", "70-75%", "89-90%"],
+                corr: 3,
+                exp: "Raport 'WF z AWF 2026': Aż 89–90% uczniów klas I–III nie potrafi poprawnie wykonać podstawowych ćwiczeń motorycznych, a 60% nie uczestniczy w zajęciach pozaszkolnych."
+            },
+            {
+                subject: "brc",
+                cat: "Wyzwania Biomechaniczne i Kliniczne",
+                q: "Pojęcie 'próżni dojrzewania' (luki dojrzałości) odnosi się do rozbieżności sięgającej 6–10 lat pomiędzy:",
+                opts: ["Wiekiem biologicznym a wiekiem kostnym", "Wcześnie osiągniętą dojrzałością biologiczną a opóźniającą się dojrzałością psychiczną i społeczną", "Wzrostem serca a obwodem naczyń", "Masa ciała a gęstością kości"],
+                corr: 1,
+                exp: "Próżnia dojrzewania to rozbieżność (6-10 lat) między wczesną dojrzałością biologiczną a opóźnioną dojrzałością społeczną i psychiczną."
+            },
+            {
+                subject: "brc",
+                cat: "Periodyzacja Ontogenezy",
+                q: "Trzy główne fazy rozwoju postnatalnego człowieka w ujęciu klasycznym to kolejno:",
+                opts: ["Embrionalna, Płodowa, Noworodkowa", "Anaplasis (progresywna), Metaplasis (stabilna), Kataplasis (regresywna)", "Niemowlęca, Przedszkolna, Szkolna", "Sarkopenia, Presarkopenia, Frailty"],
+                corr: 1,
+                exp: "Fazy rozwoju postnatalnego: 1. Anaplasis (progresywna - wzrost), 2. Metaplasis (stabilna - dojrzałość), 3. Kataplasis (regresywna - starzenie)."
+            },
+            {
+                subject: "brc",
+                cat: "Okres Prenatalny i Noworodek",
+                q: "W którym tygodniu rozwoju prenatalnego dochodzi do kluczowego zamykania się cewy nerwowej?",
+                opts: ["1.–2. tydzień", "3.–4. tydzień", "8.–10. tydzień", "16.–18. tydzień"],
+                corr: 1,
+                exp: "Punkty zwrotne prenatalne: 3.–4. tydzień to zamykanie cewy nerwowej (5.-6. tydzień – początek akcji serca)."
+            },
+            {
+                subject: "brc",
+                cat: "Okres Prenatalny i Noworodek",
+                q: "Jakie białko/substancja powierzchniowo czynna wyprodukowana w 34.–36. tygodniu ciąży jest niezbędna do prawidłowego dojrzewania płuc i samodzielnego oddechu?",
+                opts: ["Mureina", "Surfaktant", "Pilina", "Oksytocyna"],
+                corr: 1,
+                exp: "Surfaktant (34.-36. tydzień) zapobiega zapadaniu się pęcherzyków płucnych podczas wydechu."
+            },
+            {
+                subject: "brc",
+                cat: "Okres Prenatalny i Noworodek",
+                q: "Zgodnie ze Standardem Okołoporodowym, nieprzerwany kontakt 'skóra do skóry' (STS) matki i noworodka po porodzie powinien trwać co najmniej:",
+                opts: ["15 minut", "30 minut", "1 godzinę", "2 godziny"],
+                corr: 3,
+                exp: "Kontakt 'skóra do skóry' (STS) powinien trwać nieprzerwanie co najmniej 2 godziny po porodzie, stymulując wyrzut oksytocyny, prolaktyny i endorfin."
+            },
+            {
+                subject: "brc",
+                cat: "Okres Prenatalny i Noworodek",
+                q: "W skali Apgar ocenia się stan noworodka w 1. i 5. minucie życia. Jaki wynik punktowy świadczy o stanie DOBRYM ('zmęczeniu porodowym')?",
+                opts: ["10 pkt", "8–9 pkt", "4–7 pkt", "0–3 pkt"],
+                corr: 1,
+                exp: "Skala Apgar: 10 pkt = stan bardzo dobry, 8-9 pkt = stan dobry (zmęczenie), 4-7 pkt = stan średni, 0-3 pkt = stan ciężki."
+            },
+            {
+                subject: "brc",
+                cat: "Okres Prenatalny i Noworodek",
+                q: "Noworodek z niską urodzeniową masą ciała (NMU / LBW) to dziecko, którego masa po urodzeniu wynosi mniej niż:",
+                opts: ["1500 g", "2000 g", "2500 g", "3000 g"],
+                corr: 2,
+                exp: "Niska masa urodzeniowa (NMU / LBW) to < 2500 g. Norma to 2500-4000 g, a makrosomia to > 4000 g."
+            },
+            {
+                subject: "brc",
+                cat: "Odruchy Pierwotne",
+                q: "Który odruch pierwotny polega na odwiedzeniu i wyprostowaniu kończyn górnych, a następnie ich przywiedzeniu ('objęciu') w reakcji na nagły bodziec?",
+                opts: ["Odruch Galanta", "Odruch Moro", "Odruch Babińskiego", "Odruch ATOS"],
+                corr: 1,
+                exp: "Odruch Moro (obejmowania) wygasa w 4.-6. m.ż. Jego przetrwanie powoduje lękliwość i nadreaktywność."
+            },
+            {
+                subject: "brc",
+                cat: "Odruchy Pierwotne",
+                q: "Wyprost palucha oraz wachlarzowate rozchylenie pozostałych palców stopy przy drażnieniu jej podeszwy (Odruch Babińskiego) jest fizjologią do około 12–24 m.ż. Po 2. roku życia jest to objaw patologiczny świadczący o:",
+                opts: ["Uszkodzeniu dróg piramidowych", "Wiotkości stawu skokowego", "Sarkopenii pierwotnej", "Zaburzeniu błędnika"],
+                corr: 0,
+                exp: "Obecność odruchu Babińskiego po 24. miesiącu życia świadczy o uszkodzeniu układu nerwowego (dróg piramidowych)."
+            },
+            {
+                subject: "brc",
+                cat: "Odruchy Pierwotne",
+                q: "Przetrwanie Asymetrycznego Tonicznego Odruchu Szyjnego (ATOS / ATNR) po 6. miesiącu życia utrudnia dziecku:",
+                opts: ["Ssanie piersi", "Przekraczanie linii środkowej ciała i wykonywanie obrotów", "Procesy termoregulacji", "Zarastanie ciemiączka"],
+                corr: 1,
+                exp: "ATOS wywołuje wyprost kończyn po stronie, w którą obrócona jest głowa. Przetrwanie blokuje obroty i koordynację obu rąk w linii środkowej."
+            },
+            {
+                subject: "brc",
+                cat: "Rozwój Motoryczny i Kamienie Milowe",
+                q: "Według skali rozwoju DSR, osiagnięcie samodzielnego siadu bez oparcia przypada średnio na:",
+                opts: ["3. miesiąc życia", "6. miesiąc życia", "8,5. miesiąca życia", "12. miesiąc życia"],
+                corr: 1,
+                exp: "Kamienie milowe: Siedzenie bez oparcia ~6. m.ż., Raczkowanie ~8,5. m.ż., Stanie ~11. m.ż., Chodzenie ~12,1. m.ż."
+            },
+            {
+                subject: "brc",
+                cat: "Okres Przedszkolny i Szkolny",
+                q: "Około 5. roku życia przypada tzw. 'I APOGEUM MOTORYCZNE'. Czym się charakteryzuje?",
+                opts: ["Chwiejnością i niezgrabnością ruchową", "Dużą harmonią, płynnością, zwinnością i silną potrzebą ruchu ('złoty okres')", "Gwałtownym spadkiem siły mięśniowej", "Utratą równowagi przez koślawość stóp"],
+                corr: 1,
+                exp: "I Apogeum Motoryczności (ok. 5. r.ż.) to tzw. Złoty Okres Motoryczny – Cechuje go duża płynność, zwinność i harmonia."
+            },
+            {
+                subject: "brc",
+                cat: "Okres Przedszkolny i Szkolny",
+                q: "Ustalenie i ostateczne ukształtowanie się jednorodnej lub skrzyżowanej dominacji stronnej (lateralizacji) powinno nastąpić do:",
+                opts: ["3. roku życia", "6.–7. roku życia", "12. roku życia", "18. roku życia"],
+                corr: 1,
+                exp: "Lateralizacja powinna ostatecznie ustalić się do 6.–7. roku życia (przed podjęciem nauki szkolnej)."
+            },
+            {
+                subject: "brc",
+                cat: "Okres Przedszkolny i Szkolny",
+                q: "Na czym polega 'Test filipiński' oceniający biologiczną dojrzałość szkolną dziecka?",
+                opts: ["Na wykonaniu 10 przysiadów na jednej nodze", "Na sięgnięciu prawą ręką nad głową do lewego ucha", "Na ocenie liczby zębów stałych", "Na skoku w dal z miejsca"],
+                corr: 1,
+                exp: "Test filipiński: Dziecko sięga prawą ręką nad głową do lewego ucha. Sięgnięcie poniżej górnej krawędzi ucha oznacza wynik dodatni (dojrzałość)."
+            },
+            {
+                subject: "brc",
+                cat: "Okres Przedszkolny i Szkolny",
+                q: "Przyczyną tzw. 'Kryzysu Motoryczności' występującego w podokresie pokwitania (11–14 l.) jest:",
+                opts: ["Brak odpowiedniej ilości witaminy D3", "Utrata sprawności płuc", "Nagła zmiana proporcji ciała i długości dźwigni kostnych przy braku adaptacji nerwowo-mięśniowej", "Zarastanie płytki wzrostowej kości"],
+                corr: 2,
+                exp: "Kryzys motoryczny w pokwitaniu wynika z nagłego skoku wzrostowego i zmiany długości dźwigni kostnych, co powoduje chwilową niezgrabność."
+            },
+            {
+                subject: "brc",
+                cat: "Okres Przedszkolny i Szkolny",
+                q: "Przejściowa ginekomastia (powiększenie gruczołów piersiowych) występująca u chłopców w wieku ok. 15 lat dotyczy około:",
+                opts: ["5% chłopców", "30% chłopców", "70% chłopców", "100% chłopców"],
+                corr: 1,
+                exp: "Ginekomastia pokwitaniowa występuje u ok. 30% chłopców w wieku ~15 lat i ma charakter przejściowy (ustępuje samoistnie)."
+            },
+            {
+                subject: "brc",
+                cat: "Dorosłość i Starzenie się",
+                q: "Średni wiek wystąpienia menopauzy (ostatniego krwawienia miesiączkowego) u kobiet w Polsce wynosi:",
+                opts: ["40–42 lata", "45–47 lat", "49–51 lat", "58–60 lat"],
+                corr: 2,
+                exp: "W Polsce średni wiek menopauzy wynosi 49–51 lat (w starożytności wynosił ok. 40 lat - przykład retardacji starzenia)."
+            },
+            {
+                subject: "brc",
+                cat: "Geriatria i Sarkopenia",
+                q: "Jaki zakres wartości BMI u osób starszych (65+) wykazuje działanie ochronne (tzw. paradoks otyłości w geriatrii)?",
+                opts: ["18,5–21,5 kg/m²", "24–29 kg/m²", "32–35 kg/m²", "Poniżej 18 kg/m²"],
+                corr: 1,
+                exp: "W geriatrii wartość BMI 24–29 kg/m² wykazuje działanie ochronne przed rezerwą rekonwalescencyjną i złamaniami."
+            },
+            {
+                subject: "brc",
+                cat: "Geriatria i Sarkopenia",
+                q: "O ile centymetrów przeciętnie obniża się wysokość ciała człowieka w ciągu całego życia wskutek spłaszczenia krążków międzykręgowych i zmian posturalnych?",
+                opts: ["O 0,5 cm", "O 2 do 4 cm", "O 8 do 10 cm", "Wysokość ciała nie ulega zmianie"],
+                corr: 1,
+                exp: "W ciągu życia wysokość ciała obniża się o 2 do 4 cm z powodu utraty nawodnienia krążków międzykręgowych i zmian krzywizn kręgosłupa."
+            },
+            {
+                subject: "brc",
+                cat: "Geriatria i Sarkopenia",
+                q: "Co definiuje pojęcie SARKOPENII?",
+                opts: ["Postępująca utrata gęstości mineralnej kości", "Postępująca, uogólniona utrata masy i siły mięśni szkieletowych", "Zwyrodnienie stawów obwodowych", "Spadek wydolności oddechowej płuc"],
+                corr: 1,
+                exp: "Sarkopenia to postępująca, uogólniona utrata masy i siły mięśni szkieletowych (może być pierwotna lub wtórna)."
+            },
+            {
+                subject: "brc",
+                cat: "Geriatria i Sarkopenia",
+                q: "W diagnostyce sarkopenii, pomiar siły chwytu dłoni dynamometrem wskazuje na osłabienie przy wartościach poniżej:",
+                opts: ["< 40 kg u M i < 30 kg u K", "< 26 kg u mężczyzn oraz < 16 kg u kobiet", "< 10 kg u obu płci", "< 50 kg u M i < 40 kg u K"],
+                corr: 1,
+                exp: "Biomarker siły mięśniowej (EWGSOP): Kryterium osłabienia chwytu dłoni to < 26 kg u mężczyzn oraz < 16 kg u kobiet."
+            },
+            {
+                subject: "brc",
+                cat: "Geriatria i Sarkopenia",
+                q: "Wynik testu 'Wstań i Idź' (Timed Up & Go - TUG) wynoszący 19 sekund lub więcej oznacza:",
+                opts: ["Normę i brak ryzyka upadków", "Średnie ryzyko upadku", "Znaczne ograniczenie sprawności i wysokie ryzyko upadków", "Doskonałą wydolność fizyczną"],
+                corr: 2,
+                exp: "Test TUG: < 10 s = norma, 10-19 s = średnie ryzyko, >= 19 sekund = wysokie ryzyko upadków i znaczne ograniczenie sprawności."
+            },
+            {
+                subject: "brc",
+                cat: "Geriatria i Sarkopenia",
+                q: "Czas przekraczający 5 sekund w teście prędkości chodu na dystansie 4 metrów (4MGS) oznacza prędkość poniżej 0,8 m/s i świadczy o wysoki ryzyku:",
+                opts: ["Zakażenia Helicobacter pylori", "Sarkopenii i zespołu słabości (frailty)", "Wystąpienia odruchu Moro", "Leptosomizacji"],
+                corr: 1,
+                exp: "Prędkość chodu < 0,8 m/s (powyżej 5 s na 4 m) to biomarker zespołu słabości (frailty) oraz sarkopenii w geriatrii."
+            },
+            {
+                subject: "brc",
+                cat: "Procesy Ontogenezy",
+                q: "Jak wg Woynarowskiej i wsp. (2021) zdefiniowany jest proces rozwoju ontogenetycznego?",
+                opts: ["Wyłącznie jako przyrost masy i wysokości ciała w okresie dzieciństwa", "Jako zmiana w czasie lub proces zmian składający się z następujących po sobie etapów", "Jako nieodwracalny spadek sprawności motorycznej po 20. roku życia", "Jako proces zachodzący wyłącznie w fazie życia wewnątrzmacicznego"],
+                corr: 1,
+                exp: "Woynarowska i wsp. (2021) definiują rozwój jako zmianę w czasie lub proces zmian składający się z następujących po sobie etapów przemian."
+            },
+            {
+                subject: "brc",
+                cat: "Sfery Rozwoju i Interakcje",
+                q: "W kontekście 'systemu naczyń połączonych', spadek samooceny i izolacja społeczna wywołane otyłością biologiczną to przykład interakcji między sferami:",
+                opts: ["Biologiczną, psychiczną i społeczną", "Wyłącznie genetyczną i środowiskową", "Seksualną i embrionalną", "Autonomiczną i motoryczną"],
+                corr: 0,
+                exp: "Otyłość (sfera biologiczna) prowadząca do spadku samooceny (sfera psychiczna) i unikania grupy rówieśniczej (sfera społeczna) to klasyczny przykład kaskady zmian w systemie naczyń połączonych."
+            },
+            {
+                subject: "brc",
+                cat: "Procesy Ontogenezy",
+                q: "Który z poniższych procesów ontogenetycznych odpowiada za stopniowe wykształcanie specyficznych funkcji i budowy komórek oraz tkanek?",
+                opts: ["Rozrost", "Różnicowanie (doskonalenie)", "Rozplem", "Leptosomizacja"],
+                corr: 1,
+                exp: "Różnicowanie (doskonalenie) to proces jakościowy polegający na wykształcaniu specyficznych cech budowy i funkcji komórek, tkanek i narządów."
+            },
+            {
+                subject: "brc",
+                cat: "Procesy Ontogenezy",
+                q: "Wzrastanie organizmu jest procesem ilościowym. Jaka jest różnica między rozrostem a rozplemem?",
+                opts: ["Rozrost to zwiększanie liczby komórek, a rozplem to zwiększanie ich masy", "Rozrost to zwiększanie masy i wymiarów komórek/tkanek, a rozplem to zwiększanie liczby komórek", "Rozrost dotyczy tkanki kostnej, a rozplem dotyczy tkanki tłuszczowej", "Oba pojęcia oznaczają wyłącznie zarastanie chrząstek wzrostowych"],
+                corr: 1,
+                exp: "Rozrost = zwiększanie wymiarów i masy pojedynczych komórek/tkanek. Rozplem = zwiększanie ogólnej liczby komórek (hiperplazja)."
+            },
+            {
+                subject: "brc",
+                cat: "Genetyka i Środowisko",
+                q: "Czym różni się 'Norma Reakcji' (reaktywności) od 'Normy Adaptacyjnej'?",
+                opts: ["Norma reakcji to potencjał genetyczny (ramy), a norma adaptacyjna to zakres zmienności fenotypowej pod wpływem środowiska", "Norma reakcji dotyczy osób starszych, a norma adaptacyjna noworodków", "Norma reakcji uwarunkowana jest monogenowo, a norma adaptacyjna nie zależy od genów", "Są to pojęcia tożsame używane zamiennie bez różnic"],
+                corr: 0,
+                exp: "Norma reakcji (reaktywności) określa granice potencjału wyznaczone przez genotyp. Norma adaptacyjna reprezentuje aktualny zakres dostosowania fenotypowego wytworzonego w danym środowisku."
+            },
+            {
+                subject: "brc",
+                cat: "Genetyka i Środowisko",
+                q: "Cechy jakościowe człowieka (w przeciwieństwie do ilościowych) charakteryzują się tym, że:",
+                opts: ["Są uwarunkowane poligenicznie i zależą silnie od dietetyki", "Zmieniają się płynnie z wiekiem osobnika", "Zależą od niewielkiej liczby genów (często monogenowo) i nie ulegają modyfikacji środowiskowej (np. grupy krwi)", "Opisują wyłącznie masę i wysokość ciała"],
+                corr: 2,
+                exp: "Cechy jakościowe (np. grupy krwi w układzie ABO, Rh) są zdeterminiwane genetycznie (monogenowo) i stabilne przez całe życie, niezależnie od środowiska."
+            },
+            {
+                subject: "brc",
+                cat: "Adaptacja i Adiustacja",
+                q: "Jaka jest kluczowa cecha fizjologiczna odróżniająca 'adiustację' od 'adaptacji ewolucyjnej'?",
+                opts: ["Adiustacja dotyczy zmian w kodzie DNA przekazywanych potomstwu", "Adiustacja jest nieodwracalna i trwa przez pokolenia", "Adiustacja to osobnicza, fenotypowa reakcja dostosowawcza (odwracalna), niewpływająca na genotyp", "Adaptacja zachodzi w ciągu kilku sekund u jednego osobnika"],
+                corr: 2,
+                exp: "Adiustacja to szybka lub długotrwała reakcja fenotypowa osobnika na czynniki środowiska bez zmian w kodzie genetycznym (odwracalna). Adaptacja ewolucyjna jest utrwalona genetycznie w populacji."
+            },
+            {
+                subject: "brc",
+                cat: "Adaptacja i Adiustacja",
+                q: "Zwiększenie liczby erytrocytów (erytropoeza) podczas kilkutygodniowego pobytu na dużej wysokości n.p.m. to przykład:",
+                opts: ["Adiustacji krótkotrwałej", "Adiustacji długotrwałej", "Adaptacji genetycznej", "Trendu sekularnego"],
+                corr: 1,
+                exp: "Aklimatyzacja do wysokości (przyrost liczby krwinek czerwonych pod wpływem hipoksji w ciągu tygodni) to klasyczna adiustacja długotrwała."
+            },
+            {
+                subject: "brc",
+                cat: "Trendy Sekularne",
+                q: "Wskaźnikiem akceleracji rozwoju w ramach trendu sekularnego u dziewcząt jest obniżanie się wieku menarche. O ile lat schodził średni wiek menarche w Europie na przestrzeni ostatniego stulecia?",
+                opts: ["Z około 17 lat do około 12–13 lat", "Z 12 lat do 9 lat", "Z 20 lat do 18 lat", "Wiek menarche pozostał bez zmian"],
+                corr: 0,
+                exp: "W ciągu ponad 100 lat średni wiek dojrzewania dziewcząt (menarche) przesunął się z ok. 16–17 lat pod koniec XIX w. do ok. 12–13 lat współcześnie."
+            },
+            {
+                subject: "brc",
+                cat: "Trendy Sekularne",
+                q: "Co jest główną przyczyną występowania dodatnich trendów sekularnych (akceleracji rozwoju) w populacjach ludzkich?",
+                opts: ["Spontaniczne mutacje genetyczne w chromosomach płciowych", "Poprawa warunków bytowych, lepsze odżywianie (białko, witaminy), rozwój medycyny i eradykacja chorób zakaźnych", "Zmniejszenie aktywności fizycznej dzieci", "Podwyższenie średniej temperatury rocznej"],
+                corr: 1,
+                exp: "Trendy sekularne są wynikiem poprawy czynników biogeograficznych i społeczno-ekonomicznych (żywienie, higiena, opieka zdrowotna, warunki mieszkaniowe)."
+            },
+            {
+                subject: "brc",
+                cat: "Wyzwania Biomechaniczne i Kliniczne",
+                q: "Dlaczego zjawisko leptosomizacji u współczesnej młodzieży stwarza istotny problem fizjoterapeutyczny?",
+                opts: ["Wydłużenie dźwigni kostnych przy braku odpowiedniej masy i siły mięśniowej zwiększa ryzyko wad postawy (skoliozy, plecy okrągłe)", "Powoduje nadmierny przyrost tkanki tłuszczowej wokół narządów wewnętrznych", "Utrudnia zarastanie ciemiączek u dzieci", "Prowadzi do całkowitej utraty odruchów głębokich"],
+                corr: 0,
+                exp: "Szybszy wzrost kości długich niż rozrost gorsetu mięśniowego (leptosomizacja) obniża stabilizację kręgosłupa i sprzyja powstawaniu wad postawy."
+            },
+            {
+                subject: "brc",
+                cat: "Wyzwania Biomechaniczne i Kliniczne",
+                q: "Głównym wnioskiem z raportu 'WF z AWF 2026' dotyczącego hipokinezji u dzieci jest to, że:",
+                opts: ["Większość dzieci wykazuje wybitną sprawność motoryczną", "Ponad 85-90% dzieci w wieku wczesnoszkolnym ma zaległości w podstawowych umiejętnościach ruchowych z powodu braku aktywności", "Aktywność fizyczna nie ma wpływu na rozwój układu kostnego", "Dzieci spędzają średnio 5 godzin dziennie na uprawianiu sportu"],
+                corr: 1,
+                exp: "Raport 'WF z AWF 2026' alarmuje o dramatycznym spadku sprawności motorycznej (hipokinezji) i braku opanowania podstawowych wzorców ruchowych u blisko 90% najmłodszych uczniów."
+            },
+            {
+                subject: "brc",
+                cat: "Periodyzacja Ontogenezy",
+                q: "Faza rozwoju postnatalnego zwana METAPLASIS to okres:",
+                opts: ["Wzrastania i dojrzewania (do ok. 20-25 r.ż.)", "Stabilizacji biologicznej i dojrzałości (ok. 25–45/50 r.ż.)", "Inwolucji i starzenia się (po 60. r.ż.)", "Życia wewnątrzmacicznego"],
+                corr: 1,
+                exp: "Metaplasis to faza pełnej dojrzałości i stabilizacji funkcji organizmu, przypadająca między fazą rozwoju progresywnego (Anaplasis) a regresywnego (Kataplasis)."
+            },
+            {
+                subject: "brc",
+                cat: "Periodyzacja Ontogenezy",
+                q: "Faza KATAPLASIS w ontogenezie człowieka charakteryzuje się:",
+                opts: ["Gwałtownym skokiem pokwitaniowym", "Przewagą procesów inwolucyjnych (regresywnych) i spadkiem rezerw adaptacyjnych organizmu", "Formowaniem cewy nerwowej", "Maksymalną wydolnością tlenową VO2max"],
+                corr: 1,
+                exp: "Kataplasis to okres starzenia się organizmu, w którym procesy kataboliczne i inwolucyjne przeważają nad anabolicznymi."
+            },
+            {
+                subject: "brc",
+                cat: "Okres Prenatalny i Noworodek",
+                q: "Okres zarodkowy (embrionalny) w rozwoju prenatalnym człowieka trwa od momentu zapłodnienia do:",
+                opts: ["2. tygodnia ciąży", "8. tygodnia ciąży", "16. tygodnia ciąży", "28. tygodnia ciąży"],
+                corr: 1,
+                exp: "Rozwój prenatalny dzieli się na: okres jajowy (1.-2. tydz.), okres embrionalny/zarodkowy (3.-8. tydz. - organogeneza) oraz okres płodowy (od 9. tyg. do porodu)."
+            },
+            {
+                subject: "brc",
+                cat: "Okres Prenatalny i Noworodek",
+                q: "Dlaczego okres embrionalny (3.–8. tydzień ciąży) jest nazywany okresem krytycznym w teratogenezie?",
+                opts: ["Zachodzi wtedy intensywna organogeneza, a czynniki szkodliwe (teratogeny) mogą wywołać ciężkie wady rozwojowe narządów", "Płód osiąga wtedy ostateczną masę ciała", "Płuca zaczynają produkować surfaktant", "Dziecko zaczyna wykonywać samodzielne kroki"],
+                corr: 0,
+                exp: "W okresie embrionalnym powstają zawiązki wszystkich głównych narządów (organogeneza). Działanie leków, alkoholu czy wirusów w tym czasie powoduje najcięższe wady strukturalne."
+            },
+            {
+                subject: "brc",
+                cat: "Okres Prenatalny i Noworodek",
+                q: "Jaki jest cel prowadzenia kontaktu 'skóra do skóry' (STS) bezpośrednio po porodzie?",
+                opts: ["Stabilizacja temperatury, glikemii, mikrobioty noworodka oraz stymulacja laktacji i więzi", "Wywołanie patologicznego odruchu Babińskiego", "Sprawdzenie zarastania szwów czaszkowych", "Szybsze wygaśnięcie odruchu ssania"],
+                corr: 0,
+                exp: "Kontakt STS (minimum 2 godziny po porodzie) zapewnia kolonizację przyjazną mikrobiotą matki, reguluje oddech i ciepłotę ciała oraz wspiera wydzielanie oksytocyny."
+            },
+            {
+                subject: "brc",
+                cat: "Okres Prenatalny i Noworodek",
+                q: "W skali Apgar ocenia się 5 parametrów noworodka. Który zestaw przedstawia wszystkie oceniane cechy?",
+                opts: ["Masa ciała, wzrost, obwód głowy, liczba zębów, odruch Moro", "Akcja serca, oddech, napięcie mięśniowe, reakcja na cewnik (odruchy), zabarwienie skóry", "Glicemia, bilirubina, tętno, ciśnienie tętnicze, odruch Galanta", "Wielkość ciemiączka, długość kości udowej, wynik testu filipińskiego, płacz, wzrok"],
+                corr: 1,
+                exp: "Skala Apgar ocenia: 1. Zabarwienie skóry (Appearance), 2. Tętno (Pulse), 3. Reakcję na bodźce (Grimace), 4. Napięcie mięśni (Activity), 5. Oddychanie (Respiration)."
+            },
+            {
+                subject: "brc",
+                cat: "Odruchy Pierwotne",
+                q: "Jak reaguje noworodek podczas badania Odruchu Galanta?",
+                opts: ["Zgina rączkę po stronie obróconej twarzy", "Wykonuje skłon tułowia w stronę drażnionego odcinka lędźwiowego kręgosłupa", "Zaciska dłoń na palcu badającego", "Prostuje obie kończyny dolne i głośno krzyczy"],
+                corr: 1,
+                exp: "Odruch Galanta polega na wygięciu tułowia w łuk w stronę drażnionej skóry wzdłuż kręgosłupa w odcinku lędźwiowym."
+            },
+            {
+                subject: "brc",
+                cat: "Odruchy Pierwotne",
+                q: "Przetrwanie jakiego odruchu pierwotnego u starszego dziecka może prowadzić do nieprawidłowego wzorca chodu na palcach i trudności z zejściem po schodach?",
+                opts: ["Symetrycznego Tonicznego Odruchu Szyjnego (STOS / STNR) lub Odruchu Chwytnego Stopy", "Odruchu szukania", "Odruchu ssania", "Odruchu oczno-głowowego"],
+                corr: 0,
+                exp: "Przetrwanie tonicznych odruchów (STOS/ATOS) oraz przetrwałego chwytu podeszwowego utrudnia prawidłowe obciążanie pięty i prowadzi do chodu na palcach."
+            },
+            {
+                subject: "brc",
+                cat: "Odruchy Pierwotne",
+                q: "Czym charakteryzuje się Symetryczny Toniczny Odruch Szyjny (STOS)?",
+                opts: ["Zgięcie głowy powoduje zgięcie rąk i wyprost nóg, a wyprost głowy powoduje wyprost rąk i zgięcie nóg", "Obrót głowy w prawo powoduje wyprost prawej ręki i prawej nogi", "Dotknięcie policzka wywołuje zwrócenie głowy w stronę bodźca", "Nacisk na podeszwę powoduje zgięcie palców stopy"],
+                corr: 0,
+                exp: "STOS jest odruchem pozycji czworaczej: zgięcie szyi powoduje zgięcie rąk i prostowanie nóg; wyprost szyi działa odwrotnie."
+            },
+            {
+                subject: "brc",
+                cat: "Rozwój Motoryczny i Kamienie Milowe",
+                q: "Zgodnie z prawami rozwoju motorycznego (cefalo-caudalnym i proksymo-dystalnym), kontrola ruchowa rozwija się w kolejności:",
+                opts: ["Od stóp do głowy oraz od palców do tułowia", "Od głowy do stóp (od góry do dołu) oraz od osi tułowia do obwodu (części proksymalne przed dystalnymi)", "Losowo w zależności od masy urodzeniowej", "Najpierw w małych stawach dłoni, a na końcu w mięśniach szyi"],
+                corr: 1,
+                exp: "Prawo cefalocaudalne = rozwój od głowy w dół. Prawo proksymodystalne = rozwój od centrum ciała (tułów, barki) do obwodu (dłonie, palce)."
+            },
+            {
+                subject: "brc",
+                cat: "Rozwój Motoryczny i Kamienie Milowe",
+                q: "Prawidłowy rozwój chwytu u niemowlęcia przebiega wg następującej sekwencji ontogenetycznej:",
+                opts: ["Chwyt pęsetkowy -> chwyt dłoniowy -> chwyt małpi", "Chwyt dłoniowo-przyśrodkowy -> chwyt dłoniowy prosty -> chwyt nożycowy -> chwyt pęsetkowy (dystalny)", "Chwyt szczypcowy od urodzenia", "Brak jakichkolwiek zmian w formie chwytu przed 2. rokiem życia"],
+                corr: 1,
+                exp: "Dziecko najpierw chwyta całą dłonią od strony łokciowej, potom dłoniowo, następnie używa kciuka i wskaziciela (chwyt nożycowy), aż do precyzyjnego chwytu pęsetkowego (~10.-12. m.ż.)."
+            },
+            {
+                subject: "brc",
+                cat: "Rozwój Motoryczny i Kamienie Milowe",
+                q: "W którym miesiącu życia u niemowlęcia pojawia się fizjologiczny odruch obronny zwany 'spadochronowym' (reakcja spadochronowa)?",
+                opts: ["1.–2. miesiąc", "3.–4. miesiąc", "7.–9. miesiąc", "18. miesiąc"],
+                corr: 2,
+                exp: "Reakcja spadochronowa (wyciąganie rąk w celu obrony przed upadkiem przy przechyleniu tułowia w dół) pojawia się ok. 7.-9. m.ż. i pozostaje na całe życie."
+            },
+            {
+                subject: "brc",
+                cat: "Okres Przedszkolny i Szkolny",
+                q: "Czym charakteryzuje się tzw. 'II APOGEUM MOTORYCZNE' (Złoty Okres Motoryczności)?",
+                opts: ["Występuje u dzieci w wieku 10–12 lat (przed skokiem pokwitaniowym) i cechuje się łatwością przyswajania złożonych nawyków ruchowych", "Przypada na okres niemowlęcy przy raczkowaniu", "Dotyczy wyłącznie osób w wieku senioralnym po 65. roku życia", "Charakteryzuje się znacznym spadkiem koordynacji i wzrastaniem kości długich"],
+                corr: 0,
+                exp: "II Apogeum Motoryczności (wiek starszy szkolny, ok. 10–12 lat) to optymalny wiek na nauczanie techniki w dyscyplinach sportowych dzięki wysokiej plastyczności OUN."
+            },
+            {
+                subject: "brc",
+                cat: "Okres Przedszkolny i Szkolny",
+                q: "Lateralizacja skrzyżowana (jednorodna nieustalona) polega na tym, że:",
+                opts: ["Osoba ma zdominowaną całą prawą stronę ciała (prawe oko, ucho, ręka, noga)", "Dominujące organy ruchu i zmysłu znajdują się po przeciwnych stronach (np. praworęczność przy lewooczności)", "Osoba nie posługuje się w ogóle rękami", "Dotyczy to wyłącznie osób leworęcznych"],
+                corr: 1,
+                exp: "Lateralizacja skrzyżowana to przewaga narządów po różnych stronach ciała (np. prawa ręka + lewe oko), co może stwarzać wyzwania w koordynacji wzrokowo-ruchowej i czytaniu."
+            },
+            {
+                subject: "brc",
+                cat: "Okres Przedszkolny i Szkolny",
+                q: "W jakim okresie życia występuje tzw. 'skok pokwitaniowy' (dyskordancja wzrostowa)?",
+                opts: ["Średnio 10–12 lat u dziewcząt oraz 12–14 lat u chłopców", "W wieku 3 lat u obu płci", "Po 20. roku życia", "W okresie noworodkowym"],
+                corr: 0,
+                exp: "Skok pokwitaniowy rozpoczyna się wcześniej u dziewcząt (ok. 10-12 lat) niż u chłopców (ok. 12-14 lat), co wywołuje czasową przewagę wzrostową dziewcząt w tym wieku."
+            },
+            {
+                subject: "brc",
+                cat: "Dorosłość i Starzenie się",
+                q: "Czym różni się starzenie się pierwotne (fizjologiczne) od starzenia wtórnego (patologicznego)?",
+                opts: ["Starzenie pierwotne uwarunkowane jest genetycznie i uniwersalne; starzenie wtórne wynika ze skutków chorób, urazów i niezdrowego stylu życia", "Starzenie pierwotne dotyczy tylko skóry, a wtórne kości", "Starzenie wtórne występuje u każdego noworodka", "Brak różnic pojęciowych w gerontologii"],
+                corr: 0,
+                exp: "Starzenie pierwotne = naturalny, nieuchronny proces biologiczny. Starzenie wtórne = przyspieszenie regresu spowodowane chorobami układu krążenia, cukrzycą, brakiem ruchu czy paleniem."
+            },
+            {
+                subject: "brc",
+                cat: "Geriatria i Sarkopenia",
+                q: "Według wytycznych EWGSOP2, diagnozę PRAWOPODOBNEJ SARKOPENII stawia się na podstawie wykazania:",
+                opts: ["Niskiej siły mięśniowej (np. niski wynik w teście chwytu dynamometrem lub teście wstawania z krzesła)", "Wyłącznie niskiego poziomu hemoglobiny we krwi", "Utraty zębów stałych", "Obniżenia wzrostu ciała o 1 cm"],
+                corr: 0,
+                exp: "Według EWGSOP2 kluczowym kryterium wykrycia prawdopodobnej sarkopenii jest stwierdzenie obniżonej siły mięśniowej (muscle strength)."
+            },
+            {
+                subject: "brc",
+                cat: "Geriatria i Sarkopenia",
+                q: "Jakie jest kryterium potwierdzenia sarkopenii (potwierdzona sarkopenia) w badaniach diagnostycznych?",
+                opts: ["Niska siła mięśniowa + niska ilość lub jakość tkanki mięśniowej (oceniana np. BIA, DXA)", "Brak apetytu przez 2 dni", "Wynik w skali Apgar poniżej 5 pkt", "Tylko obecność odruchu Babińskiego"],
+                corr: 0,
+                exp: "Potwierdzenie sarkopenii wymaga udokumentowania zarówno zmniejszonej siły mięśniowej, jak i ilościowo obniżonej masy mięśni szkieletowych (DXA/BIA)."
+            },
+            {
+                subject: "brc",
+                cat: "Geriatria i Sarkopenia",
+                q: "Czym różni się Sarkopenia od Zespołu Słabości (Frailty Syndrome)?",
+                opts: ["Sarkopenia dotyczy układu mięśniowego, a Zespół Słabości to wielonarządowy stan wyczerpania rezerw biologicznych i odpornościowych na stresory", "Sarkopenia występuje tylko u niemowląt", "Zespół słabości to wyłącznie wada postawy u dzieci", "Są to pojęcia całkowicie tożsame"],
+                corr: 0,
+                exp: "Sarkopenia jest zaburzeniem mięśniowym. Zespół słabości (Frailty) to wieloukładowy zespół geriatryczny charakteryzujący się podatnością na niekorzystne zdarzenia zdrowotne i upadki."
+            },
+            {
+                subject: "brc",
+                cat: "Geriatria i Sarkopenia",
+                q: "Jaki wynik w Teście 5 Wstań z Krzesła (FTSST) wskazuje na osłabienie siły mięśni kończyn dolnych i ryzyko sarkopenii?",
+                opts: ["Czas wykonania 5 powtórzeń przekraczający 15 sekund", "Czas wykonania poniżej 5 sekund", "Wykonanie 50 powtórzeń w minutę", "Test ten wykonuje się w pozycji leżącej"],
+                corr: 0,
+                exp: "Czas wykonania 5 wstawań z krzesła bez pomocy rąk > 15 sekund świadczy o obniżonej sile mięśniowej kończyn dolnych."
+            },
+            {
+                subject: "brc",
+                cat: "Geriatria i Sarkopenia",
+                q: "Zjawisko otyłości sarkopenicznej (sarcopenic obesity) polega na:",
+                opts: ["Równoczesnym występowaniu otyłości (nadmiaru tkanki tłuszczowej) oraz sarkopenii (utraty masy i siły mięśniowej)", "Szybkim przyroście masy mięśniowej u osób otyłych", "Rozwoju tkanki tłuszczowej wyłącznie w kościach długich", "Spadku masy ciała poniżej 40 kg u młodzieży"],
+                corr: 0,
+                exp: "Otyłość sarkopeniczna to niebezpieczne połączenie nadmiaru tkanki tłuszczowej ze zredukowaną masą i funkcją mięśni, często maskujące ubytek mięśni pod warstwą tłuszczu."
+            },
+            {
+                subject: "brc",
+                cat: "Geriatria i Sarkopenia",
+                q: "Jaka jest zalecana dawka spożycia białka u osób starszych w profilaktyce sarkopenii według eksperckich zaleceń (PROT-AGE)?",
+                opts: ["0,4 g / kg masy ciała / dobę", "1,0 – 1,2 g / kg masy ciała / dobę (a przy ćwiczeniach lub chorobach 1,2–1,5 g/kg m.c.)", "3,0 g / kg masy ciała / dobę", "Białko należy całkowicie wyeliminować z diety seniora"],
+                corr: 1,
+                exp: "Ze względu na oporność anaboliczną seniorów, rekomendowane spożycie białka wzrasta do 1.0-1.2 g/kg m.c./dobę (oraz wyżej przy aktywności lub rekonwalescencji)."
+            },
+            {
+                subject: "brc",
+                cat: "Wyzwania Biomechaniczne i Kliniczne",
+                q: "Jakie formy aktywności fizycznej są najbardziej rekomendowane w prewencji i terapii sarkopenii u osób w wieku podeszłym?",
+                opts: ["Wyłącznie długotrwałe leżenie w łóżku", "Trening oporowy (siłowy) połączony z ćwiczeniami równoważnymi i oporowym obciążeniem kości", "Unikanie jakiegokolwiek obciążenia stawów", "Wyłącznie rozciąganie palców dłoni"],
+                corr: 1,
+                exp: "Trening siłowy/oporowy stanowi najskuteczniejszy bodziec osteo- i miogenny stymulujący syntezę białek mięśniowych u seniorów."
+            }
+        ];
+
+        // STATE MANAGERS
+        let currentSubject = 'fizjo'; // 'fizjo', 'bm', 'brc'
+        let activeQuestions = [];
+        let currentIdx = 0;
+        let selectedAnswers = [];
+        let quizMode = 'practice';
+        let timerInt = null;
+        let elapsedSeconds = 0;
+        let flashIdx = 0;
+        let currentFlashSubj = 'fizjo';
+        let currentBankFilter = 'all';
+
+        window.onload = function() {
+            selectSubject('fizjo');
+            initBankList();
+            initFlashCards();
+            updateGlobalCounters();
+
+            if (localStorage.getItem('bm_theme') === 'dark') {
+                document.documentElement.classList.add('dark');
+            }
+        };
+
+        function toggleTheme() {
+            document.documentElement.classList.toggle('dark');
+            const isDark = document.documentElement.classList.contains('dark');
+            localStorage.setItem('bm_theme', isDark ? 'dark' : 'light');
+        }
+
+        function updateGlobalCounters() {
+            const totalCount = rawQuestionBank.length;
+            if(document.getElementById('navBankSpan')) document.getElementById('navBankSpan').innerText = `Baza Pytań (${totalCount})`;
+            if(document.getElementById('bankTitleCount')) document.getElementById('bankTitleCount').innerText = `Pełna Baza Pytań (${totalCount} Pytań)`;
+        }
+
+        function selectSubject(subj) {
+            currentSubject = subj;
+            
+            const cardFizjo = document.getElementById('subjCardFizjo');
+            const cardBM = document.getElementById('subjCardBM');
+            const cardBRC = document.getElementById('subjCardBRC');
+
+            cardFizjo.className = 'subject-card';
+            cardBM.className = 'subject-card';
+            cardBRC.className = 'subject-card';
+
+            if (subj === 'fizjo') {
+                cardFizjo.classList.add('selected-fizjo');
+                document.getElementById('configSubTitle').innerText = "Dostosuj działy dla przedmiotu: Fizjologia Ogólna (I Rok Fizjoterapii)";
+            } else if (subj === 'bm') {
+                cardBM.classList.add('selected-bm');
+                document.getElementById('configSubTitle').innerText = "Dostosuj działy dla przedmiotu: Biologia Medyczna (© M. Religa)";
+            } else {
+                cardBRC.classList.add('selected-brc');
+                document.getElementById('configSubTitle').innerText = "Dostosuj działy dla przedmiotu: Biologiczny Rozwój Człowieka (dr hab. M. Krzykała)";
+            }
+
+            initCategoryGrid();
+        }
+
+        function showSection(secId) {
+            document.getElementById('sectionDash').classList.add('hidden');
+            document.getElementById('sectionQuiz').classList.add('hidden');
+            document.getElementById('sectionResults').classList.add('hidden');
+            document.getElementById('sectionFlash').classList.add('hidden');
+            document.getElementById('sectionBank').classList.add('hidden');
+
+            document.getElementById('navDashBtn').classList.remove('active');
+            document.getElementById('navFlashBtn').classList.remove('active');
+            document.getElementById('navBankBtn').classList.remove('active');
+
+            if (secId === 'dash') {
+                document.getElementById('sectionDash').classList.remove('hidden');
+                document.getElementById('navDashBtn').classList.add('active');
+            } else if (secId === 'flash') {
+                document.getElementById('sectionFlash').classList.remove('hidden');
+                document.getElementById('navFlashBtn').classList.add('active');
+            } else if (secId === 'bank') {
+                document.getElementById('sectionBank').classList.remove('hidden');
+                document.getElementById('navBankBtn').classList.add('active');
+            } else if (secId === 'quiz') {
+                document.getElementById('sectionQuiz').classList.remove('hidden');
+            } else if (secId === 'results') {
+                document.getElementById('sectionResults').classList.remove('hidden');
+            }
+        }
+
+        function initCategoryGrid() {
+            const subjQuestions = rawQuestionBank.filter(q => q.subject === currentSubject);
+            const categories = ['Wszystkie Działy', ...new Set(subjQuestions.map(q => q.cat))];
+            const grid = document.getElementById('categoryGrid');
+
+            grid.innerHTML = categories.map((cat, idx) => {
+                const count = idx === 0 ? subjQuestions.length : subjQuestions.filter(q => q.cat === cat).length;
+                return `
+                    <label class="option-radio-card ${idx === 0 ? 'selected' : ''}" onclick="highlightCategory(this)">
+                        <input type="radio" name="cat" value="${cat}" ${idx === 0 ? 'checked' : ''}>
+                        <div>
+                            <span class="radio-title">${cat}</span>
+                            <span class="radio-desc">${count} pytań w dziale</span>
+                        </div>
+                    </label>
+                `;
+            }).join('');
+        }
+
+        function highlightCategory(el) {
+            document.querySelectorAll('#categoryGrid .option-radio-card').forEach(c => c.classList.remove('selected'));
+            el.classList.add('selected');
+        }
+
+        function selectMode(m) {
+            quizMode = m;
+            document.getElementById('modeCardPractice').classList.remove('selected');
+            document.getElementById('modeCardExam').classList.remove('selected');
+            if (m === 'practice') {
+                document.getElementById('modeCardPractice').classList.add('selected');
+            } else {
+                document.getElementById('modeCardExam').classList.add('selected');
+            }
+        }
+
+        function startQuizSession() {
+            const catRadios = document.getElementsByName('cat');
+            let chosenCat = 'Wszystkie Działy';
+            for (let r of catRadios) {
+                if (r.checked) chosenCat = r.value;
+            }
+
+            const subjPool = rawQuestionBank.filter(q => q.subject === currentSubject);
+
+            if (chosenCat === 'Wszystkie Działy') {
+                activeQuestions = JSON.parse(JSON.stringify(subjPool));
+            } else {
+                activeQuestions = JSON.parse(JSON.stringify(subjPool.filter(q => q.cat === chosenCat)));
+            }
+
+            if (document.getElementById('chkShuffle').checked) {
+                activeQuestions.sort(() => Math.random() - 0.5);
+                activeQuestions.forEach(q => {
+                    const corrText = q.opts[q.corr];
+                    q.opts.sort(() => Math.random() - 0.5);
+                    q.corr = q.opts.indexOf(corrText);
+                });
+            }
+
+            currentIdx = 0;
+            selectedAnswers = new Array(activeQuestions.length).fill(null);
+            elapsedSeconds = 0;
+
+            showSection('quiz');
+            document.getElementById('qTotalNum').innerText = activeQuestions.length;
+
+            const useTimer = document.getElementById('chkTimer').checked;
+            const timerBox = document.getElementById('timerBox');
+            if (useTimer) {
+                timerBox.classList.remove('hidden');
+                clearInterval(timerInt);
+                timerInt = setInterval(() => {
+                    elapsedSeconds++;
+                    const m = String(Math.floor(elapsedSeconds / 60)).padStart(2, '0');
+                    const s = String(elapsedSeconds % 60).padStart(2, '0');
+                    timerBox.innerText = `⏱️ ${m}:${s}`;
+                }, 1000);
+            } else {
+                timerBox.classList.add('hidden');
+            }
+
+            renderQuestion();
+        }
+
+        function renderQuestion() {
+            const q = activeQuestions[currentIdx];
+
+            let subjPrefix = 'Fizjologia';
+            if (q.subject === 'bm') subjPrefix = 'Biologia Medyczna';
+            if (q.subject === 'brc') subjPrefix = 'Biol. Rozwój Człowieka';
+
+            document.getElementById('quizCatBadge').innerText = `${subjPrefix} • ${q.cat}`;
+            document.getElementById('qCurrentNum').innerText = currentIdx + 1;
+            
+            const pct = ((currentIdx + 1) / activeQuestions.length) * 100;
+            document.getElementById('quizProgressBar').style.width = `${pct}%`;
+
+            document.getElementById('qText').innerText = q.q;
+
+            const stack = document.getElementById('qOptionsStack');
+            stack.innerHTML = '';
+
+            const expBox = document.getElementById('qExplanationBox');
+            expBox.style.display = 'none';
+
+            q.opts.forEach((opt, idx) => {
+                const letter = String.fromCharCode(65 + idx);
+                const btn = document.createElement('button');
+                btn.className = 'option-item';
+                btn.onclick = () => selectOption(idx);
+
+                btn.innerHTML = `
+                    <div class="option-letter">${letter}</div>
+                    <div>${opt}</div>
+                `;
+                stack.appendChild(btn);
+            });
+
+            const btnNext = document.getElementById('btnNext');
+            btnNext.disabled = true;
+
+            if (selectedAnswers[currentIdx] !== null) {
+                applyOptionStyles(selectedAnswers[currentIdx]);
+            }
+        }
+
+        function selectOption(optIdx) {
+            if (selectedAnswers[currentIdx] !== null) return;
+
+            selectedAnswers[currentIdx] = optIdx;
+            applyOptionStyles(optIdx);
+
+            document.getElementById('btnNext').disabled = false;
+        }
+
+        function applyOptionStyles(selectedIdx) {
+            const q = activeQuestions[currentIdx];
+            const buttons = document.querySelectorAll('#qOptionsStack .option-item');
+
+            buttons.forEach((btn, idx) => {
+                btn.disabled = true;
+
+                if (quizMode === 'practice') {
+                    if (idx === q.corr) {
+                        btn.classList.add('correct');
+                    } else if (idx === selectedIdx && idx !== q.corr) {
+                        btn.classList.add('wrong');
+                    } else {
+                        btn.style.opacity = '0.4';
+                    }
+
+                    let headerText = "Wyjaśnienie akademickie z notatek:";
+                    if (q.subject === 'bm') headerText = "Cytat dydaktyczny © M. Religa:";
+                    if (q.subject === 'brc') headerText = "Objaśnienie wg dr hab. M. Krzykały:";
+
+                    document.getElementById('expTitleHeader').innerText = headerText;
+                    document.getElementById('qExplanationText').innerText = q.exp;
+                    document.getElementById('qExplanationBox').style.display = 'block';
+                } else {
+                    if (idx === selectedIdx) {
+                        btn.style.borderColor = 'var(--accent-teal)';
+                        btn.style.backgroundColor = 'var(--accent-teal-soft)';
+                    } else {
+                        btn.style.opacity = '0.5';
+                    }
+                }
+            });
+
+            document.getElementById('btnNext').disabled = false;
+        }
+
+        function nextQuestion() {
+            if (currentIdx < activeQuestions.length - 1) {
+                currentIdx++;
+                renderQuestion();
+            } else {
+                finishQuiz();
+            }
+        }
+
+        function confirmExit() {
+            if (confirm("Czy na pewno chcesz opuścić test?")) {
+                clearInterval(timerInt);
+                showSection('dash');
+            }
+        }
+
+        function finishQuiz() {
+            clearInterval(timerInt);
+
+            let correctCount = 0;
+            activeQuestions.forEach((q, idx) => {
+                if (selectedAnswers[idx] === q.corr) correctCount++;
+            });
+
+            const total = activeQuestions.length;
+            const percentage = Math.round((correctCount / total) * 100);
+
+            document.getElementById('resPercent').innerText = `${percentage}%`;
+            document.getElementById('stScore').innerText = `${correctCount} / ${total}`;
+            document.getElementById('stCorrect').innerText = correctCount;
+            document.getElementById('stWrong').innerText = total - correctCount;
+
+            const m = String(Math.floor(elapsedSeconds / 60)).padStart(2, '0');
+            const s = String(elapsedSeconds % 60).padStart(2, '0');
+            document.getElementById('stTime').innerText = `${m}:${s}`;
+
+            const resTitle = document.getElementById('resTitle');
+            const resSub = document.getElementById('resSub');
+
+            if (percentage >= 60) {
+                resTitle.innerText = "Zaliczone! Gratulacje!";
+                resSub.innerText = "Twój wynik spełnia akademicki próg zaliczeniowy (60%).";
+            } else {
+                resTitle.innerText = "Wymagana Dalsza Nauka";
+                resSub.innerText = "Wynik znajduje się poniżej progu 60%. Przeanalizuj błędne pytania w raporcie.";
+            }
+
+            renderReport();
+            showSection('results');
+        }
+
+        function renderReport() {
+            const container = document.getElementById('reportContainer');
+            container.innerHTML = '';
+
+            activeQuestions.forEach((q, idx) => {
+                const userAns = selectedAnswers[idx];
+                const isCorrect = userAns === q.corr;
+
+                const item = document.createElement('div');
+                item.style.padding = '1rem';
+                item.style.borderRadius = 'var(--radius-md)';
+                item.style.border = `1px solid ${isCorrect ? 'var(--success-border)' : 'var(--error-border)'}`;
+                item.style.backgroundColor = isCorrect ? 'var(--success-bg)' : 'var(--error-bg)';
+
+                let subjName = 'Fizjologia';
+                if (q.subject === 'bm') subjName = 'Biologia Medyczna';
+                if (q.subject === 'brc') subjName = 'Biol. Rozwój Człowieka';
+
+                item.innerHTML = `
+                    <div style="font-size: 0.75rem; font-weight: 800; color: var(--text-muted); margin-bottom: 4px;">Pytanie ${idx + 1} • ${subjName} • ${q.cat}</div>
+                    <div style="font-weight: 700; font-size: 0.95rem; margin-bottom: 8px; color: var(--text-primary);">${q.q}</div>
+                    <div style="font-size: 0.82rem; margin-bottom: 6px;">
+                        <strong style="color: ${isCorrect ? 'var(--success-text)' : 'var(--error-text)'};">Twoja odpowiedź:</strong> ${userAns !== null ? q.opts[userAns] : 'Brak'}
+                    </div>
+                    ${!isCorrect ? `<div style="font-size: 0.82rem; color: var(--success-text); margin-bottom: 6px;"><strong>Prawidłowa odpowiedź:</strong> ${q.opts[q.corr]}</div>` : ''}
+                    <div style="font-size: 0.8rem; background: var(--bg-secondary); padding: 8px; border-radius: var(--radius-sm); margin-top: 6px; color: var(--text-secondary);">
+                        <strong>Wyjaśnienie:</strong> ${q.exp}
+                    </div>
+                `;
+                container.appendChild(item);
+            });
+        }
+
+        function toggleReport() {
+            document.getElementById('reportBox').classList.toggle('hidden');
+        }
+
+        // FLASHCARDS
+        function setFlashSubject(subj) {
+            currentFlashSubj = subj;
+            flashIdx = 0;
+            
+            document.getElementById('flashSubjFizjo').className = subj === 'fizjo' ? 'btn btn-primary' : 'btn btn-secondary';
+            document.getElementById('flashSubjBM').className = subj === 'bm' ? 'btn btn-primary' : 'btn btn-secondary';
+            document.getElementById('flashSubjBRC').className = subj === 'brc' ? 'btn btn-primary' : 'btn btn-secondary';
+
+            renderFlashCard();
+        }
+
+        function initFlashCards() {
+            setFlashSubject('fizjo');
+        }
+
+        function renderFlashCard() {
+            const pool = rawQuestionBank.filter(q => q.subject === currentFlashSubj);
+            if (pool.length === 0) return;
+
+            const q = pool[flashIdx];
+            document.getElementById('flashCardBox').classList.remove('flipped');
+
+            let subjName = 'Fizjologia';
+            if (q.subject === 'bm') subjName = 'Biologia Medyczna';
+            if (q.subject === 'brc') subjName = 'Biol. Rozwój Człowieka';
+
+            document.getElementById('fcCategory').innerText = `${subjName} • ${q.cat}`;
+            document.getElementById('fcQuestion').innerText = q.q;
+            document.getElementById('fcAnswer').innerText = `Odp: ${q.opts[q.corr]}`;
+            document.getElementById('fcExp').innerText = q.exp;
+
+            document.getElementById('fcCurrent').innerText = flashIdx + 1;
+            document.getElementById('fcTotal').innerText = pool.length;
+        }
+
+        function flipFlashCard() {
+            document.getElementById('flashCardBox').classList.toggle('flipped');
+        }
+
+        function nextFlashCard() {
+            const pool = rawQuestionBank.filter(q => q.subject === currentFlashSubj);
+            if (flashIdx < pool.length - 1) {
+                flashIdx++;
+            } else {
+                flashIdx = 0;
+            }
+            renderFlashCard();
+        }
+
+        function prevFlashCard() {
+            const pool = rawQuestionBank.filter(q => q.subject === currentFlashSubj);
+            if (flashIdx > 0) {
+                flashIdx--;
+            } else {
+                flashIdx = pool.length - 1;
+            }
+            renderFlashCard();
+        }
+
+        // DATABASE SEARCH
+        function setBankFilter(filter) {
+            currentBankFilter = filter;
+
+            document.getElementById('bankSubjAll').className = filter === 'all' ? 'btn btn-primary' : 'btn btn-secondary';
+            document.getElementById('bankSubjFizjo').className = filter === 'fizjo' ? 'btn btn-primary' : 'btn btn-secondary';
+            document.getElementById('bankSubjBM').className = filter === 'bm' ? 'btn btn-primary' : 'btn btn-secondary';
+            document.getElementById('bankSubjBRC').className = filter === 'brc' ? 'btn btn-primary' : 'btn btn-secondary';
+
+            filterBank();
+        }
+
+        function initBankList() {
+            setBankFilter('all');
+        }
+
+        function filterBank() {
+            const query = document.getElementById('bankSearchInput').value.toLowerCase();
+            const container = document.getElementById('bankListContainer');
+            container.innerHTML = '';
+
+            let pool = rawQuestionBank;
+            if (currentBankFilter !== 'all') {
+                pool = rawQuestionBank.filter(q => q.subject === currentBankFilter);
+            }
+
+            const filtered = pool.filter(q => 
+                q.q.toLowerCase().includes(query) ||
+                q.exp.toLowerCase().includes(query) ||
+                q.opts.some(o => o.toLowerCase().includes(query))
+            );
+
+            filtered.forEach((q, idx) => {
+                const card = document.createElement('div');
+                card.style.padding = '1rem';
+                card.style.borderRadius = 'var(--radius-md)';
+                card.style.border = '1px solid var(--border-color)';
+                card.style.backgroundColor = 'var(--bg-secondary)';
+
+                let subjTag = 'Fizjologia';
+                if (q.subject === 'bm') subjTag = 'Biologia Medyczna';
+                if (q.subject === 'brc') subjTag = 'Biol. Rozwój Człowieka';
+
+                card.innerHTML = `
+                    <div style="font-size: 0.72rem; font-weight: 800; color: var(--accent-teal); margin-bottom: 4px;">Pytanie ${idx + 1} • ${subjTag} • ${q.cat}</div>
+                    <div style="font-weight: 700; font-size: 0.98rem; margin-bottom: 10px; color: var(--text-primary);">${q.q}</div>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 6px; margin-bottom: 10px;">
+                        ${q.opts.map((o, i) => `
+                            <div style="font-size: 0.82rem; padding: 6px 10px; border-radius: var(--radius-sm); border: 1px solid var(--border-color); ${i === q.corr ? 'background: var(--success-bg); border-color: var(--success-border); font-weight: 700; color: var(--success-text);' : 'color: var(--text-secondary);'}">
+                                ${String.fromCharCode(65 + i)}. ${o} ${i === q.corr ? '✓' : ''}
+                            </div>
+                        `).join('')}
+                    </div>
+                    <div style="font-size: 0.8rem; background: var(--bg-tertiary); padding: 8px 12px; border-radius: var(--radius-sm); color: var(--text-secondary);">
+                        <strong style="color: var(--accent-teal);">Wyjaśnienie:</strong> ${q.exp}
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+    </script>
 </body>
 </html>
