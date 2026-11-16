@@ -674,7 +674,7 @@
                     </button>
                     <button id="navBankBtn" class="nav-btn" onclick="showSection('bank')">
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
-                        <span id="navBankSpan">Baza Pytań (228)</span>
+                        <span id="navBankSpan">Baza Pytań (268)</span>
                     </button>
                     <button class="theme-toggle" onclick="toggleTheme()" title="Przełącz motyw">🌙</button>
                 </div>
@@ -708,10 +708,10 @@
                 </div>
 
                 <div class="subject-card" id="subjCardFizjo2" onclick="selectSubject('fizjo2')">
-                    <div class="subject-icon">🌡️</div>
+                    <div class="subject-icon">🧠</div>
                     <div class="subject-title">Fizjologia Zaliczenie 2</div>
-                    <div class="subject-desc">Klasyfikacja bólu i bóle głowy, termoregulacja, gorączka, hipertermia, hipotermia oraz ośrodki podwzgórza.</div>
-                    <span class="subject-badge">28 Pytań • I Rok Fizjoterapii</span>
+                    <div class="subject-desc">Klasyfikacja bólu, bóle głowy, termoregulacja, gorączka, hipotermia, ośrodki podwzgórza, plastyczność mózgu, pamięć, otępienie, amnezja, łaknienie i pragnienie.</div>
+                    <span class="subject-badge">68 Pytań • I Rok Fizjoterapii</span>
                 </div>
 
                 <div class="subject-card" id="subjCardBRC" onclick="selectSubject('brc')">
@@ -849,7 +849,7 @@
 
                 <div style="margin-bottom: 1rem; display: flex; gap: 10px; flex-wrap: wrap;">
                     <button class="btn btn-secondary" id="flashSubjFizjo" onclick="setFlashSubject('fizjo')">Fizjologia (50)</button>
-                    <button class="btn btn-secondary" id="flashSubjFizjo2" onclick="setFlashSubject('fizjo2')">Fizjologia Zaliczenie 2 (28)</button>
+                    <button class="btn btn-secondary" id="flashSubjFizjo2" onclick="setFlashSubject('fizjo2')">Fizjologia Zaliczenie 2 (68)</button>
                     <button class="btn btn-secondary" id="flashSubjBM" onclick="setFlashSubject('bm')">Biologia Medyczna (75)</button>
                     <button class="btn btn-secondary" id="flashSubjBRC" onclick="setFlashSubject('brc')">Biol. Rozwój Człowieka (75)</button>
                 </div>
@@ -887,9 +887,9 @@
                 </div>
 
                 <div style="margin-bottom: 1rem; display: flex; gap: 10px; flex-wrap: wrap;">
-                    <button class="btn btn-secondary" id="bankSubjAll" onclick="setBankFilter('all')">Wszystkie Przedmioty (228)</button>
+                    <button class="btn btn-secondary" id="bankSubjAll" onclick="setBankFilter('all')">Wszystkie Przedmioty (268)</button>
                     <button class="btn btn-secondary" id="bankSubjFizjo" onclick="setBankFilter('fizjo')">Fizjologia (50)</button>
-                    <button class="btn btn-secondary" id="bankSubjFizjo2" onclick="setBankFilter('fizjo2')">Fizjologia Zaliczenie 2 (28)</button>
+                    <button class="btn btn-secondary" id="bankSubjFizjo2" onclick="setBankFilter('fizjo2')">Fizjologia Zaliczenie 2 (68)</button>
                     <button class="btn btn-secondary" id="bankSubjBM" onclick="setBankFilter('bm')">Biologia Medyczna (75)</button>
                     <button class="btn btn-secondary" id="bankSubjBRC" onclick="setBankFilter('brc')">Biol. Rozwój Człowieka (75)</button>
                 </div>
@@ -910,6 +910,530 @@
 
     <script>
         const rawQuestionBank = [
+            // ========================================================
+            // PRZEDMIOT 4: FIZJOLOGIA ZALICZENIE 2.2 (40 PYTAŃ)
+            // ========================================================
+            {
+                subject: "fizjo2",
+                cat: "Plastyczność Mózgu",
+                q: "W jaki sposób układ nerwowy reaguje w ramach plastyczności homeostatycznej na sytuację przewlekłej, nadmiernej aktywności neuronów?",
+                opts: [
+                    "Osłabia siłę istniejących połączeń synaptycznych.",
+                    "Pobudza i wzmacnia siłę połączeń synaptycznych.",
+                    "Rozpoczyna intensywną neurogenezę w płacie potylicznym.",
+                    "Całkowicie hamuje przycinanie synaptyczne."
+                ],
+                corr: 0,
+                exp: "Plastyczność homeostatyczna reguluje działanie synaps: przy nadmiernej aktywności neuronów mózg osłabia siłę połączeń synaptycznych, natomiast przy zbyt słabej aktywności pobudza je."
+            },
+            {
+                subject: "fizjo2",
+                cat: "Plastyczność Mózgu",
+                q: "Jakie zjawisko obserwuje się w korze wzrokowej u osób niewidomych od urodzenia w kontekście plastyczności rozwojowej?",
+                opts: [
+                    "Przejęcie funkcji przetwarzania informacji dotykowych.",
+                    "Całkowity zanik synaps i brak jakiejkolwiek aktywności neuronalnej.",
+                    "Przejęcie funkcji ośrodka pragnienia i regulacji glukozy.",
+                    "Rozwój ambliopii obuocznej wskutek braku bodźców świetlnych."
+                ],
+                corr: 0,
+                exp: "W ramach kompensacji uszkodzeń w plastyczności rozwojowej inne struktury przejmują funkcje uszkodzonych obszarów – np. osoby niewidome od urodzenia wykorzystują korę wzrokową do przetwarzania informacji dotykowych."
+            },
+            {
+                subject: "fizjo2",
+                cat: "Plastyczność Mózgu",
+                q: "Który z poniższych procesów NIE zalicza się do czterech głównych elementów fizycznej przebudowy mózgu w ramach plastyczności strukturalnej?",
+                opts: [
+                    "Zmiana aktywności receptorów odbierających sygnał.",
+                    "Powstanie nowych synaps (połączeń między neuronami).",
+                    "Przebudowa dendrytów – zmiana liczby rozgałęzień i wypustek.",
+                    "Neurogeneza – powstanie nowych neuronów."
+                ],
+                corr: 0,
+                exp: "Regulacja wrażliwości neuronów (zmiana liczby i aktywności receptorów) należy do plastyczności homeostatycznej. Plastyczność strukturalna obejmuje: powstanie nowych synaps, przebudowę dendrytów, wzmacnianie/osłabianie połączeń oraz neurogenezę."
+            },
+            {
+                subject: "fizjo2",
+                cat: "Plastyczność Mózgu",
+                q: "Czym charakteryzuje się ambliopia w odniesieniu do zależności plastyczności mózgu od wieku?",
+                opts: [
+                    "Osłabieniem ostrości widzenia w jednym oku wskutek nieprawidłowej współpracy oka z mózgiem.",
+                    "Całkowitą ślepotą spowodowaną uszkodzeniem kory wzrokowej po udarze.",
+                    "Nadwrażliwością na dźwięki mowy w okresie krytycznym rozwoju.",
+                    "Nadmiernym przycinaniem synaptycznym w zwojach podstawy."
+                ],
+                corr: 0,
+                exp: "Ambliopia to osłabienie ostrości widzenia w jednym oku, spowodowane przez nieprawidłową współpracę oka z mózgiem w okresie krytycznym, gdy mózg musi otrzymać prawidłowe bodźce."
+            },
+            {
+                subject: "fizjo2",
+                cat: "Plastyczność Mózgu",
+                q: "Na czym polega plastyczność kompensacyjna (po udarze) w układzie nerwowym?",
+                opts: [
+                    "Na zdolności mózgu do kompensowania uszkodzeń poprzez reorganizację sieci neuronalnych.",
+                    "Na osłabianiu połączeń synaptycznych w odpowiedzi na zbyt silną stymulację.",
+                    "Na całkowitym zahamowaniu powstawania nowych synaps w okolicy uszkodzenia.",
+                    "Na wyłącznym przejęciu funkcji ruchowych przez ciało migdałowate."
+                ],
+                corr: 0,
+                exp: "Plastyczność po udarze (kompensacyjna) to zdolność mózgu do kompensowania uszkodzeń poprzez reorganizację sieci neuronalnych."
+            },
+            {
+                subject: "fizjo2",
+                cat: "Plastyczność Mózgu",
+                q: "Od jakiego etapu rozpoczyna się rozwój mowy w ramach okresów krytycznych plastyczności rozwojowej?",
+                opts: [
+                    "Od nabywania wrażliwości na dźwięki mowy.",
+                    "Od pełnego wykształcenia pamięci epizodycznej.",
+                    "Od zakończenia procesu przycinania synaptycznego w dorosłości.",
+                    "Od wytworzenia automatycznych nawyków w zwojach podstawy."
+                ],
+                corr: 0,
+                exp: "W plastyczności rozwojowej okresy krytyczne to czas szczególnej podatności na bodźce; rozwój mowy rozpoczyna się od nabywania wrażliwości na dźwięki mowy."
+            },
+            {
+                subject: "fizjo2",
+                cat: "Plastyczność Mózgu",
+                q: "W jaki sposób plastyczność mózgu zmienia się wraz z wiekiem człowieka?",
+                opts: [
+                    "Jest największa od urodzenia (w okresie krytycznym), a następnie maleje z wiekiem.",
+                    "Jest najmniejsza u noworodków i rośnie liniowo aż do okresu starości.",
+                    "Pozostaje na niezmiennym, stałym poziomie przez całe życie człowieka.",
+                    "Występuje wyłącznie w wieku podeszłym jako mechanizm obronny przed otępieniem."
+                ],
+                corr: 0,
+                exp: "Plastyczność mózgu jest bardzo zależna od wieku – od urodzenia jest największa (okres krytyczny), a z wiekiem maleje."
+            },
+            {
+                subject: "fizjo2",
+                cat: "Pamięć Epizodyczna i Nieświadoma",
+                q: "Dlaczego wspomnienia przechowywane w pamięci epizodycznej są podatne na zniekształcenia i łatwe do uszkodzenia?",
+                opts: [
+                    "Ponieważ mają charakter subiektywny, a odpowiadające za nie struktury są wrażliwe.",
+                    "Ponieważ są zapisywane wyłącznie w móżdżku i zwojach podstawy.",
+                    "Ponieważ opierają się na bezwarunkowych odruchach rdzeniowych.",
+                    "Ponieważ pamięć epizodyczna jest pamięcią krótkotrwałą trwającą kilka sekund."
+                ],
+                corr: 0,
+                exp: "Pamięć epizodyczna to pamięć długotrwała dotycząca osobistych doświadczeń i zdarzeń; wspomnienia te są subiektywne i podatne na zniekształcenia, ponieważ struktury za nią odpowiadające są wrażliwe (na stres, depresję, chorobę Alzheimera)."
+            },
+            {
+                subject: "fizjo2",
+                cat: "Pamięć Epizodyczna i Nieświadoma",
+                q: "Która cecha odróżnia pamięć nieświadomą od pamięci epizodycznej w kontekście starzenia się i chorób neurodegeneracyjnych?",
+                opts: [
+                    "Jest stabilna z czasem, a starość i choroba Alzheimera mają na nią minimalny wpływ.",
+                    "Ulega całkowitemu zanikowi już we wczesnym stadium choroby Alzheimera.",
+                    "Wymaga ciągłego, świadomego wysiłku przy każdym odtworzeniu.",
+                    "Jest niezwykle wrażliwa na przewlekły stres i depresję."
+                ],
+                corr: 0,
+                exp: "Pamięć nieświadoma charakteryzuje się automatyzmem i trwałością – jest stabilna z czasem, starość ma na nią minimalny wpływ i jest dosyć odporna na choroby, np. Alzheimera."
+            },
+            {
+                subject: "fizjo2",
+                cat: "Pamięć Epizodyczna i Nieświadoma",
+                q: "Która struktura mózgu odpowiada za emocjonalną część pamięci nieświadomej oraz warunkowanie lęku?",
+                opts: [
+                    "Ciało migdałowate.",
+                    "Móżdżek.",
+                    "Zwoje podstawy.",
+                    "Podwzgórze."
+                ],
+                corr: 0,
+                exp: "W pamięci nieświadomej ciało migdałowate odpowiada za jej część emocjonalną oraz warunkowanie lęku."
+            },
+            {
+                subject: "fizjo2",
+                cat: "Pamięć Epizodyczna i Nieświadoma",
+                q: "Jaką rolę w mechanizmach pamięci nieświadomej pełnią zwoje podstawy?",
+                opts: [
+                    "Są kluczowe dla tworzenia nawyków i automatycznych ruchów.",
+                    "Odpowiadają za zapamiętywanie osobistych zdarzeń z przeszłości.",
+                    "Są głównym ośrodkiem warunkowania lęku i reakcji emocjonalnych.",
+                    "Regulują uwalnianie cholecystokininy i leptyny."
+                ],
+                corr: 0,
+                exp: "Zwoje podstawy są kluczowe dla tworzenia nawyków i automatycznych ruchów w ramach pamięci nieświadomej."
+            },
+            {
+                subject: "fizjo2",
+                cat: "Pamięć Epizodyczna i Nieświadoma",
+                q: "Czym charakteryzuje się zjawisko primingu (efektu torowania) jako mechanizm pamięci nieświadomej?",
+                opts: [
+                    "Wpływem wcześniejszej ekspozycji na bodziec na reakcję wobec kolejnego podobnego bodźca.",
+                    "Nabywaniem złożonych umiejętności motorycznych, takich jak jazda na rowerze.",
+                    "Świadomym odtwarzaniem dat i faktów biograficznych.",
+                    "Utratą pamięci po silnym urazie psychicznym."
+                ],
+                corr: 0,
+                exp: "Priming (efekt torowania) polega na tym, że wcześniejsza ekspozycja na dany bodziec wpływa na sposób, w jaki reagujemy na kolejny podobny bodziec (wykorzystywane np. w marketingu)."
+            },
+            {
+                subject: "fizjo2",
+                cat: "Pamięć Epizodyczna i Nieświadoma",
+                q: "Jaka jest rola móżdżku w kontekście pamięci nieświadomej?",
+                opts: [
+                    "Odpowiada za koordynację ruchową oraz pamięć proceduralną.",
+                    "Odpowiada za pamięć epizodyczną i subiektywne wspomnienia.",
+                    "Odpowiada za warunkowanie lęku i reakcje stresowe.",
+                    "Odpowiada za efekt torowania (priming) w marketingu."
+                ],
+                corr: 0,
+                exp: "Móżdżek odpowiada za koordynację ruchową oraz pamięć proceduralną."
+            },
+            {
+                subject: "fizjo2",
+                cat: "Pamięć Epizodyczna i Nieświadoma",
+                q: "Który z poniższych przykładów ilustruje działanie pamięci proceduralnej w ramach pamięci nieświadomej?",
+                opts: [
+                    "Jazda na rowerze.",
+                    "Przypomnienie sobie przebiegu własnych urodzin.",
+                    "Reakcja na reklamę widzianą kilka minut wcześniej.",
+                    "Odczuwanie lęku na widok bodźca kojarzonego z bólem."
+                ],
+                corr: 0,
+                exp: "Pamięć proceduralna obejmuje umiejętności fizyczne, które po wyuczeniu stają się automatyczne, np. jazda na rowerze."
+            },
+            {
+                subject: "fizjo2",
+                cat: "Otępienie (Demencja)",
+                q: "Który rodzaj otępienia stanowi od 50% do 70% wszystkich przypadków demencji i objawia się charakterystycznym zaburzeniem pamięci krótkotrwałej?",
+                opts: [
+                    "Choroba Alzheimera.",
+                    "Otępienie naczyniopochodne.",
+                    "Otępienie z ciałami Lewy'ego.",
+                    "Otępienie czołowo-skroniowe."
+                ],
+                corr: 0,
+                exp: "Choroba Alzheimera stanowi 50–70% wszystkich przypadków otępienia, a jej charakterystycznym objawem jest zaburzenie pamięci krótkotrwałej."
+            },
+            {
+                subject: "fizjo2",
+                cat: "Otępienie (Demencja)",
+                q: "Który zespół objawów jest najbardziej typowy dla otępienia z ciałami Lewy'ego?",
+                opts: [
+                    "Zaburzenia wzrokowo-przestrzenne, wahania uwagi oraz omamy wzrokowe.",
+                    "Wyłącznie postępująca utrata empatii i zdolności językowych.",
+                    "Nagły, przemijający epizod utraty pamięci trwający do kilku godzin.",
+                    "Zwiększenie siły połączeń synaptycznych i pobudzenie ośrodka głodu."
+                ],
+                corr: 0,
+                exp: "Dla otępienia z ciałami Lewy'ego charakterystyczne są zaburzenia wzrokowo-przestrzenne, wahania uwagi oraz omamy wzrokowe."
+            },
+            {
+                subject: "fizjo2",
+                cat: "Otępienie (Demencja)",
+                q: "Jakie obszary funkcjonowania człowieka ulegają uszkodzeniu w pierwszej kolejności w otępieniu czołowo-skroniowym?",
+                opts: [
+                    "Osobowość, empatia, zachowanie oraz zdolności językowe.",
+                    "Koordynacja ruchowa w móżdżku i pamięć proceduralna.",
+                    "Ostrość widzenia w jednym oku (ambliopia).",
+                    "Regulacja ciśnienia osmotycznego i wydzielanie insuliny."
+                ],
+                corr: 0,
+                exp: "Otępienie czołowo-skroniowe uszkadza osobowość, empatię, zachowanie oraz zdolności językowe."
+            },
+            {
+                subject: "fizjo2",
+                cat: "Otępienie (Demencja)",
+                q: "Co jest bezpośrednią przyczyną rozwoju otępienia naczyniopochodnego?",
+                opts: [
+                    "Uszkodzenia naczyń krwionośnych i gorszy przepływ krwi w mózgu.",
+                    "Niedobór witaminy B12 i silna trauma psychiczna.",
+                    "Nadmierne wydzielanie dopaminy w układzie nagrody.",
+                    "Zbyt wysoki poziom leptyny wydzielanej przez adipocyty."
+                ],
+                corr: 0,
+                exp: "Otępienie naczyniopochodne wynika z uszkodzeń naczyń krwionośnych i gorszego przepływu krwi w mózgu."
+            },
+            {
+                subject: "fizjo2",
+                cat: "Otępienie (Demencja)",
+                q: "Który zestaw obejmuje ogólne objawy charakterystyczne dla zespołów otępiennych (demencji)?",
+                opts: [
+                    "Stopniowa utrata pamięci, problemy z orientacją, kłopoty z planowaniem oraz drażliwość.",
+                    "Nagła poprawa pamięci proceduralnej i wzmożony apetyt.",
+                    "Wyłącznie osłabienie ostrości widzenia i nadmierna senność.",
+                    "Przemijająca utrata pamięci trwająca maksymalnie kilka minut."
+                ],
+                corr: 0,
+                exp: "Do ogólnych objawów otępienia należą: stopniowa utrata pamięci, problemy z orientacją, kłopoty z planowaniem, drażliwość lub nagłe zmiany zachowania społecznego."
+            },
+            {
+                subject: "fizjo2",
+                cat: "Amnezja",
+                q: "Czym różni się amnezja następcza (anterograda) od amnezji wstecznej (retrograda)?",
+                opts: [
+                    "Anterograda to niezdolność do tworzenia nowych wspomnień po urazie, a retrograda to utrata pamięci sprzed urazu.",
+                    "Anterograda trwa tylko kilka minut, a retrograda jest zawsze nieodwracalna.",
+                    "Anterograda wynika wyłącznie ze stresu, a retrograda z niedoboru witaminy B12.",
+                    "Anterograda dotyczy pamięci proceduralnej, a retrograda wyłącznie nawyków ruchowych."
+                ],
+                corr: 0,
+                exp: "Amnezja wsteczna (retrograda) to utrata pamięci nabytej przed urazem lub chorobą, natomiast amnezja następcza (anterograda) to utrata zdolności do tworzenia nowych wspomnień po urazie/chorobie."
+            },
+            {
+                subject: "fizjo2",
+                cat: "Amnezja",
+                q: "Jakie są charakterystyczne cechy przejściowej globalnej amnezji (TGA)?",
+                opts: [
+                    "Nagły, przemijający epizod utraty pamięci trwający od kilku minut do kilku godzin.",
+                    "Postępująca i całkowicie nieodwracalna utrata wszystkich wspomnień.",
+                    "Utrata wyłącznie umiejętności jazdy na rowerze i koordynacji ruchowej.",
+                    "Przewlekłe zaburzenie wywołane wyłącznie niedoborem witaminy B12."
+                ],
+                corr: 0,
+                exp: "TGA (przejściowa globalna amnezja) to nagły, przemijający epizod utraty pamięci, który trwa od kilku minut do kilku godzin."
+            },
+            {
+                subject: "fizjo2",
+                cat: "Amnezja",
+                q: "Który element postępowania terapeutycznego w amnezji jest konieczny w przypadku wykrycia przyczyny somatycznej, takiej jak niedobór witaminy B12?",
+                opts: [
+                    "Leczenie choroby podstawowej, w tym uzupełnienie niedoboru witaminy B12.",
+                    "Wyłącznie stosowanie wysokich dawek dopaminy i angiotensyny II.",
+                    "Drażnienie podwzgórzowego ośrodka sytości.",
+                    "Unikanie jakiejkolwiek rehabilitacji poznawczej."
+                ],
+                corr: 0,
+                exp: "W leczeniu amnezji oprócz psychoterapii i rehabilitacji poznawczej konieczne jest leczenie choroby podstawowej, np. uzupełnienie niedoboru witaminy B12."
+            },
+            {
+                subject: "fizjo2",
+                cat: "Amnezja",
+                q: "Jaki czynnik wywołuje amnezję psychogenną (dysocjacyjną)?",
+                opts: [
+                    "Silny stres lub trauma psychiczna.",
+                    "Guz mózgu lub niedotlenienie okołoporodowe.",
+                    "Niedobór witaminy B12 i odwodnienie.",
+                    "Uszkodzenie naczyń krwionośnych w płacie czołowym."
+                ],
+                corr: 0,
+                exp: "Amnezja psychogenna (dysocjacyjna) jest wywołana przez silny stres lub traumę psychiczną."
+            },
+            {
+                subject: "fizjo2",
+                cat: "Amnezja",
+                q: "Które z poniższych czynników wymieniono w notatkach jako przyczyny amnezji?",
+                opts: [
+                    "Uraz głowy, wstrząs mózgu, guz, niedotlenienie, stres, trauma, alkohol oraz neurodegeneracja.",
+                    "Nadmierne spożycie glukozy i wysoki poziom cholecystokininy.",
+                    "Przycinanie synaptyczne w okresie krytycznym rozwoju.",
+                    "Nadczynność osmodetektorów podwzgórzowych."
+                ],
+                corr: 0,
+                exp: "Przyczyny amnezji to: uraz głowy, wstrząs mózgu, guz lub niedotlenienie, stres / trauma / alkohol oraz neurodegeneracja (np. choroba Alzheimera)."
+            },
+            {
+                subject: "fizjo2",
+                cat: "Podstawy Zachowania i Ośrodki Motywacyjne",
+                q: "Jaki neuroprzekaźnik jest uwalniany w układzie nagrody, aby zmotywować organizm do powtórzenia przyjemnego zachowania?",
+                opts: [
+                    "Dopamina.",
+                    "Insulina.",
+                    "Leptyna.",
+                    "Angiotensyna II."
+                ],
+                corr: 0,
+                exp: "W układzie nagrody uwalniana jest dopamina, aby motywować do powtórzenia zachowania, np. przy przyjemnych doświadczeniach."
+            },
+            {
+                subject: "fizjo2",
+                cat: "Podstawy Zachowania i Ośrodki Motywacyjne",
+                q: "Która struktura mózgowia pełni funkcję głównego ośrodka regulacji podstawowych potrzeb fizjologicznych, takich jak głód i pragnienie?",
+                opts: [
+                    "Podwzgórze.",
+                    "Móżdżek.",
+                    "Zwoje podstawy.",
+                    "Kora wzrokowa."
+                ],
+                corr: 0,
+                exp: "Podwzgórze jest głównym ośrodkiem regulacji podstawowych potrzeb (takich jak głód i pragnienie)."
+            },
+            {
+                subject: "fizjo2",
+                cat: "Podstawy Zachowania i Ośrodki Motywacyjne",
+                q: "Skąd układ regulacji emocji i nastroju przyjmuje informacje, umożliwiając wpływ na doznania subiektywne?",
+                opts: [
+                    "Z układu limbicznego.",
+                    "Z jelita cienkiego.",
+                    "Z komórek tkanki tłuszczowej (adipocytów).",
+                    "Z nerwów obwodowych skóry."
+                ],
+                corr: 0,
+                exp: "W zakresie emocji i nastroju podwzgórze przyjmuje informacje z układu limbicznego, co umożliwia wpływ na emocje i doznania subiektywne."
+            },
+            {
+                subject: "fizjo2",
+                cat: "Podstawy Zachowania i Ośrodki Motywacyjne",
+                q: "Jaka reakcja behawioralna nastąpi u głodnego zwierzęcia po eksperymentalnym drażnieniu ośrodka sytości?",
+                opts: [
+                    "Natychmiastowe przerwanie przyjmowania posiłku.",
+                    "Gwałtowne zwiększenie łaknienia i poszukiwanie pożywienia.",
+                    "Wzmożone wydzielanie dopaminy i uśpienie.",
+                    "Natychmiastowe wywołanie dipsji (pragnienia)."
+                ],
+                corr: 0,
+                exp: "Drażnienie ośrodka sytości u głodnych zwierząt powoduje natychmiastowe przerwanie przyjmowania posiłku."
+            },
+            {
+                subject: "fizjo2",
+                cat: "Podstawy Zachowania i Ośrodki Motywacyjne",
+                q: "Co zaobserwowano w doświadczeniach polegających na drażnieniu ośrodka głodu u zwierząt całkowicie nasyconych?",
+                opts: [
+                    "Rozpoczęcie aktywnego poszukiwania pokarmu.",
+                    "Natychmiastowe zaprzestanie jedzenia i sen.",
+                    "Zahamowanie wydzielania insuliny i spadek glukozy.",
+                    "Utratę pamięci proceduralnej."
+                ],
+                corr: 0,
+                exp: "Drażnienie ośrodka głodu u nasyconych zwierząt wywołuje poszukiwanie pokarmu."
+            },
+            {
+                subject: "fizjo2",
+                cat: "Kontrola Łaknienia",
+                q: "Jaka jest prawidłowa kolejność zdarzeń w krótkotrwałej kontroli łaknienia po wzroście stężenia glukozy we krwi?",
+                opts: [
+                    "Pobudzenie ośrodka sytości → hamowanie ośrodka głodu → zmniejszenie łaknienia → stop przyjmowania pokarmu.",
+                    "Hamowanie ośrodka sytości → pobudzenie ośrodka głodu → zwiększenie łaknienia → przyjmowanie pokarmu.",
+                    "Pobudzenie ośrodka głodu → hamowanie ośrodka sytości → wydzielanie leptyny → stop jedzenia.",
+                    "Spadek ciśnienia osmotycznego → pobudzenie osmodetektorów → stop przyjmowania pokarmu."
+                ],
+                corr: 0,
+                exp: "Wzrost stężenia glukozy prowadzi do pobudzenia neuronów ośrodka sytości, co hamuje ośrodek głodu, zmniejsza łaknienie i zatrzymuje przyjmowanie pokarmu."
+            },
+            {
+                subject: "fizjo2",
+                cat: "Kontrola Łaknienia",
+                q: "W jaki sposób mechaniczne rozciągnięcie ścian żołądka wpływa na podwzgórzowe ośrodki regulacji pobierania pokarmu?",
+                opts: [
+                    "Powoduje pobudzenie ośrodka sytości.",
+                    "Powoduje silne pobudzenie ośrodka głodu.",
+                    "Hamuje wydzielanie cholecystokininy z jelita cienkiego.",
+                    "Obniża ciśnienie osmotyczne i wywołuje uczucie głodu."
+                ],
+                corr: 0,
+                exp: "Rozciągnięcie ścian żołądka po spożyciu pokarmu powoduje pobudzenie ośrodka sytości."
+            },
+            {
+                subject: "fizjo2",
+                cat: "Kontrola Łaknienia",
+                q: "Jak spadek stężenia glukozy we krwi wpływa na neurony podwzgórza w mechanizmie krótkotrwałej kontroli łaknienia?",
+                opts: [
+                    "Hamuje neurony ośrodka sytości i pobudza ośrodek głodu.",
+                    "Pobudza neurony ośrodka sytości i hamuje ośrodek głodu.",
+                    "Pobudza jednocześnie ośrodek sytości i ośrodek pragnienia.",
+                    "Nie wywołuje żadnej reakcji w obrębie podwzgórza."
+                ],
+                corr: 0,
+                exp: "Spadek stężenia glukozy powoduje hamowanie neuronów ośrodka sytości, pobudzenie ośrodka głodu, zwiększenie łaknienia i rozpoczęcie przyjmowania pokarmu."
+            },
+            {
+                subject: "fizjo2",
+                cat: "Kontrola Łaknienia",
+                q: "Jaki wpływ na ośrodek sytości ma wzrost ciśnienia osmotycznego w organizmie?",
+                opts: [
+                    "Powoduje jego pobudzenie.",
+                    "Powoduje jego całkowite zahamowanie.",
+                    "Stymuluje wydzielanie leptyny przez trzustkę.",
+                    "Wywołuje natychmiastowy spadek stężenia jonów sodu."
+                ],
+                corr: 0,
+                exp: "Zgodnie z mechanizmami nerwowymi i metabolicznymi wzrost ciśnienia osmotycznego prowadzi do pobudzenia ośrodka sytości."
+            },
+            {
+                subject: "fizjo2",
+                cat: "Kontrola Łaknienia",
+                q: "Gdzie jest wytwarzana cholecystokinina i jaki jest jej główny efekt działania w kontroli łaknienia?",
+                opts: [
+                    "W jelicie cienkim; zwiększa uczucie sytości.",
+                    "W trzustce; ułatwia pobieranie glukozy przez mięśnie.",
+                    "W tkance tłuszczowej; pobudza ośrodek głodu.",
+                    "W podwzgórzu; wywołuje uczucie pragnienia (dipsję)."
+                ],
+                corr: 0,
+                exp: "Cholecystokinina jest wydzielana z jelita cienkiego i zwiększa uczucie sytości."
+            },
+            {
+                subject: "fizjo2",
+                cat: "Kontrola Łaknienia",
+                q: "Jaką funkcję pełnią adipocyty w kontekście hormonalnej regulacji łaknienia?",
+                opts: [
+                    "Gromadzą tłuszcz i wydzielają hormony, takie jak leptyna.",
+                    "Wytwarzają insulinę i obniżają stężenie glukozy we krwi.",
+                    "Wydzielają cholecystokininę w świetle jelita cienkiego.",
+                    "Odbierają bodźce osmotyczne w płynie zewnątrzkomórkowym."
+                ],
+                corr: 0,
+                exp: "Adipocyty to komórki tłuszczowe z tkanki tłuszczowej, które gromadzą tłuszcz i wydzielają hormony, np. leptynę."
+            },
+            {
+                subject: "fizjo2",
+                cat: "Kontrola Łaknienia",
+                q: "W jaki sposób leptyna wpływa na łaknienie po dotarciu do podwzgórza?",
+                opts: [
+                    "Hamuje łaknienie i zmniejsza apetyt.",
+                    "Pobudza ośrodek głodu i nasila poszukiwanie pokarmu.",
+                    "Stymuluje rozciąganie ścian żołądka.",
+                    "Zwiększa uwalnianie angiotensyny II."
+                ],
+                corr: 0,
+                exp: "Leptyna wydzielana jest z adipocytów, dociera do podwzgórza i hamuje łaknienie, zmniejszając apetyt."
+            },
+            {
+                subject: "fizjo2",
+                cat: "Kontrola Łaknienia",
+                q: "Jakie dwa główne działania insuliny zostały wyszczególnione w notatkach w sekcji dotyczącej kontroli łaknienia?",
+                opts: [
+                    "Ułatwia pobieranie glukozy przez mięśnie i tkankę tłuszczową oraz ogranicza łaknienie w podwzgórzu.",
+                    "Hamuje pobieranie glukozy przez mięśnie oraz nasila apetyt w podwzgórzu.",
+                    "Wydziela leptynę z jelita cienkiego oraz pobudza osmodetektory.",
+                    "Zwiększa stężenie jonów sodu oraz hamuje ośrodek sytości."
+                ],
+                corr: 0,
+                exp: "Insulina (wydzielana z trzustki) ułatwia pobieranie glukozy przez mięśnie i tkankę tłuszczową oraz ogranicza łaknienie w podwzgórzu."
+            },
+            {
+                subject: "fizjo2",
+                cat: "Ośrodek Pragnienia",
+                q: "Jaki czynnik elektrolitowy inicjuje wywołanie dipsji (pragnienia) w płynie zewnątrzkomórkowym?",
+                opts: [
+                    "Wzrost stężenia jonów sodu.",
+                    "Spadek stężenia jonów sodu.",
+                    "Wzrost stężenia glukozy.",
+                    "Spadek stężenia cholecystokininy."
+                ],
+                corr: 0,
+                exp: "Wywołanie dipsji (pragnienia) rozpoczyna się od wzrostu stężenia jonów sodu w płynie zewnątrzkomórkowym."
+            },
+            {
+                subject: "fizjo2",
+                cat: "Ośrodek Pragnienia",
+                q: "Które receptory w podwzgórzu ulegają pobudzeniu w odpowiedzi na wzrost stężenia jonów sodu w płynie zewnątrzkomórkowym?",
+                opts: [
+                    "Podwzgórzowe osmodetektory.",
+                    "Receptory insulinowe adipocytów.",
+                    "Mechanoreceptory ścian żołądka.",
+                    "Receptory dopaminergiczne móżdżku."
+                ],
+                corr: 0,
+                exp: "Wzrost stężenia jonów sodu w płynie zewnątrzkomórkowym prowadzi bezpośrednio do pobudzenia podwzgórzowych osmodetektorów."
+            },
+            {
+                subject: "fizjo2",
+                cat: "Ośrodek Pragnienia",
+                q: "Który czynnik hormonalny został wymieniony obok wzrostu jonów sodu i pobudzenia osmodetektorów jako element wywołujący dipsję?",
+                opts: [
+                    "Angiotensyna II.",
+                    "Leptyna.",
+                    "Cholecystokinina.",
+                    "Insulina."
+                ],
+                corr: 0,
+                exp: "W mechanizmie wywołania dipsji (pragnienia) obok wzrostu stężenia jonów sodu i pobudzenia osmodetektorów wymieniona jest angiotensyna II."
+            },
+
             // ========================================================
             // PRZEDMIOT 3: FIZJOLOGIA ZALICZENIE 2 (28 PYTAŃ)
             // ========================================================
