@@ -242,7 +242,7 @@
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4), 0 0 15px rgba(199, 168, 97, 0.15);
         }
 
-        .subject-card.selected-bm, .subject-card.selected-brc, .subject-card.selected-fizjo {
+        .subject-card.selected-bm, .subject-card.selected-brc, .subject-card.selected-fizjo, .subject-card.selected-fizjo2 {
             border: 1.5px solid var(--accent-gold);
             background: linear-gradient(135deg, var(--bg-secondary), var(--bg-tertiary));
             box-shadow: 0 0 20px rgba(199, 168, 97, 0.15);
@@ -674,7 +674,7 @@
                     </button>
                     <button id="navBankBtn" class="nav-btn" onclick="showSection('bank')">
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
-                        <span id="navBankSpan">Baza Pytań (200)</span>
+                        <span id="navBankSpan">Baza Pytań (228)</span>
                     </button>
                     <button class="theme-toggle" onclick="toggleTheme()" title="Przełącz motyw">🌙</button>
                 </div>
@@ -705,6 +705,13 @@
                     <div class="subject-title">Biologia Medyczna</div>
                     <div class="subject-desc">Fizjologia i Biologia Komórki, mikrobiologia, genetyka bakterii, apoptoza, nekroza, organella.</div>
                     <span class="subject-badge">75 Pytań • © M. Religa</span>
+                </div>
+
+                <div class="subject-card" id="subjCardFizjo2" onclick="selectSubject('fizjo2')">
+                    <div class="subject-icon">🌡️</div>
+                    <div class="subject-title">Fizjologia Zaliczenie 2</div>
+                    <div class="subject-desc">Klasyfikacja bólu i bóle głowy, termoregulacja, gorączka, hipertermia, hipotermia oraz ośrodki podwzgórza.</div>
+                    <span class="subject-badge">28 Pytań • I Rok Fizjoterapii</span>
                 </div>
 
                 <div class="subject-card" id="subjCardBRC" onclick="selectSubject('brc')">
@@ -842,6 +849,7 @@
 
                 <div style="margin-bottom: 1rem; display: flex; gap: 10px; flex-wrap: wrap;">
                     <button class="btn btn-secondary" id="flashSubjFizjo" onclick="setFlashSubject('fizjo')">Fizjologia (50)</button>
+                    <button class="btn btn-secondary" id="flashSubjFizjo2" onclick="setFlashSubject('fizjo2')">Fizjologia Zaliczenie 2 (28)</button>
                     <button class="btn btn-secondary" id="flashSubjBM" onclick="setFlashSubject('bm')">Biologia Medyczna (75)</button>
                     <button class="btn btn-secondary" id="flashSubjBRC" onclick="setFlashSubject('brc')">Biol. Rozwój Człowieka (75)</button>
                 </div>
@@ -879,8 +887,9 @@
                 </div>
 
                 <div style="margin-bottom: 1rem; display: flex; gap: 10px; flex-wrap: wrap;">
-                    <button class="btn btn-secondary" id="bankSubjAll" onclick="setBankFilter('all')">Wszystkie Przedmioty (200)</button>
+                    <button class="btn btn-secondary" id="bankSubjAll" onclick="setBankFilter('all')">Wszystkie Przedmioty (228)</button>
                     <button class="btn btn-secondary" id="bankSubjFizjo" onclick="setBankFilter('fizjo')">Fizjologia (50)</button>
+                    <button class="btn btn-secondary" id="bankSubjFizjo2" onclick="setBankFilter('fizjo2')">Fizjologia Zaliczenie 2 (28)</button>
                     <button class="btn btn-secondary" id="bankSubjBM" onclick="setBankFilter('bm')">Biologia Medyczna (75)</button>
                     <button class="btn btn-secondary" id="bankSubjBRC" onclick="setBankFilter('brc')">Biol. Rozwój Człowieka (75)</button>
                 </div>
@@ -901,6 +910,374 @@
 
     <script>
         const rawQuestionBank = [
+            // ========================================================
+            // PRZEDMIOT 3: FIZJOLOGIA ZALICZENIE 2 (28 PYTAŃ)
+            // ========================================================
+            {
+                subject: "fizjo2",
+                cat: "Klasyfikacja i Rodzaje Bólu",
+                q: "W którym z poniższych scenariuszy klinicznych ból zostanie sklasyfikowany jako nocyceptywny somatyczny, a nie neuropatyczny lub psychogenny?",
+                opts: [
+                    "Głęboki lub powierzchowny ból pochodzący z tkanek skóry, mięśni lub stawów.",
+                    "Ból wynikający bezpośrednio z uszkodzenia włókien nerwów obwodowych.",
+                    "Ból halucynacyjny lub histeryczny bez podłoża organicznego.",
+                    "Rozlany ból pochodzący wyłącznie z narządów wewnętrznych jamy brzusznej."
+                ],
+                corr: 0,
+                exp: "Ból organiczny dzieli się na nocyceptywny (somatyczny – głęboki lub powierzchowny, zlokalizowany, rzutowany lub rozlany – oraz trzewny) i neuropatyczny (z nerwów obwodowych lub OUN)."
+            },
+            {
+                subject: "fizjo2",
+                cat: "Ból Głowy",
+                q: "Pacjent zgłasza silny, tętniący ból zlokalizowany po jednej stronie głowy, który wyraźnie nasila się podczas wchodzenia po schodach, a towarzyszą mu nudności oraz światłowstręt. Który rodzaj pierwotnego bólu głowy najlepiej odpowiada temu obrazowi?",
+                opts: [
+                    "Ból migrenowy",
+                    "Ból napięciowy",
+                    "Ból klasterowy",
+                    "Ból rzutowany trzewny"
+                ],
+                corr: 0,
+                exp: "Ból migrenowy to napadowy, zazwyczaj jednostronny i pulsujący ból nasilający się podczas wysiłku fizycznego, któremu często towarzyszą nudności, wymioty, fotofobia, fonofobia oraz niekiedy aura."
+            },
+            {
+                subject: "fizjo2",
+                cat: "Ból Głowy",
+                q: "Czym różni się obraz kliniczny klasterowego bólu głowy od napięciowego bólu głowy?",
+                opts: [
+                    "Ból klasterowy wiąże się z objawami wegetatywnymi po stronie bólu, czego brak w bólu napięciowym.",
+                    "Ból klasterowy jest zawsze obustronny i przypomina ucisk ciasnej opaski wokół głowy.",
+                    "Ból napięciowy jest najsilniejszym bólem zlokalizowanym wyłącznie w okolicy oczodołu.",
+                    "Ból klasterowy nasila się przy wysiłku i zawsze towarzyszą mu obfite wymioty."
+                ],
+                corr: 0,
+                exp: "Klasterowy ból głowy jest ściśle jednostronny (oczodół/skroń) i towarzyszą mu objawy wegetatywne po stronie bólu (łzawienie, zaczerwienienie oka, opadanie powieki, wyciek/zatkanie nosa)."
+            },
+            {
+                subject: "fizjo2",
+                cat: "Ból Głowy",
+                q: "Który zestaw objawów jest najbardziej charakterystyczny dla napadu migrenowego bólu głowy?",
+                opts: [
+                    "Pulsujący, zazwyczaj jednostronny ból nasilający się przy wysiłku, z towarzyszącymi nudnościami, fotofobią oraz możliwą aurą.",
+                    "Tępy, obustronny ucisk przypominający ciasną opaskę, nienasilający się przy codziennej aktywności.",
+                    "Przeszywający ból w okolicy oczodołu z jednostronnym opadaniem powieki i łzawieniem.",
+                    "Ból wywołany wyłącznie zatruciem salicylanami i odwodnieniem."
+                ],
+                corr: 0,
+                exp: "Migrena charakteryzuje się napadowym, jednostronnym, pulsującym bólem o umiarkowanym lub silnym natężeniu, nasilającym się przy wysiłku, z nudnościami, wymiotami, fotofobią, fonofobią i możliwością wystąpienia aury."
+            },
+            {
+                subject: "fizjo2",
+                cat: "Ból Głowy",
+                q: "Pacjent opisuje swój ból głowy jako najczęstszy w jego życiu, tępy, obustronny i przypominający uczucie „ciasnej opaski” wokół głowy o umiarkowanym natężeniu. Co potwierdza rozpoznanie napięciowego bólu głowy?",
+                opts: [
+                    "Brak nasilenia bólu podczas codziennej aktywności fizycznej oraz brak nudności i wymiotów.",
+                    "Występowanie aury wzrokowej przed każdym atakiem bólu.",
+                    "Silne łzawienie oka i uczucie zatkania nosa po jednej stronie twarzy.",
+                    "Gwałtowne nasilanie się bólu podczas wchodzenia po schodach."
+                ],
+                corr: 0,
+                exp: "Ból napięciowy to najczęstszy pierwotny ból głowy – obustronny, tępy, uciskający („ciasna opaska”), który nie nasila się przy codziennej aktywności fizycznej i nie towarzyszą mu nudności ani wymioty."
+            },
+            {
+                subject: "fizjo2",
+                cat: "Ból Głowy",
+                q: "Która charakterystyka dokładnie opisuje klasterowy ból głowy zgodnie z notatką?",
+                opts: [
+                    "Bardzo silny, przeszywający lub piekący ból ściśle jednostronny w okolicy oczodołu lub skroni z objawami wegetatywnymi po stronie bólu.",
+                    "Łagodny, obustronny, tępy ucisk wokół głowy bez objawów towarzyszących.",
+                    "Pulsujący ból całej głowy poprzedzony zaburzeniami widzenia i wymiotami.",
+                    "Ból psychogenny o podłożu hipochondrycznym."
+                ],
+                corr: 0,
+                exp: "Ból klasterowy to bardzo silny, przeszywający lub piekący ból ściśle jednostronny (oczodół/skroń), występujący w krótkich, częstych atakach z objawami wegetatywnymi po stronie bólu."
+            },
+            {
+                subject: "fizjo2",
+                cat: "Termoregulacja",
+                q: "Podczas całodobowego monitorowania temperatury w jamie ustnej u zdrowego człowieka odnotowano wartość minimalną 36,1°C. W którym przedziale godzinowym najprawdopodobniej dokonano tego pomiaru i jakiej maksymalnej wartości można się spodziewać w ciągu tej samej doby?",
+                opts: [
+                    "Między 01:00 a 06:00; wartość maksymalna wyniesie około 36,4–36,7°C.",
+                    "Między 13:00 a 18:00; wartość maksymalna wyniesie około 37,8–38,0°C.",
+                    "Między 06:00 a 12:00; wartość maksymalna wyniesie około 36,2°C.",
+                    "Między 18:00 a 24:00; wartość maksymalna wyniesie około 37,5°C."
+                ],
+                corr: 0,
+                exp: "Prawidłowa temperatura w jamie ustnej to 35,8–37,8°C. Dobowe wahania wynoszą 0,3–0,6°C: najniższa temperatura występuje między 01:00 a 06:00, a najwyższa między 13:00 a 18:00."
+            },
+            {
+                subject: "fizjo2",
+                cat: "Termoregulacja",
+                q: "Jaką skoordynowaną odpowiedź naczyniową i mięśniową uruchamia układ termoregulacji w odpowiedzi na nagły spadek temperatury otoczenia?",
+                opts: [
+                    "Zwężenie naczyń krwionośnych skóry oraz wywołanie drżenia mięśniowego.",
+                    "Rozszerzenie naczyń krwionośnych skóry i wzmożone wydzielanie potu.",
+                    "Rozszerzenie naczyń krwionośnych i całkowite rozluźnienie mięśni szkieletowych.",
+                    "Zahamowanie termogenezy i przyspieszone oddawanie ciepła do otoczenia."
+                ],
+                corr: 0,
+                exp: "Przy niskiej temperaturze organizm zatrzymuje ciepło: zwężają się naczynia krwionośne i mięśnie drżą. Przy wysokiej temperaturze pocimy się, a naczynia rozszerzają, oddając ciepło."
+            },
+            {
+                subject: "fizjo2",
+                cat: "Gorączka, Hipertermia i Hipotermia",
+                q: "U pacjenta zmierzono temperaturę ciała wynoszącą 38,8°C. Zgodnie z klasyfikacją stopni gorączki przedstawioną w notatce, jak należy zaklasyfikować ten stan?",
+                opts: [
+                    "Gorączka umiarkowana",
+                    "Gorączka niska",
+                    "Stan podgorączkowy",
+                    "Gorączka wysoka"
+                ],
+                corr: 0,
+                exp: "Stopnie gorączki: stan podgorączkowy do 38°C, gorączka niska do 38,5°C, gorączka umiarkowana do 39°C, gorączka wysoka do 40°C, hiperpireksja powyżej 40°C."
+            },
+            {
+                subject: "fizjo2",
+                cat: "Gorączka, Hipertermia i Hipotermia",
+                q: "Który zestaw czynników prawidłowo reprezentuje pirogeny endogenne biorące udział w patogenezie gorączki?",
+                opts: [
+                    "Interleukina 1, interleukina 6 oraz prostaglandyny",
+                    "Bakterie i czynniki patogenne atakujące z zewnątrz",
+                    "Salicylany, alkohol oraz insulina",
+                    "Angiotensyna II, leptyna oraz cholecystokinina"
+                ],
+                corr: 0,
+                exp: "Pirogeny endogenne to czynniki prozapalne, interleukina 1 i 6 (IL-1, IL-6) oraz prostaglandyny. Pirogeny egzogenne to bakterie i wszystko, co zaatakuje z zewnątrz."
+            },
+            {
+                subject: "fizjo2",
+                cat: "Gorączka, Hipertermia i Hipotermia",
+                q: "Na czym polega główna różnica między gorączką przerywaną a gorączką falistą?",
+                opts: [
+                    "Oba typy mają podobny przebieg, lecz różnią się amplitudą czasową zmian temperatury.",
+                    "Gorączka przerywana występuje tylko w malarii, a falista wyłącznie w zapaleniu mózgu.",
+                    "Gorączka falista nie przekracza 38°C, natomiast przerywana zawsze przekracza 40°C.",
+                    "Gorączka przerywana jest wywołana pirogenami endogennymi, a falista wyłącznie odwodnieniem."
+                ],
+                corr: 0,
+                exp: "Zgodnie z notatką: gorączka przerywana jest podobna do falistej (występującej np. przy malarii), ale różni się od niej inną amplitudą czasową."
+            },
+            {
+                subject: "fizjo2",
+                cat: "Gorączka, Hipertermia i Hipotermia",
+                q: "Który z poniższych stanów klinicznych może bezpośrednio doprowadzić do rozwoju hipertermii?",
+                opts: [
+                    "Zatrucie salicylanami, hipoglikemia lub nadczynność tarczycy",
+                    "Niedoczynność tarczycy i hiperglikemia",
+                    "Spadek aktywności metabolicznej organizmu",
+                    "Pobudzenie podwzgórzowego ośrodka sytości przez leptynę"
+                ],
+                corr: 0,
+                exp: "Przyczyny hipertermii wymienione w notatce to: zatrucie (np. salicylanami), odwodnienie, alkohol, nadczynność tarczycy oraz hipoglikemia."
+            },
+            {
+                subject: "fizjo2",
+                cat: "Gorączka, Hipertermia i Hipotermia",
+                q: "Pracownik fizyczny przebywał przez wiele godzin w zamkniętym, bezwietrznym pomieszczeniu o bardzo wysokiej temperaturze i wilgotności powietrza. Jego temperatura ciała przekroczyła 39°C, skóra jest gorąca i czerwona, a tętno szybkie i dobrze wyczuwalne. Jaki mechanizm leży u podłoża tego stanu?",
+                opts: [
+                    "Utrata zdolności organizmu do samodzielnego obniżenia temperatury ciała.",
+                    "Przestawienie punktu nastawczego w podwzgórzu pod wpływem pirogenów egzogennych.",
+                    "Gwałtowny spadek aktywności metabolicznej i zwężenie naczyń krwionośnych.",
+                    "Nadprodukcja leptyny i zahamowanie ośrodka pragnienia."
+                ],
+                corr: 0,
+                exp: "W udarze cieplnym po dłuższym działaniu wysokiej temperatury (często przy dużej wilgotności i małym ruchu powietrza) temperatura ciała staje się tak wysoka (>39°C), że organizm nie jest w stanie samodzielnie jej obniżyć."
+            },
+            {
+                subject: "fizjo2",
+                cat: "Gorączka, Hipertermia i Hipotermia",
+                q: "U ratowanego turysty stwierdzono temperaturę głęboką ciała wynoszącą 30,5°C. Jak należy zaklasyfikować ten stopień hipotermii?",
+                opts: [
+                    "Hipotermia umiarkowana",
+                    "Hipotermia łagodna",
+                    "Hipotermia ciężka",
+                    "Stan przedhipotermiczny"
+                ],
+                corr: 0,
+                exp: "Stopnie hipotermii: łagodna 35–32°C, umiarkowana 32–28°C, ciężka poniżej 28°C. Wartość 30,5°C mieści się w przedziale 32–28°C."
+            },
+            {
+                subject: "fizjo2",
+                cat: "Gorączka, Hipertermia i Hipotermia",
+                q: "Które zestawienie prawidłowo łączy stan kliniczny związany z zaburzeniem termoregulacji z jego charakterystycznym progiem temperatury?",
+                opts: [
+                    "Udar cieplny: temperatura powyżej 39°C; hiperpireksja: temperatura powyżej 40°C.",
+                    "Stan podgorączkowy: powyżej 38,5°C; hipotermia łagodna: poniżej 32°C.",
+                    "Gorączka niska: do 39°C; udar cieplny: 35–32°C.",
+                    "Hipotermia ciężka: 32–28°C; gorączka wysoka: powyżej 41°C."
+                ],
+                corr: 0,
+                exp: "W udarze cieplnym temperatura ciała przekracza 39°C, natomiast hiperpireksja definiowana jest jako gorączka powyżej 40°C."
+            },
+            {
+                subject: "fizjo2",
+                cat: "Gorączka, Hipertermia i Hipotermia",
+                q: "Zgodnie z notatką, jaki wpływ na długość życia ma spadek aktywności metabolicznej organizmu?",
+                opts: [
+                    "Wpływa na wydłużenie długości życia.",
+                    "Skraca długość życia o połowę.",
+                    "Powoduje natychmiastową hiperpireksję.",
+                    "Nie ma żadnego związku z długością życia."
+                ],
+                corr: 0,
+                exp: "W sekcji „Temperatura a długość życia” wskazano zależność: spadek aktywności metabolicznej wydłuża życie."
+            },
+            {
+                subject: "fizjo2",
+                cat: "Podstawy Zachowania i Podwzgórze",
+                q: "Jak działają podstawowe mechanizmy nerwowe kierujące zachowaniem człowieka w sytuacji zachwiania równowagi wewnętrznej przez niedobór lub nadmiar jakiegoś czynnika?",
+                opts: [
+                    "Dominujący mechanizm wyzwala za pośrednictwem ośrodków nerwowych aktywność somatyczną przywracającą równowagę.",
+                    "Oba mechanizmy (zdobywania i unikania) ulegają jednoczesnemu zablokowaniu w korze mózgowej.",
+                    "Układ limbiczny całkowicie przejmuje kontrolę nad skurczem mięśni gładkich.",
+                    "Dochodzi do nieodwracalnego zahamowania neuronów neurosekrecyjnych."
+                ],
+                corr: 0,
+                exp: "Bodziec, brak lub nadmiar czynnika zaburza równowagę między mechanizmem zdobywania/konsumowania a mechanizmem unikania (awersyjnym), co wyzwala aktywność somatyczną przywracającą homeostazę."
+            },
+            {
+                subject: "fizjo2",
+                cat: "Podstawy Zachowania i Podwzgórze",
+                q: "Który neuroprzekaźnik uwalniany w podwzgórzowym układzie nagrody podczas przyjemnych doświadczeń odpowiada za motywację do powtarzania określonych zachowań?",
+                opts: [
+                    "Dopamina",
+                    "Angiotensyna II",
+                    "Cholecystokinina",
+                    "Interleukina 6"
+                ],
+                corr: 0,
+                exp: "Ośrodek nagrody aktywuje się podczas przyjemnych doświadczeń, a uwalniana wówczas dopamina motywuje do powtarzania zachowań."
+            },
+            {
+                subject: "fizjo2",
+                cat: "Podstawy Zachowania i Podwzgórze",
+                q: "W jaki sposób podwzgórze uczestniczy w kształtowaniu emocji i subiektywnych doznań nastroju?",
+                opts: [
+                    "Odbiera informacje bezpośrednio z układu limbicznego.",
+                    "Syntetyzuje prostaglandyny w odpowiedzi na pirogeny.",
+                    "Hamuje całkowicie aktywność osmodetektorów.",
+                    "Wydziela leptynę do płynu zewnątrzkomórkowego."
+                ],
+                corr: 0,
+                exp: "Podwzgórze otrzymuje informacje z układu limbicznego, co umożliwia mu wpływ na emocje i doznania subiektywne."
+            },
+            {
+                subject: "fizjo2",
+                cat: "Ośrodki Motywacyjne Podwzgórza",
+                q: "W eksperymencie fizjologicznym u najedzonego zwierzęcia zastosowano stymulację elektryczną określonego obszaru podwzgórza, co wywołało natychmiastowe poszukiwanie jedzenia i spożycie nadmiernej ilości pokarmu. Który ośrodek był drażniony i jaki byłby efekt drażnienia ośrodka przeciwstawnego u zwierzęcia głodnego?",
+                opts: [
+                    "Drażniono ośrodek głodu; drażnienie ośrodka sytości u głodnego zwierzęcia spowodowałoby natychmiastowe przerwanie jedzenia.",
+                    "Drażniono ośrodek sytości; drażnienie ośrodka głodu wywołałoby natychmiastową dipsję.",
+                    "Drażniono ośrodek pragnienia; drażnienie ośrodka sytości nasiliłoby głód.",
+                    "Drażniono ośrodek nagrody; drażnienie ośrodka głodu spowodowałoby sen."
+                ],
+                corr: 0,
+                exp: "Drażnienie ośrodka głodu u zwierząt nasyconych wywołuje poszukiwanie pokarmu i zjadanie zbyt obfitego posiłku, a drażnienie ośrodka sytości u głodnych powoduje natychmiastowe przerwanie jedzenia."
+            },
+            {
+                subject: "fizjo2",
+                cat: "Ośrodki Motywacyjne Podwzgórza",
+                q: "Jaka kaskada zdarzeń zachodzi w ramach krótkotrwałej kontroli łaknienia bezpośrednio po spożyciu posiłku bogatego w węglowodany i wzroście stężenia glukozy we krwi?",
+                opts: [
+                    "Pobudzenie neuronów ośrodka sytości → hamowanie ośrodka głodu → zahamowanie przyjmowania pokarmu.",
+                    "Hamowanie neuronów ośrodka sytości → pobudzenie ośrodka głodu → zwiększenie łaknienia.",
+                    "Spadek ciśnienia osmotycznego krwi → pobudzenie ośrodka głodu → wydzielanie leptyny.",
+                    "Pobudzenie interoreceptorów żołądka → zahamowanie ośrodka sytości → poszukiwanie pokarmu."
+                ],
+                corr: 0,
+                exp: "Wzrost stężenia glukozy pobudza neurony ośrodka sytości, co hamuje ośrodek głodu, zmniejsza łaknienie i hamuje przyjmowanie pokarmu."
+            },
+            {
+                subject: "fizjo2",
+                cat: "Ośrodki Motywacyjne Podwzgórza",
+                q: "Który z poniższych bodźców NIE należy do czynników pobudzających ośrodek sytości w mechanizmie krótkotrwałej kontroli łaknienia?",
+                opts: [
+                    "Spadek stężenia glukozy we krwi",
+                    "Rozciągnięcie ścian żołądka (pobudzenie interoreceptorów)",
+                    "Wzrost ciśnienia osmotycznego krwi",
+                    "Działanie cholecystokininy (CCK) oraz insuliny"
+                ],
+                corr: 0,
+                exp: "Spadek stężenia glukozy we krwi hamuje neurony ośrodka sytości i pobudza ośrodek głodu. Pozostałe czynniki pobudzają ośrodek sytości."
+            },
+            {
+                subject: "fizjo2",
+                cat: "Ośrodki Motywacyjne Podwzgórza",
+                q: "W jaki sposób leptyna reguluje pobieranie pokarmu w mechanizmie długotrwałej kontroli łaknienia?",
+                opts: [
+                    "Bezpośrednio pobudza neurony ośrodka sytości oraz pośrednio hamuje ośrodek głodu.",
+                    "Bezpośrednio pobudza ośrodek głodu i zwiększa wydzielanie insuliny.",
+                    "Hamuje ośrodek sytości na zasadzie dodatniego sprzężenia zwrotnego.",
+                    "Pobudza adipocyty do uwalniania angiotensyny II."
+                ],
+                corr: 0,
+                exp: "Leptyna (czynnik sytości produkowany przez tkankę tłuszczową/adipocyty) na zasadzie ujemnego sprzężenia zwrotnego bezpośrednio pobudza ośrodek sytości, a pośrednio hamuje ośrodek głodu."
+            },
+            {
+                subject: "fizjo2",
+                cat: "Ośrodki Motywacyjne Podwzgórza",
+                q: "U pacjentów z nadwagą i otyłością badania laboratoryjne często wykazują wysokie stężenie leptyny we krwi, mimo że nie dochodzi u nich do skutecznego hamowania przyjmowania pokarmów. Co jest przyczyną tego zjawiska?",
+                opts: [
+                    "Zmniejszenie wrażliwości neuronów na leptynę i ograniczenie jej roli regulacyjnej.",
+                    "Całkowity zanik ośrodka sytości w podwzgórzu.",
+                    "Nadmierne rozciągnięcie ścian żołądka blokujące interoreceptory.",
+                    "Zbyt niski poziom glukozy i cholecystokininy we krwi."
+                ],
+                corr: 0,
+                exp: "U osób z nadwagą mimo podwyższonego stężenia leptyny we krwi nie ma hamowania spożywania pokarmów z powodu zmniejszenia wrażliwości neuronów na leptynę (leptynooporności)."
+            },
+            {
+                subject: "fizjo2",
+                cat: "Ośrodki Motywacyjne Podwzgórza",
+                q: "Który zestaw czynników bezpośrednio wywołuje dipsję (przyjmowanie płynów) poprzez pobudzenie podwzgórzowego ośrodka pragnienia?",
+                opts: [
+                    "Wzrost stężenia jonów sodu w płynie zewnątrzkomórkowym, pobudzenie osmodetektorów i angiotensyna II",
+                    "Spadek stężenia jonów sodu, wzrost stężenia glukozy i wydzielanie insuliny",
+                    "Działanie leptyny, cholecystokininy oraz obniżenie ciśnienia osmotycznego",
+                    "Wydzielanie dopaminy, testosteronu oraz estrogenów"
+                ],
+                corr: 0,
+                exp: "Czynnikami wywołującymi dipsję (picie wody) są: wzrost stężenia jonów sodu (Na⁺) w płynie zewnątrzkomórkowym, pobudzenie podwzgórzowych osmodetektorów oraz angiotensyna II."
+            },
+            {
+                subject: "fizjo2",
+                cat: "Ośrodki Motywacyjne Podwzgórza",
+                q: "Z którymi strukturami i ośrodkami podwzgórza jest ściśle sprzężona czynność ośrodka pragnienia?",
+                opts: [
+                    "Z ośrodkiem termoregulacji, głodu, sytości oraz neuronami neurosekrecyjnymi",
+                    "Wyłącznie z ośrodkiem rozrodczym i układem limbicznym",
+                    "Z ośrodkiem mowy oraz korą wzrokową",
+                    "Wyłącznie z rdzeniem przedłużonym i móżdżkiem"
+                ],
+                corr: 0,
+                exp: "Czynność ośrodka pragnienia jest sprzężona z ośrodkiem termoregulacji, głodu, sytości oraz neuronami neurosekrecyjnymi."
+            },
+            {
+                subject: "fizjo2",
+                cat: "Ośrodki Motywacyjne Podwzgórza",
+                q: "Jaką lokalizację anatomiczną mają elementy nerwowe tworzące ośrodek agresji i ucieczki?",
+                opts: [
+                    "Są rozproszone niemal w całym podwzgórzu oraz na pograniczu wzgórza i podwzgórza.",
+                    "Znajdują się wyłącznie w przednim płacie przysadki mózgowej.",
+                    "Tworzą pojedyncze, wyraźnie odgraniczone jądro w rdzeniu kręgowym.",
+                    "Są zlokalizowane wyłącznie w płatach potylicznych kory mózgu."
+                ],
+                corr: 0,
+                exp: "Elementy nerwowe, z których składają się ośrodki agresji i ucieczki, są rozsiane prawie w całym podwzgórzu i na pograniczu wzgórza i podwzgórza."
+            },
+            {
+                subject: "fizjo2",
+                cat: "Ośrodki Motywacyjne Podwzgórza",
+                q: "Pod wpływem których hormonów dochodzi do wykształcenia i różnicowania się podwzgórzowych ośrodków rozrodczych?",
+                opts: [
+                    "Testosteronu oraz estrogenów",
+                    "Insuliny oraz glukagonu",
+                    "Leptyny oraz cholecystokininy",
+                    "Angiotensyny II oraz dopaminy"
+                ],
+                corr: 0,
+                exp: "Testosteron i estrogeny są hormonami, pod wpływem których wykształcają się ośrodki rozrodcze."
+            },
+
             // ==========================================
             // PRZEDMIOT 0: FIZJOLOGIA OGÓLNA (50 PYTAŃ)
             // ==========================================
@@ -2527,7 +2904,7 @@
         let currentBankFilter = 'all';
 
         window.onload = function() {
-            selectSubject('fizjo');
+            selectSubject('fizjo2');
             initBankList();
             initFlashCards();
             updateGlobalCounters();
@@ -2553,16 +2930,21 @@
             currentSubject = subj;
             
             const cardFizjo = document.getElementById('subjCardFizjo');
+            const cardFizjo2 = document.getElementById('subjCardFizjo2');
             const cardBM = document.getElementById('subjCardBM');
             const cardBRC = document.getElementById('subjCardBRC');
 
             cardFizjo.className = 'subject-card';
+            cardFizjo2.className = 'subject-card';
             cardBM.className = 'subject-card';
             cardBRC.className = 'subject-card';
 
             if (subj === 'fizjo') {
                 cardFizjo.classList.add('selected-fizjo');
                 document.getElementById('configSubTitle').innerText = "Dostosuj działy dla przedmiotu: Fizjologia Ogólna (I Rok Fizjoterapii)";
+            } else if (subj === 'fizjo2') {
+                cardFizjo2.classList.add('selected-fizjo2');
+                document.getElementById('configSubTitle').innerText = "Dostosuj działy dla przedmiotu: Fizjologia Zaliczenie 2 (I Rok Fizjoterapii)";
             } else if (subj === 'bm') {
                 cardBM.classList.add('selected-bm');
                 document.getElementById('configSubTitle').innerText = "Dostosuj działy dla przedmiotu: Biologia Medyczna (© M. Religa)";
@@ -2689,6 +3071,7 @@
             const q = activeQuestions[currentIdx];
 
             let subjPrefix = 'Fizjologia';
+            if (q.subject === 'fizjo2') subjPrefix = 'Fizjologia Zaliczenie 2';
             if (q.subject === 'bm') subjPrefix = 'Biologia Medyczna';
             if (q.subject === 'brc') subjPrefix = 'Biol. Rozwój Człowieka';
 
@@ -2838,6 +3221,7 @@
                 item.style.backgroundColor = isCorrect ? 'var(--success-bg)' : 'var(--error-bg)';
 
                 let subjName = 'Fizjologia';
+                if (q.subject === 'fizjo2') subjName = 'Fizjologia Zaliczenie 2';
                 if (q.subject === 'bm') subjName = 'Biologia Medyczna';
                 if (q.subject === 'brc') subjName = 'Biol. Rozwój Człowieka';
 
@@ -2866,6 +3250,7 @@
             flashIdx = 0;
             
             document.getElementById('flashSubjFizjo').className = subj === 'fizjo' ? 'btn btn-primary' : 'btn btn-secondary';
+            document.getElementById('flashSubjFizjo2').className = subj === 'fizjo2' ? 'btn btn-primary' : 'btn btn-secondary';
             document.getElementById('flashSubjBM').className = subj === 'bm' ? 'btn btn-primary' : 'btn btn-secondary';
             document.getElementById('flashSubjBRC').className = subj === 'brc' ? 'btn btn-primary' : 'btn btn-secondary';
 
@@ -2873,7 +3258,7 @@
         }
 
         function initFlashCards() {
-            setFlashSubject('fizjo');
+            setFlashSubject('fizjo2');
         }
 
         function renderFlashCard() {
@@ -2884,7 +3269,8 @@
             document.getElementById('flashCardBox').classList.remove('flipped');
 
             let subjName = 'Fizjologia';
-            if (q.subject === 'bm') subjName = 'Biologia Medyczna';
+            if (q.subject === 'fizjo2') subjName = 'Fizjologia Zaliczenie 2';
+                if (q.subject === 'bm') subjName = 'Biologia Medyczna';
             if (q.subject === 'brc') subjName = 'Biol. Rozwój Człowieka';
 
             document.getElementById('fcCategory').innerText = `${subjName} • ${q.cat}`;
@@ -2926,6 +3312,7 @@
 
             document.getElementById('bankSubjAll').className = filter === 'all' ? 'btn btn-primary' : 'btn btn-secondary';
             document.getElementById('bankSubjFizjo').className = filter === 'fizjo' ? 'btn btn-primary' : 'btn btn-secondary';
+            document.getElementById('bankSubjFizjo2').className = filter === 'fizjo2' ? 'btn btn-primary' : 'btn btn-secondary';
             document.getElementById('bankSubjBM').className = filter === 'bm' ? 'btn btn-primary' : 'btn btn-secondary';
             document.getElementById('bankSubjBRC').className = filter === 'brc' ? 'btn btn-primary' : 'btn btn-secondary';
 
@@ -2960,6 +3347,7 @@
                 card.style.backgroundColor = 'var(--bg-secondary)';
 
                 let subjTag = 'Fizjologia';
+                if (q.subject === 'fizjo2') subjTag = 'Fizjologia Zaliczenie 2';
                 if (q.subject === 'bm') subjTag = 'Biologia Medyczna';
                 if (q.subject === 'brc') subjTag = 'Biol. Rozwój Człowieka';
 
