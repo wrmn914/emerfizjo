@@ -242,7 +242,7 @@
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4), 0 0 15px rgba(199, 168, 97, 0.15);
         }
 
-        .subject-card.selected-bm, .subject-card.selected-brc, .subject-card.selected-fizjo, .subject-card.selected-fizjo2 {
+        .subject-card.selected-bm, .subject-card.selected-brc, .subject-card.selected-fizjo, .subject-card.selected-fizjo2, .subject-card.selected-ped {
             border: 1.5px solid var(--accent-gold);
             background: linear-gradient(135deg, var(--bg-secondary), var(--bg-tertiary));
             box-shadow: 0 0 20px rgba(199, 168, 97, 0.15);
@@ -643,7 +643,7 @@
 <body>
 
     <div class="copyright-banner">
-        Portal Akademicki Fizjoterapii | <strong>Fizjologia I Rok</strong> &amp; <strong>Biologia Medyczna (© M. Religa)</strong> &amp; <strong>Biol. Rozwój Człowieka (dr hab. M. Krzykała)</strong>
+        Portal Akademicki Fizjoterapii | <strong>Fizjologia I Rok</strong> &amp; <strong>Biologia Medyczna (© M. Religa)</strong> &amp; <strong>Biol. Rozwój Człowieka (dr hab. M. Krzykała)</strong> &amp; <strong>Pedagogika</strong>
     </div>
 
     <header>
@@ -674,7 +674,7 @@
                     </button>
                     <button id="navBankBtn" class="nav-btn" onclick="showSection('bank')">
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
-                        <span id="navBankSpan">Baza Pytań (268)</span>
+                        <span id="navBankSpan">Baza Pytań (313)</span>
                     </button>
                     <button class="theme-toggle" onclick="toggleTheme()" title="Przełącz motyw">🌙</button>
                 </div>
@@ -719,6 +719,13 @@
                     <div class="subject-title">Biologiczny Rozwój Człowieka</div>
                     <div class="subject-desc">Ontogeneza, procesy wzrastania, trendy sekularne, apgar, odruchy, sarkopenia i geriatria.</div>
                     <span class="subject-badge">75 Pytań • dr hab. M. Krzykała</span>
+                </div>
+
+                <div class="subject-card" id="subjCardPed" onclick="selectSubject('ped')">
+                    <div class="subject-icon">📚</div>
+                    <div class="subject-title">Pedagogika</div>
+                    <div class="subject-desc">Historia wychowania i myśli pedagogicznej: antyk, średniowiecze, odrodzenie, J.A. Komeński oraz nurty XIX i XX wieku.</div>
+                    <span class="subject-badge">45 Pytań • I Rok Fizjoterapii</span>
                 </div>
             </div>
 
@@ -852,6 +859,7 @@
                     <button class="btn btn-secondary" id="flashSubjFizjo2" onclick="setFlashSubject('fizjo2')">Fizjologia Zaliczenie 2 (68)</button>
                     <button class="btn btn-secondary" id="flashSubjBM" onclick="setFlashSubject('bm')">Biologia Medyczna (75)</button>
                     <button class="btn btn-secondary" id="flashSubjBRC" onclick="setFlashSubject('brc')">Biol. Rozwój Człowieka (75)</button>
+                    <button class="btn btn-secondary" id="flashSubjPed" onclick="setFlashSubject('ped')">Pedagogika (45)</button>
                 </div>
 
                 <div class="flashcard-box" id="flashCardBox" onclick="flipFlashCard()">
@@ -887,11 +895,12 @@
                 </div>
 
                 <div style="margin-bottom: 1rem; display: flex; gap: 10px; flex-wrap: wrap;">
-                    <button class="btn btn-secondary" id="bankSubjAll" onclick="setBankFilter('all')">Wszystkie Przedmioty (268)</button>
+                    <button class="btn btn-secondary" id="bankSubjAll" onclick="setBankFilter('all')">Wszystkie Przedmioty (313)</button>
                     <button class="btn btn-secondary" id="bankSubjFizjo" onclick="setBankFilter('fizjo')">Fizjologia (50)</button>
                     <button class="btn btn-secondary" id="bankSubjFizjo2" onclick="setBankFilter('fizjo2')">Fizjologia Zaliczenie 2 (68)</button>
                     <button class="btn btn-secondary" id="bankSubjBM" onclick="setBankFilter('bm')">Biologia Medyczna (75)</button>
                     <button class="btn btn-secondary" id="bankSubjBRC" onclick="setBankFilter('brc')">Biol. Rozwój Człowieka (75)</button>
+                    <button class="btn btn-secondary" id="bankSubjPed" onclick="setBankFilter('ped')">Pedagogika (45)</button>
                 </div>
 
                 <input type="text" id="bankSearchInput" class="search-bar" placeholder="🔍 Szukaj frazy w pytaniach, opcjach lub wyjaśnieniami..." oninput="filterBank()">
@@ -910,6 +919,595 @@
 
     <script>
         const rawQuestionBank = [
+            // ========================================================
+            // PRZEDMIOT 5: PEDAGOGIKA (45 PYTAŃ)
+            // ========================================================
+            {
+                subject: "ped",
+                cat: "Starożytność – Grecja i Rzym",
+                q: "Jaką rolę w koncepcji pedagogicznej sofistów odgrywały zadatki wrodzone jednostki?",
+                opts: [
+                    "Stanowiły jedynie punkt wyjścia wymagający odpowiedniego ukierunkowania wychowawczego.",
+                    "Decydowały bezwarunkowo o przyszłym statusie obywatela bez możliwości ich zmiany.",
+                    "Były uważane za zbędne, ponieważ o sukcesie decydowała wyłącznie majętność rodziców.",
+                    "Determinowały przynależność do stanu rycerskiego lub duchownego."
+                ],
+                corr: 0,
+                exp: "Sofiści uznawali, że zadatki wrodzone są jedynie punktem wyjścia i wymagają właściwego pokierowania przez proces wychowania."
+            },
+            {
+                subject: "ped",
+                cat: "Starożytność – Grecja i Rzym",
+                q: "Który element w trójpodziale duszy według Sokratesa odpowiada za chęć poznania zmysłowego?",
+                opts: [
+                    "Dusza zwierzęca.",
+                    "Dusza rozumna.",
+                    "Dusza roślinna.",
+                    "Dusza estetyczna."
+                ],
+                corr: 0,
+                exp: "W koncepcji Sokratesa dusza składa się z trzech części: rozumnej (poznanie naukowe), zwierzęcej (poznanie zmysłowe) oraz roślinnej (odpowiedzialnej za zaspokajanie potrzeb fizjologicznych)."
+            },
+            {
+                subject: "ped",
+                cat: "Starożytność – Grecja i Rzym",
+                q: "W jaki sposób Sokrates postępował w ramach metody heurestycznej, gdy rozmówca udzielał błędnej odpowiedzi?",
+                opts: [
+                    "Zadawał dodatkowe pytania pogłębiające błąd, aż rozmówca sam uznał fałszywość sądu.",
+                    "Natychmiast przerywał dialog i podawał gotową definicję do zapamiętania.",
+                    "Odsyłał ucznia do szkoły retorycznej w celu opanowania zasad dialektyki.",
+                    "Stosował kary cielesne zgodnie z obyczajem obowiązującym w starożytnych Atenach."
+                ],
+                corr: 0,
+                exp: "Metoda heurestyczna Sokratesa polegała na umiejętnym zadawaniu pytań naprowadzających – przy błędzie Sokrates pogłębiał go kolejnymi pytaniami, doprowadzając rozmówcę do samodzielnego odrzucenia fałszywego poglądu."
+            },
+            {
+                subject: "ped",
+                cat: "Starożytność – Grecja i Rzym",
+                q: "Jaką postawę wobec ucznia przypisywał nauczycielowi rzymski teoretyk Kwintylian?",
+                opts: [
+                    "Postawę ojca łączącego miłość i szacunek z niezbędną surowością.",
+                    "Postawę bezwzględnego sędziego wymierzającego surowe kary cielesne za każdy błąd.",
+                    "Postawę obojętnego obserwatora, który nie ingeruje w naturalny rozwój dziecka.",
+                    "Postawę rzemieślnika pobierającego opłaty wyłącznie za wyniki egzaminów."
+                ],
+                corr: 0,
+                exp: "Kwintylian uważał, że nauczyciel powinien zajmować wobec ucznia miejsce ojca – okazywać mu miłość i szacunek, łącząc je z rozsądną surowością."
+            },
+            {
+                subject: "ped",
+                cat: "Starożytność – Grecja i Rzym",
+                q: "Czym różnił się program rzymskiej szkoły gramatycznej od szkoły retorycznej w ujęciu Kwintyliana?",
+                opts: [
+                    "Szkoła gramatyczna uczyła gramatyki, muzyki i dialektyki, a retoryczna prawa, polityki i krasomówstwa.",
+                    "Szkoła gramatyczna była przeznaczona wyłącznie dla dziewcząt, a retoryczna dla chłopców.",
+                    "Szkoła gramatyczna obejmowała naukę czytania i pisania od zera, a retoryczna tylko ćwiczenia fizyczne.",
+                    "Szkoła gramatyczna przygotowywała do stanu duchownego, a retoryczna do zawodu kupca."
+                ],
+                corr: 0,
+                exp: "W rzymskim systemie szkolnym opisanym przez Kwintyliana szkoła gramatyczna kształciła w zakresie gramatyki, muzyki i dialektyki, natomiast szkoła retoryczna przygotowywała do życia publicznego poprzez naukę prawa, polityki i krasomówstwa."
+            },
+            {
+                subject: "ped",
+                cat: "Społeczeństwo Pierwotne i Antyk",
+                q: "Co stanowiło moment przełomowy oznaczający początek wychowania instytucjonalnego w społeczeństwie pierwotnym?",
+                opts: [
+                    "Inicjacja organizowana przez starszyznę rodową i wodzów plemienia.",
+                    "Powstanie pierwszych szkół parafialnych przy świątyniach.",
+                    "Wprowadzenie pisma obrazkowego i tabliczek glinianych.",
+                    "Podział społeczeństwa na stan rycerski oraz mieszczański."
+                ],
+                corr: 0,
+                exp: "W społeczeństwie pierwotnym procesem przełomowym wyznaczającym początek wychowania instytucjonalnego była inicjacja przeprowadzana przez starszyznę rodową i wodzów."
+            },
+            {
+                subject: "ped",
+                cat: "Starożytność – Grecja i Rzym",
+                q: "Co oznacza greckie pojęcie „kalokagathia”, stanowiące ideał wychowawczy starożytnej Grecji?",
+                opts: [
+                    "Połączenie doskonałego sportowca oraz moralnego i sprawnego obywatela.",
+                    "Bezwzględne posłuszeństwo wobec władzy królewskiej i kościelnej.",
+                    "Umiejętność prowadzenia dysput filozoficznych bez dbałości o ciało.",
+                    "Przygotowanie młodzieży do pracy rzemieślniczej w cechach miejskich."
+                ],
+                corr: 0,
+                exp: "Kalokagathia to starożytny grecki ideał wychowawczy łączący piękno fizyczne i sprawność sportową (kalos) z dobrem moralnym i cnotą obywatelską (agathos)."
+            },
+            {
+                subject: "ped",
+                cat: "Starożytność – Grecja i Rzym",
+                q: "Kim był „paidotryba” w systemie wychowania starożytnych Aten?",
+                opts: [
+                    "Nauczycielem ćwiczeń fizycznych w palestrze sprawującym opiekę od 13 roku życia.",
+                    "Niewolnikiem odprowadzającym chłopca do szkoły elementarnej.",
+                    "Urzędnikiem państwowym egzaminującym młodzieńców przed wejściem do efebii.",
+                    "Nauczycielem muzyki i gry na lirze w szkole kitarysty."
+                ],
+                corr: 0,
+                exp: "Paidotryba był nauczycielem gimnastyki i ćwiczeń fizycznych w palestrze, przejmującym opiekę nad ateńskimi chłopcami od 13. roku życia."
+            },
+            {
+                subject: "ped",
+                cat: "Starożytność – Grecja i Rzym",
+                q: "Jak nazywał się okres regularnej służby wojskowej ateńskich młodzieńców rozpoczynający się w wieku 18 lat?",
+                opts: [
+                    "Efebia.",
+                    "Palestra.",
+                    "Katechumenat.",
+                    "Quadrivium."
+                ],
+                corr: 0,
+                exp: "Efebia to dwuletni okres służby wojskowej i obywatelskiej w starożytnych Atenach, który młodzieńcy rozpoczynali po ukończeniu 18. roku życia."
+            },
+            {
+                subject: "ped",
+                cat: "Starożytność – Grecja i Rzym",
+                q: "Kto uznawany jest za pierwszego teoretyka wychowania w starożytnym Rzymie?",
+                opts: [
+                    "Katon Starszy.",
+                    "Marek Fabiusz Kwintylian.",
+                    "Marek Tulliusz Cyceron.",
+                    "Wittorino da Feltre."
+                ],
+                corr: 0,
+                exp: "Za pierwszego teoretyka wychowania w starożytnym Rzymie uznaje się Katona Starszego."
+            },
+            {
+                subject: "ped",
+                cat: "Starożytność – Grecja i Rzym",
+                q: "Jaką nazwą określano szkołę elementarną w starożytnym Rzymie?",
+                opts: [
+                    "Ludus.",
+                    "Gimnazjon.",
+                    "Studium generale.",
+                    "Trivium."
+                ],
+                corr: 0,
+                exp: "Szkoła elementarna (początkowa) w starożytnym Rzymie nosiła nazwę ludus."
+            },
+            {
+                subject: "ped",
+                cat: "Średniowiecze i Szkolnictwo Kościelne",
+                q: "Jaką funkcję pełniły katechumenaty we wczesnym chrześcijaństwie?",
+                opts: [
+                    "Przygotowywały kandydatów do przyjęcia wiary chrześcijańskiej metodą katechezy.",
+                    "Kształciły wyłącznie kandydatów na biskupów w zakresie prawa kanonicznego.",
+                    "Prowadziły świeckie kursy retoryki i filozofii pogańskiej dla urzędników.",
+                    "Służyły jako przytułki dla sierot rycerskich uczących się fechtunku."
+                ],
+                corr: 0,
+                exp: "Katechumenaty były instytucjami wczesnochrześcijańskimi przygotowującymi dorosłych kandydatów do chrztu i przyjęcia wiary poprzez ustną naukę (katechezę)."
+            },
+            {
+                subject: "ped",
+                cat: "Średniowiecze i Szkolnictwo Kościelne",
+                q: "Który typ szkół kościelnych od połowy IX wieku przygotowywał młodzież bezpośrednio do stanu duchownego?",
+                opts: [
+                    "Szkoły katedralne.",
+                    "Szkoły parafialne wiejskie.",
+                    "Szkoły cechowe miejskie.",
+                    "Kolegia jezuickie."
+                ],
+                corr: 0,
+                exp: "Od połowy IX wieku główną rolę w kształceniu i przygotowywaniu młodzieży bezpośrednio do stanu duchownego odgrywały szkoły katedralne."
+            },
+            {
+                subject: "ped",
+                cat: "Średniowiecze i Szkolnictwo Kościelne",
+                q: "Które przedmioty wchodziły w skład „trivium” w ramach siedmiu sztuk wyzwolonych?",
+                opts: [
+                    "Gramatyka, retoryka i dialektyka.",
+                    "Arytmetyka, geometria i astronomia.",
+                    "Muzyka, geometria i teologia.",
+                    "Filozofia, prawo i medycyna."
+                ],
+                corr: 0,
+                exp: "Siedem sztuk wyzwolonych (septem artes liberales) dzieliło się na niższy stopień – trivium (gramatyka, retoryka, dialektyka) oraz wyższy – quadrivium."
+            },
+            {
+                subject: "ped",
+                cat: "Średniowiecze i Szkolnictwo Kościelne",
+                q: "Który zestaw przedmiotów tworzył „quadrivium”?",
+                opts: [
+                    "Arytmetyka, geometria, astronomia i muzyka.",
+                    "Gramatyka, retoryka, dialektyka i logika.",
+                    "Teologia, prawo kanoniczne, medycyna i filozofia.",
+                    "Historia, geografia, botanika i fizyka."
+                ],
+                corr: 0,
+                exp: "Quadrivium obejmowało cztery dyscypliny matematyczno-przyrodnicze: arytmetykę, geometrię, astronomię oraz muzykę."
+            },
+            {
+                subject: "ped",
+                cat: "Średniowiecze i Szkolnictwo Kościelne",
+                q: "Jakie cechy definiowały ideał wychowawczy stanu mieszczańskiego w średniowieczu?",
+                opts: [
+                    "Uczciwość i zachowanie tajemnicy zawodowej.",
+                    "Pogarda dla pracy fizycznej i biegłość w turniejach rycerskich.",
+                    "Całkowite wyrzeczenie się dóbr materialnych i życie pustelnicze.",
+                    "Znajomość greckiej filozofii oraz biegłość w sztuce krasomówczej."
+                ],
+                corr: 0,
+                exp: "Ideał wychowawczy stanu mieszczańskiego opierał się na rzetelności kupiecko-rzemieślniczej, uczciwości oraz ścisłym zachowaniu tajemnicy zawodowej."
+            },
+            {
+                subject: "ped",
+                cat: "Średniowiecze i Szkolnictwo Kościelne",
+                q: "Jaka jest prawidłowa chronologia etapów wychowania rycerskiego w średniowieczu?",
+                opts: [
+                    "Paź (7–13/15 lat), giermek (13/15–21 lat), rycerz (od 21 roku życia).",
+                    "Giermek (7–14 lat), paź (14–18 lat), rycerz (od 18 roku życia).",
+                    "Paź (5–10 lat), czeladnik (10–18 lat), rycerz (od 18 roku życia).",
+                    "Nowicjusz (7–15 lat), paź (15–25 lat), rycerz (od 25 roku życia)."
+                ],
+                corr: 0,
+                exp: "Wychowanie rycerskie przebiegało w trzech etapach: do 7. roku życia w domu rodzinnym, od 7 do 13/15 lat jako paź na dworze, od 13/15 do 21 lat jako giermek, a po 21. roku życia następowało pasowanie na rycerza."
+            },
+            {
+                subject: "ped",
+                cat: "Średniowiecze i Szkolnictwo Kościelne",
+                q: "Kto zajmował się edukacją w Irlandii do XII wieku w początkach średniowiecza?",
+                opts: [
+                    "Druidzi.",
+                    "Jezuici.",
+                    "Sofiści.",
+                    "Bakałarze miejscy."
+                ],
+                corr: 0,
+                exp: "Według skryptu w początkach średniowiecza edukacją w Irlandii aż do XII wieku zajmowali się druidzi."
+            },
+            {
+                subject: "ped",
+                cat: "Średniowiecze i Szkolnictwo Kościelne",
+                q: "Która reforma szkolna jest zasługą Karola Wielkiego w IX wieku?",
+                opts: [
+                    "Otwarcie szkoły pałacowej dla przyszłych urzędników, szkoły elementarnej oraz akademii.",
+                    "Wprowadzenie obowiązkowego, bezpłatnego szkolnictwa dla chłopów na wsiach.",
+                    "Założenie pierwszego uniwersytetu w Bolonii i nadanie mu przywilejów.",
+                    "Całkowite zniesienie nauczania łaciny na rzecz języków narodowych."
+                ],
+                corr: 0,
+                exp: "Karol Wielki w ramach renesansu karolińskiego otworzył szkołę pałacową kształcącą przyszłych urzędników, szkołę elementarną oraz akademię dworską."
+            },
+            {
+                subject: "ped",
+                cat: "Średniowiecze i Szkolnictwo Kościelne",
+                q: "Gdzie według skryptu powstała pierwsza średniowieczna szkoła przyklasztorna w Europie?",
+                opts: [
+                    "Przy klasztorze benedyktyńskim na Monte Cassino.",
+                    "Przy opactwie w Tyńcu.",
+                    "Przy katedrze w Poznaniu.",
+                    "Przy klasztorze w Paryżu."
+                ],
+                corr: 0,
+                exp: "Pierwsza średniowieczna szkoła przyklasztorna w Europie powstała przy założonym przez św. Benedykta klasztorze na Monte Cassino."
+            },
+            {
+                subject: "ped",
+                cat: "Średniowiecze i Szkolnictwo Kościelne",
+                q: "Co oznacza łaciński termin „universitas”, od którego pochodzi nazwa uniwersytet?",
+                opts: [
+                    "Powszechny, ogólny – dostępny bez względu na pochodzenie czy narodowość.",
+                    "Wyższy, elitarny – przeznaczony wyłącznie dla synów arystokracji.",
+                    "Klasztorny, zamknięty – podlegający bezpośrednio opatowi zakonu.",
+                    "Narodowy, państwowy – finansowany wyłącznie ze skarbca królewskiego."
+                ],
+                corr: 0,
+                exp: "Łacińskie słowo „universitas” oznacza ogół, powszechność – wspólnotę nauczycieli i uczniów otwartą dla studiujących niezależnie od pochodzenia czy narodowości."
+            },
+            {
+                subject: "ped",
+                cat: "Średniowiecze i Szkolnictwo Kościelne",
+                q: "Kto założył Uniwersytet w Krakowie w 1364 roku, a kto dokonał jego odnowienia?",
+                opts: [
+                    "Założył Kazimierz Wielki, a odnowił Władysław Jagiełło.",
+                    "Założył Władysław Jagiełło, a odnowił Zygmunt Stary.",
+                    "Założył Bolesław Chrobry, a odnowił Kazimierz Wielki.",
+                    "Założył Kazimierz Jagiellończyk, a odnowił Stefan Batory."
+                ],
+                corr: 0,
+                exp: "Akademię Krakowską ufundował w 1364 roku Kazimierz Wielki, natomiast jej odnowienia (m.in. dzięki zapisowi królowej Jadwigi) dokonał w 1400 roku Władysław Jagiełło."
+            },
+            {
+                subject: "ped",
+                cat: "Średniowiecze i Szkolnictwo Kościelne",
+                q: "Jak w średniowieczu uzasadniano stosowanie kar cielesnych wobec dzieci?",
+                opts: [
+                    "Wolą Bożą, odpuszczeniem win poprzez bicie oraz przekonaniem, że dzieci staną się mądrzejsze.",
+                    "Koniecznością hartowania organizmu przed służbą w wojsku rzymskim.",
+                    "Zaleceniami Jana Amosa Komeńskiego zawartymi w Wielkiej Dydaktyce.",
+                    "Brakiem innych metod dydaktycznych w szkołach prowadzonych przez jezuitów."
+                ],
+                corr: 0,
+                exp: "W średniowieczu kary cielesne tłumaczono religijnie i wychowawczo: uważano je za zgodne z wolą Bożą, prowadzące do odpuszczenia grzechów oraz czyniące dzieci mądrzejszymi."
+            },
+            {
+                subject: "ped",
+                cat: "Średniowiecze w Polsce",
+                q: "Gdzie i kiedy powstała najstarsza w Polsce szkoła katedralna oraz pierwsza szkoła klasztorna?",
+                opts: [
+                    "Katedralna w Poznaniu ok. 1000 r., a klasztorna w Tyńcu w 1046 r.",
+                    "Katedralna w Krakowie w 1364 r., a klasztorna na Monte Cassino w 529 r.",
+                    "Katedralna w Gnieźnie w 966 r., a klasztorna w Poznaniu w 1100 r.",
+                    "Katedralna we Wrocławiu w 1046 r., a klasztorna w Krakowie w 1000 r."
+                ],
+                corr: 0,
+                exp: "Najstarsza polska szkoła katedralna powstała w Poznaniu około 1000 roku, natomiast pierwsza szkoła klasztorna przy opactwie benedyktynów w Tyńcu w 1046 roku."
+            },
+            {
+                subject: "ped",
+                cat: "Średniowiecze w Polsce",
+                q: "Czym różniły się miejskie i wiejskie szkoły parafialne w średniowiecznej Polsce?",
+                opts: [
+                    "W miastach realizowano pełne 7 sztuk wyzwolonych pod kierunkiem bakałarzy, a na wsiach 3 sztuki pod kierunkiem organisty.",
+                    "W miastach uczono wyłącznie po polsku, a na wsiach wyłącznie po grecku i hebrajsku.",
+                    "W miastach szkoły były koedukacyjne, a na wsiach uczęszczali do nich wyłącznie chłopcy ze stanu rycerskiego.",
+                    "W miastach nauka trwała 10 lat, a na wsiach szkoły działały wyłącznie w okresie letnim."
+                ],
+                corr: 0,
+                exp: "Miejskie szkoły parafialne miały wyższy poziom – nauczali w nich bakałarze, realizując program 7 sztuk wyzwolonych, podczas gdy na wsiach organista uczył jedynie podstaw w zakresie 3 sztuk."
+            },
+            {
+                subject: "ped",
+                cat: "Średniowiecze w Polsce",
+                q: "Jak wyglądała edukacja dziewcząt w średniowiecznej Polsce według skryptu?",
+                opts: [
+                    "Przygotowywały się w domu do roli gospodyni, a w klasztorach uczyły się jedynie łacińskich modlitw i prac ręcznych.",
+                    "Uczęszczały na równi z chłopcami do szkół katedralnych i na Akademię Krakowską.",
+                    "Pobierały nauki w gimnazjach humanistycznych z zakresu prawa i retoryki.",
+                    "Kształciły się wyłącznie w zakresie medycyny i astronomii na dworach królewskich."
+                ],
+                corr: 0,
+                exp: "W średniowiecznej Polsce dziewczęta przysposabiano w domu do prowadzenia gospodarstwa, a w szkołach przyklasztornych uczyły się jedynie modlitw po łacinie oraz robótek ręcznych."
+            },
+            {
+                subject: "ped",
+                cat: "Odrodzenie, Reformacja i Kontrreformacja",
+                q: "Jaką rolę odegrało Towarzystwo Jezusowe założone w 1540 roku przez Ignacego Loyolę?",
+                opts: [
+                    "Stworzyło sieć elitarnych szkół kościelnych w odpowiedzi na reformację.",
+                    "Wprowadziło powszechne nauczanie początkowe w językach narodowych dla chłopów.",
+                    "Zlikwidowało wszystkie szkoły klasztorne i uniwersytety w Europie Zachodniej.",
+                    "Opracowało założenia pedagogiki eksperymentalnej opartej na psychologii."
+                ],
+                corr: 0,
+                exp: "Zakon jezuitów (Towarzystwo Jezusowe), zatwierdzony w 1540 roku, stał się głównym narzędziem kontrreformacji w oświacie, tworząc gęstą sieć nowoczesnych, elitarnych kolegiów."
+            },
+            {
+                subject: "ped",
+                cat: "Odrodzenie, Reformacja i Kontrreformacja",
+                q: "Jakimi cechami wyróżniał się „Dom Radości” założony przez Wittorina da Feltre w Mantui?",
+                opts: [
+                    "Koedukacją (7–21 lat), ćwiczeniami na świeżym powietrzu, swobodną zabawą i troską o potrzeby dziecka.",
+                    "Surową dyscypliną klasztorną, zakazem zabaw ruchowych i nauką wyłącznie pamięciową.",
+                    "Kształceniem wyłącznie dorosłych duchownych w zakresie teologii scholastycznej.",
+                    "Podziałem uczniów na 10 klas po 10 osób bez jakichkolwiek zajęć fizycznych."
+                ],
+                corr: 0,
+                exp: "„Dom Radości” (Casa Giocosa) Wittorina da Feltre w Mantui był wzorcową szkołą renesansową łączącą koedukację (7–21 lat), rekreację na świeżym powietrzu, zabawę i poszanowanie potrzeb dziecka."
+            },
+            {
+                subject: "ped",
+                cat: "Odrodzenie, Reformacja i Kontrreformacja",
+                q: "Które rozwiązanie organizacyjne stało się wzorem dla współczesnych szkół średnich w Europie dzięki gimnazjum Jana Sturma?",
+                opts: [
+                    "System klasowo-lekcyjny obejmujący 10 klas po 10 uczniów z indywidualizacją nauczania.",
+                    "Nauczanie indywidualne prowadzone wyłącznie przez domowych guwernerów.",
+                    "Podział edukacji na czterostopniowe szkoły sześcioklasowe bez egzaminów.",
+                    "Całkowite zastąpienie nauki języków klasycznych przedmiotami przyrodniczymi."
+                ],
+                corr: 0,
+                exp: "Gimnazjum Jana Sturma w Strasburgu wprowadziło przejrzysty system klasowo-lekcyjny (10 klas podzielonych na mniejsze grupy – dekurie po 10 uczniów), który stał się wzorem dla szkół średnich."
+            },
+            {
+                subject: "ped",
+                cat: "Odrodzenie, Reformacja i Kontrreformacja",
+                q: "Jaki wspólny postulat dotyczący organizacji oświaty głosili Piotr Paweł Vergerio oraz Andrzej Frycz Modrzewski?",
+                opts: [
+                    "Przejęcie przez państwo opieki i organizacji nad szkolnictwem.",
+                    "Oddanie całego szkolnictwa pod wyłączny nadzór zakonu jezuitów.",
+                    "Ograniczenie dostępu do nauki wyłącznie dla dzieci szlacheckich.",
+                    "Zniesienie szkół wyższych na rzecz praktycznej nauki rzemiosła."
+                ],
+                corr: 0,
+                exp: "Zarówno włoski humanista Piotr Paweł Vergerio, jak i Andrzej Frycz Modrzewski postulowali uniezależnienie oświaty i przejęcie nad nią opieki oraz organizacji przez państwo."
+            },
+            {
+                subject: "ped",
+                cat: "Odrodzenie, Reformacja i Kontrreformacja",
+                q: "W dziele „O poprawie Rzeczypospolitej” Andrzej Frycz Modrzewski postulował:",
+                opts: [
+                    "Objęcie oświaty opieką państwa oraz tworzenie szkół świeckich.",
+                    "Wprowadzenie surowych kar cielesnych w szkołach parafialnych.",
+                    "Zamknięcie Akademii Krakowskiej z powodu wpływów reformacji.",
+                    "Wychowanie dzieci wyłącznie w izolacji od społeczeństwa na wzór Emila."
+                ],
+                corr: 0,
+                exp: "Andrzej Frycz Modrzewski w dziele „O poprawie Rzeczypospolitej” domagał się objęcia szkolnictwa opieką państwa, jego zeświecczenia oraz podniesienia rangi zawodu nauczyciela."
+            },
+            {
+                subject: "ped",
+                cat: "Jan Amos Komeński",
+                q: "Na czym polegał demokratyzm systemu szkolnego zaproponowanego przez Jana Amosa Komeńskiego?",
+                opts: [
+                    "Na objęciu powszechnym nauczaniem biednych i bogatych, miast i wsi oraz chłopców i dziewcząt.",
+                    "Na wyborze rektorów uniwersytetów w powszechnym głosowaniu wszystkich mieszkańców.",
+                    "Na zniesieniu podziału na klasy i pozostawieniu uczniom wyboru przedmiotów.",
+                    "Na finansowaniu szkół wyłącznie z dobrowolnych składek cechów rzemieślniczych."
+                ],
+                corr: 0,
+                exp: "Demokratyzm Komeńskiego wyrażał się w postulacie powszechnej edukacji dla wszystkich – bez względu na płeć, status majątkowy czy miejsce zamieszkania (miasto i wieś)."
+            },
+            {
+                subject: "ped",
+                cat: "Jan Amos Komeński",
+                q: "Który szczebel szkolny w systemie Jana Amosa Komeńskiego odpowiada okresowi chłopięctwa (6–12 lat)?",
+                opts: [
+                    "Szkoła języka ojczystego (elementarna).",
+                    "Szkoła łacińska (gimnazjum).",
+                    "Szkoła macierzyńska.",
+                    "Akademia."
+                ],
+                corr: 0,
+                exp: "Komeński podzielił edukację na 4 sześcioletnie szczeble: szkołę macierzyńską (0–6 lat), szkołę języka ojczystego (6–12 lat), szkołę łacińską/gimnazjum (12–18 lat) oraz akademię (18–24 lata)."
+            },
+            {
+                subject: "ped",
+                cat: "Jan Amos Komeński",
+                q: "Jakie jest przeznaczenie i forma zwieńczenia „akademii” (18–24 lata) w koncepcji J.A. Komeńskiego?",
+                opts: [
+                    "Kształci przyszłych uczonych w każdym państwie i powinna być zakończona podróżami.",
+                    "Przygotowuje młodzież wiejską do pracy na roli i kończy się egzaminem z katechizmu.",
+                    "Służy nauce czytania i pisania w języku ojczystym i kończy się wstąpieniem do cechu.",
+                    "Jest obowiązkowa dla wszystkich obywateli i kończy się dwuletnią służbą wojskową."
+                ],
+                corr: 0,
+                exp: "Najwyższy szczebel w systemie Komeńskiego – akademia (18–24 lata) – miała istnieć w każdym państwie dla kształcenia przyszłych uczonych i przywódców, a jej zwieńczeniem miały być podróże kształcące."
+            },
+            {
+                subject: "ped",
+                cat: "Jan Amos Komeński",
+                q: "Na czym polega koncentryczny (cykliczny) układ materiału programowego wprowadzony przez J.A. Komeńskiego?",
+                opts: [
+                    "Na nauczaniu tych samych dziedzin na kolejnych szczeblach przy jednoczesnym rozszerzaniu zakresu wiedzy.",
+                    "Na omawianiu każdego przedmiotu tylko raz w ciągu całej edukacji szkolnej.",
+                    "Na rozpoczynaniu nauki od abstrakcyjnych reguł gramatycznych bez przykładów.",
+                    "Na łączeniu wszystkich przedmiotów w jeden blok prowadzony przez jednego nauczyciela."
+                ],
+                corr: 0,
+                exp: "Koncentryczny układ materiału u Komeńskiego polega na tym, że na każdym kolejnym szczeblu edukacji uczeń wraca do tych samych dziedzin wiedzy, ale w coraz szerszym i głębszym ujęciu."
+            },
+            {
+                subject: "ped",
+                cat: "Jan Amos Komeński",
+                q: "Jaką funkcję w procesie ludzkiego poznania przypisywał zmysłom Jan Amos Komeński?",
+                opts: [
+                    "Nazywał je „oczami duszy”, stanowiącymi punkt wyjścia dla myślenia, rozumu, mowy i działania.",
+                    "Uważał je za źródło błędów poznawczych, które należy całkowicie wyeliminować z dydaktyki.",
+                    "Traktował je jako podrzędne wobec pamięciowego opanowania tekstów scholastycznych.",
+                    "Przypisywał im rolę wyłącznie w okresie szkoły macierzyńskiej do 6. roku życia."
+                ],
+                corr: 0,
+                exp: "Komeński był twórcą zasady poglądowości – zmysły nazywał „oczami duszy”, uznając bezpośrednie poznanie zmysłowe za fundament myślenia, rozumienia, mowy i działania."
+            },
+            {
+                subject: "ped",
+                cat: "Oświecenie i XIX/XX wiek",
+                q: "Który postulat pedagogiczny jest charakterystyczny dla poglądów Johna Locke'a?",
+                opts: [
+                    "Traktowanie umysłu dziecka jako czystej białej karty i wychowanie dżentelmeńskie.",
+                    "Wychowanie dzieci w całkowitej izolacji od cywilizacji na łonie dzikiej przyrody.",
+                    "Oparcie pedagogiki naukowej wyłącznie na etyce i psychologii wyobrażeń.",
+                    "Wprowadzenie 10-klasowego gimnazjum opartego na nauce języków klasycznych."
+                ],
+                corr: 0,
+                exp: "John Locke odrzucał ideę idei wrodzonych, traktując umysł dziecka jako niezapisaną tablicę (tabula rasa) i formułując ideał wychowania dżentelmeńskiego (gentlemana)."
+            },
+            {
+                subject: "ped",
+                cat: "Oświecenie i XIX/XX wiek",
+                q: "W którym przedziale wiekowym według koncepcji J.J. Rousseau z dzieła „Emil” następuje właściwy czas na szkołę i rozsmakowanie się w naukach?",
+                opts: [
+                    "Od 13 do 15 roku życia.",
+                    "Od urodzenia do 2 roku życia.",
+                    "Od 2 do 12 roku życia.",
+                    "Od 15 do 20 roku życia."
+                ],
+                corr: 0,
+                exp: "W koncepcji J.J. Rousseau wiek 13–15 lat to okres rozbudzenia ciekawości intelektualnej – właściwy moment na naukę szkolną i zdobywanie wiedzy o świecie."
+            },
+            {
+                subject: "ped",
+                cat: "Oświecenie i XIX/XX wiek",
+                q: "Czego dotyczy piąta księga dzieła „Emil, czyli o wychowaniu” J.J. Rousseau?",
+                opts: [
+                    "Roli kobiety w życiu oraz jej funkcji opiekuńczych i rodzicielskich.",
+                    "Wychowania fizycznego niemowląt i hartowania ciała w zimnej wodzie.",
+                    "Nauki rzemiosła stolarskiego i podstaw geometrii praktycznej.",
+                    "Organizacji uniwersytetów państwowych w oświeconej Europie."
+                ],
+                corr: 0,
+                exp: "Piąta księga „Emila” poświęcona jest Zofii (przyszłej żonie Emila) – J.J. Rousseau przedstawia w niej swoją wizję wychowania dziewcząt oraz roli kobiety jako żony i matki."
+            },
+            {
+                subject: "ped",
+                cat: "Oświecenie i XIX/XX wiek",
+                q: "Jaką grupę społeczną Jan Henryk Pestalozzi uczynił głównym adresatem swoich reform edukacyjnych?",
+                opts: [
+                    "Dzieci ubogie i sieroty pochodzące ze stanu trzeciego.",
+                    "Synów zamożnej szlachty i arystokracji przygotowywanych do dyplomacji.",
+                    "Kandydatów do stanu duchownego w seminariach katedralnych.",
+                    "Młodzież rycerską szkolącą się na dworach królewskich."
+                ],
+                corr: 0,
+                exp: "Jan Henryk Pestalozzi poświęcił swoje życie i reformy edukacyjne dzieciom najuboższym, sierotom i dzieciom ludu (stanu trzeciego), łącząc naukę z pracą i wychowaniem moralnym."
+            },
+            {
+                subject: "ped",
+                cat: "Oświecenie i XIX/XX wiek",
+                q: "Na jakich dwóch dyscyplinach J.F. Herbart oparł swój system naukowej pedagogiki?",
+                opts: [
+                    "Na etyce i psychologii.",
+                    "Na biologii i socjologii.",
+                    "Na teologii i retoryce.",
+                    "Na medycynie i antropologii."
+                ],
+                corr: 0,
+                exp: "Johann Friedrich Herbart stworzył system pedagogiki naukowej oparty na dwóch filarach: etyce (wyznaczającej cele wychowania) oraz psychologii (wskazującej środki i metody ich realizacji)."
+            },
+            {
+                subject: "ped",
+                cat: "Oświecenie i XIX/XX wiek",
+                q: "Jaka jest prawidłowa kolejność czterech stopni formalnych lekcji w teorii J.F. Herbarta?",
+                opts: [
+                    "Jasność, kojarzenie, systematyczność, metodyczność.",
+                    "Kojarzenie, jasność, metodyczność, systematyczność.",
+                    "Systematyczność, jasność, kojarzenie, metodyczność.",
+                    "Metodyczność, systematyczność, jasność, kojarzenie."
+                ],
+                corr: 0,
+                exp: "Cztery stopnie formalne lekcji według Herbarta następują w kolejności: 1. jasność (poznanie nowego materiału), 2. kojarzenie (powiązanie z dawną wiedzą), 3. systematyczność (uporządkowanie i uogólnienie), 4. metodyczność (zastosowanie w praktyce)."
+            },
+            {
+                subject: "ped",
+                cat: "Oświecenie i XIX/XX wiek",
+                q: "Co doprowadziło bezpośrednio do powstania pedagogiki eksperymentalnej na przełomie XIX i XX wieku?",
+                opts: [
+                    "Spór pomiędzy indywidualizmem pedagogicznym a socjologizmem.",
+                    "Upadek uniwersytetów średniowiecznych i rozwój szkół klasztornych.",
+                    "Kryzys reformacji oraz powstanie Towarzystwa Jezusowego.",
+                    "Odrzucenie zasady poglądowości Jana Amosa Komeńskiego."
+                ],
+                corr: 0,
+                exp: "Pedagogika eksperymentalna narodziła się na przełomie XIX i XX wieku jako próba naukowego rozstrzygnięcia sporu między indywidualizmem pedagogicznym a socjologizmem."
+            },
+            {
+                subject: "ped",
+                cat: "Oświecenie i XIX/XX wiek",
+                q: "Dlaczego pedagogika eksperymentalna przeżyła kryzys na początku XX wieku, ustępując miejsca pedagogice normatywnej?",
+                opts: [
+                    "Ponieważ metody przyrodnicze nie potrafiły rozstrzygnąć o celach i wartościach wychowania.",
+                    "Ponieważ całkowicie zakazano prowadzenia badań psychologicznych w szkołach.",
+                    "Ponieważ udowodniono, że dziecko nie podlega żadnym prawom rozwojowym.",
+                    "Ponieważ wszystkie szkoły zostały przejęte przez instytucje kościelne."
+                ],
+                corr: 0,
+                exp: "Kryzys pedagogiki eksperymentalnej wynikał z ograniczeń metod empirycznych i przyrodniczych, które potrafiły badać fakty, ale nie mogły odpowiedzieć na pytania o sens, wartości i cele wychowania."
+            },
+            {
+                subject: "ped",
+                cat: "Oświecenie i XIX/XX wiek",
+                q: "Czym zajmuje się pedagogika czysta, wyodrębniona w okresie międzywojennym?",
+                opts: [
+                    "Badaniem praw rozwojowych człowieka.",
+                    "Wyłącznie układaniem programów nauczania dla szkół zawodowych.",
+                    "Historia wychowania rycerskiego i klasztornego w średniowieczu.",
+                    "Stosowaniem kar i nagród w szkolnictwie elementarnym."
+                ],
+                corr: 0,
+                exp: "Wyodrębniona w okresie międzywojennym pedagogika czysta koncentrowała się na teoretycznym badaniu praw rozwojowych człowieka."
+            },
+
             // ========================================================
             // PRZEDMIOT 4: FIZJOLOGIA ZALICZENIE 2.2 (40 PYTAŃ)
             // ========================================================
@@ -3428,7 +4026,7 @@
         let currentBankFilter = 'all';
 
         window.onload = function() {
-            selectSubject('fizjo2');
+            selectSubject('ped');
             initBankList();
             initFlashCards();
             updateGlobalCounters();
@@ -3457,11 +4055,13 @@
             const cardFizjo2 = document.getElementById('subjCardFizjo2');
             const cardBM = document.getElementById('subjCardBM');
             const cardBRC = document.getElementById('subjCardBRC');
+            const cardPed = document.getElementById('subjCardPed');
 
             cardFizjo.className = 'subject-card';
             cardFizjo2.className = 'subject-card';
             cardBM.className = 'subject-card';
             cardBRC.className = 'subject-card';
+            cardPed.className = 'subject-card';
 
             if (subj === 'fizjo') {
                 cardFizjo.classList.add('selected-fizjo');
@@ -3472,9 +4072,12 @@
             } else if (subj === 'bm') {
                 cardBM.classList.add('selected-bm');
                 document.getElementById('configSubTitle').innerText = "Dostosuj działy dla przedmiotu: Biologia Medyczna (© M. Religa)";
-            } else {
+            } else if (subj === 'brc') {
                 cardBRC.classList.add('selected-brc');
                 document.getElementById('configSubTitle').innerText = "Dostosuj działy dla przedmiotu: Biologiczny Rozwój Człowieka (dr hab. M. Krzykała)";
+            } else {
+                cardPed.classList.add('selected-ped');
+                document.getElementById('configSubTitle').innerText = "Dostosuj działy dla przedmiotu: Pedagogika – Historia wychowania i myśli pedagogicznej";
             }
 
             initCategoryGrid();
@@ -3598,6 +4201,7 @@
             if (q.subject === 'fizjo2') subjPrefix = 'Fizjologia Zaliczenie 2';
             if (q.subject === 'bm') subjPrefix = 'Biologia Medyczna';
             if (q.subject === 'brc') subjPrefix = 'Biol. Rozwój Człowieka';
+            if (q.subject === 'ped') subjPrefix = 'Pedagogika';
 
             document.getElementById('quizCatBadge').innerText = `${subjPrefix} • ${q.cat}`;
             document.getElementById('qCurrentNum').innerText = currentIdx + 1;
@@ -3662,6 +4266,7 @@
                     let headerText = "Wyjaśnienie akademickie z notatek:";
                     if (q.subject === 'bm') headerText = "Cytat dydaktyczny © M. Religa:";
                     if (q.subject === 'brc') headerText = "Objaśnienie wg dr hab. M. Krzykały:";
+                    if (q.subject === 'ped') headerText = "Wyjaśnienie ze skryptu (Pedagogika):";
 
                     document.getElementById('expTitleHeader').innerText = headerText;
                     document.getElementById('qExplanationText').innerText = q.exp;
@@ -3748,6 +4353,7 @@
                 if (q.subject === 'fizjo2') subjName = 'Fizjologia Zaliczenie 2';
                 if (q.subject === 'bm') subjName = 'Biologia Medyczna';
                 if (q.subject === 'brc') subjName = 'Biol. Rozwój Człowieka';
+                if (q.subject === 'ped') subjName = 'Pedagogika';
 
                 item.innerHTML = `
                     <div style="font-size: 0.75rem; font-weight: 800; color: var(--text-muted); margin-bottom: 4px;">Pytanie ${idx + 1} • ${subjName} • ${q.cat}</div>
@@ -3777,12 +4383,13 @@
             document.getElementById('flashSubjFizjo2').className = subj === 'fizjo2' ? 'btn btn-primary' : 'btn btn-secondary';
             document.getElementById('flashSubjBM').className = subj === 'bm' ? 'btn btn-primary' : 'btn btn-secondary';
             document.getElementById('flashSubjBRC').className = subj === 'brc' ? 'btn btn-primary' : 'btn btn-secondary';
+            document.getElementById('flashSubjPed').className = subj === 'ped' ? 'btn btn-primary' : 'btn btn-secondary';
 
             renderFlashCard();
         }
 
         function initFlashCards() {
-            setFlashSubject('fizjo2');
+            setFlashSubject('ped');
         }
 
         function renderFlashCard() {
@@ -3796,6 +4403,7 @@
             if (q.subject === 'fizjo2') subjName = 'Fizjologia Zaliczenie 2';
                 if (q.subject === 'bm') subjName = 'Biologia Medyczna';
             if (q.subject === 'brc') subjName = 'Biol. Rozwój Człowieka';
+                if (q.subject === 'ped') subjName = 'Pedagogika';
 
             document.getElementById('fcCategory').innerText = `${subjName} • ${q.cat}`;
             document.getElementById('fcQuestion').innerText = q.q;
@@ -3839,6 +4447,7 @@
             document.getElementById('bankSubjFizjo2').className = filter === 'fizjo2' ? 'btn btn-primary' : 'btn btn-secondary';
             document.getElementById('bankSubjBM').className = filter === 'bm' ? 'btn btn-primary' : 'btn btn-secondary';
             document.getElementById('bankSubjBRC').className = filter === 'brc' ? 'btn btn-primary' : 'btn btn-secondary';
+            document.getElementById('bankSubjPed').className = filter === 'ped' ? 'btn btn-primary' : 'btn btn-secondary';
 
             filterBank();
         }
@@ -3874,6 +4483,7 @@
                 if (q.subject === 'fizjo2') subjTag = 'Fizjologia Zaliczenie 2';
                 if (q.subject === 'bm') subjTag = 'Biologia Medyczna';
                 if (q.subject === 'brc') subjTag = 'Biol. Rozwój Człowieka';
+                if (q.subject === 'ped') subjTag = 'Pedagogika';
 
                 card.innerHTML = `
                     <div style="font-size: 0.72rem; font-weight: 800; color: var(--accent-teal); margin-bottom: 4px;">Pytanie ${idx + 1} • ${subjTag} • ${q.cat}</div>
