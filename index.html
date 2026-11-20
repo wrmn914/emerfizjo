@@ -242,7 +242,7 @@
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4), 0 0 15px rgba(199, 168, 97, 0.15);
         }
 
-        .subject-card.selected-bm, .subject-card.selected-brc, .subject-card.selected-fizjo, .subject-card.selected-fizjo2, .subject-card.selected-ped {
+        .subject-card.selected-bm, .subject-card.selected-brc, .subject-card.selected-fizjo, .subject-card.selected-fizjo2, .subject-card.selected-fizjo3, .subject-card.selected-ped {
             border: 1.5px solid var(--accent-gold);
             background: linear-gradient(135deg, var(--bg-secondary), var(--bg-tertiary));
             box-shadow: 0 0 20px rgba(199, 168, 97, 0.15);
@@ -674,7 +674,7 @@
                     </button>
                     <button id="navBankBtn" class="nav-btn" onclick="showSection('bank')">
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
-                        <span id="navBankSpan">Baza Pytań (313)</span>
+                        <span id="navBankSpan">Baza Pytań (363)</span>
                     </button>
                     <button class="theme-toggle" onclick="toggleTheme()" title="Przełącz motyw">🌙</button>
                 </div>
@@ -712,6 +712,13 @@
                     <div class="subject-title">Fizjologia Zaliczenie 2</div>
                     <div class="subject-desc">Klasyfikacja bólu, bóle głowy, termoregulacja, gorączka, hipotermia, ośrodki podwzgórza, plastyczność mózgu, pamięć, otępienie, amnezja, łaknienie i pragnienie.</div>
                     <span class="subject-badge">68 Pytań • I Rok Fizjoterapii</span>
+                </div>
+
+                <div class="subject-card" id="subjCardFizjo3" onclick="selectSubject('fizjo3')">
+                    <div class="subject-icon">🦋</div>
+                    <div class="subject-title">Fizjologia zaliczenie 3</div>
+                    <div class="subject-desc">Układ dokrewny i gospodarka wapniowo-fosforanowa: tarczyca (T3, T4, TSH, kalcytonina), przytarczyce (PTH), witamina D oraz wewnątrzwydzielnicza część trzustki (insulina, glukagon).</div>
+                    <span class="subject-badge">50 Pytań • I Rok Fizjoterapii</span>
                 </div>
 
                 <div class="subject-card" id="subjCardBRC" onclick="selectSubject('brc')">
@@ -857,6 +864,7 @@
                 <div style="margin-bottom: 1rem; display: flex; gap: 10px; flex-wrap: wrap;">
                     <button class="btn btn-secondary" id="flashSubjFizjo" onclick="setFlashSubject('fizjo')">Fizjologia (50)</button>
                     <button class="btn btn-secondary" id="flashSubjFizjo2" onclick="setFlashSubject('fizjo2')">Fizjologia Zaliczenie 2 (68)</button>
+                    <button class="btn btn-secondary" id="flashSubjFizjo3" onclick="setFlashSubject('fizjo3')">Fizjologia zaliczenie 3 (50)</button>
                     <button class="btn btn-secondary" id="flashSubjBM" onclick="setFlashSubject('bm')">Biologia Medyczna (75)</button>
                     <button class="btn btn-secondary" id="flashSubjBRC" onclick="setFlashSubject('brc')">Biol. Rozwój Człowieka (75)</button>
                     <button class="btn btn-secondary" id="flashSubjPed" onclick="setFlashSubject('ped')">Pedagogika (45)</button>
@@ -895,9 +903,10 @@
                 </div>
 
                 <div style="margin-bottom: 1rem; display: flex; gap: 10px; flex-wrap: wrap;">
-                    <button class="btn btn-secondary" id="bankSubjAll" onclick="setBankFilter('all')">Wszystkie Przedmioty (313)</button>
+                    <button class="btn btn-secondary" id="bankSubjAll" onclick="setBankFilter('all')">Wszystkie Przedmioty (363)</button>
                     <button class="btn btn-secondary" id="bankSubjFizjo" onclick="setBankFilter('fizjo')">Fizjologia (50)</button>
                     <button class="btn btn-secondary" id="bankSubjFizjo2" onclick="setBankFilter('fizjo2')">Fizjologia Zaliczenie 2 (68)</button>
+                    <button class="btn btn-secondary" id="bankSubjFizjo3" onclick="setBankFilter('fizjo3')">Fizjologia zaliczenie 3 (50)</button>
                     <button class="btn btn-secondary" id="bankSubjBM" onclick="setBankFilter('bm')">Biologia Medyczna (75)</button>
                     <button class="btn btn-secondary" id="bankSubjBRC" onclick="setBankFilter('brc')">Biol. Rozwój Człowieka (75)</button>
                     <button class="btn btn-secondary" id="bankSubjPed" onclick="setBankFilter('ped')">Pedagogika (45)</button>
@@ -919,6 +928,409 @@
 
     <script>
         const rawQuestionBank = [
+            // ========================================================
+            // PRZEDMIOT 6: FIZJOLOGIA ZALICZENIE 3 (50 PYTAŃ)
+            // ========================================================
+            {
+                subject: "fizjo3",
+                cat: "Tarczyca – Synteza i Transport",
+                q: "Które komórki tarczycy odpowiadają za syntezę oraz wydzielanie kalcytoniny?",
+                opts: ["Komórki C przestrzeni okołopęcherzykowej", "Tyreocyty wyściełające wnętrze pęcherzyków", "Komórki główne gruczołów przytarczycznych", "Komórki alfa wysp trzustkowych"],
+                corr: 0,
+                exp: "W przestrzeni około- i międzypęcherzykowej tarczycy znajdują się komórki C, które wydzielają kalcytoninę."
+            },
+            {
+                subject: "fizjo3",
+                cat: "Tarczyca – Synteza i Transport",
+                q: "W jaki sposób powstaje cząsteczka trijodotyroniny (T3) podczas etapu sprzęgania w tyreocytach?",
+                opts: ["Połączenie monojodotyrozyny (MIT) z dijodotyrozyną (DIT)", "Połączenie dwóch cząsteczek dijodotyrozyny (DIT + DIT)", "Połączenie dwóch cząsteczek monojodotyrozyny (MIT + MIT)", "Bezpośrednie przyłączenie trzech atomów jodu do albuminy"],
+                corr: 0,
+                exp: "Sprzęganie MIT (monojodotyrozyny) z DIT (dijodotyrozyny) prowadzi do powstania T3, natomiast połączenie dwóch DIT tworzy T4."
+            },
+            {
+                subject: "fizjo3",
+                cat: "Tarczyca – Synteza i Transport",
+                q: "Co dzieje się z niewykorzystanymi cząsteczkami MIT i DIT uwolnionymi podczas proteolizy tyreoglobuliny?",
+                opts: ["Ulegają odjodowaniu w celu ponownego użycia jodu", "Są bezpośrednio wydalane z moczem w formie niezmienionej", "Wiążą się z globuliną TBG jako aktywne hormony", "Przekształcają się w kalcytoninę w komórkach C"],
+                corr: 0,
+                exp: "MIT i DIT uwolnione podczas proteolizy tyreoglobuliny są odjodowywane, a uwolniony jod zostaje ponownie wykorzystany do syntezy hormonów."
+            },
+            {
+                subject: "fizjo3",
+                cat: "Tarczyca – Synteza i Transport",
+                q: "Jaka jest wzajemna relacja dobowego wydzielania tyroksyny (T4) względem trijodotyroniny (T3) przez tarczycę?",
+                opts: ["Wydzielanie T4 jest około 10-krotnie większe niż T3", "Wydzielanie T3 jest około 10-krotnie większe niż T4", "Oba hormony wydzielane są w identycznej ilości dobowej", "Tarczyca wydziela wyłącznie T3, a T4 powstaje w wątrobie"],
+                corr: 0,
+                exp: "Dzienne wydzielanie T4 jest 10 razy większe niż T3, przy czym T4 pełni rolę prohormonu."
+            },
+            {
+                subject: "fizjo3",
+                cat: "Tarczyca – Synteza i Transport",
+                q: "Jaki odsetek krążącej we krwi trijodotyroniny (T3) powstaje poza tarczycą w wyniku obwodowej konwersji?",
+                opts: ["Około 80%", "Około 20%", "Około 50%", "Poniżej 5%"],
+                corr: 0,
+                exp: "Głównym biologicznie aktywnym hormonem tarczycy jest T3, które aż w 80% powstaje poza tarczycą w drodze konwersji T4 → T3."
+            },
+            {
+                subject: "fizjo3",
+                cat: "Tarczyca – Synteza i Transport",
+                q: "Które dwa narządy odpowiadają łącznie za 80% obwodowej konwersji tyroksyny (T4) do trijodotyroniny (T3)?",
+                opts: ["Wątroba (60%) oraz jelita (20%)", "Nerki (60%) oraz mięśnie szkieletowe (20%)", "Serce (60%) oraz tkanka tłuszczowa (20%)", "Przysadka (60%) oraz komórki glejowe (20%)"],
+                corr: 0,
+                exp: "Konwersja obwodowa T4 → T3 zachodzi głównie w wątrobie (60%) oraz w jelitach (20%), a pozostała część w sercu, tkance tłuszczowej, komórkach glejowych i mięśniach szkieletowych."
+            },
+            {
+                subject: "fizjo3",
+                cat: "Tarczyca – Synteza i Transport",
+                q: "Z jakim bezpośrednim zagrożeniem klinicznym wiąże się nadmierne stężenie trijodotyroniny (T3) w organizmie?",
+                opts: ["Ze zwiększonym ryzykiem śmierci sercowej", "Z gwałtownym spadkiem temperatury ciała", "Z zahamowaniem wydzielania glukagonu", "Z nadmiernym odkładaniem kalcytriolu"],
+                corr: 0,
+                exp: "Zgodnie z notatką z wykładu nadmiar T3 wiąże się ze zwiększonym ryzykiem śmierci sercowej."
+            },
+            {
+                subject: "fizjo3",
+                cat: "Tarczyca – Synteza i Transport",
+                q: "Jaki procent całkowitej puli tyroksyny (T4) we krwi stanowi jej biologicznie aktywna, wolna frakcja (fT4)?",
+                opts: ["0,05%", "0,30%", "5,00%", "10,0%"],
+                corr: 0,
+                exp: "Aż 99,95% T4 jest związane z białkami transportowymi, natomiast wolna frakcja fT4 stanowi zaledwie 0,05%."
+            },
+            {
+                subject: "fizjo3",
+                cat: "Tarczyca – Synteza i Transport",
+                q: "Które białko osocza wiąże największy odsetek (60%) krążących we krwi hormonów tarczycy?",
+                opts: ["Globulina wiążąca tyroksynę (TBG)", "Transtyretyna (TTR)", "Albumina wiążąca tyroksynę (TBA)", "Globulina wiążąca witaminę D (DBP)"],
+                corr: 0,
+                exp: "Hormony tarczycy wiązane są przez TBG (60%), transtyretynę (30%) oraz albuminę (10%)."
+            },
+            {
+                subject: "fizjo3",
+                cat: "Tarczyca – Synteza i Transport",
+                q: "Dlaczego w diagnostyce laboratoryjnej oznacza się stężenie wolnych frakcji hormonów tarczycy (fT3, fT4) zamiast całkowitych?",
+                opts: ["Aby wyeliminować wpływ zmian stężenia białek wiążących", "Ponieważ frakcje związane z białkami nie występują w surowicy", "Ponieważ formy wolne stanowią ponad 99% całkowitej puli", "Aby ocenić wyłącznie aktywność wydzielniczą komórek C"],
+                corr: 0,
+                exp: "Tylko frakcje wolne są dostępne dla komórek obwodowych, a ich oznaczanie pozwala wyeliminować wpływ wahań stężenia białek nośnikowych."
+            },
+            {
+                subject: "fizjo3",
+                cat: "Tarczyca – Regulacja i Działanie",
+                q: "Który z wymienionych czynników powoduje zahamowanie wydzielania tyreotropiny (TSH) przez przysadkę?",
+                opts: ["Podanie jodu w dawce 10× większej niż dobowa", "Ekspozycja organizmu na niską temperaturę (zimno)", "Podwzgórzowy hormon uwalniający tyreotropinę (TRH)", "Działanie hormonów naczyniowych, np. wazopresyny"],
+                corr: 0,
+                exp: "Wydzielanie TSH jest hamowane m.in. przez ciepło, wzrost wolnych T3 i T4, stres, nadmiar jodu (10× dawka fizjologiczna) oraz głęboki niedobór jodu (< 20 µg/d)."
+            },
+            {
+                subject: "fizjo3",
+                cat: "Tarczyca – Regulacja i Działanie",
+                q: "W jaki sposób głęboki niedobór jodu w diecie (poniżej 20 µg/d) wpływa na wydzielanie TSH zgodnie z notatką?",
+                opts: ["Hamuje wydzielanie TSH", "Dziesięciokrotnie przyspiesza syntezę T4", "Pobudza komórki C do wydzielania kalcytoniny", "Zwiększa uwalnianie transtyretyny w wątrobie"],
+                corr: 0,
+                exp: "W notatce z wykładu zarówno nadmiar jodu nieorganicznego (10× norma), jak i jego głęboki niedobór (< 20 µg/d) wymieniono wśród czynników hamujących wydzielanie TSH."
+            },
+            {
+                subject: "fizjo3",
+                cat: "Tarczyca – Regulacja i Działanie",
+                q: "Jaki wpływ wywierają hormony tarczycy (T3 i T4) na czynność wydzielniczą innych gruczołów dokrewnych?",
+                opts: ["Hamują prolaktynę oraz zwiększają wydzielanie ACTH", "Zwiększają produkcję TSH oraz hamują korę nadnerczy", "Hamują wydzielanie glikokortykosteroidów i insuliny", "Całkowicie blokują aktywność układu rozrodczego"],
+                corr: 0,
+                exp: "T3 i T4 hamują produkcję TSH i prolaktyny, zwiększają wydzielanie ACTH i glikokortykosteroidów przez korę nadnerczy oraz wpływają na układ rozrodczy."
+            },
+            {
+                subject: "fizjo3",
+                cat: "Tarczyca – Regulacja i Działanie",
+                q: "Który z poniższych procesów jest stymulowany przez hormony tarczycy w okresie życia płodowego?",
+                opts: ["Rozwój OUN oraz pobudzenie erytropoezy", "Hamowanie wzrostu szkieletu kostnego", "Obniżenie stężenia insuliny we krwi", "Rozkład kalcytriolu do lumisterolu"],
+                corr: 0,
+                exp: "U płodu hormony tarczycy odpowiadają za wzrost szkieletu, rozwój OUN, pobudzenie erytropoezy oraz wzrost stężenia insuliny."
+            },
+            {
+                subject: "fizjo3",
+                cat: "Gospodarka Wapniowo-Fosforanowa",
+                q: "W jaki sposób kalcytonina (CT) wpływa na stężenie jonów wapnia oraz fosforanów w osoczu krwi?",
+                opts: ["Zmniejsza stężenie zarówno wapnia, jak i fosforanów", "Zwiększa stężenie wapnia i zmniejsza stężenie fosforanów", "Zwiększa stężenie zarówno wapnia, jak i fosforanów", "Zmniejsza stężenie wapnia przy wzroście fosforanów"],
+                corr: 0,
+                exp: "Kalcytonina wpływa na zmniejszenie stężenia wapnia (Ca²⁺) oraz fosforanów (PO₄³⁻) w osoczu, działając antagonistycznie do parathormonu."
+            },
+            {
+                subject: "fizjo3",
+                cat: "Gospodarka Wapniowo-Fosforanowa",
+                q: "Jaki wpływ na nerki wywiera kalcytonina (CT) w ramach regulacji gospodarki mineralnej?",
+                opts: ["Zwiększa wydalanie Ca²⁺ i Na⁺ oraz hamuje aktywację witaminy D", "Zwiększa wchłanianie zwrotne Ca²⁺ i pobudza 1α-hydroksylazę", "Zmniejsza wydalanie sodu oraz zwiększa stężenie kalcytriolu", "Całkowicie blokuje filtrację jonów fosforanowych w kłębuszkach"],
+                corr: 0,
+                exp: "W nerkach kalcytonina zwiększa wydalanie Ca²⁺ i Na⁺ z moczem oraz hamuje aktywność hydroksylazy i wytwarzanie aktywnej postaci witaminy D₃."
+            },
+            {
+                subject: "fizjo3",
+                cat: "Gospodarka Wapniowo-Fosforanowa",
+                q: "Jakie działanie wywiera kalcytonina (CT) na przewód pokarmowy (jelita i żołądek)?",
+                opts: ["Hamuje absorpcję jelitową Ca²⁺ i PO₄³⁻ oraz wydzielanie HCl", "Nasila wchłanianie Ca²⁺ w jelicie cienkim i wydzielanie gastryny", "Przyspiesza opróżnianie żołądka i transport fosforanów", "Pobudza syntezę białka wiążącego witaminę D w jelitach"],
+                corr: 0,
+                exp: "W jelitach kalcytonina hamuje absorpcję Ca²⁺ i PO₄³⁻, a w żołądku hamuje wydzielanie kwasu solnego i gastryny oraz zwalnia opróżnianie żołądkowe."
+            },
+            {
+                subject: "fizjo3",
+                cat: "Gospodarka Wapniowo-Fosforanowa",
+                q: "Co stanowi główny, bezpośredni bodziec stymulujący syntezę i wydzielanie parathormonu (PTH)?",
+                opts: ["Spadek stężenia wapnia zjonizowanego (Ca²⁺) w surowicy", "Wzrost stężenia aktywnego metabolitu witaminy D₃", "Gwałtowny wzrost stężenia jonów sodu w moczu", "Podwyższone stężenie kalcytoniny i gastryny"],
+                corr: 0,
+                exp: "Parathormon jest głównym regulatorem stężenia wapnia zjonizowanego w surowicy; spadek stężenia Ca²⁺ pobudza jego wydzielanie."
+            },
+            {
+                subject: "fizjo3",
+                cat: "Gospodarka Wapniowo-Fosforanowa",
+                q: "W jaki sposób parathormon (PTH) zmienia stężenie wapnia i fosforanów w osoczu krwi?",
+                opts: ["Zwiększa stężenie Ca²⁺ i zmniejsza stężenie PO₄³⁻", "Zmniejsza stężenie Ca²⁺ i zwiększa stężenie PO₄³⁻", "Zwiększa stężenie zarówno Ca²⁺, jak i PO₄³⁻", "Zmniejsza stężenie zarówno Ca²⁺, jak i PO₄³⁻"],
+                corr: 0,
+                exp: "PTH podnosi stężenie wapnia (Ca²⁺) w osoczu, a jednocześnie obniża stężenie fosforanów (PO₄³⁻) dzięki działaniu fosfaturycznemu w nerkach."
+            },
+            {
+                subject: "fizjo3",
+                cat: "Gospodarka Wapniowo-Fosforanowa",
+                q: "Jaki mechanizm działania parathormonu (PTH) w nerkach pozwala utrzymać prawidłowy poziom wapnia we krwi?",
+                opts: ["Zwiększenie wchłaniania zwrotnego Ca²⁺ w kanalikach", "Zwiększenie wydalania Ca²⁺ oraz Na⁺ wraz z moczem", "Zahamowanie powstawania kalcytriolu w kanalikach", "Zwiększenie wchłaniania zwrotnego jonów fosforanowych"],
+                corr: 0,
+                exp: "PTH hamuje wydalanie wapnia z moczem poprzez zwiększenie jego reabsorpcji (wchłaniania zwrotnego) w kanalikach nerkowych, a także uruchamia wapń z kości i zwiększa jego wchłanianie w jelicie."
+            },
+            {
+                subject: "fizjo3",
+                cat: "Witamina D",
+                q: "Z jakiego prekursora i w jakich komórkach powstaje cholekalcyferol (witamina D₃) pod wpływem promieniowania UV?",
+                opts: ["Z 7-dehydrocholesterolu w keratynocytach naskórka", "Z tyreoglobuliny w tyreocytach tarczycy", "Z proinsuliny w komórkach beta trzustki", "Z kalcydiolu w kanalikach proksymalnych nerek"],
+                corr: 0,
+                exp: "W naskórku, w keratynocytach, z 7-dehydrocholesterolu pod wpływem światła słonecznego (UV) powstaje cholekalcyferol."
+            },
+            {
+                subject: "fizjo3",
+                cat: "Witamina D",
+                q: "W jakie biologicznie nieaktywne związki przekształcany jest nadmiar prowitaminy D w skórze przy długiej ekspozycji na promieniowanie UV?",
+                opts: ["W lumisterol oraz tachysterol", "W kalcydiol oraz kalcytriol", "W monojodotyrozynę oraz dijodotyrozynę", "W preproinsulinę oraz peptyd C"],
+                corr: 0,
+                exp: "Nadmiar witaminy D w skórze jest rozkładany do biologicznie nieaktywnych związków: lumisterolu i tachysterolu."
+            },
+            {
+                subject: "fizjo3",
+                cat: "Witamina D",
+                q: "Jaki związek powstaje w wątrobie w wyniku hydroksylacji cholekalcyferolu dostarczonego przez białko DBP?",
+                opts: ["25(OH)D₃, czyli kalcydiol", "1,25(OH)₂D₃, czyli kalcytriol", "7-dehydrocholesterol", "Biologicznie nieaktywny lumisterol"],
+                corr: 0,
+                exp: "Cholekalcyferol w połączeniu z białkiem DBP jest transportowany do wątroby, gdzie przekształca się w 25(OH)D₃ – kalcydiol."
+            },
+            {
+                subject: "fizjo3",
+                cat: "Witamina D",
+                q: "Gdzie dokładnie zachodzi ostateczna aktywacja witaminy D do najbardziej aktywnego biologicznie kalcytriolu (1,25(OH)₂D₃)?",
+                opts: ["W kanalikach proksymalnych nerek", "W hepatocytach wątroby", "W keratynocytach warstwy podstawnej naskórka", "W komórkach C gruczołu tarczowego"],
+                corr: 0,
+                exp: "Przy udziale DBP kalcydiol trafia do kanalików proksymalnych nerek, gdzie powstaje aktywny kalcytriol 1,25(OH)₂D₃ oraz 24,25(OH)₂D₃."
+            },
+            {
+                subject: "fizjo3",
+                cat: "Witamina D",
+                q: "Która z poniższych funkcji należy do pozakostnych znaczeń biologicznych witaminy D opisanych w wykładzie?",
+                opts: ["Działanie antyproliferacyjne i regulacja wydzielania gruczołów", "Bezpośrednie wiązanie tyroksyny i trijodotyroniny w osoczu", "Hamowanie konwersji T4 do T3 w mięśniach szkieletowych", "Stymulacja wydzielania polipeptydu trzustkowego w stresach"],
+                corr: 0,
+                exp: "Witamina D działa jako czynnik różnicujący i antyproliferacyjny, wspiera układ nerwowy oraz reguluje czynność wydzielniczą trzustki, nadnerczy, tarczycy i przysadki."
+            },
+            {
+                subject: "fizjo3",
+                cat: "Trzustka i Insulina",
+                q: "Jaki procent komórek wysp trzustkowych (Langerhansa) stanowią komórki B (beta) wydzielające insulinę?",
+                opts: ["60%", "25%", "10%", "5%"],
+                corr: 0,
+                exp: "W wyspach Langerhansa komórki B (beta) stanowią 60% (insulina), komórki A – 25% (glukagon), komórki D – 10% (somatostatyna), a komórki F – 5% (polipeptyd trzustkowy)."
+            },
+            {
+                subject: "fizjo3",
+                cat: "Trzustka i Insulina",
+                q: "Który hormon jest wydzielany przez komórki D (delta) stanowiące 10% populacji wysp trzustkowych?",
+                opts: ["Somatostatyna", "Glukagon", "Polipeptyd trzustkowy", "Sekretyna"],
+                corr: 0,
+                exp: "Komórki D (delta) stanowią 10% komórek wysp trzustkowych i wydzielają somatostatynę."
+            },
+            {
+                subject: "fizjo3",
+                cat: "Trzustka i Insulina",
+                q: "Jaką funkcję pełni polipeptyd trzustkowy wydzielany przez komórki F (PP) wysp Langerhansa?",
+                opts: ["Hamuje wydzielanie soków trzustkowych", "Pobudza komórki B do uwalniania insuliny", "Nasila glikogenolizę w mięśniach szkieletowych", "Zwiększa wchłanianie wapnia w dwunastnicy"],
+                corr: 0,
+                exp: "Komórki F (PP – 5% wysp) wydzielają polipeptyd trzustkowy, który hamuje wydzielanie soków trzustkowych."
+            },
+            {
+                subject: "fizjo3",
+                cat: "Trzustka i Insulina",
+                q: "Pod jakim warunkiem acetylocholina (układ przywspółczulny) powoduje uwalnianie insuliny z komórek B trzustki?",
+                opts: ["Wtedy, gdy stężenie glukozy we krwi jest podwyższone", "Wyłącznie w stanie głębokiej hipoglikemii i głodzenia", "Tylko przy jednoczesnym wyrzucie adrenaliny i kortyzolu", "Niezależnie od stężenia glukozy, wyłącznie w godzinach nocnych"],
+                corr: 0,
+                exp: "Acetylocholina powoduje uwalnianie insuliny wtedy, gdy stężenie glukozy we krwi jest podwyższone."
+            },
+            {
+                subject: "fizjo3",
+                cat: "Trzustka i Insulina",
+                q: "Jaki efekt wywierają adrenalina i noradrenalina na wydzielanie hormonów przez komórki wysp trzustkowych?",
+                opts: ["Hamują wydzielanie insuliny i pobudzają glukagonu", "Pobudzają wydzielanie insuliny i hamują glukagonu", "Pobudzają wydzielanie zarówno insuliny, jak i somatostatyny", "Hamują wydzielanie wszystkich hormonów wysp Langerhansa"],
+                corr: 0,
+                exp: "Zarówno adrenalina, jak i noradrenalina hamują wydzielanie insuliny, a pobudzają wydzielanie glukagonu."
+            },
+            {
+                subject: "fizjo3",
+                cat: "Trzustka i Insulina",
+                q: "W jakiej kolejności przebiega wewnątrzkomórkowa synteza insuliny z jej form prekursorowych?",
+                opts: ["Preproinsulina → proinsulina → insulina", "Proinsulina → preproinsulina → insulina", "Insulina → proinsulina → peptyd C", "Tyreoglobulina → proinsulina → insulina"],
+                corr: 0,
+                exp: "Insulina syntetyzowana jest jako prohormon według sekwencji: preproinsulina → proinsulina → insulina (+ peptyd C)."
+            },
+            {
+                subject: "fizjo3",
+                cat: "Trzustka i Insulina",
+                q: "Które z wymienionych substratów pokarmowych bezpośrednio indukują uwalnianie insuliny po posiłku?",
+                opts: ["Glukoza, wolne kwasy tłuszczowe (WKT) oraz aminokwasy", "Wyłącznie glukoza oraz nieorganiczne jony jodkowe", "Cholekalcyferol, lumisterol oraz kwasy żółciowe", "Bilirubina, mocznik oraz wolne kwasy nukleinowe"],
+                corr: 0,
+                exp: "Uwalnianie insuliny indukują wzrost stężenia glukozy (np. po posiłku), wzrost wolnych kwasów tłuszczowych (WKT) oraz wzrost stężenia aminokwasów."
+            },
+            {
+                subject: "fizjo3",
+                cat: "Trzustka i Insulina",
+                q: "Dlaczego hormony takie jak kortyzol, hormon wzrostu i hormony tarczycy pośrednio zwiększają wydzielanie insuliny?",
+                opts: ["Zwiększają oporność tkanek na insulinę, podnosząc glikemię", "Bezpośrednio łączą się z receptorami acetylocholiny w trzustce", "Hamują rozkład glikogenu w wątrobie, obniżając glukozę", "Stymulują komórki D do zmniejszenia produkcji somatostatyny"],
+                corr: 0,
+                exp: "Hormon wzrostu, kortyzol, hormony tarczycy i katecholaminy zwiększają oporność tkanek na działanie insuliny, co powoduje wzrost glukozy we krwi i wtórnie pobudza wydzielanie insuliny."
+            },
+            {
+                subject: "fizjo3",
+                cat: "Trzustka i Insulina",
+                q: "Który zestaw czynników powoduje zahamowanie wydzielania insuliny przez komórki B trzustki?",
+                opts: ["Ograniczenie spożycia pokarmu, somatostatyna oraz leptyna", "Sekretyna, glukagon oraz wzrost stężenia aminokwasów", "Acetylocholina, wzrost glukozy oraz kortyzol", "Podwyższony poziom wolnych kwasów tłuszczowych i TRH"],
+                corr: 0,
+                exp: "Czynniki hamujące wydzielanie insuliny to ograniczenie spożycia pokarmu, somatostatyna, leptyna oraz stres lub uraz (działanie adrenaliny)."
+            },
+            {
+                subject: "fizjo3",
+                cat: "Trzustka i Insulina",
+                q: "W jaki sposób adrenalina podczas stresu lub urazu powoduje gwałtowne zahamowanie wydzielania insuliny?",
+                opts: ["Zmniejsza wrażliwość komórek B na stężenie glukozy", "Blokuje transport glukozy do erytrocytów i neuronów", "Niszczy receptory insulinowe w mięśniach szkieletowych", "Przyspiesza rozpad proinsuliny w świetle dwunastnicy"],
+                corr: 0,
+                exp: "Podczas stresu lub urazu adrenalina powoduje gwałtowne hamowanie wydzielania insuliny poprzez zmniejszenie wrażliwości komórek B na glukozę."
+            },
+            {
+                subject: "fizjo3",
+                cat: "Trzustka i Insulina",
+                q: "Jak kształtuje się dobowy rytm podstawowego wydzielania insuliny oraz jej poziom w zależności od masy ciała?",
+                opts: ["Najwyższe rano, najniższe wieczorem; większe u osób otyłych", "Najwyższe wieczorem, najniższe rano; większe u osób szczupłych", "Stałe przez całą dobę bez wahań; identyczne niezależnie od masy", "Najwyższe w południe, najniższe rano; niższe u osób otyłych"],
+                corr: 0,
+                exp: "Podstawowe wydzielanie insuliny zachodzi stale, wykazuje rytm dobowy (najwyższe rano, najniższe wieczorem) i jest większe u osób otyłych niż szczupłych."
+            },
+            {
+                subject: "fizjo3",
+                cat: "Trzustka i Insulina",
+                q: "W jakich dwóch tkankach znajdują się najbardziej istotne funkcjonalnie receptory insulinowe?",
+                opts: ["W tkance tłuszczowej oraz w mięśniach", "W erytrocytach oraz w komórkach nerwowych", "W keratynocytach naskórka oraz w kościach", "W komórkach C tarczycy oraz w przytarczycach"],
+                corr: 0,
+                exp: "Receptory insulinowe znajdują się na wielu komórkach, ale funkcjonalnie najważniejsze są te w tkance tłuszczowej oraz w mięśniach."
+            },
+            {
+                subject: "fizjo3",
+                cat: "Trzustka i Insulina",
+                q: "Które komórki organizmu NIE posiadają receptorów insulinowych i pobierają glukozę za pomocą transporterów niezależnych od insuliny?",
+                opts: ["Erytrocyty oraz komórki nerwowe", "Adipocyty oraz miocyty szkieletowe", "Hepatocyty oraz komórki mięśni gładkich", "Tyreocyty oraz komórki wysp trzustkowych"],
+                corr: 0,
+                exp: "Brak receptorów insulinowych na erytrocytach i komórkach nerwowych umożliwia im odżywianie bez udziału insuliny dzięki transporterom niezależnym od insuliny."
+            },
+            {
+                subject: "fizjo3",
+                cat: "Trzustka i Insulina",
+                q: "Jaki bezpośredni wpływ wywiera insulina na gospodarkę węglowodanową w wątrobie?",
+                opts: ["Pobudza wątrobę do magazynowania glukozy jako glikogenu", "Stymuluje rozpad glikogenu i uwalnianie glukozy do krwi", "Hamuje wychwyt glukozy i nasila ketogenezę wątrobową", "Przekształca glukozę w cholekalcyferol i białko DBP"],
+                corr: 0,
+                exp: "Insulina jest hormonem anabolicznym, który pobudza wątrobę do magazynowania glukozy pod postacią glikogenu."
+            },
+            {
+                subject: "fizjo3",
+                cat: "Gospodarka Wapniowo-Fosforanowa",
+                q: "Który z poniższych hormonów jako jedyny wykazuje działanie fosfaturyczne, czyli zmniejsza stężenie fosforanów (PO₄³⁻) przy jednoczesnym wzroście wapnia (Ca²⁺)?",
+                opts: ["Parathormon (PTH)", "Kalcytonina (CT)", "Kalcytriol (1,25(OH)₂D₃)", "Kalcydiol (25(OH)D₃)"],
+                corr: 0,
+                exp: "Parathormon zwiększa stężenie Ca²⁺ w osoczu, a zmniejsza stężenie PO₄³⁻ (hamując ich reabsorpcję w nerkach), podczas gdy kalcytriol zwiększa oba jony, a kalcytonina oba zmniejsza."
+            },
+            {
+                subject: "fizjo3",
+                cat: "Tarczyca – Synteza i Transport",
+                q: "Jaką rolę pełni tyroksyna (T4) w organizmie człowieka w porównaniu do trijodotyroniny (T3)?",
+                opts: ["Jest prohormonem ulegającym konwersji do aktywnego T3", "Jest głównym hormonem działającym 10-krotnie silniej niż T3", "Służy wyłącznie do transportu jodu z wątroby do tarczycy", "Reguluje gospodarkę wapniową w komórkach okołopęcherzykowych"],
+                corr: 0,
+                exp: "Tyroksyna (T4) jest prohormonem, a głównym aktywnym biologicznie hormonem tarczycy jest trijodotyronina (T3)."
+            },
+            {
+                subject: "fizjo3",
+                cat: "Tarczyca – Synteza i Transport",
+                q: "Który etap syntezy hormonów tarczycy zachodzi bezpośrednio po aktywnym wychwycie jonów jodkowych przez tyreocyty?",
+                opts: ["Utlenianie jodu i jego przyłączanie do tyreoglobuliny", "Enzymatyczna proteoliza tyreoglobuliny w lizosomach", "Obwodowa konwersja T4 do T3 w wątrobie i jelitach", "Wiązanie hormonów z globuliną TBG w krążeniu"],
+                corr: 0,
+                exp: "Po zgromadzeniu jodu w tyreocytach następuje jego utlenianie i przyłączanie do tyreoglobuliny, w wyniku czego powstają MIT i DIT."
+            },
+            {
+                subject: "fizjo3",
+                cat: "Tarczyca – Synteza i Transport",
+                q: "Jaki odsetek trijodotyroniny (T3) we krwi występuje w postaci wolnej frakcji (fT3)?",
+                opts: ["0,15 – 0,30%", "0,01 – 0,05%", "10,0 – 30,0%", "60,0 – 80,0%"],
+                corr: 0,
+                exp: "Wolna frakcja fT3 stanowi 0,15–0,3% całkowitego T3 (dla porównania wolna frakcja fT4 to 0,05%)."
+            },
+            {
+                subject: "fizjo3",
+                cat: "Tarczyca – Regulacja i Działanie",
+                q: "Która para czynników z poniższych STYMULUJE wydzielanie hormonu tyreotropowego (TSH)?",
+                opts: ["TRH oraz długotrwałe stany emocjonalne", "Ciepło oraz wzrost stężenia wolnych T3 i T4", "Ostry stres oraz nadmiar jodu nieorganicznego", "Niedobór jodu poniżej 20 µg/d oraz somatostatyna"],
+                corr: 0,
+                exp: "Wydzielanie TSH zwiększają: TRH, zimno, długotrwałe stany emocjonalne, sen oraz hormony naczyniowe (wazopresyna, adrenalina)."
+            },
+            {
+                subject: "fizjo3",
+                cat: "Gospodarka Wapniowo-Fosforanowa",
+                q: "Jakie działanie na kości wykazują kolejno: parathormon (PTH), kalcytonina (CT) oraz witamina D₃?",
+                opts: ["PTH: resorpcja; CT: hamowanie resorpcji; Wit. D: mineralizacja", "PTH: mineralizacja; CT: resorpcja; Wit. D: hamowanie resorpcji", "PTH: hamowanie resorpcji; CT: mineralizacja; Wit. D: resorpcja", "Wszystkie trzy hormony powodują nasiloną resorpcję kości"],
+                corr: 0,
+                exp: "PTH uruchamia wapń z kości (resorpcja), kalcytonina hamuje resorpcję kości, a witamina D umożliwia ich prawidłowy rozwój i mineralizację."
+            },
+            {
+                subject: "fizjo3",
+                cat: "Witamina D",
+                q: "Jakie białko transportuje cholekalcyferol ze skóry do wątroby, a następnie kalcydiol z wątroby do nerek?",
+                opts: ["Globulina wiążąca witaminę D (DBP)", "Globulina wiążąca tyroksynę (TBG)", "Transtyretyna (TTR)", "Tyreoglobulina"],
+                corr: 0,
+                exp: "Transport witaminy D we krwi między skórą, wątrobą a nerkami odbywa się w połączeniu z globuliną wiążącą witaminę D (DBP)."
+            },
+            {
+                subject: "fizjo3",
+                cat: "Trzustka i Insulina",
+                q: "Jaki udział procentowy w wyspach trzustkowych mają komórki A (alfa) i jaki hormon produkują?",
+                opts: ["Stanowią 25% komórek wysp i wydzielają glukagon", "Stanowią 60% komórek wysp i wydzielają insulinę", "Stanowią 10% komórek wysp i wydzielają somatostatynę", "Stanowią 5% komórek wysp i wydzielają polipeptyd trzustkowy"],
+                corr: 0,
+                exp: "Komórki A (alfa) stanowią 25% komórek wysp trzustkowych i produkują glukagon."
+            },
+            {
+                subject: "fizjo3",
+                cat: "Trzustka i Insulina",
+                q: "W jaki sposób regulowane jest wydzielanie glukagonu w porównaniu do czynników regulujących wydzielanie insuliny?",
+                opts: ["Przez te same czynniki, ale działające przeciwnie", "Wyłącznie przez układ przywspółczulny bez udziału glukozy", "Identycznie jak insulina – wzrost glukozy nasila jego wyrzut", "Wyłącznie przez hormony tarczycy i kalcytoninę"],
+                corr: 0,
+                exp: "Zgodnie z notatką z wykładu wydzielanie glukagonu jest regulowane przez identyczne czynniki jak wydzielanie insuliny, ale działające przeciwnie."
+            },
+            {
+                subject: "fizjo3",
+                cat: "Tarczyca – Regulacja i Działanie",
+                q: "Jakie jest podstawowe działanie metaboliczne hormonów tarczycy (T3 i T4) w ustroju?",
+                opts: ["Zwiększenie zużycia tlenu oraz produkcji ciepła", "Zmniejszenie podstawowej przemiany materii i zużycia tlenu", "Hamowanie metabolizmu białek, tłuszczów i węglowodanów", "Obniżenie temperatury ciała oraz spowolnienie akcji serca"],
+                corr: 0,
+                exp: "Hormony tarczycy T3 i T4 zwiększają zużycie tlenu i ciepła oraz regulują metabolizm białek, węglowodanów i tłuszczów."
+            },
+            {
+                subject: "fizjo3",
+                cat: "Trzustka i Insulina",
+                q: "Który z poniższych hormonów przewodu pokarmowego należy do grupy czynników ZWIĘKSZAJĄCYCH wydzielanie insuliny (poza glukozą)?",
+                opts: ["Sekretyna", "Somatostatyna", "Leptyna", "Kalcytonina"],
+                corr: 0,
+                exp: "Poza glukozą wydzielanie insuliny zwiększają: glukagon, sekretyna, acetylocholina oraz hormony zwiększające insulinooporność (GH, kortyzol, T3/T4, katecholaminy)."
+            },
             // ========================================================
             // PRZEDMIOT 5: PEDAGOGIKA (45 PYTAŃ)
             // ========================================================
@@ -4026,7 +4438,7 @@
         let currentBankFilter = 'all';
 
         window.onload = function() {
-            selectSubject('ped');
+            selectSubject('fizjo3');
             initBankList();
             initFlashCards();
             updateGlobalCounters();
@@ -4053,12 +4465,14 @@
             
             const cardFizjo = document.getElementById('subjCardFizjo');
             const cardFizjo2 = document.getElementById('subjCardFizjo2');
+            const cardFizjo3 = document.getElementById('subjCardFizjo3');
             const cardBM = document.getElementById('subjCardBM');
             const cardBRC = document.getElementById('subjCardBRC');
             const cardPed = document.getElementById('subjCardPed');
 
             cardFizjo.className = 'subject-card';
             cardFizjo2.className = 'subject-card';
+            cardFizjo3.className = 'subject-card';
             cardBM.className = 'subject-card';
             cardBRC.className = 'subject-card';
             cardPed.className = 'subject-card';
@@ -4069,6 +4483,9 @@
             } else if (subj === 'fizjo2') {
                 cardFizjo2.classList.add('selected-fizjo2');
                 document.getElementById('configSubTitle').innerText = "Dostosuj działy dla przedmiotu: Fizjologia Zaliczenie 2 (I Rok Fizjoterapii)";
+            } else if (subj === 'fizjo3') {
+                cardFizjo3.classList.add('selected-fizjo3');
+                document.getElementById('configSubTitle').innerText = "Dostosuj działy dla przedmiotu: Fizjologia zaliczenie 3 (I Rok Fizjoterapii)";
             } else if (subj === 'bm') {
                 cardBM.classList.add('selected-bm');
                 document.getElementById('configSubTitle').innerText = "Dostosuj działy dla przedmiotu: Biologia Medyczna (© M. Religa)";
@@ -4199,6 +4616,7 @@
 
             let subjPrefix = 'Fizjologia';
             if (q.subject === 'fizjo2') subjPrefix = 'Fizjologia Zaliczenie 2';
+            if (q.subject === 'fizjo3') subjPrefix = 'Fizjologia zaliczenie 3';
             if (q.subject === 'bm') subjPrefix = 'Biologia Medyczna';
             if (q.subject === 'brc') subjPrefix = 'Biol. Rozwój Człowieka';
             if (q.subject === 'ped') subjPrefix = 'Pedagogika';
@@ -4351,6 +4769,7 @@
 
                 let subjName = 'Fizjologia';
                 if (q.subject === 'fizjo2') subjName = 'Fizjologia Zaliczenie 2';
+                if (q.subject === 'fizjo3') subjName = 'Fizjologia zaliczenie 3';
                 if (q.subject === 'bm') subjName = 'Biologia Medyczna';
                 if (q.subject === 'brc') subjName = 'Biol. Rozwój Człowieka';
                 if (q.subject === 'ped') subjName = 'Pedagogika';
@@ -4381,6 +4800,7 @@
             
             document.getElementById('flashSubjFizjo').className = subj === 'fizjo' ? 'btn btn-primary' : 'btn btn-secondary';
             document.getElementById('flashSubjFizjo2').className = subj === 'fizjo2' ? 'btn btn-primary' : 'btn btn-secondary';
+            document.getElementById('flashSubjFizjo3').className = subj === 'fizjo3' ? 'btn btn-primary' : 'btn btn-secondary';
             document.getElementById('flashSubjBM').className = subj === 'bm' ? 'btn btn-primary' : 'btn btn-secondary';
             document.getElementById('flashSubjBRC').className = subj === 'brc' ? 'btn btn-primary' : 'btn btn-secondary';
             document.getElementById('flashSubjPed').className = subj === 'ped' ? 'btn btn-primary' : 'btn btn-secondary';
@@ -4389,7 +4809,7 @@
         }
 
         function initFlashCards() {
-            setFlashSubject('ped');
+            setFlashSubject('fizjo3');
         }
 
         function renderFlashCard() {
@@ -4401,6 +4821,7 @@
 
             let subjName = 'Fizjologia';
             if (q.subject === 'fizjo2') subjName = 'Fizjologia Zaliczenie 2';
+                if (q.subject === 'fizjo3') subjName = 'Fizjologia zaliczenie 3';
                 if (q.subject === 'bm') subjName = 'Biologia Medyczna';
             if (q.subject === 'brc') subjName = 'Biol. Rozwój Człowieka';
                 if (q.subject === 'ped') subjName = 'Pedagogika';
@@ -4445,6 +4866,7 @@
             document.getElementById('bankSubjAll').className = filter === 'all' ? 'btn btn-primary' : 'btn btn-secondary';
             document.getElementById('bankSubjFizjo').className = filter === 'fizjo' ? 'btn btn-primary' : 'btn btn-secondary';
             document.getElementById('bankSubjFizjo2').className = filter === 'fizjo2' ? 'btn btn-primary' : 'btn btn-secondary';
+            document.getElementById('bankSubjFizjo3').className = filter === 'fizjo3' ? 'btn btn-primary' : 'btn btn-secondary';
             document.getElementById('bankSubjBM').className = filter === 'bm' ? 'btn btn-primary' : 'btn btn-secondary';
             document.getElementById('bankSubjBRC').className = filter === 'brc' ? 'btn btn-primary' : 'btn btn-secondary';
             document.getElementById('bankSubjPed').className = filter === 'ped' ? 'btn btn-primary' : 'btn btn-secondary';
@@ -4481,6 +4903,7 @@
 
                 let subjTag = 'Fizjologia';
                 if (q.subject === 'fizjo2') subjTag = 'Fizjologia Zaliczenie 2';
+                if (q.subject === 'fizjo3') subjTag = 'Fizjologia zaliczenie 3';
                 if (q.subject === 'bm') subjTag = 'Biologia Medyczna';
                 if (q.subject === 'brc') subjTag = 'Biol. Rozwój Człowieka';
                 if (q.subject === 'ped') subjTag = 'Pedagogika';
